@@ -258,11 +258,11 @@
 <p>&nbsp;</p>
 <h3 id="NO2-2-位置化数字系统"><a href="#NO2-2-位置化数字系统" class="headerlink" title="NO2.2 位置化数字系统"></a>NO2.2 位置化数字系统</h3><p>所谓的位置化数字系统，指的是数字中符号所占据的位置决定了其表示的值。如，一个数字符号3，出现在不同的位置表示的意思也不同，如，个位(3)，十位(30)，百位(300)，千位(3000)等等。在位置化数字系统的眼里，任何的数字，采用任何的进制，都可以用一条公式概括出来，如下图所示：</p>
 <p><img src="./Image-jsj6.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：这条公式中字母S旁边的k-1….2、1、0、-1、-2、-3….-l表示的是数字所在位置。</strong></p>
+<p><code>说明：这条公式中字母S旁边的k-1....2、1、0、-1、-2、-3....-l表示的是数字所在位置。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj7.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是这个数字要表达的值的计算方式，其中b的零次方、一次方….通俗的讲，就是这个数字在这个位置所要表示的大小，而b表示这个数字是多少进制。</strong></p>
+<p><img src="./Image-jsj7.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是这个数字要表达的值的计算方式，其中b的零次方、一次方....通俗的讲，就是这个数字在这个位置所要表示的大小，而b表示这个数字是多少进制。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj8.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：十进制数789，用这个公式的表达。</strong></p>
+<p><img src="./Image-jsj8.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：十进制数789，用这个公式的表达。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>常见的位置化数字系统包括：<ul>
@@ -273,9 +273,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="./Image-jsj9.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是正数224的表示。</strong></p>
+<p><img src="./Image-jsj9.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是正数224的表示。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj10.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是小数24.13的表示。</strong></p>
+<p><img src="./Image-jsj10.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是小数24.13的表示。</code></p>
 <pre><code class="hljs java">拓展：基数和位权(其实就是上面所说的位置化数字系统)
 一、基数，其实指的就是，在不同进制数中，进制是多少，那么它的基数就是多少；如二进制的基数就是<span class="hljs-number">2</span>，八进制的基数就是<span class="hljs-number">8</span>，同理十进制的基数是<span class="hljs-number">10</span>，十六进制的基数就是<span class="hljs-number">16</span>等等；
     
@@ -284,36 +284,36 @@
 三、位权，其实就是指以进制基数为底的幂，简单理解就是，二进制的位权就是以<span class="hljs-number">2</span>为底的幂，同理十六进制的位权则是以<span class="hljs-number">16</span>为底的幂，其他进制也是同理。</code></pre>
 
 <p>&nbsp;</p>
-<p><img src="./Image-jsj11.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是与十进制数25等值的二进制数11001。</strong></p>
+<p><img src="./Image-jsj11.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是与十进制数25等值的二进制数11001。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj12.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是与十进制数5.75等值的二进制数101.11。</strong></p>
+<p><img src="./Image-jsj12.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是与十进制数5.75等值的二进制数101.11。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj13.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是与十进制数686等值的十六进制数2AE。</strong></p>
+<p><img src="./Image-jsj13.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是与十进制数686等值的十六进制数2AE。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj14.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：这是与十进制数686等值的八进制数1256。</strong></p>
+<p><img src="./Image-jsj14.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：这是与十进制数686等值的八进制数1256。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li><p>十进制与其他进制的相互转换。</p>
 <ul>
-<li><p>其他进制到十进制的转换，在上面的介绍中，其实已经讲了，即：每一位上的数值x进制^权值^。如，八进制的1256，转换为十进制：1x8^3^+2x8^2^+5x8^1^+6x8^0^ = 686；<strong>注意：小数点左边的权值从0开始递增，如，1、2、3、4…依次递增，而小数点右边的位置量则是从-1开始递减，如，-1、-2、-3、-4….依次递减。</strong></p>
+<li><p>其他进制到十进制的转换，在上面的介绍中，其实已经讲了，即：每一位上的数值x进制^权值^。如，八进制的1256，转换为十进制：1x8^3^+2x8^2^+5x8^1^+6x8^0^ = 686；<strong><code>注意：小数点左边的权值从0开始递增，如，1、2、3、4...依次递增，而小数点右边的位置量则是从-1开始递减，如，-1、-2、-3、-4....依次递减。</code></strong></p>
 </li>
 <li><p>十进制到其他进制的转换，分为两部分：</p>
 <ul>
 <li>整数部分的规则：十进制数/对应的进制，直到商为0，然后余数取反即可；</li>
-<li>小数部分的规则：十进制小数对应的进制，然后取整数部分，直到小数部分为0或达到足够的位数时结束即可。</li>
+<li>小数部分的规则：十进制小数*对应的进制，然后取整数部分，直到小数部分为0或达到足够的位数时结束即可。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-jsj15.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：十进制35转二进制。</strong></p>
+<p><img src="./Image-jsj15.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：十进制35转二进制。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-jsj16.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：十进制小数0.625转二进制，即0.101。</strong></p>
+<p><img src="./Image-jsj16.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：十进制小数0.625转二进制，即0.101。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>二进制转八进制或十六进制，采用的方法很相似，二进制转八进制用的三位归纳法，二进制转十六进制用的四位归纳。</li>
 </ul>
-<p><img src="./Image-jsj17.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：图示是八进制转十六进制的方法。</strong></p>
+<p><img src="./Image-jsj17.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：图示是八进制转十六进制的方法。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-3-非位置化数字系统"><a href="#NO2-3-非位置化数字系统" class="headerlink" title="NO2.3 非位置化数字系统"></a>NO2.3 非位置化数字系统</h3><p>非位置化数字系统，指的是，使用有限的数字符号，且每个符号有一个值，这个值不会因为符号所处的位置改变而改变，简单讲就是，这个符号是什么值，在哪个位置都是这个值。如，罗马数字就是一个例子。</p>
@@ -335,25 +335,29 @@
 <p>&nbsp;</p>
 <h3 id="NO3-2-存储数字"><a href="#NO3-2-存储数字" class="headerlink" title="NO3.2 存储数字"></a>NO3.2 存储数字</h3><p>计算机使用定点和浮点来表示整数和小数。</p>
 <ul>
-<li>内存中存储整数使用的是定点表示法；整数中既有正整数、负整数、0，所以可以用以下几种方式来表示：<ul>
-<li>无符号表示法，用于无符号整数(就是没有符号的整数)，范围是0到无穷大之间；但是计算机肯定是无法表示无穷大这个整数的，所以就定义了一个最大无符号整数，值为<img src="../_resources/33afb12e021fc746cc3d15592afa429c.png" srcset="/img/loading.gif" alt="">，这里的n代表计算机中分配用于表示无符号整数的二进制位数；</li>
-<li>符号加绝对值表示法，即计算机分配的二进制的位数中，最高位(就是最左边的位置)必须是符号位，且0表示正，1表示负；范围是-(2^n-1^-1)至+(2^n-1^-1)；</li>
-<li>二进制补码表示法，即用二进制的补码来存储有符号整数；简单理解就是，通过一个数的二进制，分别得到原码(就是二进制)、反码、补码，最后用补码的形式来进行存储这个数；<strong>注意：正数的原反补都是一样的；而负数的反码要在原码的基础上，逐位取反，符号位不变；负数的补码要在反码的基础上，末位加1。</strong></li>
+<li><p>内存中存储整数使用的是定点表示法；整数中既有正整数、负整数、0，所以可以用以下几种方式来表示：</p>
+<ul>
+<li><p>无符号表示法，用于无符号整数(就是没有符号的整数)，范围是0到无穷大之间；但是计算机肯定是无法表示无穷大这个整数的，所以就定义了一个最大无符号整数，值为<img src="../_resources/33afb12e021fc746cc3d15592afa429c.png" srcset="/img/loading.gif" alt="">，这里的n代表计算机中分配用于表示无符号整数的二进制位数；</p>
+</li>
+<li><p>符号加绝对值表示法，即计算机分配的二进制的位数中，最高位(就是最左边的位置)必须是符号位，且0表示正，1表示负；范围是-(2^n-1^-1)至+(2^n-1^-1)；</p>
+</li>
+<li><p>二进制补码表示法，即用二进制的补码来存储有符号整数；简单理解就是，通过一个数的二进制，分别得到原码(就是二进制)、反码、补码，最后用补码的形式来进行存储这个数；<strong><code>注意：正数的原反补都是一样的；而负数的反码要在原码的基础上，逐位取反，符号位不变；负数的补码要在反码的基础上，末位加1。</code></strong></p>
+<p>  例如：</p>
+</li>
 </ul>
 </li>
 </ul>
-<p>例如：</p>
 <p><img src="./Image-jsj19.png" srcset="/img/loading.gif" alt=""></p>
-<p><strong>说明：存储7到八位的存储单元中：先将7转换为二进制数，得到的二进制数为111，但是不足八位，所以在左边添0，变成00000111，这样就满八位了。</strong></p>
+<p><code>说明：存储7到八位的存储单元中：先将7转换为二进制数，得到的二进制数为111，但是不足八位，所以在左边添0，变成00000111，这样就满八位了。</code></p>
 <p>&nbsp;<br><img src="./Image-jsj20.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：存储258到十六位的存储单元中：将258转为二进制数后得到100000010，还差七位才够十六位，所以往左边添0，直到满16位即可。</strong></p>
+<p><code>说明：存储258到十六位的存储单元中：将258转为二进制数后得到100000010，还差七位才够十六位，所以往左边添0，直到满16位即可。</code></p>
 <p>&nbsp;<br><img src="./Image-jsj21.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：存储11到四位的存储单元中，又试图再加上9：首先存储11到四位的存储单元中，11转换为二进制为1011，原本这没有什么问题，但是如果11+9=20，那么就会造成值溢出的情况，因为20转为二进制为10100，五位，无法全部存储到四位的存储单元中去，所以计算机丢掉第五位，也就是最前面的1，最后存储的则是0100，值就是4了。</strong></p>
+<p><code>说明：存储11到四位的存储单元中，又试图再加上9：首先存储11到四位的存储单元中，11转换为二进制为1011，原本这没有什么问题，但是如果11+9=20，那么就会造成值溢出的情况，因为20转为二进制为10100，五位，无法全部存储到四位的存储单元中去，所以计算机丢掉第五位，也就是最前面的1，最后存储的则是0100，值就是4了。</code></p>
 <p>&nbsp;<br><img src="./Image-jsj22.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：将-28存储到8位的存储单元中：先将28转为二进制，值为00011100，用符号加绝对值表示法，最左边的位置不应该用0，而是要用1，因为存储的是-28，而不是28，所以最后的存储的二进制的值为10011100。</strong></p>
+<p><code>说明：将-28存储到8位的存储单元中：先将28转为二进制，值为00011100，用符号加绝对值表示法，最左边的位置不应该用0，而是要用1，因为存储的是-28，而不是28，所以最后的存储的二进制的值为10011100。</code></p>
 <p>&nbsp;</p>
 <ul>
-<li>存储小数使用的则是浮点表示法；浮点表示法表示的数都由三部分组成：符号(即正负号)、指数(进制数的幂)、尾数(小数点右边的数)；且十进制中的浮点表示法，我们很熟悉，就是科学计数法，而二进制中就叫做浮点表示法；<strong>注意：浮点表示法中，小数点左边必须是非零，这称为规范化。</strong><ul>
+<li>存储小数使用的则是浮点表示法；浮点表示法表示的数都由三部分组成：符号(即正负号)、指数(进制数的幂)、尾数(小数点右边的数)；且十进制中的浮点表示法，我们很熟悉，就是科学计数法，而二进制中就叫做浮点表示法；<strong><code>注意：浮点表示法中，小数点左边必须是非零，这称为规范化。</code></strong><ul>
 <li>科学计数法(用于十进制)；</li>
 <li>浮点表示法(用于二进制)。</li>
 </ul>
@@ -375,13 +379,11 @@
 </li>
 </ul>
 <p><img src="./Image-jsj27.png" srcset="/img/loading.gif" alt="Image"></p>
-<p>&nbsp;</p>
 <p><img src="./Image-jsj28.png" srcset="/img/loading.gif" alt="Image"></p>
 <p><img src="./Image-jsj29.png" srcset="/img/loading.gif" alt="Image"></p>
-<p>&nbsp;</p>
-<p>例如：<br><img src="./Image-jsj30.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：十进制5.75的单精度表示法。</strong></p>
-<p>&nbsp;<br><img src="./Image-jsj31.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：十进制数-0.0234375的单精度表示法。</strong></p>
-<p>&nbsp;<br><img src="./Image-jsj32.png" srcset="/img/loading.gif" alt="Image"><br>说明：将单精度表示的11001010000000000111000100001111转换为十进制。</p>
+<p>&nbsp;<br><img src="./Image-jsj30.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：十进制5.75的单精度表示法。</code></p>
+<p>&nbsp;<br><img src="./Image-jsj31.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：十进制数-0.0234375的单精度表示法。</code></p>
+<p>&nbsp;<br><img src="./Image-jsj32.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：将单精度表示的11001010000000000111000100001111转换为十进制。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO3-3-存储文本"><a href="#NO3-3-存储文本" class="headerlink" title="NO3.3 存储文本"></a>NO3.3 存储文本</h3><p>字符是各种文字和符号的总称，而字符集则是多个字符的集合；我们使用字符集来存储文本数据。</p>
@@ -421,16 +423,17 @@
 <hr>
 <h2 id="Lesson4-数据运算"><a href="#Lesson4-数据运算" class="headerlink" title="Lesson4 数据运算"></a>Lesson4 数据运算</h2><h3 id="NO4-1-逻辑运算"><a href="#NO4-1-逻辑运算" class="headerlink" title="NO4.1 逻辑运算"></a>NO4.1 逻辑运算</h3><p>这里的逻辑运算是指二进制的逻辑运算。</p>
 <ul>
-<li>二进制的逻辑运算有如下几种：<ul>
-<li>与(AND)：两个二进制补码做与运算，位对齐，只要两位上的任意一位是0，那么与的结果就为0；</li>
-<li>或(OR)：两个二进制补码做或运算，位对齐，只要两位上的任意一位是1，那么或的结果就为1；</li>
-<li>异或(XOR)：两个二进制补码做异或运算，位对齐，只要两位上的数字都相同，则结果为0，不相同则为1；</li>
-<li>非(NOT)：一个二进制补码做非运算，按位取反，如果位上是0，则非运算结果为1，如果位上是1，结果则为0。</li>
-</ul>
+<li><p>二进制的逻辑运算有如下几种：</p>
+<ul>
+<li><p>与(AND)：两个二进制补码做与运算，位对齐，只要两位上的任意一位是0，那么与的结果就为0；</p>
 </li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs java"><span class="hljs-comment">//与运算</span>
+<li><p>或(OR)：两个二进制补码做或运算，位对齐，只要两位上的任意一位是1，那么或的结果就为1；</p>
+</li>
+<li><p>异或(XOR)：两个二进制补码做异或运算，位对齐，只要两位上的数字都相同，则结果为0，不相同则为1；</p>
+</li>
+<li><p>非(NOT)：一个二进制补码做非运算，按位取反，如果位上是0，则非运算结果为1，如果位上是1，结果则为0。</p>
+<p>  例如：</p>
+  <pre><code class="hljs java"><span class="hljs-comment">//与运算</span>
 <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>
 <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>
 -----------------------
@@ -453,41 +456,51 @@
 ------------------------
 <span class="hljs-number">0</span>    <span class="hljs-number">1</span></code></pre>
 
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;    </p>
 <h3 id="NO4-2-移位运算"><a href="#NO4-2-移位运算" class="headerlink" title="NO4.2 移位运算"></a>NO4.2 移位运算</h3><p>所谓的移位运算，简单理解就是将二进制进行左移或者右移。移位运算分为两种，逻辑移位运算和算数移位运算：</p>
 <ul>
-<li>逻辑移位运算中，又分为逻辑移位、循环移位；<ul>
-<li>逻辑移位，简单的理解就是将二进制向左移(不够的部分就添加)或者向右移(多出的部分会被丢弃)；</li>
-<li>循环移位，原理和逻辑移位差不多，只不过移位过程中，不会添加或丢弃二进制位，而是循环使用。</li>
+<li><p>逻辑移位运算中，又分为逻辑移位、循环移位；</p>
+<ul>
+<li><p>逻辑移位，简单的理解就是将二进制向左移(不够的部分就添加)或者向右移(多出的部分会被丢弃)；</p>
+</li>
+<li><p>循环移位，原理和逻辑移位差不多，只不过移位过程中，不会添加或丢弃二进制位，而是循环使用。</p>
+<p>  例如：</p>
+</li>
 </ul>
 </li>
 </ul>
-<p>例如：<br><img src="./Image-jsj34.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：逻辑左移，左边多的部分丢弃，右边少的部分添0。</strong>    </p>
+<p><img src="./Image-jsj34.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：逻辑左移，左边多的部分丢弃，右边少的部分添0。</code>    </p>
 <pre><code class="hljs java"><span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    原始的二进制补码
 ------------------------------------
 <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    逻辑左移之后的二进制补码</code></pre>
 
-<p>&nbsp;<br><img src="./Image-jsj35.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：逻辑右移，左边少的部分添0，右边多的部分丢弃。</strong></p>
+<p>&nbsp;<br><img src="./Image-jsj35.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：逻辑右移，左边少的部分添0，右边多的部分丢弃。</code></p>
 <pre><code class="hljs java"><span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    原始的二进制补码
 ------------------------------------
 <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    逻辑右移之后的二进制补码</code></pre>
 
-<p>&nbsp;<br><img src="./Image-jsj36.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：循环左移，左边多的部分会循环到右边少的部分，意思就是左边多出来的，刚好给右边少的。</strong></p>
+<p>&nbsp;<br><img src="./Image-jsj36.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：循环左移，左边多的部分会循环到右边少的部分，意思就是左边多出来的，刚好给右边少的。</code></p>
 <pre><code class="hljs java"><span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    原始的二进制补码
 ------------------------------------
 <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    循环左移之后的二进制补码</code></pre>
 
-<p>&nbsp;<br><img src="./Image-jsj37.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：循环右移，右边多的部分会循环到左边少的部分，意思就是右边多出来的，刚好给左边少的。</strong></p>
+<p>&nbsp;<br><img src="./Image-jsj37.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：循环右移，右边多的部分会循环到左边少的部分，意思就是右边多出来的，刚好给左边少的。</code></p>
 <pre><code class="hljs java"><span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    原始的二进制补码
 ------------------------------------
 <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    循环右移之后的二进制补码</code></pre>
 
 <p>&nbsp;</p>
 <ul>
-<li>算数移位运算，其实跟逻辑移位差不多，只不过算数移位的时候要注意一下符号问题；<strong>注意：算数左移相当于二进制补码的十进制数乘以2，右移就是除以2。</strong></li>
+<li><p>算数移位运算，其实跟逻辑移位差不多，只不过算数移位的时候要注意一下符号问题；<strong><code>注意：算数左移相当于二进制补码的十进制数乘以2，右移就是除以2。</code></strong></p>
+<p>  例如：</p>
+</li>
 </ul>
-<p>例如：<br><img src="./Image-jsj38.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：算数左移的话，符号位会被丢弃，这个时候看看新的符号位是不是跟以前是一样的，一样就正常左移，运算成功；不一样的话就出现上溢或下溢，结果就是非法的。</strong></p>
+<p><img src="./Image-jsj38.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：算数左移的话，符号位会被丢弃，这个时候看看新的符号位是不是跟以前是一样的，一样就正常左移，运算成功；不一样的话就出现上溢或下溢，结果就是非法的。</code></p>
 <pre><code class="hljs java">运算成功：
 
 <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    原始的二进制补码
@@ -502,7 +515,7 @@
 ------------------------------------
 <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    算数左移之后的二进制补码，符号位由<span class="hljs-number">1</span>变成了<span class="hljs-number">0</span>，结果出现上溢或下溢，那么这个结果就是非法的</code></pre>
 
-<p>&nbsp;<br><img src="./Image-jsj39.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：算数右移的话，原先最左边的符号位是什么，右移之后，左边少的，就添加对应的符号位就可以了(正数就添0，负数就添1)。</strong></p>
+<p>&nbsp;<br><img src="./Image-jsj39.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：算数右移的话，原先最左边的符号位是什么，右移之后，左边少的，就添加对应的符号位就可以了(正数就添0，负数就添1)。</code></p>
 <pre><code class="hljs java"><span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    原始的二进制补码
 ------------------------------------
 <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    算数右移之后的二进制补码，移位之前符号位是<span class="hljs-number">1</span>，是一个负数，则右移之后，添加<span class="hljs-number">1</span>即可</code></pre>
@@ -511,10 +524,9 @@
 <p>&nbsp;</p>
 <h3 id="NO4-3-算数运算"><a href="#NO4-3-算数运算" class="headerlink" title="NO4.3 算数运算"></a>NO4.3 算数运算</h3><p>算数运算包括加减乘除。</p>
 <ul>
-<li>二进制补码的加减法，很简单，加法就是二进制补码，对位相加即可；而减法则是将减数(无论正负数)诸位取反后再加一，然后相加即可。</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs java">加法：
+<li><p>二进制补码的加减法，很简单，加法就是二进制补码，对位相加即可；而减法则是将减数(无论正负数)诸位取反后再加一，然后相加即可。</p>
+<p>  例如：</p>
+  <pre><code class="hljs java">加法：
 <span class="hljs-number">00010001</span> + <span class="hljs-number">00010110</span>
 
               进<span class="hljs-number">1</span>
@@ -553,16 +565,17 @@
     <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    用十进制检查结果(-<span class="hljs-number">35</span>)-(+<span class="hljs-number">20</span>)=(-<span class="hljs-number">55</span>)
 注意：上面的结果为<span class="hljs-number">111001001</span>，只能存<span class="hljs-number">8</span>位，即最前面的<span class="hljs-number">1</span>被丢弃了。</code></pre>
 
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
 <li>8位补码能够表示数的范围是-128~127，即10000000-11111111表示-128到-1,  00000000-01111111表示0-127。</li>
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>使用符号加绝对值的格式进行运算的时候，符号位做异或操作，其他位上加法就对位相加，减法则是将将减数(无论正负数)诸位(除了符号位)取反后再加一，如果出现上溢或下溢，则对符号位操作就行。</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs java">加法：
+<li><p>使用符号加绝对值的格式进行运算的时候，符号位做异或操作，其他位上加法就对位相加，减法则是将将减数(无论正负数)诸位(除了符号位)取反后再加一，如果出现上溢或下溢，则对符号位操作就行。</p>
+<p>  例如：</p>
+  <pre><code class="hljs java">加法：
 <span class="hljs-number">00010001</span> + <span class="hljs-number">00010110</span>
 
    符号位
@@ -590,6 +603,8 @@
      <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>
 注意：上面的结果符号位原本应该是<span class="hljs-number">0</span>，但是后面第<span class="hljs-number">7</span>位上有上溢，所以添加到符号位上。</code></pre>
 
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
 <li>带小数的加减法。</li>
@@ -638,13 +653,13 @@
 <li>存储器的层次结构。</li>
 </ul>
 <p><img src="./Image-jsj43.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：当对速度要求很苛刻时，可以使用少量高速存储器，寄存器就属于这一类；用适量的中速存储器来存储经常需要访问的数据，高速缓冲存储器属于这一类；存储那些不经常访问的数据，主存就属于这一类。</strong></p>
+<p><code>说明：当对速度要求很苛刻时，可以使用少量高速存储器，寄存器就属于这一类；用适量的中速存储器来存储经常需要访问的数据，高速缓冲存储器属于这一类；存储那些不经常访问的数据，主存就属于这一类。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>高速缓冲存储器；</li>
 </ul>
 <p><img src="./Image-jsj44.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><strong>说明：CPU优先去高速缓冲存储器找自己需要的数据，如果有，就直接拿来使用；没有的话就去主存找，拿到数据之后，复制一份放入高速缓冲存储器中，以备下次使用；因为高速缓冲存储器速度比主存要快。</strong></p>
+<p><code>说明：CPU优先去高速缓冲存储器找自己需要的数据，如果有，就直接拿来使用；没有的话就去主存找，拿到数据之后，复制一份放入高速缓冲存储器中，以备下次使用；因为高速缓冲存储器速度比主存要快。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO5-3-输入-输出系统"><a href="#NO5-3-输入-输出系统" class="headerlink" title="NO5.3 输入/输出系统"></a>NO5.3 输入/输出系统</h3><p>输入/输出系统的作用的是与外界进行通信，在断电情况下可以存储程序和数据。</p>
@@ -695,8 +710,8 @@
 <h3 id="NO5-6-介绍两个指令集-了解"><a href="#NO5-6-介绍两个指令集-了解" class="headerlink" title="NO5.6 介绍两个指令集(了解)"></a>NO5.6 介绍两个指令集(了解)</h3><p>计算机体系结构和组织，经历了CISC和RISC。</p>
 <ul>
 <li>计算机体系结构分为两大类：<ul>
-<li>CISC，即复杂指令集。如，英特尔开发的奔腾系列处理器属于这个体系；</li>
-<li>RISC，即精简指令集。</li>
+<li>CISC：即复杂指令集。<code>如，英特尔开发的奔腾系列处理器属于这个体系</code>；</li>
+<li>RISC：即精简指令集。</li>
 </ul>
 </li>
 </ul>
@@ -747,7 +762,7 @@
 <ul>
 <li>当两个或多个网络连接在一起时，就变成了互联网，即internet。</li>
 </ul>
-<p><img src="./Image-jsj47.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：路由器是发送数据包(消息)，并使消息在互联网中传输的连接设备。</strong></p>
+<p><img src="./Image-jsj47.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：路由器是发送数据包(消息)，并使消息在互联网中传输的连接设备。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>因特网(Internet)是最大的，也是最著名的互联网，它由成千上万个互相连接的网络组成，个人和各种组织都使用因特网。</li>
@@ -765,7 +780,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="./Image-jsj48.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：如上图，就是我们在聊天的时候，消息的传输，每一层都调用它直接下层的服务。</strong></p>
+<p><img src="./Image-jsj48.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：如上图，就是我们在聊天的时候，消息的传输，每一层都调用它直接下层的服务。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO6-3-层"><a href="#NO6-3-层" class="headerlink" title="NO6.3 层"></a>NO6.3 层</h3><p>我们要明确TCP/IP协议族划分的每一层的功能。</p>
@@ -946,7 +961,7 @@
 <ul>
 <li>软件的生命周期：</li>
 </ul>
-<p><img src="./Image-jsj51.png" srcset="/img/loading.gif" alt="Image"><br><strong>说明：使用和修改这两个步骤一直进行下去，直到软件过时。</strong></p>
+<p><img src="./Image-jsj51.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：使用和修改这两个步骤一直进行下去，直到软件过时。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>软件的开发过程包括四个阶段：分析、设计、实现和测试。</li>

@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      23.2k 字
+      23.3k 字
     </span>
   
 
@@ -1672,17 +1672,17 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 二、<span class="hljs-keyword">char</span> str2[<span class="hljs-number">3</span>] = &#123;<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>&#125;，该字符数组大小为<span class="hljs-number">3</span>，且只占用了两个空间，在以字符串转换说明(即以<span class="hljs-string">"%s"</span>)输出时，不会报错，因为有空间添加空字符<span class="hljs-string">'\0'</span>，所以能够正常输出。
 
-拓展：全局数组和局部数据的初始化
-一、未初始化，其值有两种可能：
-    <span class="hljs-number">1.</span>一种是全局数组，被编译器初始化为<span class="hljs-number">0</span>；
-    <span class="hljs-number">2.</span>一种是局部数组，为随机数。
+拓展：全局数组和局部数组的初始化(这里以整型数组为例，即<span class="hljs-keyword">int</span> arr[])
+一、未初始化：
+    <span class="hljs-number">1.</span>全局数组，被编译器初始化为<span class="hljs-number">0</span>；
+    <span class="hljs-number">2.</span>局部数组，为随机数。
 
 二、部分初始化：不论是全局数组还是局部数组，没有被初始化的部分，都会被初始化为<span class="hljs-number">0</span>。
 
 拓展：“*”、指针变量、数组的使用
-一、<span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>]，<span class="hljs-keyword">int</span>  arr = &amp;arr，(arr + <span class="hljs-number">2</span>)，表示arr数组的第三个元素的值；
+一、<span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>]，<span class="hljs-keyword">int</span>*  ar = &amp;arr，那么，*(ar + <span class="hljs-number">2</span>)，表示arr数组的第三个元素的值；
 
-二、arr + <span class="hljs-number">2</span>，表示arr数组的第一个元素的值加<span class="hljs-number">2</span>。</code></pre>
+二、arr + <span class="hljs-number">2</span>，表示arr数组的第一个元素的地址值加<span class="hljs-number">2</span>，即数组第三个元素的地址值。</code></pre>
 
 </li>
 </ul>
@@ -1690,8 +1690,9 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>二维数组：即数组的每个元素是一个一维数组(一维数组就是普通的数组)，这样的数组，我们称为二维数组。多维数组，以此类推。<ul>
-<li>二维数组的基本语法格式：数据类型 数组名称[size1][size2]，其中size1表示，二维数组中有多少个一维数组，size2则表示每个一维数组中有多少个元素。如，int nums[2][3]，表示这个二维数组中有2个一维数组元素，而每个一维数组中都有3个元素。<strong>注意：其实二维数组的创建基本语法格式和一维数组差不多，这里只介绍了一种，还可以直接添加元素到数组中：int nums[2][2]={ {1,2},{3,4} }。</strong></li>
+<li>二维数组：<ul>
+<li>定义：即数组的每个元素是一个一维数组(一维数组就是普通的数组)，这样的数组，我们称为二维数组。多维数组，以此类推。</li>
+<li>二维数组的基本语法格式：<code>数据类型 数组名[size1][size2]</code>，其中size1表示，二维数组中有多少个一维数组，size2则表示每个一维数组中有多少个元素。<code>如，int nums[2][3]，表示这个二维数组中有2个一维数组元素，而每个一维数组中都有3个元素</code>。<strong><code>注意：其实二维数组的创建基本语法格式和一维数组差不多，这里只介绍了一种，还可以直接添加元素到数组中：int nums[2][2]={ {1,2},{3,4} }。</code></strong></li>
 </ul>
 </li>
 </ul>
@@ -1699,15 +1700,11 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <p>&nbsp;</p>
 <h3 id="NO2-21-C语言中的常用函数"><a href="#NO2-21-C语言中的常用函数" class="headerlink" title="NO2.21 C语言中的常用函数"></a>NO2.21 C语言中的常用函数</h3><p>函数是C程序中的主体。</p>
 <ul>
-<li>字符串函数：这一类函数主要对字符串进行操作，存在于string.h头文件中，所以使用时需要引用头文件string.h头文件。<ul>
-<li>strlen(str)：用于表示字符串中的字符长度(包括空格和标点符号，但不会把用于结束的空字符算进去)。<strong>注意：C把函数库中的函数进行归类，为每类函数提供一个头文件。如，printf_s()和scanf_s()都在stdio.h头文件中，strlen()函数则在string.h头文件中等等。</strong></li>
-<li>strcpy_s(str,len,newStr)：将newStr复制到str中，str中的值会被覆盖掉；其中len表示将newStr复制到str时，创建的一个缓冲区的大小，一般的做法就是将len的大小定为newStr的长度加1，即strlen(newStr)+1，为什么要加1？是因为字符串中包含了空字符来表示字符串的结尾，所以需要在字符串本身长度的基础上多加1才能够将这个需要被复制的字符串放入缓冲区中；如果len小于或等于了newStr，那么程序会报错。</li>
-<li>strcat_s(str,len,newStr)：将newStr追加到str中，并不会覆盖str的原有内容，只是做一个追加操作。len表示str的大小，即str数组的大小，一般len设置为sizeof(str)；添加len参数的原因是因为要确保新添加的newStr追加到str后，str的长度不会溢出，保证了程序的安全，这样也方便开发工具做一个检查。<strong>注意：len也可以超出str字符数组的长度，但是这样做会出现奇奇怪怪的结果。</strong></li>
-</ul>
-</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<li><p>字符串函数：<strong><code>注意：这一类函数主要对字符串进行操作，存在于string.h头文件中，所以使用时需要引用头文件string.h头文件。</code></strong></p>
+<ul>
+<li><p>strlen(str)：用于表示字符串中的字符长度(包括空格和标点符号，但不会把用于结束的空字符算进去)。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;  //引入strlen()函数所在的头文件，该头文件还包含了其他与字符串相关的函数</span></span>
 
@@ -1728,11 +1725,11 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 二、用途：
     <span class="hljs-number">1.</span>用于数据类型：使用形式为<span class="hljs-keyword">sizeof</span>(type)。表示这个类型占内存多少字节；
-    <span class="hljs-number">2.</span>用于变量：使用形式为<span class="hljs-keyword">sizeof</span>(var)或<span class="hljs-keyword">sizeof</span> var。表示常量、变量在内存中占用的字节数。
-    
-<span class="hljs-comment">//=====================================================================</span>
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+    <span class="hljs-number">2.</span>用于变量：使用形式为<span class="hljs-keyword">sizeof</span>(var)或<span class="hljs-keyword">sizeof</span> var。表示常量、变量在内存中占用的字节数。</code></pre>
+</li>
+<li><p>strcpy_s(str,len,newStr)：将newStr复制到str中，str中的值会被覆盖掉；其中len表示将newStr复制到str时，创建的一个缓冲区的大小，一般的做法就是将len的大小定为newStr的长度加1，即strlen(newStr)+1，为什么要加1？是因为字符串中包含了空字符来表示字符串的结尾，所以需要在字符串本身长度的基础上多加1才能够将这个需要被复制的字符串放入缓冲区中；如果len小于或等于了newStr，那么程序会报错。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
@@ -1747,11 +1744,11 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
     printf_s(<span class="hljs-string">"%s"</span>,str);
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-
-<span class="hljs-comment">//=====================================================================</span>
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+&#125;</code></pre>
+</li>
+<li><p>strcat_s(str,len,newStr)：将newStr追加到str中，并不会覆盖str的原有内容，只是做一个追加操作。len表示str的大小，即str数组的大小，一般len设置为sizeof(str)；添加len参数的原因是因为要确保新添加的newStr追加到str后，str的长度不会溢出，保证了程序的安全，这样也方便开发工具做一个检查。<strong><code>注意：len也可以超出str字符数组的长度，但是这样做会出现奇奇怪怪的结果。</code></strong></p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
@@ -1785,16 +1782,19 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 注意：这里并没有报错，但是要明白，字符数组str只在内存中开辟了<span class="hljs-number">5</span>个字节大小的空间，那么该数组中也就只能存储<span class="hljs-number">4</span>个字节大小的数据(因为还要包括一个空字符的占用空间)，且已经放入了abc，即说明最多只能再放入一个数据，但是上面却显示输出了abcddd，那么为什么上面没有报错呢？那是因为数组中多出的两个元素占用了不该占用的别的内存的空间来满足自己的需要。在添加了ddd这个字符串之后，字符长度变为了<span class="hljs-number">6</span>，原本数组只能放<span class="hljs-number">4</span>个字符数据的，如今却放进去了<span class="hljs-number">6</span>个，就只能说明，多出的两个字符数据，占用了不该占用的其他内存空间，这是很危险的，假如别的内存空间中有数据，你占用了，就会出现不可预估的错误，所以一般才会将len的长度大小设置为<span class="hljs-keyword">sizeof</span>(str)，即数组本身的大小。</code></pre>
 
-<p>&nbsp;</p>
-<ul>
-<li>日期函数：这一类函数主要对日期和时间进行操作，存在于time.h头文件中，所以使用时需要引用头文件time.h头文件。<ul>
-<li>time(time_t seconds)：该函数用于获取自格林威治时间1970年1月1日00:00凌晨至现在所经过的秒数，如果seconds不为空，那么获取的秒数也会存储在time_t类型的指针变量seconds中；其中time_t类型其实就是long int类型，简单讲time函数的参数要传入一个long int类型的指针变量；</li>
-<li>ctime_s()：将传入的时间转换成字符串基本语法格式：星期几 月份 天数 时:分:秒 年份；</li>
+</li>
 </ul>
 </li>
 </ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<p>&nbsp;</p>
+<ul>
+<li><p>日期函数：这一类函数主要对日期和时间进行操作，存在于time.h头文件中，所以使用时需要引用头文件time.h头文件。</p>
+<ul>
+<li><p>time(time_t seconds)：该函数用于获取自格林威治时间1970年1月1日00:00凌晨至现在所经过的秒数，如果seconds不为空，那么获取的秒数也会存储在time_t类型的指针变量seconds中；其中time_t类型其实就是long int类型，简单讲time函数的参数要传入一个long int类型的指针变量；</p>
+</li>
+<li><p>ctime_s()：将传入的时间转换成字符串基本语法格式：星期几 月份 天数 时:分:秒 年份；</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
@@ -1807,9 +1807,13 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
-<li>数学函数</li>
+<li>数学函数：时间不够，暂时还未补充，有时间会补充上的。</li>
 </ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -1820,10 +1824,16 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <li>作用：使得程序便于阅读，修改、移植和调试，也有利于模块化程序的设计。C语言提供了许多预处理功能。如，宏定义、文件包含、条件编译等的。</li>
 <li>C语言常见的预处理命令：<ul>
 <li>#：空指令，无任何效果，可以用来注释；</li>
-<li>#include：包含一个源代码文件，即头文件。如，#include&lt;stdio.h&gt;；</li>
+<li>#include：包含一个源代码文件，即头文件。<code>如，#include&lt;stdio.h&gt;</code>；</li>
 <li>#define：宏定义命令，即用一个标识符来表示一个数值(不局限于整数，也可以是字符串、字符、表达式等等)，并对程序中所有同样的标识符做替换，这种替换称为宏替换；宏定义分为两种：<ul>
-<li>无参宏定义：基本语法格式：#define 宏名 值。如，#define AGE 10，如果程序中还出现了AGE，那么都将会被替换成10；</li>
-<li>带参宏定义：基本语法格式：#define 宏名(参数1,参数2,…,参数n) 值。如，#define MAX(a,b) ((a)&gt;(b)?(a) : (b))，那么程序中的int c=MAX(5,3)，会被替换成int c=((5)&gt;(3)?(5) : (3))。<strong>注意：带参宏定义尽量多用小括号。</strong></li>
+<li>无参宏定义：<ul>
+<li>基本语法格式：<code>#define 宏名 值</code>。<code>如，#define AGE 10，如果程序中还出现了AGE，那么都将会被替换成10</code>；</li>
+</ul>
+</li>
+<li>带参宏定义：<ul>
+<li>基本语法格式：<code>#define 宏名(参数1,参数2,...,参数n) 值</code>。<code>如，#define MAX(a,b) ((a)&gt;(b)?(a) : (b))，那么程序中的int c=MAX(5,3)，会被替换成int c=((5)&gt;(3)?(5) : (3))</code>。<strong><code>注意：带参宏定义尽量多用小括号。</code></strong></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>#undef：取消已定义的宏；</li>
@@ -1838,8 +1848,7 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 </li>
 </ul>
 <pre><code class="hljs c">拓展：宏定义和<span class="hljs-keyword">typedef</span>的区别
-
-一、宏定义只是简单的值替换，由预处理器进行处理；而<span class="hljs-keyword">typedef</span>则是给原有的数据类型起一个新的名字，基本语法格式为：<span class="hljs-keyword">typedef</span> 原数据类型 新的类型名，且<span class="hljs-keyword">typedef</span>是在由编译器在编译阶段才进行处理。如，<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> INT32，表示把<span class="hljs-keyword">int</span>类型起了一个新名字为INT32。
+一、宏定义只是简单的值替换，由预处理器进行处理；而<span class="hljs-keyword">typedef</span>则是给原有的数据类型起一个新的名字，基本语法格式为：<span class="hljs-keyword">typedef</span> 原数据类型 新的类型名，且<span class="hljs-keyword">typedef</span>是在由编译器在编译阶段才进行处理。如，<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> INT32，表示给<span class="hljs-keyword">int</span>类型起了一个新名字为INT32。
    
     
 拓展：带参宏定义和函教调用的区别。
@@ -1848,9 +1857,7 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
     <span class="hljs-number">2.</span>函数调用则发生在程序运行期间。
 
 二、参数类型检查：
-
     <span class="hljs-number">1.</span>函数参数类型检查严格。程序在编译阶段，需要检查实参与形参个数是否相等及类型是否匹配或兼容，若参数个数不相同或类型不兼容，则会编译不通过；
-
     <span class="hljs-number">2.</span>在预处理阶段，对带参宏调用中的参数不做检查。即宏定义时不需要指定参数类型，既可以认为这是宏的优点，即适用于多种数据类型，又可以认为这是宏的一个缺点，即类型不安全。故在宏调用时，需要程序设计者自行确保宏调用参数的类型正确。
 
 三、参数是否需要空间：
@@ -1867,11 +1874,11 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3 id="NO2-23-VS2019的DEBUG调试的使用"><a href="#NO2-23-VS2019的DEBUG调试的使用" class="headerlink" title="NO2.23 VS2019的DEBUG调试的使用"></a>NO2.23 VS2019的DEBUG调试的使用</h3><p>debug模式，是我们常用来调试程序而使用的，简单讲就是查看程序是否有问题。</p>
+<h3 id="NO2-23-VS2019的DEBUG调试"><a href="#NO2-23-VS2019的DEBUG调试" class="headerlink" title="NO2.23 VS2019的DEBUG调试"></a>NO2.23 VS2019的DEBUG调试</h3><p>debug模式，是我们常用来调试程序而使用的，简单讲就是查看程序是否有问题。</p>
 <ul>
 <li>VS2019中的debug模式的使用：<ul>
-<li>首先，在需要断点(你想要查看的语句)的程序语句行号前双击即可，这样就可以打上断点了。<strong>注意：一般都是断点都是打在函数第一行有效的语句上。</strong></li>
-<li>然后，按F5，开始调试，进入debug模式的页面，按F10可以每一行每一行的查看和执行程序的语句；</li>
+<li>首先，在需要断点(你想要查看的语句)的程序语句行号前双击即可，这样就可以打上断点了。<strong><code>注意：一般都是断点都是打在函数第一行有效的语句上。</code></strong></li>
+<li>然后，按F5，开始调试，进入debug模式的页面，按F10可以每一行每一行的查看和执行程序的语句。</li>
 </ul>
 </li>
 </ul>
@@ -1882,20 +1889,25 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <p>&nbsp;</p>
 <h3 id="NO2-24-指针变量和指针数组"><a href="#NO2-24-指针变量和指针数组" class="headerlink" title="NO2.24 指针变量和指针数组"></a>NO2.24 指针变量和指针数组</h3><p>指针其实就是地址值；指针变量存储的是地址值。</p>
 <ul>
-<li>指针变量的使用：<ul>
-<li>赋值：即可以把地址赋给指针变量；</li>
-<li>解引用：*运算符给出指针变量中指向地址上储存的值；<strong>注意：*无法用在字符串字面量前面来解引用。如，char* str =”abc”，那么*str就会报错，因为字符串本身就比较特殊，即字符串本身是字符数组，而数组本身就是指针变量，所以使用转换说明“%s”输入字符串时，不需要在str前面加上*号来解引用。</strong></li>
-<li>取址：&amp;运算符给出变量本身的地址值，然后赋值给指针变量；</li>
-<li>指针变量与整数相加：即地址值与整数相加，得出初始地址与整数相加的结果地址值；</li>
-<li>递增指针变量：一般用在数组上，地址值指向下一个数组元素的地址上；</li>
-<li>递减指针变量：一般用在数组上，地址值指向上一个数组元素的地址上；</li>
-<li>指针变量求差：一般用在数组上，地址值相减，得出两个元素之间的距离；</li>
-<li>指针变量比较：比较的是两个指针中地址所指向的值。</li>
-</ul>
+<li><p>指针变量的使用：</p>
+<ul>
+<li><p>赋值：即可以把地址赋给指针变量；</p>
 </li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-comment">//指针变量自增与自减</span>
+<li><p>解引用：与*运算符一起使用，给出指针变量中存放的地址所指向的变量对应的值；<strong><code>注意：*无法用在字符串字面量前面来解引用。如，char* str =&quot;abc&quot;，那么*str就会报错，因为字符串本身就比较特殊，即字符串本身是字符数组，而数组本身就是指针变量，所以使用转换说明“%s”输入字符串时，不需要在str前面加上*号来解引用。</code></strong></p>
+</li>
+<li><p>取址：与&amp;运算符一起使用，给出指针变量本身的地址值，然后赋值给另一个指针变量；</p>
+</li>
+<li><p>指针变量与整数相加：即地址值与整数相加，得出初始地址与整数相加的结果地址值；</p>
+</li>
+<li><p>递增指针变量：一般用在数组上，地址值指向下一个数组元素的地址上；</p>
+</li>
+<li><p>递减指针变量：一般用在数组上，地址值指向上一个数组元素的地址上；</p>
+</li>
+<li><p>指针变量求差：一般用在数组上，地址值相减，得出两个元素之间的距离；</p>
+</li>
+<li><p>指针变量比较：比较的是两个指针中地址所指向的值。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-comment">//指针变量自增与自减</span>
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
@@ -1931,65 +1943,84 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<p>&nbsp;</p>
-<ul>
-<li>指针数组：<ul>
-<li>定义：即数组中存储的元素都是指向同一数据类型的指针变量；</li>
-<li>基本语法基本语法格式：数据类型* 数组名[size]或数据类型 *  数组名[size]，两者均可。如，int * ptr[5]。<strong>注意：多重指针的实质是：使用一个指针变量a来存放另一个指针变量b本身的地址，而b存放的则是另一个变量的地址值。</strong></li>
+</li>
 </ul>
 </li>
 </ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
+<p>&nbsp;</p>
+<ul>
+<li><p>指针数组：</p>
+<ul>
+<li><p>定义：即数组中存储的元素都是指向同一数据类型的指针变量；</p>
+</li>
+<li><p>基本语法格式：<code>数据类型* 数组名[size]或数据类型 *  数组名[size]，两者均可</code>。<code>如，int * ptr[5]与int* ptr[5]相同</code>。<strong><code>注意：多重指针的实质是：使用一个指针变量a来存放另一个指针变量b本身的地址，而b存放的则是另一个变量的地址值。</code></strong></p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
 <span class="hljs-keyword">int</span>* ap = &amp;a;
 
 <span class="hljs-keyword">int</span>** app = &amp;ap;  <span class="hljs-comment">//这就是多重指针，指向的是指针变量ap的地址，而指针变量ap存放的是变量a的地址值，说白了多重指针就是一个指针变量的多层嵌套</span></code></pre>
 
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-25-函数指针和回调函数"><a href="#NO2-25-函数指针和回调函数" class="headerlink" title="NO2.25 函数指针和回调函数"></a>NO2.25 函数指针和回调函数</h3><p>代码中如果有函数的定义，那么系统也会在栈空间分配一块内存给这个函数，即这段存储空间的首地址称为这个函数的地址；函数名表示的就是这个地址。既然是地址我们就可以定义一个指针变量来存放，这个指针变量就叫作函数指针变量，简称函数指针。</p>
 <ul>
-<li>函数指针的定义方式为：函数返回值类型 ( 指针变量名) (* 函数参数列表)。其中，“函数返回值类型”表示该指针变量可以指向具有什么返回值类型的函数，“函数参数列表”表示该指针变量可以指向具有什么参数列表的函数。这个参数列表中只需要写函数的参数类型即可。我们看到，函数指针的定义就是将“函数声明”中的“函数名”改成“(* 指针变量名)”。<strong>注意：函数指针中的()不可以省略。</strong></li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;   <span class="hljs-comment">//声明一个函数</span>
+<li><p>函数指针：</p>
+<ul>
+<li><p>定义：指向函数地址的指针变量就称为函数指针变量，也成为函数指针；</p>
+</li>
+<li><p>基本语法格式：<code>函数返回值类型 (* 指针变量名) (函数参数列表)</code>。其中，“函数返回值类型”表示该指针变量指向的函数具有什么返回值类型，“函数参数列表”表示该指针变量指向的函数具有什么参数列表。这个参数列表中可以只写形参的数据类型，也可以带上形参名。我们看到，函数指针的定义就是将“函数声明”中的“函数名”改成“(* 指针变量名)”。<strong><code>注意：函数指针中的()不可以省略。</code></strong></p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>;   <span class="hljs-comment">//声明一个函数</span>
 <span class="hljs-keyword">int</span> (*p) (<span class="hljs-keyword">int</span> x);  <span class="hljs-comment">//定义一个函数指针</span>
 p = Func;          <span class="hljs-comment">//将Func函数的首地址赋给指针变量p</span>
-
-<span class="hljs-keyword">int</span> (* ptr) (<span class="hljs-keyword">int</span> x) = Func；
 
 <span class="hljs-comment">//------------------------------------------------------</span>
 
 <span class="hljs-comment">//函数的调用</span>
 
-#include&lt;stdio.h&gt;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
-<span class="hljs-keyword">int</span> getSum(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b);  <span class="hljs-comment">//声明了一个函数</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>;  <span class="hljs-comment">//声明了一个函数</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;  <span class="hljs-comment">//函数的实现</span>
+       <span class="hljs-keyword">return</span> a + b;
+&#125;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
 
-       <span class="hljs-keyword">int</span> (*ptr) (<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) = getSum;  <span class="hljs-comment">//声明了一个函数指针ptr，并将getSum函数赋值给了该函数指针ptr</span>
+       <span class="hljs-keyword">int</span> (*ptr) (<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) = getSum;  <span class="hljs-comment">//声明了一个函数指针ptr，并将getSum函数赋值给了该函数指针ptr；函数指针还可以写成int (*ptr) (int ,int)，即省略形参名，但必须写形参数据类型</span>
 
        <span class="hljs-keyword">int</span> res = (*ptr) (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">//通过调用函数指针来调用函数</span>
        printf_s(<span class="hljs-string">"%d"</span>,res);
 
        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;  <span class="hljs-comment">//函数的实现</span>
-       <span class="hljs-keyword">return</span> a + b;
 &#125;</code></pre>
 
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
-<li>回调函数：就是将函数指针当作一个参数传入别人的函数中，这样别就可以通过函数指针调用你的函数了。注意：函数指针作为参数进行传递时，如果函数指针中带有参数，那么需要将参数取出来，也当做参数进行传递。</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<li><p>回调函数：就是将函数指针当作一个参数传入别人的函数中，这样别就可以通过函数指针调用你的函数了。<strong><code>注意：函数指针作为参数进行传递时，如果函数指针中带有参数，那么需要将参数取出来，也当做参数进行传递。</code></strong></p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumA</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> (*ptr) ())</span></span>;  <span class="hljs-comment">//声明了一个函数getSumA，其参数要传入一个函数指针变量，该函数指针中带有参数，所以将参数a、b取出来，也当做getSumA的参数进行传递</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumA</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> (*ptr) ())</span></span>;  <span class="hljs-comment">//声明了一个函数getSumA，其参数要传入一个函数指针变量，该函数指针中带有参数，所以将参数a、b取出来，也当做getSumA的参数进行传递，也就是说，这个函数指针变量原先是这样的：int (*ptr) (int a,int b)</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumA</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> (*ptr) ())</span> </span>&#123;  <span class="hljs-comment">//getSumA函数的实现</span>
+       <span class="hljs-keyword">return</span> ptr (a, b);  <span class="hljs-comment">//实际调用的是ptr这个函数指针，而我定义ptr这个函数指针其实就是getSumB的函数指针</span>
+&#125;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;  <span class="hljs-comment">//又声明了一个函数getSumB</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;  <span class="hljs-comment">//getSumB函数的实现</span>
+       <span class="hljs-keyword">return</span> a + b;
+&#125;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
 
@@ -2002,16 +2033,12 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumA</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> (*ptr) ())</span> </span>&#123;  <span class="hljs-comment">//getSumA函数的实现</span>
-       <span class="hljs-keyword">return</span> ptr (a, b);  <span class="hljs-comment">//实际调用getSumB的函数指针</span>
-&#125;
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getSumB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;  <span class="hljs-comment">//getSumB函数的实现</span>
-       <span class="hljs-keyword">return</span> a + b;
-&#125;
 
 输出结果为：<span class="hljs-number">3</span></code></pre>
 
+</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-26-C程序的不同数据的内存分配"><a href="#NO2-26-C程序的不同数据的内存分配" class="headerlink" title="NO2.26 C程序的不同数据的内存分配"></a>NO2.26 C程序的不同数据的内存分配</h3><p>C程序中，针对不同的数据，存放的位置也不一样。</p>
@@ -2019,8 +2046,8 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 <li>在C/C++中内存分为5个区，分别为栈区、堆区、全局/静态存储区、常量存储区、代码区。按内存分配类型划分为：<ul>
 <li>静态内存分配：编译时分配。包括：全局变量、静态全局变量、静态局部变量这三种；</li>
 <li>动态内存分配：运行时分配。包括：<ul>
-<li>栈(stack): 局部变量；</li>
-<li>堆(heap): C语言中用到的临时数据被动态的分配在内存中。需要时随时开辟，不需要时及时释放。如，malloc或calloc、realloc、free函数)。</li>
+<li>栈(stack)：局部变量；</li>
+<li>堆(heap)：C语言中用到的临时数据被动态的分配在内存中。需要时随时开辟，不需要时及时释放。<code>如，malloc或calloc、realloc、free函数)</code>。</li>
 </ul>
 </li>
 </ul>
@@ -2029,11 +2056,29 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 <p>&nbsp;</p>
 <ul>
 <li>栈区、堆区、全局/静态存储区、常量存储区、代码区的详细介绍：<ul>
-<li>栈区(stack)：指那些由编译器在需要的时候分配，不需要时自动清除的变量所在的储存区。如，函数执行时，函数的形参以及函数内的局部变量分配在栈区，函数运行结束后，形参和局部变量自动释放。栈内存分配效率高但是分配的内存空间有限；</li>
-<li>堆区(heap)：指那些由程序员手动分配或释放的储存区，如果程序员不释放这块内存，内存将一直被占用，直到程序运行结束由系统自动收回。C语言中使用malloc，free申请和释放空间；</li>
-<li>静态储存区(static)：全局变量和静态变量的储存是放在一起的。其中已初始化的全局变量和静态变量在一个区域，这块空间当程序运行结束后由系统释放；</li>
-<li>常量储存区(const)：常量字符串就是储存在这里的。如，“ABC”字符串就储存在常量区，但储存在常量区的只读不可写。const修饰的全局变量也储存在常量区，const修饰的局部变量依然在栈上。</li>
-<li>程序代码区：存放源程序的二进制代码。</li>
+<li>栈区(stack)：<ul>
+<li>定义：指那些由编译器在需要的时候分配，不需要时自动清除的变量所在的储存区。<code>如，函数执行时，函数的形参以及函数内的局部变量分配在栈区，函数运行结束后，形参和局部变量自动释放</code>；</li>
+<li>优缺点：栈内存分配效率高但是分配的内存空间有限。</li>
+</ul>
+</li>
+<li>堆区(heap)：<ul>
+<li>定义：指那些由程序员手动分配或释放的储存区；</li>
+<li>优缺点：如果程序员不释放这块内存，内存将一直被占用，直到程序运行结束由系统自动收回。C语言中使用malloc，free申请和释放空间。</li>
+</ul>
+</li>
+<li>静态储存区(static)：<ul>
+<li>定义：存储全局变量和静态变量(包括静态局部变量、静态全局变量)的内存区域；</li>
+<li>优缺点：这块空间当程序运行结束后由系统释放。</li>
+</ul>
+</li>
+<li>常量储存区(const)：<ul>
+<li>定义：常量字符串就是储存在这里的。<code>如，“ABC”字符串就储存在常量区，但储存在常量区的只读不可写</code>。另外const修饰的全局变量也储存在常量区，const修饰的局部变量依然在栈上。</li>
+</ul>
+</li>
+<li>程序代码区：<ul>
+<li>定义：存放源程序的二进制代码。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2060,9 +2105,9 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>动态内存分配使用的函数。<strong>注意：下面的四个函数是放在stdlib.h头文件中。下面参数中的size_t其实就是在32位架构中被普遍定义为：unsigned int，而在64位架构中被普遍定义为：unsigned long；C99标准中，定义了void为无类型指针，即只表示一个地址，不指向任何具体的对象，说白了，void就指向一个纯地址值，且该地址不指向任何数据；堆内存，尽量不要分配大量的小内存块，且分配的内存用过后尽快释放。</strong><ul>
+<li>动态内存分配使用的函数。<strong><code>注意：下面的四个函数是放在stdlib.h头文件中。下面参数中的size_t其实就是在32位架构中被普遍定义为：unsigned int，而在64位架构中被普遍定义为：unsigned long；C99标准中，定义了void为无类型指针，即只表示一个地址，不指向任何具体的对象，说白了，void就指向一个纯地址值，且该地址不指向任何数据；堆内存，尽量不要分配大量的小内存块，且分配的内存用过后尽快释放。</code></strong><ul>
 <li>malloc函数：<ul>
-<li>函数原型: void  * malloc (size_ t size)；</li>
+<li>函数原型：void  * malloc (size_ t size)；</li>
 <li>功能：<ul>
 <li>开辟一块size大小的连续堆内存；</li>
 <li>size表示堆上所开辟内存的大小，单位是字节数；</li>
@@ -2075,7 +2120,7 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 </ul>
 </li>
 <li>calloc函数：<ul>
-<li>函数原型: void  calloc(size_ t n, size t size)；</li>
+<li>函数原型：void  calloc(size_ t n, size t size)；</li>
 <li>功能：<ul>
 <li>在内存的动态存储区中分配n个长度为size的连续空间，即分配nsize大小的堆内存空间，该函数开辟的空间一般比较大；</li>
 <li>函数返回一个指向分配空间的起始地址的地址；</li>
@@ -2100,8 +2145,8 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 </ul>
 </li>
 <li>free函数：<ul>
-<li>函数原型: void free (void ptr)，ptr为要释放的内存指针；</li>
-<li>free()：释放指针变量在堆区上的内存空间，不能释放栈上的内存空间，free要与malloc(calloc、realloc)成对使用。注意：如果malloc（calloc、realloc） 比 free 多， 会造成内存泄漏；如果malloc（calloc、realloc） 比 free 少，会造成二次删除， 破坏内存，导致程序崩溃。</li>
+<li>函数原型： void free (void ptr)，ptr为要释放的内存指针；</li>
+<li>free()：释放指针变量在堆区上的内存空间，不能释放栈上的内存空间，free要与malloc(calloc、realloc)成对使用。注意：如果malloc(calloc、realloc) 比 free 多， 会造成内存泄漏；如果malloc(calloc、realloc) 比 free 少，会造成二次删除， 破坏内存，导致程序崩溃。</li>
 </ul>
 </li>
 </ul>
@@ -2113,21 +2158,11 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 <ul>
 <li><p>结构体：</p>
 <ul>
-<li><p>定义：就是将一个个数据类型构成一个数据类型以方便使用，说白了就是用来存放不同类型数据的另一个数据类型而已；这些成员会占用不同的内存，且不会互相影响；</p>
-</li>
-<li><p>结构体变量：既然结构体是一种数据类型，那么就可以用它来定义变量；</p>
+<li><p>定义：就是把其他各种数据类型组合起来，构成另一个新的数据类型以方便使用，说白了就是用来存放不同类型数据的另一个数据类型而已；这些成员会占用不同的内存，且不会互相影响；</p>
 <ul>
-<li>结构体变量，能够调用自己结构体内所用于的成员；</li>
-<li>结构体变量的成员也能够被赋值。</li>
-</ul>
-</li>
-<li><p>基本语法基本语法格式：</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code class="hljs c"><span class="hljs-comment">//基本语法格式一</span>
-<span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>  <span class="hljs-comment">//结构体面一般首字母大写。如，Cat、Student等等</span>
+<li><p>基本语法格式：</p>
+<p>例如：</p>
+  <pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>  <span class="hljs-comment">//结构体面一般首字母大写。如，Cat、Student等等</span>
 
     结构体所包含的变量或数组或指针或结构体等等
 
@@ -2141,12 +2176,11 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
     <span class="hljs-keyword">int</span> age;  <span class="hljs-comment">//年龄</span>
     <span class="hljs-keyword">char</span> group;  <span class="hljs-comment">//所在学习小组</span>
     <span class="hljs-keyword">float</span> score;  <span class="hljs-comment">//成绩</span>
-&#125;
-
-<span class="hljs-comment">//----------------------------------------------------------</span>
-
-<span class="hljs-comment">//基本语法格式二</span>
-<span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>
+&#125;</code></pre>
+</li>
+<li><p>结构体变量：既然结构体是一种数据类型，那么就可以用它来定义变量；</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>
 
     结构体所包含的变量或数组或指针或结构体等等
 
@@ -2156,26 +2190,27 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span>  
     结构体所包含的变量或数组或指针或结构体等等
 &#125; 结构体变量名<span class="hljs-number">1</span>, 结构体变量名<span class="hljs-number">2.</span>...;  <span class="hljs-comment">//定义结构体的同时，还创建了结构体变量</span>
-此时创建的结构体是没有名称的，只能使用上面的方式创建，要是还想再使用，必须重新创建
+注意：此时创建的结构体是没有名称的，只能使用上面的方式创建，要是还想再使用，必须重新创建
     
-<span class="hljs-comment">//================================================================</span>
+<span class="hljs-comment">//-----------------------------------------</span>
     
-<span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 结构体变量名;</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 结构体变量名;</span>  <span class="hljs-comment">//该方式要求结构体已经创建好，否则会报错   </span>
 
 如：
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">st1</span>;</span>  <span class="hljs-comment">//定义了一个Student类型的变量st1</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">st1</span>;</span>  <span class="hljs-comment">//定义了一个Student类型的变量st1</span></code></pre>
 
-<span class="hljs-comment">//================================================================</span>
-
-结构体变量.成员名称
+<ul>
+<li><p>结构体变量，能够调用自己结构体内所用于的成员；</p>
+<p>  例如：</p>
+  <pre><code class="hljs c">结构体变量.成员名称
 
 如：
 st1.name
-st1.age
-    
-<span class="hljs-comment">//================================================================  </span>
-    
-方式一赋值：    
+st1.age</code></pre>
+</li>
+<li><p>结构体变量内的成员也能够被赋值。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c">方式一赋值：    
 结构体变量.成员名称 = 值
     
 <span class="hljs-comment">//-----------------------</span>
@@ -2187,17 +2222,23 @@ struct 结构体名&#123;
 
 &#125; 结构体变量名<span class="hljs-number">1</span> = &#123;值<span class="hljs-number">1</span>,值<span class="hljs-number">2.</span>...&#125;, 结构体变量名<span class="hljs-number">2</span>= &#123;值<span class="hljs-number">1</span>,值<span class="hljs-number">2.</span>...&#125;....;</code></pre>
 
-<p>&nbsp;</p>
-<ul>
-<li>共用体：<ul>
-<li>定义：和结构体很类似，也是用于存储其他数据类型的一个数据类型，但和结构体不同的是，共用体的所有成员占用同一段内存，修改一个成员会影响其余所有成员；共用体占用的内存等于最长的成员占用的内存；共用体也成为联合或联合体；共用体使用了内存覆盖技术，同一时刻只能保存一个成员的值，如果对新的成员赋值，就会把原来成员的值覆盖掉。</li>
-<li>共用体变量也可以创建变量；</li>
-<li>共用体变量的成员也能够被赋值；</li>
-<li>基本语法基本语法格式：</li>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-keyword">union</span> 共用体名&#123;
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>共用体：</p>
+<ul>
+<li><p>定义：和结构体很类似，也是用于存储其他数据类型的一个数据类型，但和结构体不同的是，共用体的所有成员占用同一段内存，修改一个成员会影响其余所有成员；共用体占用的内存等于最长的成员占用的内存；共用体也成为联合或联合体；共用体使用了内存覆盖技术，同一时刻只能保存一个成员的值，如果对新的成员赋值，就会把原来成员的值覆盖掉；</p>
+<ul>
+<li><p>基本语法格式：</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-keyword">union</span> 共用体名&#123;
     成员列表
 &#125;;
 
@@ -2205,11 +2246,11 @@ struct 结构体名&#123;
 <span class="hljs-keyword">union</span> stu&#123;
     <span class="hljs-keyword">char</span> name;  <span class="hljs-comment">//char占用1个字节</span>
     <span class="hljs-keyword">int</span> age;  <span class="hljs-comment">//int类型占用4个字节，所以该共用体占用的内存为4，即以最长数据类型占用的内存为共用体的占用内存</span>
-&#125;
-
-<span class="hljs-comment">//--------------------------------------</span>
-
-<span class="hljs-keyword">union</span> 共用体名&#123;
+&#125;</code></pre>
+</li>
+<li><p>共用体变量也可以创建变量；</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-keyword">union</span> 共用体名&#123;
     成员列表
 &#125;  共用体变量<span class="hljs-number">1</span>,共用体变量<span class="hljs-number">2.</span>...;  <span class="hljs-comment">//这里定义了共用体的同时还定义了共用体变量</span>
 
@@ -2219,41 +2260,42 @@ struct 结构体名&#123;
 &#125; 共用体变量名<span class="hljs-number">1</span>, 共用体变量名<span class="hljs-number">2.</span>...;  <span class="hljs-comment">//定义共用体的同时，还创建了结构体变量</span>
 此时创建的共用体是没有名称的，只能使用上面的方式创建，要是还想再使用，必须重新创建
     
-<span class="hljs-comment">//================================================</span>
+<span class="hljs-comment">//-------------------------------------------</span>
   
-<span class="hljs-keyword">union</span> 共用体名 共用体变量名;
+<span class="hljs-keyword">union</span> 共用体名 共用体变量名;</code></pre>
+</li>
+<li><p>共用体变量的成员也能够被赋值；</p>
+<p>  例如：</p>
+  <pre><code class="hljs c">结共用体变量.成员名称 = 值</code></pre>
 
-<span class="hljs-comment">//=================================================</span>
-
-结共用体变量.成员名称 = 值</code></pre>
-
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3 id="NO2-28-文件处理"><a href="#NO2-28-文件处理" class="headerlink" title="NO2.28 文件处理"></a>NO2.28 文件处理</h3><p>在操作系统中，为了统一对各种硬件的操作，简化接口，不同的硬件设备也都被看成一个文件。对这些文件的操作，等同于对磁盘上普通文件的操作。如，<br>通常把显示器称为标准输出文件，printf就是向这个文件输出数据；通常把键盘称为标准输入文件，scanf就是从这个文件读取数据等等。</p>
+<h3 id="NO2-28-文件处理"><a href="#NO2-28-文件处理" class="headerlink" title="NO2.28 文件处理"></a>NO2.28 文件处理</h3><p>在操作系统中，为了统一对各种硬件的操作，简化接口，不同的硬件设备也都被看成一个文件。对这些文件的操作，等同于对磁盘上普通文件的操作。<code>如，通常把显示器称为标准输出文件，printf就是向这个文件输出数据；通常把键盘称为标准输入文件，scanf就是从这个文件读取数据等等</code>。</p>
 <ul>
 <li>按照文件数据流的走向可分为：<ul>
-<li>数据从文件复制到内存的过程叫做输入流，也成为读文件；</li>
-<li>从内存保存到文件的过程叫做输出流，也成为写文件。</li>
-<li>EOF：指的是end of file，表示文件末尾，且在头文件stdio.h中已经定义好了EOF的值为-1。getchar()和scanf_s()函数检测到文件结尾时，这两个函数都返回EOF，所以C中使用EOF来当做I/O的结尾条件。</li>
+<li>输入流：数据从文件复制到内存的过程。也称为读文件；<strong><code>注意：EOF：指的是end of file，表示文件末尾，且在头文件stdio.h中已经定义好了EOF的值为-1。getchar()和scanf_s()函数检测到文件结尾时，这两个函数都返回EOF，所以C中使用EOF来当做I/O的结尾条件。</code></strong></li>
+<li>输出流：从内存保存到文件的过程。也称为写文件。</li>
 </ul>
 </li>
 </ul>
 <p><img src="./Image-c31.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>&nbsp;</p>
 <ul>
-<li>C语言常见的其他输入和输出函数：<ul>
-<li>getchar()和putchar()函数：<ul>
-<li>int getchar(void)：用于获得用户输入的字符，等价于scanf_s(“%c”,&amp;ch)；</li>
-<li>int putchar(int c)：输出放入函数中的字符，即putchar(‘字符’)，等价于printf_s(“%c”,ch)。<strong>注意：getchar()和putchar()函数这两个函数在stdio.h头文件中。</strong></li>
-</ul>
+<li><p>C语言常见的其他输入和输出函数：</p>
+<ul>
+<li><p>getchar()和putchar()函数：</p>
+<ul>
+<li><p>int getchar(void)：用于获得用户输入的字符，等价于scanf_s(“%c”,&amp;ch)；</p>
 </li>
-<li>gets_s()和puts()函数：<pre><code>- char gets(char s,size_t size)：读取输入的字符串，直至接收到换行符或EOF时停止，其中size为允许输入的长度，一般长度为字符数组s的长度减1。读入成功时，返回接收读取结果的字符数组的首地址，读入发生错误或遇到EOF返回NULL；
-    - int puts(const char s)：输出字符串并换行。该函数只能输出字符串，不能输出其他类型数值；执行成功返回非负数，执行失败返回EOF。</code></pre></li>
-</ul>
-</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<li><p>int putchar(int c)：输出放入函数中的字符，即putchar(‘字符’)，等价于printf_s(“%c”,ch)。<strong><code>注意：getchar()和putchar()函数这两个函数在stdio.h头文件中。</code></strong></p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -2262,11 +2304,17 @@ struct 结构体名&#123;
     <span class="hljs-built_in">putchar</span>(c);  <span class="hljs-comment">//等价于printf_s("%c", c);</span>
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-
-<span class="hljs-comment">//=================================================</span>
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>gets_s()和puts()函数：</p>
+<ul>
+<li><p>char gets(char s,size_t size)：读取输入的字符串，直至接收到换行符或EOF时停止，其中size为允许输入的长度，一般长度为字符数组s的长度减1。读入成功时，返回接收读取结果的字符数组的首地址，读入发生错误或遇到EOF返回NULL；</p>
+</li>
+<li><p>int puts(const char s)：输出字符串并换行。该函数只能输出字符串，不能输出其他类型数值；执行成功返回非负数，执行失败返回EOF。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;
 
@@ -2279,23 +2327,29 @@ struct 结构体名&#123;
 &#125;</code></pre>
 
 
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
 <li>操作文件的正确流程为：打开文件 –&gt; 读写文件 –&gt; 关闭文件。文件在进行读写操作之前要先打开，使用完毕要关闭。打开文件和关闭文件的函数如下：<ul>
-<li>errno_t fopen(FILE p,char filename, char mode)函数：用于打开文件。函数中的filename字符串参数，表示要打开的文件的文件名(包括文件路径)，如果文件名存在就是打开文件，不存在该文件名就创建一个新文件，以该文件名命名并打开。该函数在&lt;stdio.h&gt;头文件中；mode字符串参数表示要以什么权限打开文件。<strong>注意：如果文件打开失败会返回非0，成功返回0。</strong>具体权限如下所示：<ul>
-<li>“r”：以“只读”方式打开文件。只允许读取，不允许写入。文件必须存在，否则打开失败；</li>
-<li>“w”：以“写入”方式打开文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么清空文件内容(相当于删除原文件，再创建一个新文件)；</li>
-<li>“a”：以“追加”方式打开文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么将写入的数据追加到文件的末尾(文件原有的内容保留)；</li>
-<li>“r+”：以“读写”方式打开文件。既可以读取也可以写入，也就是随意更新文件。文件必须存在，否则打开失败；</li>
-<li>“w+”：以“写入/更新”方式打开文件，相当于w和r+叠加的效果。既可以读取也可以写入，也就是随意更新文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么清空文件内容(相当于删除原文件，再创建一个新文件)；</li>
-<li>“a+”：以“追加/更新”方式打开文件，相当于a和r+叠加的效果。既可以读取也可以写入，也就是随意更新文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么将写入的数据追加到文件的末尾(文件原有的内容保留)。</li>
-<li>“t”：表示文本文件。如果不写，默认为”t”；注意：该选项一般放在上面读写权限的后面。</li>
-<li>“b”：表示二进制文件。<strong>注意：如果打开的是二进制文件，那么一定要加“b”；该选项一般放在上面读写权限的后面，如，a+b、r+b等等。</strong></li>
-</ul>
-</li>
+<li>errno_t fopen(FILE p,char filename, char mode)函数：用于打开文件。函数中的filename字符串参数，表示要打开的文件的文件名(包括文件路径)，如果文件名存在就是打开文件，不存在该文件名就创建一个新文件，以该文件名命名并打开。该函数在&lt;stdio.h&gt;头文件中；mode字符串参数表示要以什么权限打开文件。<strong><code>注意：如果文件打开失败会返回非0，成功返回0。</code></strong>具体权限如下所示：<ul>
+<li><code>&quot;r&quot;</code>：以“只读”方式打开文件。只允许读取，不允许写入。文件必须存在，否则打开失败；</li>
+<li><code>&quot;w&quot;</code>：以“写入”方式打开文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么清空文件内容(相当于删除原文件，再创建一个新文件)；</li>
+<li><code>&quot;a&quot;</code>：以“追加”方式打开文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么将写入的数据追加到文件的末尾(文件原有的内容保留)；</li>
+<li><code>&quot;r+&quot;</code>：以“读写”方式打开文件。既可以读取也可以写入，也就是随意更新文件。文件必须存在，否则打开失败；</li>
+<li><code>&quot;w+&quot;</code>：以“写入/更新”方式打开文件，相当于w和r+叠加的效果。既可以读取也可以写入，也就是随意更新文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么清空文件内容(相当于删除原文件，再创建一个新文件)；</li>
+<li><code>&quot;a+&quot;</code>：以“追加/更新”方式打开文件，相当于a和r+叠加的效果。既可以读取也可以写入，也就是随意更新文件。如果文件不存在，那么创建一个新文件；如果文件存在，那么将写入的数据追加到文件的末尾(文件原有的内容保留)。</li>
+<li><code>&quot;t&quot;</code>：表示文本文件。如果不写，默认为”t”；<strong><code>注意：该选项一般放在上面读写权限的后面。</code></strong></li>
+<li><code>&quot;b&quot;</code>：表示二进制文件。<strong><code>注意：如果打开的是二进制文件，那么一定要加“b”；该选项一般放在上面读写权限的后面，如，a+b、r+b等等。</code></strong></li>
 </ul>
 </li>
 <li>int fclose(FILE fp)函数：文件一旦使用完毕，应该用fclose()函数把文件关闭，以释放相关资源，避免数据丢失。文件正常关闭时，fclose()的返回值为0，如果返回非零值则表示有错误发生。</li>
+</ul>
+</li>
 </ul>
 <p>&nbsp;</p>
 <ul>
@@ -2318,9 +2372,9 @@ struct 结构体名&#123;
 </ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3 id="NO2-29-缓冲I-O和无缓冲I-O"><a href="#NO2-29-缓冲I-O和无缓冲I-O" class="headerlink" title="NO2.29 缓冲I/O和无缓冲I/O"></a>NO2.29 缓冲I/O和无缓冲I/O</h3><p>C中输入分为缓冲和无缓冲两种。</p>
+<h3 id="NO2-29-缓冲I-O和无缓冲I-O"><a href="#NO2-29-缓冲I-O和无缓冲I-O" class="headerlink" title="NO2.29 缓冲I/O和无缓冲I/O"></a>NO2.29 缓冲I/O和无缓冲I/O</h3><p>C中输入分为缓冲输入和无缓冲输入两种。</p>
 <ul>
-<li>缓冲I/O：通俗的理解为当用户输入之后，直到按回车键为止，期间用户输入的内容会存放在一个缓冲区里面。首先，把若干字符作为一个块进行传输比逐个发送这些字符节约时间。其次，如果用户打错字符，可以直接通过键盘修正错误。当最后按下Enter键时，传输的是正确的输入。缓冲分为两类：完全缓冲I/O和行缓冲I/O。注意：ANSI C和后续的C标准都规定输入是缓冲的。<ul>
+<li>缓冲I/O：通俗的理解为当用户输入之后，直到按回车键为止，期间用户输入的内容会存放在一个缓冲区里面。首先，把若干字符作为一个块进行传输比逐个发送这些字符节约时间。其次，如果用户打错字符，可以直接通过键盘修正错误。当最后按下Enter键时，传输的是正确的输入。缓冲分为两类：完全缓冲I/O和行缓冲I/O。<strong><code>注意：ANSI C和后续的C标准都规定输入是缓冲的。</code></strong><ul>
 <li>完全缓冲I/O：指的是当缓冲区被填满时才刷新缓冲区，通常出现在文件输入中。缓冲区的大小取决于系统，常见的大小是512字节和4096字节；</li>
 <li>行缓冲I/O：指的是在出现换行符时刷新缓冲区。键盘输入通常是行缓冲输入，所以在按下Enter键后才刷新缓冲区。行缓冲函数有getchar()和scanf_s()。</li>
 </ul>
@@ -2328,33 +2382,33 @@ struct 结构体名&#123;
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>无缓冲I/O：说白了，就是你输入什么，它都能立马给你执行函数后面的内容。看电脑是否支持无缓冲I/O，如果支持，那么编译器添加&lt;conio.h&gt;这个头文件后，有两个无缓冲的函数：_getche()函数和_getch()函数，前者会回显用户的输入到屏幕上，而后者不会回显用户的输入到屏幕上。</li>
-</ul>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-comment">//测试_getche()函数和_getch()函数，代码如下</span>
+<li><p>无缓冲I/O：说白了，就是你输入什么，它都能立马给你执行函数后面的内容。看电脑是否支持无缓冲I/O，如果支持，那么编译器添加&lt;conio.h&gt;这个头文件后，有两个无缓冲的函数：_getche()函数和_getch()函数，前者会回显用户的输入到屏幕上，而后者不会回显用户的输入到屏幕上。</p>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-comment">//测试_getche()函数和_getch()函数，代码如下</span>
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;conio.h&gt;</span></span>
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>
-<span class="hljs-function"></span>&#123;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>&#123;
 
-<span class="hljs-keyword">char</span> ch;
+	<span class="hljs-keyword">char</span> ch;
 
-<span class="hljs-keyword">while</span> ((ch = _getche()) != <span class="hljs-string">'8'</span>) &#123;
-    <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'t'</span>);
-&#125;
+	<span class="hljs-keyword">while</span> ((ch = _getche()) != <span class="hljs-string">'8'</span>) &#123;
+    	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">'t'</span>);
+	&#125;
 
-/<span class="hljs-keyword">while</span> ((ch = _getch()) != <span class="hljs-string">'8'</span>) &#123;
-    <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'t'</span>);
-&#125;/
+	/<span class="hljs-keyword">while</span> ((ch = _getch()) != <span class="hljs-string">'8'</span>) &#123;
+    	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">'t'</span>);
+	&#125;/
 
-<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<p><img src="./Image-c32.png" srcset="/img/loading.gif" alt="Image"><br>说明：测试_getche()函数，分别输入1、2、3，返回如上结果，有回显用户的输入。</p>
+</li>
+</ul>
+<p><img src="./Image-c32.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：测试_getche()函数，分别输入1、2、3，返回如上结果，有回显用户的输入。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-c33.png" srcset="/img/loading.gif" alt="Image"><br>说明：测试_getch()函数，分别输入1、2、3，返回如上结果，没有回显用户的输入。</p>
+<p><img src="./Image-c33.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：测试_getch()函数，分别输入1、2、3，返回如上结果，没有回显用户的输入。</code></p>
 <p>&nbsp;</p>
 
             </article>

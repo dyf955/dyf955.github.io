@@ -245,7 +245,7 @@
 </li>
 </ul>
 <p><img src="./Image-git3.png" srcset="/img/loading.gif" alt=""></p>
-<p><strong>说明：Git Bash：是Unix与Linux风格的命令行，也是使用的最多，推荐的最多的；Git GUI：图形界面的Git，不建议初学者使用，因为无法熟悉常用Git命令</strong>。</p>
+<p><code>说明：Git Bash：是Unix与Linux风格的命令行，也是使用的最多，推荐的最多的；Git GUI：图形界面的Git，不建议初学者使用，因为无法熟悉常用Git命令。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO1-2-GitHub简介"><a href="#NO1-2-GitHub简介" class="headerlink" title="NO1.2 GitHub简介"></a>NO1.2 GitHub简介</h3><p>GitHub、码云…等等，都是用来保存和管理代码。</p>
@@ -259,9 +259,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="./Image-git4.png" srcset="/img/loading.gif" alt=""><br><strong>说明：执行流程解释：项目经理将项目，经过在工作区编写和修改、临时存入暂存区等待提交、提交到版本库(也叫版本库)中、最后再由版本库交给代码托管中心进行管理，体现了团队合作的流程。</strong></p>
+<p><img src="./Image-git4.png" srcset="/img/loading.gif" alt=""><br><code>说明：执行流程解释：项目经理将项目，经过在工作区编写和修改、临时存入暂存区等待提交、提交到版本库(也叫版本库)中、最后再由版本库交给代码托管中心进行管理，体现了团队合作的流程。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git5.png" srcset="/img/loading.gif" alt=""><br><strong>说明：执行流程解释：和上面的执行流程基本一致，不同的是，多了一个第三方可以对目标项目进行修改等操作，当然在发送给第三方前会将项目复制一份给第三方，然后等到第三方提交的时候，会进行审核，毕竟不是什么代码都能加进某个项目中的；审核通过，才会将第三方修改的代码加入进项目中。如，Linux就是部分开源。</strong></p>
+<p><img src="./Image-git5.png" srcset="/img/loading.gif" alt=""><br><code>说明：执行流程解释：和上面的执行流程基本一致，不同的是，多了一个第三方可以对目标项目进行修改等操作，当然在发送给第三方前会将项目复制一份给第三方，然后等到第三方提交的时候，会进行审核，毕竟不是什么代码都能加进某个项目中的；审核通过，才会将第三方修改的代码加入进项目中。如，Linux就是部分开源。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -283,7 +283,7 @@
 </ul>
 </li>
 <li>系统级别：即登录当前操作系统的用户，这个范围内有效(常用的是这个级别)。<ul>
-<li>git config –global user.name xxx和git config –global user.emailxxx：分别设置开发者的名称和邮箱。<strong>注意：两个级别的签名信息都有时，根据就近原则，会以项目级别的为准。</strong></li>
+<li>git config –global user.name xxx和git config –global user.emailxxx：分别设置开发者的名称和邮箱。<strong><code>注意：两个级别的签名信息都有时，根据就近原则，会以项目级别的为准。</code></strong></li>
 </ul>
 </li>
 </ul>
@@ -437,7 +437,7 @@
 <p>&nbsp;</p>
 <ul>
 <li>合并分支：<ul>
-<li>git merge 分支名：首先要切换到被合并的分支下(一般都是主干)，把指定的分支合并到当前所在的分支下；另外如果从远程仓库拉取了文件的最新版本后，需要将该版本和本地工作区的文件进行合并，则使用：git merge 远程仓库别名/分支名。<strong>注意：当合并分支时出现合并冲突，我们需要转为手动合并：即在协商之后决定保留冲突中的哪一部分内容，最后需要git add和git commit -m “提交信息”这两个命令来结束合并状态即可。</strong></li>
+<li>git merge 分支名：首先要切换到被合并的分支下(一般都是主干)，把指定的分支合并到当前所在的分支下；另外如果从远程仓库拉取了文件的最新版本后，需要将该版本和本地工作区的文件进行合并，则使用：git merge 远程仓库别名/分支名。<strong><code>注意：当合并分支时出现合并冲突，我们需要转为手动合并：即在协商之后决定保留冲突中的哪一部分内容，最后需要git add和git commit -m &quot;提交信息&quot;这两个命令来结束合并状态即可。</code></strong></li>
 </ul>
 </li>
 </ul>
@@ -465,7 +465,7 @@
 </ul>
 </li>
 <li>关联成功以后，就可以push代码文件了。使用如下命令进行操作：<ul>
-<li>git push [选项]：该命令用来将本地库中的文件推送到远程仓库中去。选项如下；<strong>注意：这里可能会出现一个异常，你的远程仓库有个文件README.md(也可能没有这个文件)，但是本地仓库却没有，就会出现“failed to push some refs to…”这种情况，所以无论远程仓库中是否有README.md文件，第一次push都需要把这个文件push到你的远程仓库中去，在当前目录下直接创建README.md文件，然后使用命令：git push -u 你自己的远程仓库别名 master，其中master是你每个新建远程仓库的默认分支，输入后，会要你输入登录到GitHub的账号和密码，要输入两次，第二次是免密SSH登录，输入后就可以顺利push文件到远程仓库了。</strong><ul>
+<li>git push [选项]：该命令用来将本地库中的文件推送到远程仓库中去。选项如下；<strong><code>注意：这里可能会出现一个异常，你的远程仓库有个文件README.md(也可能没有这个文件)，但是本地仓库却没有，就会出现“failed to push some refs to...”这种情况，所以无论远程仓库中是否有README.md文件，第一次push都需要把这个文件push到你的远程仓库中去，在当前目录下直接创建README.md文件，然后使用命令：git push -u 你自己的远程仓库别名 master，其中master是你每个新建远程仓库的默认分支，输入后，会要你输入登录到GitHub的账号和密码，要输入两次，第二次是免密SSH登录，输入后就可以顺利push文件到远程仓库了。</code></strong><ul>
 <li>远程仓库的别名 本地分支名:远程分支名：把本地仓库的分支推送到远程仓库的指定分支；如果省略远程分支名，则默认推送到与本地分支存在追踪关系的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建；</li>
 <li>远程仓库的别名 :远程分支名/远程仓库的别名 –delete 远程分支名：删除指定的远程仓库的分支。如，git push aaa :abc或者git push aaa –delete abc都是删除远程层库中的某个分支。</li>
 </ul>
@@ -487,7 +487,7 @@
 <li>另一种则是使用git命令，我们介绍的是git命令的方式。<ul>
 <li>从远程仓库中，找到Clone or download按钮，如下图；</li>
 <li>开发人员在自己的工作目录中，打开Git，使用git命令：<ul>
-<li>git clone 远程仓库URL [选项]：不添加选项参数，则默认在当前目录下，创建和远程仓库名相同的文件夹，并下载文件到该文件夹下。选项如下；<strong>注意：clone命令会做三件事情：一是完整的把远程仓库下载到本地，二是创建远程地址别名(前提是要关联了本地本地库和远程仓库)，三是初始化本地库。</strong></li>
+<li>git clone 远程仓库URL [选项]：不添加选项参数，则默认在当前目录下，创建和远程仓库名相同的文件夹，并下载文件到该文件夹下。选项如下；<strong><code>注意：clone命令会做三件事情：一是完整的把远程仓库下载到本地，二是创建远程地址别名(前提是要关联了本地本地库和远程仓库)，三是初始化本地库。</code></strong></li>
 <li>本地目录：将clone的分支放到指定的本地仓库目录中；</li>
 <li>b 分支名称 本地目录：指定要克隆的分支，默认是master分支。</li>
 </ul>
@@ -514,7 +514,7 @@
 <li>git pull：从远程仓库获取最新版本并合并到本地；即等同于执行了git fetch和git merge两条命令。效率上git pull更快一些，但是不一定安全，因为git fetch可以进行有选择的合并，所以根据工作中的需求，选择合适的拉取命令方式才是正确的。</li>
 </ul>
 </li>
-<li>协同开发冲突问题：在开发者，经常会遇到两个人同时在修改一个文件的问题，即当同事A上传了对C文件的修改后，紧接着同事B也上传了对C文件的修改，此时GitHub就会出现冲突，即不知道该听那个开发者的，C文件中应该使用谁的内容才是正确的，所以为了避免出现这种问题，GitHub规定，出现这种情况时，另一个人应该先更新自己的本地文件，即保证自己本地是最新版本，然后再做修改即可。<strong>注意：解决冲突后，最后提交文件时，不要带文件名，只需要带上提交的说明信息(即-m参数)，直接提交即可。</strong></li>
+<li>协同开发冲突问题：在开发者，经常会遇到两个人同时在修改一个文件的问题，即当同事A上传了对C文件的修改后，紧接着同事B也上传了对C文件的修改，此时GitHub就会出现冲突，即不知道该听那个开发者的，C文件中应该使用谁的内容才是正确的，所以为了避免出现这种问题，GitHub规定，出现这种情况时，另一个人应该先更新自己的本地文件，即保证自己本地是最新版本，然后再做修改即可。<strong><code>注意：解决冲突后，最后提交文件时，不要带文件名，只需要带上提交的说明信息(即-m参数)，直接提交即可。</code></strong></li>
 </ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -526,28 +526,28 @@
 <p>&nbsp;</p>
 <p><img src="./Image-git30.png" srcset="/img/loading.gif" alt=""></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git31.png" srcset="/img/loading.gif" alt=""><br><strong>说明：测试成功会出现这个。</strong></p>
+<p><img src="./Image-git31.png" srcset="/img/loading.gif" alt=""><br><code>说明：测试成功会出现这个。</code></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git32.png" srcset="/img/loading.gif" alt=""></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git33.png" srcset="/img/loading.gif" alt=""><br><strong>说明：点击Create Git Repository后，会出现如上所示，意思就是我要给这个项目init(也就是创建)一个版本库。</strong></p>
+<p><img src="./Image-git33.png" srcset="/img/loading.gif" alt=""><br><code>说明：点击Create Git Repository后，会出现如上所示，意思就是我要给这个项目init(也就是创建)一个版本库。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git34.png" srcset="/img/loading.gif" alt=""><br><strong>说明：将文件add到暂存区。</strong></p>
+<p><img src="./Image-git34.png" srcset="/img/loading.gif" alt=""><br><code>说明：将文件add到暂存区。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git35.png" srcset="/img/loading.gif" alt=""><br><strong>说明：选中项目，将项目add到暂存区。</strong></p>
+<p><img src="./Image-git35.png" srcset="/img/loading.gif" alt=""><br><code>说明：选中项目，将项目add到暂存区。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git36.png" srcset="/img/loading.gif" alt=""><br><strong>说明：进行commit操作，提交到版本库中。</strong></p>
+<p><img src="./Image-git36.png" srcset="/img/loading.gif" alt=""><br><code>说明：进行commit操作，提交到版本库中。</code></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git37.png" srcset="/img/loading.gif" alt=""></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git38.png" srcset="/img/loading.gif" alt=""></p>
-<p><strong>说明：使用IDEA集成Git，push代码文件到远程仓库；首先，需要配置登录到GitHub的账户，就是你平常登录到GitHub的账号和密码。</strong></p>
+<p><code>说明：使用IDEA集成Git，push代码文件到远程仓库；首先，需要配置登录到GitHub的账户，就是你平常登录到GitHub的账号和密码。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git39.png" srcset="/img/loading.gif" alt=""><br><strong>说明：配置远程仓库的url，也就是关联远程仓库。</strong></p>
+<p><img src="./Image-git39.png" srcset="/img/loading.gif" alt=""><br><code>说明：配置远程仓库的url，也就是关联远程仓库。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git40.png" srcset="/img/loading.gif" alt=""><br><strong>说明：在这里面设置远程仓库的url即可。</strong></p>
+<p><img src="./Image-git40.png" srcset="/img/loading.gif" alt=""><br><code>说明：在这里面设置远程仓库的url即可。</code></p>
 <p>&nbsp;</p>
-<p><img src="./Image-git41.png" srcset="/img/loading.gif" alt=""><br><strong>说明：最后，选择push命令就可以将代码push到远程仓库了。</strong></p>
+<p><img src="./Image-git41.png" srcset="/img/loading.gif" alt=""><br><code>说明：最后，选择push命令就可以将代码push到远程仓库了。</code></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git42.png" srcset="/img/loading.gif" alt=""></p>
 <p>&nbsp;</p>
@@ -562,10 +562,10 @@
 <p><img src="./Image-git44.png" srcset="/img/loading.gif" alt=""></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git45.png" srcset="/img/loading.gif" alt=""></p>
-<p><strong>说明：选择VCS，再选择Checkout from Version Control选项，最后选择Git。</strong></p>
+<p><code>说明：选择VCS，再选择Checkout from Version Control选项，最后选择Git。</code></p>
 <p>&nbsp;</p>
 <p><img src="./Image-git46.png" srcset="/img/loading.gif" alt=""></p>
-<p><strong>说明：在弹出的框中，填入远程仓库的url，并可以点击Test，测试是否能够连接，连接成功会出现以上绿色框中的提示；其中Directory则是指你要将clone下来的项目文件放在本地哪个位置，最后点击Clone即可；另外当开发人员修改了项目代码之后，需要push项目文件到远程仓库，这个时候也要注意，需要得到远程仓库管理人员的权限邀请，即管理人员没有邀请你的话，你哪怕写好了代码，也是无法提交到远程仓库的；最后，远程仓库默认使用的是Clone时使用远程仓库url。</strong></p>
+<p><code>说明：在弹出的框中，填入远程仓库的url，并可以点击Test，测试是否能够连接，连接成功会出现以上绿色框中的提示；其中Directory则是指你要将clone下来的项目文件放在本地哪个位置，最后点击Clone即可；另外当开发人员修改了项目代码之后，需要push项目文件到远程仓库，这个时候也要注意，需要得到远程仓库管理人员的权限邀请，即管理人员没有邀请你的话，你哪怕写好了代码，也是无法提交到远程仓库的；最后，远程仓库默认使用的是Clone时使用远程仓库url。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li>当别人push了新代码之后，你需要更新自己的本地代码，按下图操作即可。</li>
