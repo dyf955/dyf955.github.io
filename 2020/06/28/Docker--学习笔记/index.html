@@ -248,7 +248,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO1-3-Docker架构"><a href="#NO1-3-Docker架构" class="headerlink" title="NO1.3 Docker架构"></a>NO1.3 Docker架构</h3><p>Docker使用C/S架构，Client通过接口与Server进程通信实现容器的构建，运行和发布。</p>
-<p><img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do1.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-do1.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>&nbsp;</p>
 <ul>
 <li><p>Docker架构包括三个部分：</p>
@@ -289,7 +289,7 @@
 <li><p><code>sudo yum install docker-ce</code>，这是安装docker的命令；</p>
 </li>
 <li><p><code>docker version</code>，出现如图1.4.1docker版本信息，说明就安装成功了。</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do2.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do2.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>  <code>图1.4.1</code></p>
 </li>
 </ul>
@@ -349,7 +349,7 @@ sudo systemctl restart docker</code></pre>
 <li><p>输入命令：</p>
 <ul>
 <li><p><code>docker info</code>，找到如图1.4.2，与你之前配置的镜像加速代码是否一致，一致说明镜像加速配置是生效的。</p>
-<p><img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do3.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-do3.png" srcset="/img/loading.gif" alt="Image"></p>
 <p><code>图1.4.2</code></p>
 </li>
 </ul>
@@ -364,7 +364,7 @@ sudo systemctl restart docker</code></pre>
 <li><p>输入命令：</p>
 <ul>
 <li><p><code>docker run hello-world</code>，出现如图1.4.3就表示docker能够成功拉取镜像，并生成容器使用了。</p>
-<p><img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do4.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-do4.png" srcset="/img/loading.gif" alt="Image"></p>
 <p><code>图1.4.3</code></p>
 </li>
 </ul>
@@ -413,7 +413,7 @@ sudo systemctl restart docker</code></pre>
 <li><p><code>-digests</code>：显示本地所有镜像的摘要信息(包含DIGEST列，只是多了这一个列，和-a功能差不多)；</p>
 </li>
 <li><p><code>-no-trunc</code>：显示本地所有镜像的完整信息(其实就是镜像ID列的完整展示)；</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do5.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do5.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -428,7 +428,7 @@ sudo systemctl restart docker</code></pre>
 <li><p><code>--no-trunc</code>：显示要查找的镜像中其完整描述，就是DESCRIPTION列的完整显示；</p>
 </li>
 <li><p><code>--automated</code>：只列出AUTOMATED=OK的镜像。</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do6.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do6.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -471,7 +471,7 @@ sudo systemctl restart docker</code></pre>
 <li><p><code>-p 外部主机端口:docker容器端口</code>：将外部主机端口映射到docker容器的端口，这样外部就可以访问docker中的容器了；</p>
 </li>
 <li><p><code>-P 随机分配端口</code>：此时Docker会随机映射一个49000~49900的端口到内部容器开放的网络端口。</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do7.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do7.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -492,7 +492,7 @@ sudo systemctl restart docker</code></pre>
 <li><p><code>-l</code>：显示最近创建的一个容器，无论是否运行；</p>
 </li>
 <li><p><code>-n 数值</code>：显示最近创建的“数值”个容器，无论是否运行。如，-n 3，表示显示最近创建的3个容器。</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do8.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do8.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -613,7 +613,7 @@ sudo systemctl restart docker</code></pre>
 </ul>
 </li>
 <li><p>可以使用docker inspect 容器ID/容器别名命令，查看是否挂载成功。<strong><code>注意：如果指定的目录不存在，那么系统会自动创建并挂载上；容器停止后，主机修改挂载目录中的数据，容器再次开启后，数据会同步。</code></strong></p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do9.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do9.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -630,10 +630,10 @@ CMD /bin/bash  <span class="hljs-comment">//生成一个伪终端给用户</spa
 注意*：--privileged=<span class="hljs-keyword">true</span>选项，一般出现cannot open directory:Permission denied异常时(即权限不够)才使用，一般不会遇到。*</code></pre>
 </li>
 <li><p>构建DockerFile文件，即通过该文件生成一个镜像的意思；使用命令：<code>docker build -t 命名空间/镜像名 -f 指定的DockerFile文件的路径</code>；</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do10.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do10.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 <li><p>镜像生成后，只要运行该镜像并生成容器，这样容器内部指定的目录下就会生成容器卷；那么生成的容器卷和宿主机的哪个文件建立共享关联呢，可以使用<code>docker inspect 容器ID/容器别名</code>命令查看。</p>
-<p>  <img src="Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-do11.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-do11.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ul>
 </li>
@@ -783,6 +783,31 @@ CMD /usr/sbin/nginx</code></pre>
               
             </div>
 
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.defer = false
+      s.setAttribute('repo', 'dyf955/dyf955.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      var e = document.getElementsByTagName('script')[0];
+      e.parentNode.insertBefore(s, e);
+    }
+    createObserver(loadUtterances, 'comments')
+  </script>
+
+
+              </div>
             
           </div>
         </div>
