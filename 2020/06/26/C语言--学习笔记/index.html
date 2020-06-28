@@ -219,51 +219,56 @@
 <p>&nbsp;</p>
 <h3 id="NO1-3-C语言的编程机制"><a href="#NO1-3-C语言的编程机制" class="headerlink" title="NO1.3 C语言的编程机制"></a>NO1.3 C语言的编程机制</h3><p>C编程的基本策略是：用程序把源代码文件转换为可执行文件(其中包含可直接运行的机器语言代码)。</p>
 <ul>
-<li>编程机制：<ul>
-<li>用C语言编写程序时，编写的内容被储存在文本文件中，该文件被称为源代码文件；</li>
-<li>编译器把源代码转换成中间代码，可因为中间文件有多种形式，我们在这里描述的是最普遍的一种形式，即把源代码转换为机器语言代码，虽然此时目标代码文件里包含了机器语言代码，但仍然不是一个完整的程序，所以还不能直接运行；</li>
-<li>目标代码文件缺失启动代码，启动代码充当着程序和操作系统之间的接口，系统不一样，需要的启动代码也是不一样的；</li>
-<li>目标代码还缺少库函数，几乎所有的C程序都要使用C标准库中的函数；</li>
-<li>最后，链接器把你编写的目标代码、系统的标准启动代码和库代码这三部分合并成一个文件，即可执行文件。对于库代码，链接器只会把程序中要用到的库函数代码提取出来。</li>
+<li><p>编程机制：</p>
+<ul>
+<li><p>用C语言编写程序时，编写的内容被储存在文本文件中，该文件被称为源代码文件；</p>
+</li>
+<li><p>编译器把源代码转换成中间代码，可因为中间文件有多种形式，我们在这里描述的是最普遍的一种形式，即把源代码转换为机器语言代码，虽然此时目标代码文件里包含了机器语言代码，但仍然不是一个完整的程序，所以还不能直接运行；</p>
+</li>
+<li><p>目标代码文件缺失启动代码，启动代码充当着程序和操作系统之间的接口，系统不一样，需要的启动代码也是不一样的；</p>
+</li>
+<li><p>目标代码还缺少库函数，几乎所有的C程序都要使用C标准库中的函数；</p>
+</li>
+<li><p>最后，链接器把你编写的目标代码、系统的标准启动代码和库代码这三部分合并成一个文件，即可执行文件。对于库代码，链接器只会把程序中要用到的库函数代码提取出来。</p>
+<p>  <img src="./Image-c1.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-c1.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO1-4-VS2019的安装和第一个C程序"><a href="#NO1-4-VS2019的安装和第一个C程序" class="headerlink" title="NO1.4 VS2019的安装和第一个C程序"></a>NO1.4 VS2019的安装和第一个C程序</h3><p>目前主流的C语言集成开发环境，有Visual Studio 2019等等，这里是从VS2019。</p>
 <ul>
-<li>我们到VS2019官网去下载最新版本的即可。<strong><code>注意：常用的注释快捷键为ctrl+k+c，取消注释的快捷键为ctrl+k+u。</code></strong></li>
+<li><p>我们到VS2019官网去下载最新版本的即可。<strong><code>注意：常用的注释快捷键为ctrl+k+c，取消注释的快捷键为ctrl+k+u。</code></strong></p>
+<p>  <img src="./Image-c2.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：一般，Community版本就够我们个人使用了，其他两个版本需要购买并激活才能使用。</code></p>
+<p>  <img src="./Image-c3.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：下载后，选择自己要安装的版本即可。</code></p>
+<p>  <img src="./Image-c4.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：一般选择图中的Windows平台开发和C++的桌面开发就可以了，其他的默认即可，不需要改动什么。</code></p>
+<p>  <img src="./Image-c5.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：中间的下载缓存里，那个“安装完成后保留下载缓存”选项一定要打勾，否则会出BUG。</code></p>
+<p>  <img src="./Image-c6.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：下载完成后，打开VS2019，选择创建新项目。</code></p>
+<p>  <img src="./Image-c7.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：选择Windows桌面向导。</code></p>
+<p>  <img src="./Image-c8.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：添加项目名称，以及项目的工作空间，最后点击创建。</code></p>
+<p>  <img src="./Image-c9.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：选择控制台应用程序，并勾选功空项目即可。</code></p>
+<p>  <img src="./Image-c10.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c11.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c12.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c13.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：点击工具，选择选项，分别在文本编辑器、命令窗口、输出窗口中将字体根据自己的偏好设置一下就可以了。</code></p>
+<p>  <img src="./Image-c14.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：在右侧窗口，找到源文件，右键添加，选择新建项。</code></p>
+<p>  <img src="./Image-c15.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：在弹出的对话框中，选择C++文件，在起名的时候，使用.c后缀名即可，就可以成功创建C文件了。注意：使用快捷键Ctrl+s保存文件内容，使用Ctrl+F5运行文件。</code></p>
+<p>  <img src="./Image-c16.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：如果出现错误，勾选“不再显示次对话框”，并点击否。</code></p>
+</li>
 </ul>
-<p><img src="./Image-c2.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：一般，Community版本就够我们个人使用了，其他两个版本需要购买并激活才能使用。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c3.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：下载后，选择自己要安装的版本即可。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c4.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：一般选择图中的Windows平台开发和C++的桌面开发就可以了，其他的默认即可，不需要改动什么。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c5.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：中间的下载缓存里，那个“安装完成后保留下载缓存”选项一定要打勾，否则会出BUG。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c6.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：下载完成后，打开VS2019，选择创建新项目。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c7.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><code>说明：选择Windows桌面向导。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c8.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：添加项目名称，以及项目的工作空间，最后点击创建。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c9.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><code>说明：选择控制台应用程序，并勾选功空项目即可。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c10.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c11.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c12.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c13.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：点击工具，选择选项，分别在文本编辑器、命令窗口、输出窗口中将字体根据自己的偏好设置一下就可以了。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c14.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：在右侧窗口，找到源文件，右键添加，选择新建项。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c15.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><code>说明：在弹出的对话框中，选择C++文件，在起名的时候，使用.c后缀名即可，就可以成功创建C文件了。注意：使用快捷键Ctrl+s保存文件内容，使用Ctrl+F5运行文件。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c16.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：如果出现错误，勾选“不再显示次对话框”，并点击否。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li><p>第一个简单的C程序。</p>
@@ -430,9 +435,11 @@
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>limits.h头文件中和float.h头文件中，提供了一些整数类型和浮点数类型使用的常量；(了解即可)</li>
+<li><p>limits.h头文件中和float.h头文件中，提供了一些整数类型和浮点数类型使用的常量；(了解即可)</p>
+<p>  <img src="./Image-c17.png" srcset="/img/loading.gif" alt="Image"> </p>
+<p>  <img src="./Image-c18.png" srcset="/img/loading.gif" alt="Image"> </p>
+</li>
 </ul>
-<p><img src="./Image-c17.png" srcset="/img/loading.gif" alt="Image"> </p>
 <p>&nbsp;</p>
 <ul>
 <li>位、字节和字的关系。<ul>
@@ -520,29 +527,28 @@
 <li><p>自动类型转换：在表达式中，精度小的数据类型会被自动转为精度大的数据类型。<code>如，一般char和short都会被自动转成int</code>；</p>
 <ul>
 <li><p>基本语法格式：代码工具会自己识别并进行自动类转换；</p>
-<p>例如：</p>
-<pre><code class="hljs pgsql"><span class="hljs-type">char</span> a = <span class="hljs-string">'a'</span>;
-<span class="hljs-type">int</span> b = a;  //这里自动将<span class="hljs-type">char</span>转换成了<span class="hljs-type">int</span></code></pre>
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-keyword">char</span> a = <span class="hljs-string">'a'</span>;
+<span class="hljs-keyword">int</span> b = a;  <span class="hljs-comment">//这里自动将char转换成了int</span></code></pre>
 </li>
 </ul>
 </li>
 <li><p>强制类型转换：即表达式中，精度大的数据类型要转为精度小的数据类型，就需要使用强制数据类型转换；</p>
 <ul>
 <li><p>基本语法格式：<code>(数据类型) 需要强制类型转换的值</code>。</p>
-<p>例如：</p>
-<pre><code class="hljs c"><span class="hljs-keyword">long</span> a=<span class="hljs-number">100</span>;
+<p>  例如：</p>
+  <pre><code class="hljs c"><span class="hljs-keyword">long</span> a=<span class="hljs-number">100</span>;
 <span class="hljs-keyword">int</span> b = (<span class="hljs-keyword">int</span>)a;  <span class="hljs-comment">//这里将long类型的变量a强制转换成了int类型的变量</span></code></pre>
 
+<p>  <img src="./Image-c19.png" srcset="/img/loading.gif" alt="Image"><br>  <strong><code>注意：当表达式中有多个不同数据类型的操作数进行运算时，会自动转为精度最大的那个数据类型，再进行运算。</code></strong></p>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="./Image-c19.png" srcset="/img/loading.gif" alt="Image"><br><strong><code>注意：当表达式中有多个不同数据类型的操作数进行运算时，会自动转为精度最大的那个数据类型，再进行运算。</code></strong></p>
 <p>&nbsp;</p>
-<ul>
-<li>数据类型的级别从高至低依次是：long double –&gt; double –&gt; float –&gt; unsigned long long  –&gt; long long  –&gt; unsigned long  –&gt; long  –&gt; unsigned int –&gt; int。之所以short和char类型没有列出，是因为它们已经被升级到int或unsigned int。</li>
+</li>
+</ul>
+</li>
+<li><p>数据类型的级别从高至低依次是：long double –&gt; double –&gt; float –&gt; unsigned long long  –&gt; long long  –&gt; unsigned long  –&gt; long  –&gt; unsigned int –&gt; int。之所以short和char类型没有列出，是因为它们已经被升级到int或unsigned int。</p>
+</li>
 </ul>
 <p>&nbsp;</p>
 <ul>
@@ -702,14 +708,16 @@ num %= <span class="hljs-number">3</span> 与  num =  num % <span class="hljs
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>逻辑运算符：<ul>
-<li>如下图所示；<strong><code>注意：!运算符的优先级很高，比乘法运算符还高，与递增运算符的优先级相同，只比圆括号的优先级低。另外iso646.h头文件中，可用英文单词代替逻辑运算符，分别是and、or、not。</code></strong></li>
+<li><p>逻辑运算符：</p>
+<ul>
+<li><p>如下图所示；<strong><code>注意：!运算符的优先级很高，比乘法运算符还高，与递增运算符的优先级相同，只比圆括号的优先级低。另外iso646.h头文件中，可用英文单词代替逻辑运算符，分别是and、or、not。</code></strong></p>
+<p>  <img src="./Image-c22.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c23.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：当且仅当exp1和exp2都为真时，exp1 &amp;&amp; exp2才为真； 如果exp1或exp2为真，则exp1 || exp2为真； 如果exp1为假，则!exp1为真；如果exp1为真，则!exp1为假。</code></p>
+</li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-c22.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c23.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><code>说明：当且仅当exp1和exp2都为真时，exp1 &amp;&amp; exp2才为真； 如果exp1或exp2为真，则exp1 || exp2为真； 如果exp1为假，则!exp1为真；如果exp1为真，则!exp1为假。</code></p>
 <p>&nbsp;</p>
 <ul>
 <li><p>位运算符：</p>
@@ -828,9 +836,10 @@ printf_s(<span class="hljs-string">"%d"</span>,++a);
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>C语言的关键字和保留字，如下图所示：</li>
+<li><p>C语言的关键字和保留字，如下图所示：</p>
+<p>  <img src="./Image-c24.png" srcset="/img/loading.gif" alt="Image"><br>  <code>说明：粗斜体是C11新增的关键字。</code></p>
+</li>
 </ul>
-<p><img src="./Image-c24.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：粗斜体是C11新增的关键字。</code></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-12-printf-和scanf-，以及C语言的转换说明"><a href="#NO2-12-printf-和scanf-，以及C语言的转换说明" class="headerlink" title="NO2.12 printf()和scanf()，以及C语言的转换说明"></a>NO2.12 printf()和scanf()，以及C语言的转换说明</h3><p>printf()函数和scanf()函数能让用户可以与程序交流。<strong><code>注意：printf_s()和scanf_s()是printf()和scanf()的更安全的写法....微软公司整的。</code></strong></p>
@@ -1625,18 +1634,24 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <p>&nbsp;</p>
 <h3 id="NO2-20-字符串和数组"><a href="#NO2-20-字符串和数组" class="headerlink" title="NO2.20 字符串和数组"></a>NO2.20 字符串和数组</h3><p>C语言中没有存储字符串的变量类型。</p>
 <ul>
-<li>字符串：<ul>
-<li>定义：是一个或多个字符的序列，属于派生类型。如，”dyf is climbing”、”be warm”等等，这些都是字符串；<strong><code>注意：如果创建的是字面量字符串，系统依然会默认给该字符串的最后添加一个&#39;\0&#39;。</code></strong></li>
-<li>数据类型：C语言没有专门用于存储字符串的数据类型，字符串都被存储在char类型的数组中。<strong><code>注意：C中的字符串一定以空字符串结束，所以数组一般要多留一个位置给这个空字符串。字符串其实就是一个字符数组，如果函数的返回值是一个char*，即一个字符型的指针变量，那么一般就是返回一个字符串的意思，极少数有返回一个地址值。</code></strong></li>
-<li>字符和字符串的区别：<ul>
-<li>字符是基本类型，字符串是派生类型；</li>
-<li>字符串的末尾有都有一个空字符：’\0’，而字符没有。</li>
-</ul>
+<li><p>字符串：</p>
+<ul>
+<li><p>定义：是一个或多个字符的序列，属于派生类型。如，”dyf is climbing”、”be warm”等等，这些都是字符串；<strong><code>注意：如果创建的是字面量字符串，系统依然会默认给该字符串的最后添加一个&#39;\0&#39;。</code></strong></p>
+</li>
+<li><p>数据类型：C语言没有专门用于存储字符串的数据类型，字符串都被存储在char类型的数组中。<strong><code>注意：C中的字符串一定以空字符串结束，所以数组一般要多留一个位置给这个空字符串。字符串其实就是一个字符数组，如果函数的返回值是一个char*，即一个字符型的指针变量，那么一般就是返回一个字符串的意思，极少数有返回一个地址值。</code></strong></p>
+</li>
+<li><p>字符和字符串的区别：</p>
+<ul>
+<li><p>字符是基本类型，字符串是派生类型；</p>
+</li>
+<li><p>字符串的末尾有都有一个空字符：’\0’，而字符没有。</p>
+<p>  <img src="./Image-c27.png" srcset="/img/loading.gif" alt="Image"><br>  <code>说明：上图中末尾的字符\0，这是用于标记字符串的结束而使用的空字符，它是非打印字符，其ASCII码值等价于0。</code></p>
 </li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-c27.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：上图中末尾的字符\0，这是用于标记字符串的结束而使用的空字符，它是非打印字符，其ASCII码值等价于0。</code></p>
+</li>
+</ul>
 <p>&nbsp;</p>
 <ul>
 <li><p>数组：</p>
@@ -1876,15 +1891,18 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <p>&nbsp;</p>
 <h3 id="NO2-23-VS2019的DEBUG调试"><a href="#NO2-23-VS2019的DEBUG调试" class="headerlink" title="NO2.23 VS2019的DEBUG调试"></a>NO2.23 VS2019的DEBUG调试</h3><p>debug模式，是我们常用来调试程序而使用的，简单讲就是查看程序是否有问题。</p>
 <ul>
-<li>VS2019中的debug模式的使用：<ul>
-<li>首先，在需要断点(你想要查看的语句)的程序语句行号前双击即可，这样就可以打上断点了。<strong><code>注意：一般都是断点都是打在函数第一行有效的语句上。</code></strong></li>
-<li>然后，按F5，开始调试，进入debug模式的页面，按F10可以每一行每一行的查看和执行程序的语句。</li>
+<li><p>VS2019中的debug模式的使用：</p>
+<ul>
+<li><p>首先，在需要断点(你想要查看的语句)的程序语句行号前双击即可，这样就可以打上断点了。<strong><code>注意：一般都是断点都是打在函数第一行有效的语句上。</code></strong></p>
+</li>
+<li><p>然后，按F5，开始调试，进入debug模式的页面，按F10可以每一行每一行的查看和执行程序的语句。</p>
+<p>  <img src="./Image-c28.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c29.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <img src="./Image-c30.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-c28.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c29.png" srcset="/img/loading.gif" alt="Image"></p>
-<p><img src="./Image-c30.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-24-指针变量和指针数组"><a href="#NO2-24-指针变量和指针数组" class="headerlink" title="NO2.24 指针变量和指针数组"></a>NO2.24 指针变量和指针数组</h3><p>指针其实就是地址值；指针变量存储的是地址值。</p>
@@ -2161,8 +2179,8 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
 <li><p>定义：就是把其他各种数据类型组合起来，构成另一个新的数据类型以方便使用，说白了就是用来存放不同类型数据的另一个数据类型而已；这些成员会占用不同的内存，且不会互相影响；</p>
 <ul>
 <li><p>基本语法格式：</p>
-<p>例如：</p>
-  <pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>  <span class="hljs-comment">//结构体面一般首字母大写。如，Cat、Student等等</span>
+<p>  例如：</p>
+<pre><code><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>  <span class="hljs-comment">//结构体面一般首字母大写。如，Cat、Student等等</span>
 
     结构体所包含的变量或数组或指针或结构体等等
 
@@ -2176,8 +2194,7 @@ p = Func;          <span class="hljs-comment">//将Func函数的首地
     <span class="hljs-keyword">int</span> age;  <span class="hljs-comment">//年龄</span>
     <span class="hljs-keyword">char</span> group;  <span class="hljs-comment">//所在学习小组</span>
     <span class="hljs-keyword">float</span> score;  <span class="hljs-comment">//成绩</span>
-&#125;</code></pre>
-</li>
+&#125;</code></pre></code></pre></li>
 <li><p>结构体变量：既然结构体是一种数据类型，那么就可以用它来定义变量；</p>
 <p>  例如：</p>
   <pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span>
@@ -2278,13 +2295,16 @@ struct 结构体名&#123;
 <p>&nbsp;</p>
 <h3 id="NO2-28-文件处理"><a href="#NO2-28-文件处理" class="headerlink" title="NO2.28 文件处理"></a>NO2.28 文件处理</h3><p>在操作系统中，为了统一对各种硬件的操作，简化接口，不同的硬件设备也都被看成一个文件。对这些文件的操作，等同于对磁盘上普通文件的操作。<code>如，通常把显示器称为标准输出文件，printf就是向这个文件输出数据；通常把键盘称为标准输入文件，scanf就是从这个文件读取数据等等</code>。</p>
 <ul>
-<li>按照文件数据流的走向可分为：<ul>
-<li>输入流：数据从文件复制到内存的过程。也称为读文件；<strong><code>注意：EOF：指的是end of file，表示文件末尾，且在头文件stdio.h中已经定义好了EOF的值为-1。getchar()和scanf_s()函数检测到文件结尾时，这两个函数都返回EOF，所以C中使用EOF来当做I/O的结尾条件。</code></strong></li>
-<li>输出流：从内存保存到文件的过程。也称为写文件。</li>
+<li><p>按照文件数据流的走向可分为：</p>
+<ul>
+<li><p>输入流：数据从文件复制到内存的过程。也称为读文件；<strong><code>注意：EOF：指的是end of file，表示文件末尾，且在头文件stdio.h中已经定义好了EOF的值为-1。getchar()和scanf_s()函数检测到文件结尾时，这两个函数都返回EOF，所以C中使用EOF来当做I/O的结尾条件。</code></strong></p>
+</li>
+<li><p>输出流：从内存保存到文件的过程。也称为写文件。</p>
+<p>  <img src="./Image-c31.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
 </ul>
 </li>
 </ul>
-<p><img src="./Image-c31.png" srcset="/img/loading.gif" alt="Image"></p>
 <p>&nbsp;</p>
 <ul>
 <li><p>C语言常见的其他输入和输出函数：</p>
@@ -2404,12 +2424,12 @@ struct 结构体名&#123;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
+<p>  <img src="./Image-c32.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：测试_getche()函数，分别输入1、2、3，返回如上结果，有回显用户的输入。</code></p>
+<p>  <img src="./Image-c33.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：测试_getch()函数，分别输入1、2、3，返回如上结果，没有回显用户的输入。</code></p>
 </li>
 </ul>
-<p><img src="./Image-c32.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：测试_getche()函数，分别输入1、2、3，返回如上结果，有回显用户的输入。</code></p>
-<p>&nbsp;</p>
-<p><img src="./Image-c33.png" srcset="/img/loading.gif" alt="Image"><br><code>说明：测试_getch()函数，分别输入1、2、3，返回如上结果，没有回显用户的输入。</code></p>
-<p>&nbsp;</p>
 
             </article>
             <hr>
@@ -2443,6 +2463,12 @@ struct 结构体名&#123;
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/06/28/Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">
