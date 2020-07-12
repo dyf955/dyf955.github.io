@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>01.前端基础--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-03 14:43">
+      2020年7月3日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.3k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="前端基础–学习笔记-包含前端视频"><a href="#前端基础–学习笔记-包含前端视频" class="headerlink" title="前端基础–学习笔记(包含前端视频)"></a>前端基础–学习笔记(包含前端视频)</h1><h2 id="Lesson1-前端基础"><a href="#Lesson1-前端基础" class="headerlink" title="Lesson1 前端基础"></a>Lesson1 前端基础</h2><h3 id="NO1-1-HTML"><a href="#NO1-1-HTML" class="headerlink" title="NO1.1 HTML"></a>NO1.1 HTML</h3><p>HTML说白了，就是我们常见的网页，这一个个网页就是由HTML语言书写构成。</p>
+<ul>
+<li>HTML<ul>
+<li>定义：是指超文本标记语言。超文本是指页面内可以包含图片、链接等非文字元素，HTML用于编写网页，且HTML文件的格式后缀都以.html或者.htm结尾；</li>
+<li>组成：HTML文件只有一个根标签<code>&lt;html&gt;&lt;/html&gt;</code>，其下由头标签<code>&lt;head&gt;&lt;/head&gt;</code>和体标签<code>&lt;body&gt;&lt;/body&gt;</code>两部分组成；</li>
+<li>基本语法格式：<ul>
+<li>HTML标签的书写格式：<code>属性名=&quot;属性值&quot;</code>。</li>
+</ul>
+</li>
+<li>常用标签：<ul>
+<li><code>&lt;title&gt;xxx&lt;/title&gt;</code>：HTML网页的页面标题标签，即打开HTML页面后，你所看到的网页的标题，一个HTML只能有一个该标签；</li>
+<li><code>&lt;hn&gt;&lt;/hn&gt;</code>：普通标题标签，n取值：1到6，字体逐渐变小，且自动换行；</li>
+<li><code>&lt;hr /&gt;</code>：水平线标签，即在HTML页面中创建一条水平分割线；<ul>
+<li><code>size属性</code>：水平线的大小，单位是像素px；</li>
+<li><code>noshade属性</code>：没有阴影效果，取值：noshade，表示显示纯色，不设置该属性，则显示一个阴影；</li>
+</ul>
+</li>
+<li><code>&lt;font&gt;&lt;/font&gt;</code>：字体标签；<ul>
+<li><code>color属性</code>：设置字体颜色；</li>
+<li><code>size属性</code>：设置字体大小，值越大，字体越大，取值1到7；</li>
+</ul>
+</li>
+<li><code>&lt;b&gt;&lt;/b&gt;</code>：粗体标签；即字体变粗；</li>
+<li><code>&lt;i&gt;&lt;/i&gt;</code>：斜体标签；即字体倾斜；</li>
+<li><code>&lt;p&gt;&lt;/p&gt;</code>：段落标签，前后换行隔开；</li>
+<li><code>&lt;br&gt;&lt;/br&gt;</code>：换行标签；即插入单个换行；</li>
+<li><code>&lt;img /&gt;</code>：图片标签；<ul>
+<li><code>src属性</code>：即图片的加载路径；</li>
+<li><code>width属性</code>：图片宽度像素值或百分比；</li>
+<li><code>height属性</code>：图片高度像素值或百分比；</li>
+<li><code>alt属性</code>：图片提示信息，即当图片加载不出来，放在图片旁边的说明；</li>
+<li><code>title属性</code>：当鼠标放到照片上，会显示出来的信息；</li>
+</ul>
+</li>
+<li><code>&lt;ul&gt;&lt;/ul&gt;</code>：无序列表标签；必须和<li></li>配合使用才有意义；<ul>
+<li><code>type属性</code>：用于设置列表前面的标志，即实心小圆圈(disc)，空心小圆圈(circle)，正方形小圆圈(square)；</li>
+</ul>
+</li>
+<li><code>&lt;ol&gt;&lt;/ol&gt;</code>：有序列表标签；必须和<li></li>配合使用才有意义；<ul>
+<li><code>start属性</code>：表示从哪个顺序开始，如start=4，则从4开始，如start=5，从5开始；</li>
+<li><code>reversed属性</code>：倒序标记，即从start设置的数字，倒着标记，例如4321标记；</li>
+<li><code>type属性</code>：设置顺序的数字，1，a，A等等，按着顺序标记；</li>
+</ul>
+</li>
+<li><code>&lt;a&gt;&lt;/a&gt;</code>：超链接标签；<ul>
+<li><code>href属性</code>：表示要跳转的地址；</li>
+<li><code>target属性</code>：跳转到新地址时，根据取值决定是否打开一个新的页面；</li>
+</ul>
+</li>
+<li><code>&lt;table&gt;&lt;/table&gt;</code>：表格标签，必须和行标签<code>&lt;tr&gt;&lt;/tr&gt;</code>、列标签<code>&lt;td&gt;&lt;/td&gt;</code>配合使用，还可以配合一种单元格，即<code>&lt;th&gt;&lt;/th&gt;</code>使用，这个标签叫做表头标签；<ul>
+<li><code>border属性</code>：设置表格边框的像素，即边框的粗细；</li>
+<li><code>width属性</code>：表格宽度，单位为像素值或百分比；</li>
+<li><code>height属性</code>：表格高度，单位为像素值或百分比；</li>
+<li><code>align属性</code>：设置表格位置，即居中，靠左，靠右；</li>
+<li><code>bgcolor属性</code>：设置表格颜色；</li>
+<li><code>cellspacing属性</code>：设置表格中每个单元格之间的距离，单位为像素px；</li>
+<li><code>cellpadding属性</code>：设置表格中每个单元格与其内容之间的距离，单位为像素px；</li>
+</ul>
+</li>
+<li><code>&lt;tr&gt;&lt;/tr&gt;</code>：行标签；<ul>
+<li><code>rowspan属性</code>：跨行合并，rowspan”2”，合并2个单元格，再将对应的被合并的单元格删除即可；</li>
+<li><code>align属性</code>：设置单元格里的内容位置，即居中，靠左，靠右；</li>
+</ul>
+</li>
+<li><code>&lt;td&gt;&lt;/td&gt;</code>：列标签；<ul>
+<li><code>colspan属性</code>：跨列合并，colspan=”2”，合并2个单元格，再将对应的被合并的单元格删除即可；</li>
+<li><code>align属性</code>：设置单元格里的内容位置，即居中，靠左，靠右；    </li>
+</ul>
+</li>
+<li><code>&lt;th&gt;&lt;/th&gt;</code>：表头标签，内容默认加粗，居中；</li>
+<li><code>&lt;form&gt;&lt;/form&gt;</code>：表单标签，主要用来收集用户数据，所有需要提交到服务器端的表单项必须用表单标签括起来；<ul>
+<li><code>action属性</code>：整个表单提交的位置，即将表单提交给某处；</li>
+<li><code>method属性</code>：表单提交的方式(方式有7种，常见的是get，post)；</li>
+<li>form表单标签中常用的子标签：<ul>
+<li><code>&lt;input /&gt;</code>：输入框，一般用于用户输入数据；<ul>
+<li><code>type属性(10种取值，9种值常用)</code>：<ul>
+<li><code>text</code>：文本输入框，value设置默认值；</li>
+<li><code>password</code>：密码输入框，以*号代替文本，value设置默认值；</li>
+<li><code>radio</code>：单选框，checked设置默认值；</li>
+<li><code>checkbox</code>：复选框，checked设置默认值；</li>
+<li><code>button</code>：普通按钮；</li>
+<li><code>reset</code>：重置按钮，清空表单；</li>
+<li><code>submit</code>：提交按钮，提交表单数据给服务端；</li>
+<li><code>image</code>：图片按钮，按钮是一张图片(不常用)；</li>
+<li><code>hidden</code>：隐藏域，数据会提交，但是页面上看不到；</li>
+<li><code>file</code>：文件上传；</li>
+</ul>
+</li>
+<li><code>name属性</code>：<ul>
+<li>用于给标签起名字；</li>
+<li>还可以给单选框或者复选框分组(这两个必须要分组，name相同的为一组)；</li>
+<li>最重要的是，表单提交时，有name属性的数据才会被提交；</li>
+</ul>
+</li>
+<li><code>value属性</code>：<ul>
+<li>给按钮类的属性值文字赋值，即按钮上显示文字；</li>
+<li>用于表单提交时，单选框和复选框填写的内容被服务端准确的获取；</li>
+<li>用于表单提交时，下拉框选择的内容被服务端准确的获取；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;select&gt;&lt;/select&gt;</code>：下拉框，一般用于用户选择某个选项；<ul>
+<li><code>&lt;option&gt;&lt;/option&gt;</code>：下拉框的内容，即下拉框的子标签，两者需要配合使用才有意义；<ul>
+<li><code>selected属性</code>：设置默认值；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;&lt;/textarea&gt;</code>：文本域，一般用于用户输入大量的文字信息，例如自我介绍；<ul>
+<li><code>rows属性</code>：设置行数；</li>
+<li><code>cols属性</code>：设置列数；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;div&gt;&lt;/div&gt;</code>：div标签，是一个块级元素，特点是自动换行，常作为一个容器使用；</li>
+<li><code>&lt;span&gt;&lt;/span&gt;</code>：span标签，是一个行内元素，特点是不换行；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO-1-2-CSS"><a href="#NO-1-2-CSS" class="headerlink" title="NO.1.2 CSS"></a>NO.1.2 CSS</h3><p>CSS，你可以理解为静态渲染HTML页面。</p>
+<ul>
+<li><p>CSS：</p>
+<ul>
+<li><p>定义：是指层叠样式表，主要用于渲染HTML中的文本内容、图片、以及版面布局等外观显示样式；</p>
+</li>
+<li><p>基本语法格式：</p>
+<pre><code class="hljs html">选择器&#123;
+	属性名:属性值;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+<li><p>在HTML中引入CSS代码：</p>
+<ul>
+<li><code>行内样式</code>：在标签的style属性中写CSS代码，此时只需要写： 属性名:属性值; 属性名:属性值; 即可，但是只对该标签有效；</li>
+<li><code>内部样式</code>：在head标签的子标签style标签中写CSS代码，按照CSS正常格式写即可；</li>
+<li><code>外部样式</code>：将CSS代码写在单独的文件中，后缀名以.css结尾，在head标签中通过link标签引入.css文件即可；</li>
+</ul>
+</li>
+<li><p>选择器：用于选中某个或者某些标签，以便于我们给这些标签设置CSS样式；</p>
+<ul>
+<li><p>标签选择器：选择指定的标签；</p>
+<pre><code class="hljs html">标签名&#123;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+<li><p>id选择器：选择拥有指定id值的标签；(注意：该方式必须为标签添加一个id属性)</p>
+<pre><code class="hljs html">#id值&#123;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+<li><p>class选择器：选择拥有指定class值的标签；</p>
+<pre><code class="hljs html">.class值&#123;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+<li><p>属性选择器：即选择拥有指定属性的标签；</p>
+<pre><code class="hljs html">标签名[属性名:属性值]&#123;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+<li><p>后代选择器：即父标签包含后代标签；</p>
+<pre><code class="hljs html">选择器1 选择器2&#123;
+	属性名:属性值;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>CSS中常见的属性名：</p>
+<ul>
+<li><code>border属性</code>：边框样式，有三个值，值之间用空格隔开；<code>如，border:1px solid red</code>；</li>
+<li><code>width属性</code>：宽度；</li>
+<li><code>height属性</code>：高度；</li>
+<li><code>color属性</code>：内容的颜色；</li>
+<li><code>font-size</code>：内容文字的大小</li>
+<li><code>.background-color</code>：背景颜色；</li>
+<li><code>display</code>：转换样式，即块级元素和行内元素的互相转换，以及隐藏所选标签元素；</li>
+<li><code>float</code>：设置div浮动效果，默认向上飘后，向左飘，知道碰到其他标签；</li>
+<li><code>clear</code>：清除元素两边的浮动效果，值只选择both；</li>
+</ul>
+</li>
+<li><p>CSS盒子模型：CSS将每一个标签都认为是一个盒子，其拥有两个边距：</p>
+<ul>
+<li><code>内边距</code>：即元素和边框的距离，属性名padding，默认元素与边框是重合的，即padding=0px，内边距越大，边框越大；</li>
+<li><code>外边距</code>：即边框和其他边框的距离，属性名margin。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO-1-3-JavaScript"><a href="#NO-1-3-JavaScript" class="headerlink" title="NO.1.3 JavaScript"></a>NO.1.3 JavaScript</h3><p>JS，你可以理解为动态渲染HTML页面。</p>
+<ul>
+<li><p>JavaScript(以下简称Js)：</p>
+<ul>
+<li><p>定义：是一种嵌入式脚本编程语言，用于开发交互式的web页面，使用JavaScript可以添加动画效果，提升用户操作体验；</p>
+</li>
+<li><p>应用：</p>
+<ul>
+<li>嵌入动态文本于HTML页面中；</li>
+<li>对浏览器事件做出相应；</li>
+<li>读写HTML元素；</li>
+<li>验证提交数据；</li>
+<li>检测访客的浏览器信息等；</li>
+</ul>
+</li>
+<li><p>组成：</p>
+<ul>
+<li>ECMAScript：Js的核心语法；</li>
+<li>BOM：浏览器对象；</li>
+<li>DOM：操作文档中的元素和内容；</li>
+</ul>
+</li>
+<li><p>引入方式：</p>
+<ul>
+<li><p>内嵌式：</p>
+<ul>
+<li><p>必须在<code>&lt;script&gt;&lt;/script&gt;</code>标签中写入Js代码；</p>
+</li>
+<li><p>格式为：</p>
+<pre><code class="hljs js">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;
+	js代码
+&lt;<span class="hljs-regexp">/script&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>外联式：</p>
+<ul>
+<li><p>在后缀名为.js的文件中写入，但是要在<code>&lt;script&gt;&lt;/script&gt;</code>标签中引入外联的.js文件；</p>
+</li>
+<li><p>格式为：</p>
+<pre><code class="hljs js">&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"外联文件.js的路径"</span> charset=<span class="hljs-string">"UTF-8"</span>&gt;
+&lt;<span class="hljs-regexp">/script&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>常用语法：</p>
+<ul>
+<li><p><code>var 变量名</code>：创建一个变量；<strong><code>注意：Js中变量如果没有赋值，默认undefined。</code></strong></p>
+</li>
+<li><p>数据类型：</p>
+<ul>
+<li>基本类型：<ul>
+<li><code>Undefined</code>：只有一个值undefined，当定义的变量未被赋值时，默认值就是undefined；</li>
+<li><code>Null</code>：只有一个值null，空值，但是在ECMAScript中，定义了undefined和null相等(从根本上还是不相等的)；</li>
+<li><code>Boolean</code>：有两个值true和false；</li>
+<li><code>Number</code>：表示任意数字，包括整数、小数等，都用Number表示；</li>
+<li><code>String</code>：字符串用””或’’声明；Js中没有字符类型；</li>
+</ul>
+</li>
+<li>引用类型：<ul>
+<li>是一种叫做类(class)的东西，但我们一般不会自己创建对象，而是直接使用，Js<br>已经给我们准备好了，所以说Js是基于对象，而不是面向对象；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Js中用alert()方法直接弹出你想要输出的结果；</p>
+</li>
+<li><p>Js中的<code>==</code>和<code>===</code>的区别：</p>
+<ul>
+<li><p><code>==</code>：只比较数值；</p>
+<p>例如：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> a= <span class="hljs-string">"10"</span>;
+<span class="hljs-keyword">var</span> b= <span class="hljs-number">10</span>;
+alert(a==b);
+
+#弹出结果为true，因为a和b的的数值都是10，所以为true；</code></pre>
+
+<p><code>===</code>：既比较数值，也比较类型，都相同才是全等。</p>
+</li>
+</ul>
+</li>
+<li><p>Js中参数类型转为Boolean值：</p>
+<ul>
+<li><code>Undefined</code>：转为Boolean结果为false；</li>
+<li><code>Null</code>：转为Boolean结果为false；</li>
+<li><code>Number</code>：如果参数为+0、-0、NaN(即不是一个数字)，转为Boolean结果为false；否则为true；</li>
+<li><code>String</code>：如果参数为空字符串，则结果为false；否则为true；</li>
+<li><code>Object</code>：对象类型都为true。</li>
+</ul>
+</li>
+<li><p>Boolean类型参与运算：<code>false是0，true是1</code>；</p>
+</li>
+<li><p>Js中的函数(方法)的格式(<strong><code>注意：参数类型不需要写在方法中</code></strong>)：</p>
+<pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> 函数名(<span class="hljs-params">参数列表</span>)</span>&#123;
+	函数体；
+&#125;</code></pre>
+</li>
+<li><p>Js中没有方法重载，如果方法名相同，则后定义的方法会覆盖之前的方法；</p>
+</li>
+<li><p>获取指定标签对象和内容：</p>
+<ul>
+<li><code>var inputElement= document.getElementById()</code>：该方法可以获取一个标签对象，然后通过该对象inputElement.value;获取(表单)元素标签的内容；</li>
+<li><code>getElementsByName()</code>：通过name属性值获得所有元素；</li>
+<li><code>getElementsByClassName()</code>：通过class属性值获得所有元素；</li>
+<li><code>getElementsByTagName()</code>：通过标签名获得所有元素。</li>
+</ul>
+</li>
+<li><p>设置定时器：</p>
+<ul>
+<li><code>window.setInterval(code,millisec)</code>，其中：<ul>
+<li>code：可以是Js代码，也可以是一个函数；</li>
+<li>millisec：时间间隔，单位是毫秒；即，每隔millisec毫秒会执行code一次。</li>
+</ul>
+</li>
+<li><code>window.setTimeout(code,millisec)</code>，其中：<ul>
+<li>code：可以是Js代码，也可以是一个函数；</li>
+<li>millisec：时间间隔，单位是毫秒；即，millisec毫秒后只执行code一次。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>页面加载事件：即window.onload事件，当页面加载完毕之后才会触发后面的函数；基本语法格式：</p>
+<pre><code class="hljs js">#方式一:
+<span class="hljs-built_in">window</span>.onload = 函数名<span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> 函数名1(<span class="hljs-params"></span>)</span>&#123;
+	函数体；
+&#125;
+
+#方式二：
+<span class="hljs-built_in">window</span>.load = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+	函数体；
+&#125;</code></pre>
+</li>
+<li><p>修改标签的样式属性值：<code>标签对象.style.属性 = 值</code>；</p>
+</li>
+<li><p>获取HTML中非表单元素标签的内容：</p>
+<ul>
+<li>标签对象.innerHTML：获取标签的所有内容，包括HTML标签，即会解析其中HTML代码；</li>
+<li>标签对象.innerText：获取标签的所有内容，不包括HTML标签，即不会解析其中HTML代码；</li>
+</ul>
+</li>
+<li><p>事件：</p>
+<ul>
+<li><code>onsubmit</code>：提交按钮事件，提交按钮点击后，触发表单提交事件；</li>
+<li><code>onfocus</code>：获取焦点事件，即鼠标选中，就是焦点获取；</li>
+<li><code>onblur</code>：失去焦点时间，即鼠标未选中，就是焦点失去；</li>
+<li><code>onmousevoer</code>：鼠标移入事件，即鼠标移入时的事件；</li>
+<li><code>onmouseout</code>：鼠标移出事件，即鼠标移出的事件；</li>
+</ul>
+</li>
+<li><p>Js中的this关键字：表示的是当前元素，即谁调用，就代表谁；</p>
+</li>
+<li><p>Js中创建数组(这里的Array与Java中的集合类似，长度可变，可存任意类型)：<code>new Array(元素1,元素2,元素3....)</code>；</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO-1-4-JQuery"><a href="#NO-1-4-JQuery" class="headerlink" title="NO.1.4 JQuery"></a>NO.1.4 JQuery</h3><p>JQuery的存在极大地简化了JavaScript 编程。</p>
+<ul>
+<li><p>JQuery</p>
+<ul>
+<li><p>定义：是一套跨浏览器的Js库；可以简化HTML和Js之间的操作；</p>
+</li>
+<li><p>导入方式：使用外联式方法导入对应的“.js“后缀文件即可；</p>
+</li>
+<li><p>JQuery语法：</p>
+<ul>
+<li><p>基本语法格式：<code>JQuery()或者$()</code>；</p>
+</li>
+<li><p>获取值：<code>var v = $(&quot;选择器&quot;)</code>，获取JQuery对象;  v.val()，即可获取对应表单标签的值；</p>
+</li>
+<li><p>页面加载事件：<code>$(function(){函数体})</code>；</p>
+</li>
+<li><p>事件绑定：</p>
+<pre><code class="hljs js">获取JQuery对象
+JQuery对象.事件方法(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;函数体&#125;)</code></pre>
+</li>
+</ul>
+</li>
+<li><p>JQuery效果：</p>
+<ul>
+<li>显示和隐藏：<ul>
+<li><code>show(毫秒值)</code>；</li>
+<li><code>hide(毫秒值)</code>；</li>
+<li><code>taggle(毫秒值)</code>：这个是切换，即显示和隐藏相互切换；毫秒值是指，在指定毫秒值内，显示或隐藏；</li>
+</ul>
+</li>
+<li>滑入和滑出：<ul>
+<li><code>slideDown(毫秒值)</code>；</li>
+<li><code>slideUp(毫秒值)</code>；</li>
+<li><code>slideToggle(毫秒值)</code>：这个是切换，即滑入和滑出相互切换；毫秒值是指，在指定毫秒值内，滑入或滑出；</li>
+</ul>
+</li>
+<li>淡入和淡出：<ul>
+<li><code>fadeIn(毫秒值)</code>；</li>
+<li><code>fadeOut(毫秒值)</code>；</li>
+<li><code>fadeToggle(毫秒值)</code>： 这个是切换，即淡入和淡出相互切换；毫秒值是指，在指定毫秒值内，淡入或淡出；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>JQuery选择器：</p>
+<ul>
+<li>基本选择器：<ul>
+<li><code>#id</code>：选择指定的id的标签；</li>
+<li><code>.class</code>：选择指定的class值的标签；</li>
+<li><code>标签</code>：选择指定的标签名的标签；</li>
+<li><code>*</code>：选择所有的标签；</li>
+<li><code>a,b,c</code>：选择指定a,b,c的标签；</li>
+</ul>
+</li>
+<li>层次选择器：<ul>
+<li><code>a b</code>：父标签a下所有的后代标签b；</li>
+<li><code>a&gt;b</code>：父标签a下所有的子类标签b；</li>
+<li><code>a+b</code>：标签a后第一个b标签；</li>
+<li><code>a~b</code>：标签a后所有的b标签；</li>
+</ul>
+</li>
+<li>过滤选择器：<ul>
+<li><code>a:first</code>：第一个a标签；</li>
+<li><code>a:last</code>：最后一个a标签；</li>
+<li><code>a:even</code>：所有偶数a标签；</li>
+<li><code>a:odd</code>：所有奇数a标签；</li>
+<li><code>a:eq(index)</code>：a标签下第index个标签；</li>
+<li><code>a:gt(index)</code>：a标签下大于index的标签；</li>
+<li><code>a:lt(index)</code>：a标签下小于index的标签；</li>
+</ul>
+</li>
+<li>内容过滤选择器：<ul>
+<li>a:has(内容)：a标签下所有含有”内容”的标签；<ul>
+<li>属性选择器：<ul>
+<li><code>a:[属性=属性值]</code>：a标签下属性=属性值的所有的标签；</li>
+</ul>
+</li>
+<li>表单选择器：<ul>
+<li><code>:input</code>：所有for表单下的子标签；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>JQuery对CSS样式的操作：</p>
+<ul>
+<li><code>JQuery对象.css(&quot;样式属性名&quot;)</code>；</li>
+<li><code>JQuery对象.css(&quot;样式属性名&quot;,&quot;样式属性值&quot;)</code>。</li>
+</ul>
+</li>
+<li><p>JQuery对属性的操作：</p>
+<ul>
+<li><code>JQuery对象.attr(&quot;属性名&quot;)</code>；</li>
+<li><code>JQuery对象.attr(&quot;属性名&quot;,&quot;属性值&quot;)</code>；</li>
+</ul>
+</li>
+<li><p>JQuery遍历方式：</p>
+<pre><code class="hljs js">JQuery对象.each(function(index,ele)&#123;  #index指的是要遍历的对象的索引值；ele指的是要遍历的每一个对象，也可以使用this指代每一个需要遍历的对象
+
+	alert($(<span class="hljs-keyword">this</span>).val());
+&#125;)</code></pre>
+</li>
+<li><p>表单校验：    </p>
+<pre><code class="hljs js">#在页面加载成功后
+获取表单对象.validate(&#123;
+	rules:&#123;&#125;,  #校验规则
+	messages:&#123;&#125;  #自定义提示信息
+&#125;)
+
+rules写法：
+要校验的name属性：&#123;
+	校验器<span class="hljs-number">1</span>：取值，
+	校验器<span class="hljs-number">2</span>：取值
+&#125;
+注意：多个校验规则之间使用,分割
+
+message写法：
+要校验的name属性：&#123;
+	校验器<span class="hljs-number">1</span>：<span class="hljs-string">"自定义提示信息1"</span>，
+	校验器<span class="hljs-number">2</span>：<span class="hljs-string">"自定义提示信息2"</span>
+&#125;
+			
+校验器：
+required   <span class="hljs-literal">true</span>/<span class="hljs-literal">false</span>   必填校验
+number     <span class="hljs-literal">true</span>/<span class="hljs-literal">false</span>   数字校验
+min        数字          最小值
+max        数字          最大值
+range      数值区间       [最小值,最大值]
+minLength|maxLength|rangLength   最小值|最大值|长度区间
+email:  email           邮箱校验     *@*   <span class="hljs-number">1</span>@x
+equalTo:  jquery对象    重复性校验</code></pre>
+</li>
+<li><p>栅格系统：把每一行分为十二份   超过十二份自动换行；</p>
+<ul>
+<li>大屏幕：col-lg-n。如，col-lg-1，即1份为一格，大屏幕展示出来的就有12格；</li>
+<li>中等屏幕：col-md-n。如，col-md-3，即3份为一格，中等屏幕展示出来的就只有4格；</li>
+<li>小屏幕：col-sm-6。如，col-sm-6，即6份为一格，小屏幕展示出来的就只有2格；</li>
+<li>超小屏幕：col-xs-12。如，col-xs-12，即12份为一格，中等屏幕展示出来的就只有1格。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/1-%EB%8C%80%ED%95%99%EA%B5%90-%EC%9D%BC-%ED%95%99%EB%85%84/">1.대학교 일 학년</a>
+                    
+                      <a class="hover-with-bg" href="/categories/1-%EB%8C%80%ED%95%99%EA%B5%90-%EC%9D%BC-%ED%95%99%EB%85%84/04-%E5%89%8D%E7%AB%AF/">04.前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E4%B8%80%E8%AF%BE%E7%A8%8B/">大一课程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/03/SSM%E6%A1%86%E6%9E%B6--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">03.SSM框架--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/03/JavaEE--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">02.JavaEE--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "01.前端基础--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

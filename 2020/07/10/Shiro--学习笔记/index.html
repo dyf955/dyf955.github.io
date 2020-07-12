@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>01.Shiro--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-10 17:30">
+      2020年7月10日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.1k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Shiro–学习笔记-包含Shiro视频"><a href="#Shiro–学习笔记-包含Shiro视频" class="headerlink" title="Shiro–学习笔记(包含Shiro视频)"></a>Shiro–学习笔记(包含Shiro视频)</h1><h2 id="Lesson1-Shiro概述"><a href="#Lesson1-Shiro概述" class="headerlink" title="Lesson1 Shiro概述"></a>Lesson1 Shiro概述</h2><h3 id="NO1-1-Shiro简介"><a href="#NO1-1-Shiro简介" class="headerlink" title="NO1.1 Shiro简介"></a>NO1.1 Shiro简介</h3><p>Shiro是一个安全框架，也就是最基本功能是登录校验的一个框架。</p>
+<ul>
+<li>Shiro：<ul>
+<li>介绍：Apache Shiro是一个强大且易用的Java安全框架，具有验证、授权、加密、会话管理、与Web集成、缓存等功能。目前，使用Apache Shiro的人越来越多，因为它相当简单，对比Spring Security，可能没有Spring Security做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。</li>
+<li>优点：<ul>
+<li>易于理解的Java Security API；</li>
+<li>简单的身份认证(登录)，支持多种数据源(LDAP，JDBC，Kerberos，ActiveDirectory 等)；</li>
+<li>对角色的简单的签权(访问控制)，支持细粒度的签权；</li>
+<li>支持一级缓存，以提升应用程序的性能；</li>
+<li>内置的基于POJO企业会话管理，适用于Web以及非Web的环境；</li>
+<li>异构客户端会话访问；</li>
+<li>非常简单的加密API；</li>
+<li>不跟任何的框架或者容器捆绑，可以独立运行；</li>
+</ul>
+</li>
+<li>Shiro框架中的关键对象：<ul>
+<li><code>Subject</code>：主体(也就是当前登录的用户)。访问系统的用户，主体可以是用户、程序等，进行认证的都称为主体；</li>
+<li><code>Principal</code>：身份信息(也就是username)。是主体进行身份认证的标识，标识必须具有唯一性。如，用户名、手机号、邮箱地址等，一个主体可以有多个身份，但是必须有一个主身份(Primary Principal)；</li>
+<li><code>Credential</code>：凭证信息(也就是password)。即只有主体自己知道的安全信息，如，密码、证书；</li>
+</ul>
+</li>
+<li>基本功能：<ul>
+<li><code>Authentication</code>：身份认证或登录。验证用户是不是拥有相应的身份；</li>
+<li><code>Authorization</code>：授权。即权限验证，验证某个已认证的用户是否拥有某个权限，即判断用户是否能执行某个操作；</li>
+<li><code>Session Manager</code>：会话管理。即用户登录后就是一次会话，在没有退出之前，它的所有信息都会在会话中；该功能下还包括：<ul>
+<li><code>Cryptography(加密)</code>：加密。保护数据的安全性，<code>如，密码加密存储到数据库，而不是明文存储</code>；</li>
+<li><code>Web Support(Web支持)</code>：Web支持。可以非常容易的集成到Web环境；</li>
+<li><code>Caching(缓存)</code>：缓存。<code>如，用户登录后，其用户信息、拥有的角色/权限不必每次去查，这样可以提高效率</code>；</li>
+<li><code>Concurrency(并发验证)</code>：Shiro支持多线程应用的并发验证。即如在一个线程中开启另一个线程，能把权限自动传播过去；</li>
+<li><code>Testing(测试)</code>：提供测试支持；</li>
+<li><code>Remeber Me(记住我)</code>：记住我，这个是非常常见的功能，即一次登录后，下次再来的话不用登录了；</li>
+<li><code>Run As</code>：允许一个用户假装为另一个用户(如果他们允许)的身份进行访问。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Shiro入门案例；</p>
+<ul>
+<li><p>首先使用IDEA创建MAVEN项目后，在pom.xml文件中添加Shiro的依赖；</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--Shiro安全框架使用的依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+</li>
+<li><p>在resources文件夹下创建shiro.ini配置文件；如果没有resources文件夹，就直接在main文件夹下创建一个Directory，然后在项目配置里(File菜单下Project Structure选项)，选择Modules，点击Sources，选择main文件夹下的resources文件夹，然后点击Mark as Resources 即可；</p>
+<p><img src="./Image-s1.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>ini配置；</p>
+<ul>
+<li><p><code>[main]</code>：提供了对securityManager及其依赖的配置；</p>
+<pre><code class="hljs ini"><span class="hljs-attr">securityManager</span>=org.apache.shiro.mgt.DafaultSecurityManager
+<span class="hljs-attr">securityManager.realms</span>=<span class="hljs-variable">$jdbcRealm</span></code></pre>
+</li>
+<li><p><code>[users]</code>：提供了对用户/密码及其角色的配置，例如，用户名=密码，角色1，角色2；</p>
+</li>
+<li><p><code>[roles]</code>：提供了角色及权限之间关系的配置，例如，角色=权限1，权限2；</p>
+</li>
+<li><p><code>[urls]</code>：用于web，提供对web的url拦截的相关配置，url=拦截器[参数]；</p>
+<pre><code class="hljs ini"><span class="hljs-comment">#anon是指匿名，即匿名，也就是没登录也可以访问首页</span>
+/index.html=anon 
+
+<span class="hljs-comment">#authc是指登录以后才可以访问admin路由下的资源，且角色必须是admin，权限必须是permission1</span>
+/admin/=authc,roles[admin],perms["permission1"]</code></pre>
+</li>
+</ul>
+</li>
+<li><p>编写测试类；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dengyanfei;
+
+<span class="hljs-keyword">import</span> org.apache.shiro.SecurityUtils;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.UsernamePasswordToken;
+<span class="hljs-keyword">import</span> org.apache.shiro.config.IniSecurityManagerFactory;
+<span class="hljs-keyword">import</span> org.apache.shiro.mgt.SecurityManager;
+<span class="hljs-keyword">import</span> org.apache.shiro.subject.Subject;
+<span class="hljs-keyword">import</span> org.apache.shiro.util.Factory;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">( String[] args )</span> </span>&#123;
+        <span class="hljs-comment">//1.读取配置文件，初始化工厂对象(能够获得SecurityManager的工厂)</span>
+        Factory&lt;SecurityManager&gt; factory = <span class="hljs-keyword">new</span> IniSecurityManagerFactory(<span class="hljs-string">"classpath:shiro.ini"</span>);
+        
+        <span class="hljs-comment">//2.获取SecurityManeger对象</span>
+        SecurityManager serurityManager = factory.getInstance();
+        
+        <span class="hljs-comment">//3.将SecurityManager绑定到工具类SecurityUtils上</span>
+        SecurityUtils.setSecurityManager(serurityManager);
+        
+        <span class="hljs-comment">//4.通过SecurityUtils获取当前登陆的用户</span>
+        Subject subject = SecurityUtils.getSubject();
+        
+        <span class="hljs-comment">//5.创建Token令牌，即通俗的讲就是传入用户名和密码，而Token用于用户进行登录验证</span>
+        UsernamePasswordToken token = <span class="hljs-keyword">new</span> UsernamePasswordToken(<span class="hljs-string">"admin"</span>,<span class="hljs-string">"456"</span>);
+        
+        <span class="hljs-comment">//6.传入Token令牌，用户进行登录验证</span>
+        <span class="hljs-keyword">try</span> &#123;
+            subject.login(token);
+            <span class="hljs-comment">//输出</span>
+            System.out.println(<span class="hljs-string">"登录成功啦！！"</span>);
+        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;
+            e.printStackTrace();
+            <span class="hljs-comment">//输出</span>
+            System.out.println(<span class="hljs-string">"登录失败了！！"</span>);
+        &#125;
+        
+        <span class="hljs-comment">//7.退出</span>
+        subject.logout();
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson2-Shiro基础"><a href="#Lesson2-Shiro基础" class="headerlink" title="Lesson2 Shiro基础"></a>Lesson2 Shiro基础</h2><h3 id="NO2-1-Realm"><a href="#NO2-1-Realm" class="headerlink" title="NO2.1 Realm"></a>NO2.1 Realm</h3><p>Realm是Shiro比较重要的对象。</p>
+<ul>
+<li><p>Realm：</p>
+<ul>
+<li><p>定义：即域，Shiro从Realm中获取安全数据(如用户、角色、权限)，就是说SecurityManager要验证用户身份，那么它需要从Realm中获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限验证用户是否能进行操作；</p>
+</li>
+<li><p>种类：</p>
+<ul>
+<li><p><code>IniRealm：Shiro</code>默认使用自带的IniRealm，IniRealm从ini配置文件中读取用户的信息，而大部分情况下需要从系统的数据库中读取用户信息，所以需要自定义Realm；</p>
+</li>
+<li><p><code>JDBCRealm</code>：即使用JDBC进行操作数据库，但是这要求数据库中创建的用户表名称必须为users，且表中字段名也必须为username和password。使用JDBC连接数据库有两种数据源选择：</p>
+<ul>
+<li><p><code>C3P0数据源</code>：导入相应的C3P0依赖，然后在Shiro配置文件中，必须使用如下的配置：</p>
+<pre><code class="hljs ini"><span class="hljs-section">[main]</span>
+<span class="hljs-comment">#使用JDBCRealm</span>
+<span class="hljs-attr">jdbcRealm</span>=org.apache.shiro.realm.jdbc.JdbcRealm
+<span class="hljs-comment">#C3P0数据源</span>
+<span class="hljs-attr">dataSource</span>=com.mchange.v2.c3p0.ComboPooledDataSource
+<span class="hljs-comment">#数据库驱动</span>
+<span class="hljs-attr">dataSource.driverClass</span>=com.mysql.cj.jdbc.Driver
+<span class="hljs-comment">#连接字符串</span>
+<span class="hljs-attr">dataSource.jdbcUrl</span>=jdbc:mysql://localhost:<span class="hljs-number">3306</span>/数据库名称?userUnicode=<span class="hljs-literal">true</span>&amp;characterEncoding
+=UTF-8&amp;serverTimezone=UTC
+<span class="hljs-comment">#数据库用户名</span>
+<span class="hljs-attr">dataSource.user</span>=root
+    
+<span class="hljs-comment">#数据库密码</span>
+<span class="hljs-attr">dataSource.password</span>=密码
+    
+<span class="hljs-comment">#引用、注入数据源</span>
+<span class="hljs-attr">jdbcRealm.dataSource</span>=<span class="hljs-variable">$dataSource</span>
+    
+<span class="hljs-comment">#引用Realm</span>
+<span class="hljs-attr">securityManager.realms</span>=<span class="hljs-variable">$jdbcRealm</span></code></pre>
+</li>
+<li><p><code>Druid数据源</code>：导入相应的Druid依赖，然后在Shiro配置文件中，必须使用如下的配置：</p>
+<pre><code class="hljs ini"><span class="hljs-section">[main]</span>
+<span class="hljs-comment">#使用JDBCRealm</span>
+<span class="hljs-attr">realm</span>=org.apache.shiro.realm.jdbc.JdbcRealm
+<span class="hljs-comment">#Druid数据源</span>
+<span class="hljs-attr">dataSource</span>=com.alibaba.druid.pool.DruidDataSource
+<span class="hljs-comment">#数据库驱动</span>
+<span class="hljs-attr">dataSource.driverClassName</span>=com.mysql.cj.jdbc.Driver
+<span class="hljs-comment">#连接字符串</span>
+<span class="hljs-attr">dataSource.jdbcUrl</span>=jdbc:mysql://localhost:<span class="hljs-number">3306</span>/数据库名称?useUnicode=<span class="hljs-literal">true</span>&amp;characterEncoding
+=UTF-8&amp;serverTimezone=UTC
+<span class="hljs-comment">#数据库用户名</span>
+<span class="hljs-attr">dataSource.user</span>=root
+    
+<span class="hljs-comment">#数据库密码</span>
+<span class="hljs-attr">dataSource.password</span>=密码
+    
+<span class="hljs-comment">#引用、注入数据源</span>
+<span class="hljs-attr">jdbcRealm.dataSource</span>=<span class="hljs-variable">$dataSource</span>
+    
+<span class="hljs-comment">#引用Realm</span>
+<span class="hljs-attr">securityManager.realms</span>=<span class="hljs-variable">$realm</span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-2-URL匹配方式"><a href="#NO2-2-URL匹配方式" class="headerlink" title="NO2.2 URL匹配方式"></a>NO2.2 URL匹配方式</h3><ul>
+<li>URL中可以使用占位符：<ul>
+<li><code>?占位符</code>：该匹配符只能匹配一个字符。<code>如，/admin?，只能匹配/admin1，/admin2，不能匹配/admin12，也不能匹配/admin</code>；</li>
+<li><code>*占位符</code>：该匹配符匹配0到n个字符。<code>如，/admin*，可以匹配/admin1、/admin、/admin12</code>；</li>
+<li><code>**占位符</code>：改匹配符匹配路径。<code>如，/admin/**，可配/admin/1、/admin/12、/admin</code>；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-3-Shiro标签库"><a href="#NO2-3-Shiro标签库" class="headerlink" title="NO2.3 Shiro标签库"></a>NO2.3 Shiro标签库</h3><ul>
+<li><p>Shiro标签库使用基本步骤：：</p>
+<ul>
+<li><p>在使用Shiro标签时，必须首先导入标签库：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">%@</span> <span class="hljs-attr">taglib</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">"http://shiro.apache.org/tags"</span> <span class="hljs-attr">prefix</span>=<span class="hljs-string">"shiro"</span> %&gt;</span></code></pre>
+</li>
+<li><p>Shiro标签库常用标签：</p>
+<ul>
+<li><code>&lt;shiro:guest&gt;&lt;/shiro:guest&gt;</code>：该标签用于游客访问，即不需要登录也允许访问；登录之后反而看不到该标签里的信息；</li>
+<li><code>&lt;shiro:user&gt;&lt;/shiro:user&gt;</code>：该标签用于用户登录后，才能展示标签里的信息，否则不展示；</li>
+<li><code>&lt;shiro:principal&gt;&lt;/shiro:principal&gt;</code>：该标签用于获取当前登录的用户的用户名；默认调用的是Subject.getPrincipal()方法获取；</li>
+<li><code>&lt;shiro:hasRole name=&quot;需要判断的角色名&quot;&gt;&lt;/shiro:hasRole</code>&gt;：该标签用于判断当前登录用户是否拥有某个角色；</li>
+<li><code>&lt;shiro:hasPermission name=&quot;需要判断的权限名&quot;&gt;&lt;/shiro:hasPermission&gt;</code>：用于判断当前登录用户是否具有某个权限；</li>
+<li><code>&lt;shiro:authenticated&gt;&lt;/shiro:&gt;</code>：用于当用户通过身份验证时，展示标签里的信息，否则不展示；</li>
+<li><code>&lt;shiro:notAuthenticated&gt;&lt;/shiro:&gt;</code>：用于当用户没通过身份验证时，展示标签里的信息，否则不展示；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-4-Shiro加密"><a href="#NO2-4-Shiro加密" class="headerlink" title="NO2.4 Shiro加密"></a>NO2.4 Shiro加密</h3><ul>
+<li><p>Shiro加密：</p>
+<ul>
+<li><p>Base64加密：不常用，容易被解密；</p>
+</li>
+<li><p>MD5加密：常用，散列算法，即哈希算法，加入盐值(建议该值是唯一的，一般是密码+用户名+ID)后，破解更难；</p>
+<ul>
+<li><p>编写密码加密工具类；</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">md5Hash</span><span class="hljs-params">(String password,String salt)</span></span>&#123;
+    <span class="hljs-function">reutrn new <span class="hljs-title">Md5Hash</span><span class="hljs-params">(password,salt)</span>.<span class="hljs-title">toString</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre>
+</li>
+<li><p>测试即可；</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-5-Spring集成Shiro"><a href="#NO2-5-Spring集成Shiro" class="headerlink" title="NO2.5 Spring集成Shiro"></a>NO2.5 Spring集成Shiro</h3><ul>
+<li><p>Spring集成Shiro的基本步骤：</p>
+<ul>
+<li><p>创建Maven项目，在pom.xml中导入依赖，创建基本的Controller、Service、Dao目录结构；</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--Servlet依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.servlet-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--JSP依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.servlet.jsp-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--JSTL依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jstl<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--Spring依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-beans<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-tx<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-context<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-context-support<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-webmvc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-aop<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-aspects<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-jdbc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--日志依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.17<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--MyBatis依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.3.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--JDBC驱动依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>8.0.15<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--Shiro依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.shiro<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>shiro-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--SlF4日志依赖--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-log4j12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.7.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+</li>
+<li><p>在resources包下创建applicationContext.xml文件、mybatis-config文件、springmvc文件，并配置web.xml文件；</p>
+<ul>
+<li><p>Spring配置文件applicationContext.xml；</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/beans/spring-beans.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/context</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/context/spring-context.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/aop</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/aop/spring-aop.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/tx</span></span>
+<span class="hljs-tag"><span class="hljs-string">    http://www.springframework.org/schema/tx/spring-tx.xsd"</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置自动扫描注解 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"cn.dyf.service"</span> /&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置数据源 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClassName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"com.mysql.cj.jdbc.Driver"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span></span>
+<span class="hljs-tag">                  <span class="hljs-attr">value</span>=<span class="hljs-string">"jdbc:mysql://localhost:3306/db_shiro?</span></span>
+<span class="hljs-tag"><span class="hljs-string">                   useUnicode=true<span class="hljs-symbol">&amp;amp;</span>characterEncoding=utf-8<span class="hljs-symbol">&amp;amp;</span>serverTimezone=UTC"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"root"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Deng521314"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置MyBatis的sqlSessionFactory --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sqlSessionFactory"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
+        <span class="hljs-comment">&lt;!-- 加载MyBatis配置文件 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"configLocation"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"classpath:mybatis-config.xml"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置自动扫描dao接口所在的包 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"basePackage"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"cn.dyf.dao"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sqlSessionFactoryBeanName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"sqlSessionFactory"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置transaction manager(事务管理) --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"transactionManager"</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置事务通知属性 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"transactionManager"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 定义事务传播属性 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"insert*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"update*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"edit*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"save*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"add*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"new*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"set*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"remove*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"delete*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"change*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"check*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"find*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"load*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 配置事务切面 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"serviceOperation"</span></span>
+<span class="hljs-tag">                      <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* cn.dyf.service.*.*(..))"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"serviceOperation"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
+</li>
+<li><p>MyBatis配置文件mybatis-config；</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--因为这里面的内容都集成到Spring的全局配置文件中去管理了，所以几乎没什么东西需要配置--&gt;</span>
+<span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></code></pre>
+</li>
+<li><p>SpringMVC配置文件springmvc.xml；</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">"http://www.springframework.org/schema/mvc"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/mvc</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/mvc/spring-mvc.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/context</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--配置自动扫描注解--&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"cn.dyf.controller"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--配置注解开发--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--配置实拍图解析器--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"viewResolver"</span></span>
+<span class="hljs-tag"></span>
+<span class="hljs-tag">          <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
+</li>
+<li><p>配置web.xml；</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee  http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"4.0"</span>&gt;</span>
+         
+    <span class="hljs-comment">&lt;!-- Spring配置文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">context-param</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">context-param</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 编码过滤器 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>encodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">async-supported</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">async-supported</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>encoding<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>encodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- Spring监听器 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- 添加对SpringMVC的支持 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springMVC<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">async-supported</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">async-supported</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springMVC<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>*.action<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>编写entity、Service、Dao；</p>
+<ul>
+<li><p>entity类；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dyf.entity;
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">* <span class="hljs-doctag">@description</span>: 用户类</span>
+<span class="hljs-comment">* <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">* <span class="hljs-doctag">@date</span>: 2019-12-11 22:56</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-keyword">private</span> String username;
+    <span class="hljs-keyword">private</span> String password;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> id;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setId</span><span class="hljs-params">(Integer id)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.id = id;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getUsername</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> username;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUsername</span><span class="hljs-params">(String username)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.username = username;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPassword</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> password;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPassword</span><span class="hljs-params">(String password)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.password = password;
+    &#125;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"User&#123;"</span> +
+                <span class="hljs-string">"id="</span> + id +
+                <span class="hljs-string">", username='"</span> + username + <span class="hljs-string">'\''</span> +
+                <span class="hljs-string">", password='"</span> + password + <span class="hljs-string">'\''</span> +
+                <span class="hljs-string">'&#125;'</span>;
+    &#125;
+&#125;</code></pre>
+</li>
+<li><p>Service、ServiceImpl；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dyf.service;
+<span class="hljs-keyword">import</span> cn.dyf.entity.User;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@description</span>: 用户类Service接口</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@date</span>: 2019-12-11 23:08</span>
+<span class="hljs-comment">  */</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserService</span> </span>&#123;
+    <span class="hljs-function">User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String username)</span></span>;
+&#125;
+
+<span class="hljs-comment">//---------------------------------------------------</span>
+    
+<span class="hljs-keyword">package</span> cn.dyf.service.impl;
+<span class="hljs-keyword">import</span> cn.dyf.dao.UserMapper;
+<span class="hljs-keyword">import</span> cn.dyf.entity.User;
+<span class="hljs-keyword">import</span> cn.dyf.service.UserService;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Service;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@description</span>: 用户类Service实现类</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@date</span>: 2019-12-11 23:09</span>
+<span class="hljs-comment">  */</span>
+
+<span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserService</span> </span>&#123;
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserMapper userMapper;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String username)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> userMapper.queryUserByName(username);
+    &#125;
+&#125;</code></pre>
+</li>
+<li><p>Dao和Mapper；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dyf.dao;
+<span class="hljs-keyword">import</span> cn.dyf.entity.User;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@description</span>: 用户类dao接口</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@date</span>: 2019-12-11 22:58</span>
+<span class="hljs-comment">  */</span>
+  
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserMapper</span> </span>&#123;
+    <span class="hljs-function">User <span class="hljs-title">queryUserByName</span><span class="hljs-params">(String username)</span></span>;
+&#125;
+
+<span class="hljs-comment">//--------------------------------------------------</span>
+
+&lt;!DOCTYPE mapper
+        PUBLIC <span class="hljs-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="hljs-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;
+&lt;mapper namespace=<span class="hljs-string">"cn.dyf.dao.UserMapper"</span>&gt;
+    &lt;select id=<span class="hljs-string">"queryUserByName"</span> resultType=<span class="hljs-string">"User"</span> parameterType=<span class="hljs-string">"java.lang.String"</span>&gt;
+        SELECT username，password
+        FROM tb_user
+        WHERE username = #&#123;username&#125;
+    &lt;/select&gt;
+&lt;/mapper&gt;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>编写Controller以及自定义Realm；</p>
+<ul>
+<li><p>Controller；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dyf.controller;
+
+<span class="hljs-keyword">import</span> cn.dyf.entity.User;
+<span class="hljs-keyword">import</span> cn.dyf.service.UserService;
+<span class="hljs-keyword">import</span> org.apache.shiro.SecurityUtils;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.AuthenticationException;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.UsernamePasswordToken;
+<span class="hljs-keyword">import</span> org.apache.shiro.session.Session;
+<span class="hljs-keyword">import</span> org.apache.shiro.subject.Subject;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.ui.Model;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;
+<span class="hljs-keyword">import</span> javax.annotation.Resource;
+<span class="hljs-keyword">import</span> java.lang.reflect.Method;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@description</span>: 用户类的Controller</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@date</span>: 2019-12-12 21:25</span>
+<span class="hljs-comment">  */</span>
+
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/user"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
+
+    <span class="hljs-meta">@Resource</span>
+    <span class="hljs-keyword">private</span> UserService userService;
+    
+    <span class="hljs-meta">@RequestMapping</span>(value = <span class="hljs-string">"/login"</span>, method = RequestMethod.POST)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">login</span><span class="hljs-params">(User user, Model model)</span></span>&#123;
+    
+        <span class="hljs-comment">//1.获取当前登录的用户</span>
+        Subject subject = SecurityUtils.getSubject();
+        <span class="hljs-comment">//2.创建Token令牌</span>
+        UsernamePasswordToken token = <span class="hljs-keyword">new</span> UsernamePasswordToken(
+              user.getUsername(),user.getPassword());
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">//3.验证登录</span>
+            subject.login(token);
+            <span class="hljs-comment">//4.登录成功</span>
+            <span class="hljs-comment">//输出</span>
+            System.out.println(<span class="hljs-string">"恭喜你，成功登录"</span>);
+            <span class="hljs-comment">//5.获取Session，并存入当前登录的用户</span>
+            Session session = subject.getSession();
+            session.setAttribute(<span class="hljs-string">"currentUser"</span>,user);
+            <span class="hljs-comment">//6.跳转页面</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"success"</span>;
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+            <span class="hljs-comment">//输出</span>
+            System.out.println(<span class="hljs-string">"登录失败了~~"</span>);
+            model.addAttribute(<span class="hljs-string">"errorMessage"</span>,<span class="hljs-string">"用户名或密码错误，请重新输入！"</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"login"</span>;
+        &#125;
+    &#125;
+&#125;</code></pre>
+</li>
+<li><p>自定义Realm；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.dyf.realm;
+
+<span class="hljs-keyword">import</span> cn.dyf.entity.User;
+<span class="hljs-keyword">import</span> cn.dyf.service.UserService;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.AuthenticationException;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.AuthenticationInfo;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.AuthenticationToken;
+<span class="hljs-keyword">import</span> org.apache.shiro.authc.SimpleAuthenticationInfo;
+<span class="hljs-keyword">import</span> org.apache.shiro.authz.AuthorizationInfo;
+<span class="hljs-keyword">import</span> org.apache.shiro.realm.AuthorizingRealm;
+<span class="hljs-keyword">import</span> org.apache.shiro.subject.PrincipalCollection;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> javax.annotation.Resource;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@description</span>: 自定义的Realm</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">  * <span class="hljs-doctag">@date</span>: 2019-12-12 21:54</span>
+<span class="hljs-comment">  */</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRealm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AuthorizingRealm</span> </span>&#123;
+    
+    <span class="hljs-meta">@Resource</span>
+    <span class="hljs-keyword">private</span> UserService userService;
+    
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">      * 方法描述</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@description</span>: 这个方法的作用是授权，即为当前登录的用户授予权限以及角色</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@param</span>:</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@return</span>:</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@date</span>: 2019-12-12 22:03</span>
+<span class="hljs-comment">      */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> AuthorizationInfo <span class="hljs-title">doGetAuthorizationInfo</span><span class="hljs-params">(</span></span>
+<span class="hljs-function"><span class="hljs-params">               PrincipalCollection principalCollection)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    &#125;
+    
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">      * 方法描述</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@description</span>: 这个方法的作用是验证，即验证当前登录的用户</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@auther</span>: 带头大哥杰尼龟</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@param</span>:</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@return</span>:</span>
+<span class="hljs-comment">      * <span class="hljs-doctag">@date</span>: 2019-12-12 22::13</span>
+<span class="hljs-comment">      */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> AuthenticationInfo <span class="hljs-title">doGetAuthenticationInfo</span><span class="hljs-params">(</span></span>
+<span class="hljs-function"><span class="hljs-params">          AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+        User user = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">//在这里调用Service层的方法</span>
+            user = userService.findUserByName((String) token.getPrincipal());
+            <span class="hljs-comment">//如果user不为空，则说明数据库有该用户的信息</span>
+            <span class="hljs-keyword">if</span>(user != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-comment">//验证用户名及密码</span>
+                SimpleAuthenticationInfo sai = <span class="hljs-keyword">new</span> SimpleAuthenticationInfo(
+                    user.getUsername(),user.getPassword(),<span class="hljs-string">""</span>);
+                <span class="hljs-keyword">return</span> sai;
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        <span class="hljs-comment">//验证失败</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    &#125;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>自定义完成Realm之后，还需要在applicationContext.xml中配置这个自定义的Realm，以及进行一些其他配置；</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--配置Shiro与Spring的集成环境--&gt;</span>
+<span class="hljs-comment">&lt;!--1.配置自定义的Realm--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myRealm"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cn.dyf.realm.UserRealm"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--2.配置将myRealm注入到SecurityManager--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"securityManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.shiro.web.mgt.DefaultWebSecurityManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"realm"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myRealm"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--3.配置保证实现了Shiro内部lifecycle函数的bean执行--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"lifecycleBeanPostProcessor"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.shiro.spring.LifecycleBeanPostProcessor"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--4.开启Shiro注解支持--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">depends-on</span>=<span class="hljs-string">"lifecycleBeanPostProcessor"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"securityManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"securityManager"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--5.配置URL访问路径--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"shiroFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.shiro.spring.web.ShiroFilterFactoryBean"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--Shiro的核心安全接口，这个属性是必须的--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"securityManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"securityManager"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--配置身份验证失败，则跳转到登录页面--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"loginUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/login.jsp"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--配置权限验证失败，则跳转到指定页面--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"unauthorizedUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"unauthorized.jsp"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--Shiro连接约束配置，即过滤链的定义--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"filterChainDefinitions"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>
+            /user/login.action=anon
+            /admin/**=authc,roles[admin]
+            /student=roles[teacher]
+            /teacher=perms["user:create"]
+            <span class="hljs-comment">&lt;!--以下所有请求必须进行身份验证--&gt;</span>
+            /**=authc
+        <span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-6-Shiro验证流程的底层原理"><a href="#NO2-6-Shiro验证流程的底层原理" class="headerlink" title="NO2.6 Shiro验证流程的底层原理"></a>NO2.6 Shiro验证流程的底层原理</h3><ul>
+<li><p>Shiro的验证流程；</p>
+<p><img src="Shiro--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-s2.png" srcset="/img/loading.gif" alt="Image"></p>
+<ul>
+<li><p>第一步：用户登录，根据用户登录名密码生产Token；</p>
+<pre><code class="hljs java">UsernamePasswordToken token = <span class="hljs-keyword">new</span> UsernamePasswordToken(username, password);
+
+Subject subject = SecurityUtils.getSubject();
+
+subject.login(token);
+
+<span class="hljs-comment">//这里调用了代理subject的login方法，代码如下：</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">(AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+        clearRunAsIdentitiesInternal();
+        Subject subject = securityManager.login(<span class="hljs-keyword">this</span>, token);  <span class="hljs-comment">//可以看到这里，实际是调用securityManager的login方法</span>
+        PrincipalCollection principals;
+        String host = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">if</span> (subject <span class="hljs-keyword">instanceof</span> DelegatingSubject) &#123;
+            DelegatingSubject delegating = (DelegatingSubject) subject;
+            <span class="hljs-comment">//we have to do this in case there are assumed identities - we don't want to lose the 'real' principals:</span>
+            principals = delegating.principals;
+            host = delegating.host;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            principals = subject.getPrincipals();
+        &#125;
+        <span class="hljs-keyword">if</span> (principals == <span class="hljs-keyword">null</span> || principals.isEmpty()) &#123;
+            String msg = <span class="hljs-string">"Principals returned from securityManager.login( token ) returned a null or "</span> +
+                    <span class="hljs-string">"empty value.  This value must be non null and populated with one or more elements."</span>;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(msg);
+        &#125;
+        <span class="hljs-keyword">this</span>.principals = principals;
+        <span class="hljs-keyword">this</span>.authenticated = <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (token <span class="hljs-keyword">instanceof</span> HostAuthenticationToken) &#123;
+            host = ((HostAuthenticationToken) token).getHost();
+        &#125;
+        <span class="hljs-keyword">if</span> (host != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">this</span>.host = host;
+        &#125;
+        Session session = subject.getSession(<span class="hljs-keyword">false</span>);
+        <span class="hljs-keyword">if</span> (session != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">this</span>.session = decorate(session);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">this</span>.session = <span class="hljs-keyword">null</span>;
+        &#125;
+    &#125;</code></pre>
+</li>
+<li><p>第二步：调用securityManager的login方法；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//这就是securityManager中的login方法</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> Subject <span class="hljs-title">login</span><span class="hljs-params">(Subject subject, AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+
+    AuthenticationInfo info;
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-comment">//主要调用了这个方法</span>
+        info = authenticate(token);
+    &#125; <span class="hljs-keyword">catch</span> (AuthenticationException ae) &#123;
+        <span class="hljs-keyword">try</span> &#123;
+            onFailedLogin(token, ae, subject);
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            <span class="hljs-keyword">if</span> (log.isInfoEnabled()) &#123;
+                log.info(<span class="hljs-string">"onFailedLogin method threw an "</span> +
+                  <span class="hljs-string">"exception.  Logging and propagating original AuthenticationException."</span>, e);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">throw</span> ae; <span class="hljs-comment">//propagate</span>
+    &#125;
+    Subject loggedIn = createSubject(token, info, subject);
+    onSuccessfulLogin(token, info, loggedIn);
+    <span class="hljs-keyword">return</span> loggedIn;
+&#125;</code></pre>
+</li>
+<li><p>第三步：调用securityManager的authenticate方法，该方法(authenticate方法)在其上级类 AuthenticatingSecurityManager中，代码如下：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> AuthenticationInfo <span class="hljs-title">authenticate</span><span class="hljs-params">(AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.authenticator.authenticate(token);
+    &#125;
+ 
+<span class="hljs-comment">//---------------------------------</span>
+
+<span class="hljs-comment">//实际调用了authenticator的authenticate方法，而AuthenticatingSecurityManager的无参构造函数中的ModularRealmAuthenticator类继承了AbstractAuthenticator类</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AuthenticatingSecurityManager</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">super</span>();
+        <span class="hljs-keyword">this</span>.authenticator = <span class="hljs-keyword">new</span> ModularRealmAuthenticator();
+    &#125;</code></pre>
+</li>
+<li><p>第四步：调用AbstractAuthenticator的authenticate方法；</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> AuthenticationInfo <span class="hljs-title">authenticate</span><span class="hljs-params">(AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+    <span class="hljs-keyword">if</span> (token == <span class="hljs-keyword">null</span>) &#123;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Method argumet (authentication token) cannot be null."</span>);
+    &#125;
+    log.trace(<span class="hljs-string">"Authentication attempt received for token [&#123;&#125;]"</span>, token);
+    AuthenticationInfo info;
+    <span class="hljs-keyword">try</span> &#123;
+        info = doAuthenticate(token);
+        <span class="hljs-keyword">if</span> (info == <span class="hljs-keyword">null</span>) &#123;
+            String msg = <span class="hljs-string">"No account information found for authentication token ["</span> + token + <span class="hljs-string">"] by this "</span> +
+                <span class="hljs-string">"Authenticator instance.  Please check that it is configured correctly."</span>;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> AuthenticationException(msg);
+        &#125;
+    &#125; <span class="hljs-keyword">catch</span> (Throwable t) &#123;
+        AuthenticationException ae = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">if</span> (t <span class="hljs-keyword">instanceof</span> AuthenticationException) &#123;
+            ae = (AuthenticationException) t;
+        &#125;
+        <span class="hljs-keyword">if</span> (ae == <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-comment">//Exception thrown was not an expected AuthenticationException.  Therefore it is probably a little more</span>
+            <span class="hljs-comment">//severe or unexpected.  So, wrap in an AuthenticationException, log to warn, and propagate:</span>
+            String msg = <span class="hljs-string">"Authentication failed for token submission ["</span> + token + <span class="hljs-string">"].  Possible unexpected "</span> +
+                <span class="hljs-string">"error? (Typical or expected login exceptions should extend from AuthenticationException)."</span>;
+            ae = <span class="hljs-keyword">new</span> AuthenticationException(msg, t);
+        &#125;
+        <span class="hljs-keyword">try</span> &#123;
+            notifyFailure(token, ae);
+        &#125; <span class="hljs-keyword">catch</span> (Throwable t2) &#123;
+            <span class="hljs-keyword">if</span> (log.isWarnEnabled()) &#123;
+                String msg = <span class="hljs-string">"Unable to send notification for failed authentication attempt - listener error?.  "</span> +
+                    <span class="hljs-string">"Please check your AuthenticationListener implementation(s).  Logging sending exception "</span> +
+                    <span class="hljs-string">"and propagating original AuthenticationException instead..."</span>;
+                log.warn(msg, t2);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">throw</span> ae;
+    &#125;
+    log.debug(<span class="hljs-string">"Authentication successful for token [&#123;&#125;].  Returned account [&#123;&#125;]"</span>, token, info);
+    notifySuccess(token, info);
+    <span class="hljs-keyword">return</span> info;
+&#125;
+看<span class="hljs-keyword">try</span>语句中的 doAuthenticate（）方法 则是在其子类ModularRealmAuthenticator中实现，所以</code></pre>
+</li>
+<li><p>第五步：调用ModularRealmAuthenticator的doAuthenticate方法；</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">protected</span> AuthenticationInfo <span class="hljs-title">doAuthenticate</span><span class="hljs-params">(AuthenticationToken authenticationToken)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+
+    assertRealmsConfigured();
+    Collection&lt;Realm&gt; realms = getRealms();
+    <span class="hljs-keyword">if</span> (realms.size() == <span class="hljs-number">1</span>) &#123;
+
+        <span class="hljs-keyword">return</span> doSingleRealmAuthentication(realms.iterator().next(), authenticationToken);
+
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">return</span> doMultiRealmAuthentication(realms, authenticationToken);
+    &#125;
+&#125;
+
+第二行获取realms，但我们记得只配置过realm,realms是什么时候赋值的呢，其实很简单  spring对bean属性的赋值是通过反射 实际调用的是set方法，即我们配置了
+
+    一个property 为realm的属性  对属性注入的时候调用的setRealm方法
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setRealm</span><span class="hljs-params">(Realm realm)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (realm == <span class="hljs-keyword">null</span>) &#123;
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Realm argument cannot be null"</span>);
+
+    &#125;
+    Collection&lt;Realm&gt; realms = <span class="hljs-keyword">new</span> ArrayList&lt;Realm&gt;(<span class="hljs-number">1</span>);
+    realms.add(realm);
+    setRealms(realms);
+&#125;
+所以这里我们的realms实际就是配置的realm，当然前提是我们只配置了单个</code></pre>
+</li>
+<li><p>第六步：调用ModularRealmAuthenticator的doSingleRealmAuthentication方法</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">protected</span> AuthenticationInfo <span class="hljs-title">doSingleRealmAuthentication</span><span class="hljs-params">(Realm realm, AuthenticationToken token)</span> </span>&#123;
+
+    <span class="hljs-keyword">if</span> (!realm.supports(token)) &#123;
+
+        String msg = <span class="hljs-string">"Realm ["</span> + realm + <span class="hljs-string">"] does not support authentication token ["</span> +
+
+            token + <span class="hljs-string">"].  Please ensure that the appropriate Realm implementation is "</span> +
+
+            <span class="hljs-string">"configured correctly or that the realm accepts AuthenticationTokens of this type."</span>;
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedTokenException(msg);
+    &#125;
+    AuthenticationInfo info = realm.getAuthenticationInfo(token);
+    <span class="hljs-keyword">if</span> (info == <span class="hljs-keyword">null</span>) &#123;
+
+        String msg = <span class="hljs-string">"Realm ["</span> + realm + <span class="hljs-string">"] was unable to find account data for the "</span> +
+
+            <span class="hljs-string">"submitted AuthenticationToken ["</span> + token + <span class="hljs-string">"]."</span>;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnknownAccountException(msg);
+    &#125;
+    <span class="hljs-keyword">return</span> info;
+&#125;
+其中调用了realm自身的getAuthenticationInfo方法</code></pre>
+</li>
+<li><p>第七步：调用AuthenticatingRealm的getAuthenticationInfo方法</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> AuthenticationInfo <span class="hljs-title">getAuthenticationInfo</span><span class="hljs-params">(AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+
+    AuthenticationInfo info = getCachedAuthenticationInfo(token);
+    <span class="hljs-keyword">if</span> (info == <span class="hljs-keyword">null</span>) &#123;
+        <span class="hljs-comment">//otherwise not cached, perform the lookup:</span>
+        info = doGetAuthenticationInfo(token);
+
+        log.debug(<span class="hljs-string">"Looked up AuthenticationInfo [&#123;&#125;] from doGetAuthenticationInfo"</span>, info);
+
+        <span class="hljs-keyword">if</span> (token != <span class="hljs-keyword">null</span> &amp;&amp; info != <span class="hljs-keyword">null</span>) &#123;
+            cacheAuthenticationInfoIfPossible(token, info);
+        &#125;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+
+        log.debug(<span class="hljs-string">"Using cached authentication info [&#123;&#125;] to perform credentials matching."</span>, info);
+
+    &#125;
+    
+    <span class="hljs-keyword">if</span> (info != <span class="hljs-keyword">null</span>) &#123;
+        assertCredentialsMatch(token, info);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+
+        log.debug(<span class="hljs-string">"No AuthenticationInfo found for submitted AuthenticationToken [&#123;&#125;].  Returning null."</span>, token);
+
+    &#125;
+    <span class="hljs-keyword">return</span> info;
+&#125;
+第一行代码，通过缓存获取AuthenticationInfo，说到这里正好看看缓存是怎么实现的，同样代码全在这，跟着走就行而我们的cacheManager哪来的呢，我们发现在setRealm方法中调用了setRealms
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setRealms</span><span class="hljs-params">(Collection&lt;Realm&gt; realms)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (realms == <span class="hljs-keyword">null</span>) &#123;
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Realms collection argument cannot be null."</span>);
+
+    &#125;
+    <span class="hljs-keyword">if</span> (realms.isEmpty()) &#123;
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Realms collection argument cannot be empty."</span>);
+
+    &#125;
+    <span class="hljs-keyword">this</span>.realms = realms;
+    afterRealmsSet();
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterRealmsSet</span><span class="hljs-params">()</span> </span>&#123;
+    applyCacheManagerToRealms();
+    applyEventBusToRealms();
+&#125;
+
+可以看到在设置完realms以后调用了一个后续处理方法，在afterRealmsSet中 有个调用 applyCacheManagerToRealms方法 ，字面意思也是很好理解 应用缓存管理器到realms中，而这种方法代码为：
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applyCacheManagerToRealms</span><span class="hljs-params">()</span> </span>&#123;
+    CacheManager cacheManager = getCacheManager();
+    Collection&lt;Realm&gt; realms = getRealms();
+    <span class="hljs-keyword">if</span> (cacheManager != <span class="hljs-keyword">null</span> &amp;&amp; realms != <span class="hljs-keyword">null</span> &amp;&amp; !realms.isEmpty()) &#123;
+        <span class="hljs-keyword">for</span> (Realm realm : realms) &#123;
+            <span class="hljs-keyword">if</span> (realm <span class="hljs-keyword">instanceof</span> CacheManagerAware) &#123;
+                ((CacheManagerAware) realm).setCacheManager(cacheManager);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+实际就是判断如果cacheManager不为空 就循环realms设置cacheManager
+（有点啰嗦，哈哈，自己当时就是这么想的）
+在上面getAuthenticationInfo方法中，我们刚才说过第一行是从缓存中取AuthenticationInfo，如果为空</code></pre>
+</li>
+<li><p>第八步：调用realm的doGetAuthenticationInfo方法</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">protected</span> AuthenticationInfo <span class="hljs-title">doGetAuthenticationInfo</span><span class="hljs-params">(AuthenticationToken token)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+
+    <span class="hljs-comment">// TODO Auto-generated method stub</span>
+    String userName = (String) token.getPrincipal();
+    
+    <span class="hljs-comment">//通过token获取用户信息,这里我们一般从数据库中查询</span>
+    SimpleAuthenticationInfo authenticationInfo = <span class="hljs-keyword">new</span> SimpleAuthenticationInfo(user, password, getName());
+
+    <span class="hljs-keyword">return</span> authenticationInfo;
+&#125;
+	返回AuthenticationInfo，接着下面代码
+    <span class="hljs-keyword">if</span> (token != <span class="hljs-keyword">null</span> &amp;&amp; info != <span class="hljs-keyword">null</span>) &#123;
+        cacheAuthenticationInfoIfPossible(token, info);
+    &#125;
+判断 如果token与获取到的AuthenticationInfo都不为空，缓存AuthenticationInfo信息
+    关于从缓存中查询AuthenticationInfo以及缓存AuthenticationInfo信息的方法 这里就不作分析了，可以看做对一个map的操作吧
+    当然到这里还没完，同样在上面方法中，
+    <span class="hljs-keyword">if</span> (info != <span class="hljs-keyword">null</span>) &#123;
+        assertCredentialsMatch(token, info);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+
+        log.debug(<span class="hljs-string">"No AuthenticationInfo found for submitted AuthenticationToken [&#123;&#125;].  Returning null."</span>, token);
+
+    &#125;
+如果AuthenticationInfo不为空 即通过登录用户查询到了对应的信息</code></pre>
+</li>
+<li><p>第九步：调用assertCredentialsMatch方法</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">assertCredentialsMatch</span><span class="hljs-params">(AuthenticationToken token, AuthenticationInfo info)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>&#123;
+
+    CredentialsMatcher cm = getCredentialsMatcher();
+    <span class="hljs-keyword">if</span> (cm != <span class="hljs-keyword">null</span>) &#123;
+        <span class="hljs-keyword">if</span> (!cm.doCredentialsMatch(token, info)) &#123;
+            <span class="hljs-comment">//not successful - throw an exception to indicate this:</span>
+
+            String msg = <span class="hljs-string">"Submitted credentials for token ["</span> + token + <span class="hljs-string">"] did not match the expected credentials."</span>;
+
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IncorrectCredentialsException(msg);
+        &#125;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> AuthenticationException(<span class="hljs-string">"A CredentialsMatcher must be configured in order to verify "</span> +
+
+                                          <span class="hljs-string">"credentials during authentication.  If you do not wish for credentials to be examined, you "</span> +
+
+                                          "can configure an " + AllowAllCredentialsMatcher.class.getName() + " instance.");
+
+    &#125;
+&#125;
+第一行获取CredentialsMatcher，如果不为空</code></pre>
+</li>
+<li><p>第十步：调用CredentialsMatcher的doCredentialsMatch方法，当然CredentialsMatcher我们可以自定义了；</p>
+</li>
+<li><p>第十一步：上面步骤都通过以后回到DefualtSecurityManager的login方法中；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//创建Subject</span>
+Subject loggedIn = createSubject(token, info, subject);
+
+<span class="hljs-function"><span class="hljs-keyword">protected</span> Subject <span class="hljs-title">createSubject</span><span class="hljs-params">(AuthenticationToken token, AuthenticationInfo info, Subject existing)</span> </span>&#123;
+    SubjectContext context = createSubjectContext();
+    context.setAuthenticated(<span class="hljs-keyword">true</span>);
+    context.setAuthenticationToken(token);
+    context.setAuthenticationInfo(info);
+    <span class="hljs-keyword">if</span> (existing != <span class="hljs-keyword">null</span>) &#123;
+        context.setSubject(existing);
+    &#125;
+    <span class="hljs-keyword">return</span> createSubject(context);
+&#125;
+接着就是通过SubjectFactory生成subject，这里就不说了，就是从我们查询把我们查询到的用户身份信息关联到对应的subject中
+整个过程大致就是这样了，可能有遗漏，后续再慢慢补充咯</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/">5.다른 과정</a>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/04-%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/">04.安全框架</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/shiro/">shiro</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/">安全框架</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/11/Linux--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01.Linux--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/10/Oracle--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">03.Oracle--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "01.Shiro--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

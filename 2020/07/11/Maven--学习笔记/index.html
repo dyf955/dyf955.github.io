@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>01.Maven--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-11 17:59">
+      2020年7月11日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Maven–学习笔记-包含Maven视频"><a href="#Maven–学习笔记-包含Maven视频" class="headerlink" title="Maven–学习笔记(包含Maven视频)"></a>Maven–学习笔记(包含Maven视频)</h1><h2 id="Lesson1-Maven概述"><a href="#Lesson1-Maven概述" class="headerlink" title="Lesson1 Maven概述"></a>Lesson1 Maven概述</h2><h3 id="NO1-1-Maven简介"><a href="#NO1-1-Maven简介" class="headerlink" title="NO1.1 Maven简介"></a>NO1.1 Maven简介</h3><p>Java程序员常在IDEA中使用Maven来创建工程。</p>
+<ul>
+<li>Maven：<ul>
+<li>定义：Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。Maven是一个跨平台的项目管理工具，是Apache组织中的一个开源项目；Maven主要服务于基于Java平台的项目构建、依赖管理和项目信息管理；</li>
+<li>其他项目构建工具：<ul>
+<li>Make(Make由一个名为Makefile的脚本文件驱动，该文件使用Make自己定义的语法格式)；</li>
+<li>Ant(即Another Neat Tool，另一个整洁的工具，它最早用来构建Tomcat，可以看成是Java版本的Make)；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-2-Maven的安装"><a href="#NO1-2-Maven的安装" class="headerlink" title="NO1.2 Maven的安装"></a>NO1.2 Maven的安装</h3><p>Maven的安装比较简单。</p>
+<ul>
+<li>基本步骤：<ul>
+<li>安装JDK1.8以上，并在环境变量里配置好Java，即安装Java，配置好JAVA_HOME；</li>
+<li>下载Maven，即下载apache-maven-3.x-bin.zip文件；</li>
+<li>解压Maven到本地自定义目录中，在环境变量中，配置一个<code>M2_HOME</code>或<code>MAVEN_HOME</code>变量(变量名二选一即可)，和配置JAVA_HOME步骤差不多；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson2-Maven基础"><a href="#Lesson2-Maven基础" class="headerlink" title="Lesson2 Maven基础"></a>Lesson2 Maven基础</h2><h3 id="NO2-1-Maven的中央仓库配置和本地仓库配置"><a href="#NO2-1-Maven的中央仓库配置和本地仓库配置" class="headerlink" title="NO2.1 Maven的中央仓库配置和本地仓库配置"></a>NO2.1 Maven的中央仓库配置和本地仓库配置</h3><p>要使用Maven，首先要配置好中央仓库和本地仓库。</p>
+<ul>
+<li><p>配置maven的中央仓库。</p>
+<ul>
+<li><p>介绍：中央仓库是一个集合了框架、插件的JAR包的仓库，以供开发者下载，简单的将，就是一个远程的JAR包仓库，就像超市一样，我们要什么样的JAR包，直接从这个中央仓库下载就行了。</p>
+</li>
+<li><p>基本步骤：</p>
+<ul>
+<li><p>当构建一个Maven项目时，首先检查pom.xml文件以确定依赖的JAR包的下载位置。也就是说，先检查pom.xml文件，确定要下载哪些JAR包，然后确定从哪里下载，执行顺序如下：</p>
+<ul>
+<li>从本地仓库中查找并获得JAR包，如果没有，就执行下面一步；</li>
+<li>上面没有找到的JAR包，会从Maven默认的中央仓库(<code>http://repo1.maven.org/maven2/</code>)中查找并获得所需的JAR包，如果没有，就执行下面一步；</li>
+<li>如果在pom.xml文件中定义了自定义的远程仓库，那么也会在自己制定的这个仓库中进行查找并获得所需的JAR包，如果都没有找到，那么Maven就会抛出异常。</li>
+</ul>
+</li>
+<li><p>我们一般不会使用默认的Maven远程中央仓库，因为那个默认的中央仓库服务器是在国外，网速特别慢，不利于项目的构建，所以我们都很修改默认的中央仓库，即将中央仓库的镜像换成阿里云的。找到Maven的安装目录，找到安装目录中的conf文件夹，点击进入，找到settings.xml配置文件，这个就是Maven的配置文件了，用Notepad++打开该文件，找到<code>&lt;mirror&gt;</code>标签，并添加下面内容：</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>配置maven的本地仓库。</p>
+<ul>
+<li><p>介绍：本地仓库，即从中央仓库下载的JAR包，会统一放到本地仓库中，所以需要我们配置本地仓库；</p>
+</li>
+<li><p>基本步骤：</p>
+<ul>
+<li><p>默认的本地仓库：如果不配置本地仓库，会使用默认的本地仓库，地址为：<code>C://Users//Administrator//.m2//repository</code>，不建议使用默认的；</p>
+</li>
+<li><p>自定义本地仓库(推荐)：打开Maven的安装目录，找到conf目录下的settings.xml文件，添加一个<code>&lt;localRepository&gt;</code>标签即可(如果已经有该标签，直接修改值即可)。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>自定义的本地仓库安装目录<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span>  
+
+如：
+<span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>E:xxx/myrepository<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span>
+
+拓展：项目的依赖获取顺序：本地仓库 &gt; 远程仓库(其实就是公司自己搭建的私服所使用的本地仓库) &gt; 远程中央仓库；</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-2-Maven项目的创建"><a href="#NO2-2-Maven项目的创建" class="headerlink" title="NO2.2 Maven项目的创建"></a>NO2.2 Maven项目的创建</h3><p>Maven创建项目能够提高项目的创建效率。</p>
+<ul>
+<li><p>Maven项目的创建：</p>
+<ul>
+<li><p>使用命令行创建Maven项目：使用命令行创建目录、打包项目，该方式不常用于Windows，但是常用于LUNIX等系统；两种方式：</p>
+<ul>
+<li><p>方式一：在指定目录文件夹路径下，命令行输入指令：<code>mvn archetype:generate</code>，按回车键后，根据提示选择archetype类型进而创建项目，最后确认创建项目即可；如果是第一次使用，需要下载一些插件，稍等几分钟即可；</p>
+</li>
+<li><p>方式二(Linux中推荐)：在命令行输入的命令中直接指定参数：</p>
+<pre><code class="hljs verilog">mvn archetype:<span class="hljs-keyword">generate</span> -DgroupId=cn<span class="hljs-variable">.dyf</span><span class="hljs-variable">.springMVC</span> 
+-DartifactId=springMVC -DarchetypeArtifactId=maven-archetyp
+
+<span class="hljs-comment">//使用命令行打包项目：mvn package</span>
+
+<span class="hljs-comment">//将Maven创建的项目，转换成能够在IDEA上打开的样式：mvn idea:idea</span>
+
+<span class="hljs-comment">//将普通的项目转为Maven项目：在项目上点击右键，点击Add Frameworks Support(项目支持的意思)，勾选Maven即可</span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>使用IDEA创建Maven项目：该方式常用于Windows中。基本步骤：</p>
+<ul>
+<li><p>点击Create New Project，也就是创建新的项目；</p>
+<p><img src="./Image-m1.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>选择Maven项目，再选择Create from archetype(选择指定模板创建项目)，最后根据自身情况选择maven-archetype-webapp或者maven-archetype-quickstart即可(这两个比较常用)；</p>
+<p><img src="./Image-m2.png" srcset="/img/loading.gif" alt="Image"></p>
+<ul>
+<li><p>maven-archetype-quickstart模型创建出来的文件结构如下；</p>
+<p><img src="./Image-m3.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>maven-archetype-webapp模型创建出来的文件结构如下；</p>
+<p><img src="./Image-m4.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>maven提供的41中骨架原型；</p>
+<p><img src="./Image-m5.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m6.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>设置groupid(项目组名，也是包名)和artifactid(项目名)；</p>
+<p><img src="./Image-m7.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>选择maven版本、settings.xml文件、以及本地仓库；</p>
+<p><img src="./Image-m8.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>检查项目名称是否需要重新修改，确认项目路径，最后点击finsh，完成项目创建；</p>
+<p><img src="./Image-m9.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="NO2-3-IDEA中的Tomcat配置和Maven项目启动"><a href="#NO2-3-IDEA中的Tomcat配置和Maven项目启动" class="headerlink" title="NO2.3 IDEA中的Tomcat配置和Maven项目启动"></a>NO2.3 IDEA中的Tomcat配置和Maven项目启动</h3><p>当配置好Maven并编写完程序后，我们常常会想要启动Tomcat来跑一跑我们创建的Maven项目。</p>
+<ul>
+<li><p>IDEA中配置Tomcat，并使用Tomcat启动Maven创建的项目：</p>
+<ul>
+<li><p>IDEA的菜单栏点击Run，选择EDit Configurations；</p>
+<p><img src="./Image-m10.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>选择EDit Configurations选项后，出现对话框，点击“+”号，选择Tomcat Server(Tomcat服务器)，选择Local；</p>
+<p><img src="./Image-m11.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>最后点击Configure按钮，将本地安装的Tomcat路径设置进去即可；</p>
+<p><img src="./Image-m12.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>将项目部署到Tomcat上；</p>
+<ul>
+<li><p>方式一：</p>
+<p><img src="./Image-m13.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m14.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m15.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>方式二：</p>
+<p><img src="./Image-m16.png" srcset="/img/loading.gif" alt="image-20200711222535200"></p>
+</li>
+</ul>
+</li>
+<li><p>检查项目启动环境的，即查看Artifacts中是否已经放入了要启动的项目和所需的JAR包；</p>
+<p><img src="./Image-m17.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-4-Maven依赖"><a href="#NO2-4-Maven依赖" class="headerlink" title="NO2.4 Maven依赖"></a>NO2.4 Maven依赖</h3><p>我们来介绍一下Maven的一些常用概念。</p>
+<ul>
+<li><p>Maven依赖解析：</p>
+<ul>
+<li><p>三个向量：使用如下三个向量在Maven的仓库中确定一个唯一的Maven工程；</p>
+<ul>
+<li><code>groupid</code>：公司或组织的域名倒序 + 当前项目名称(因为一个公司不可能只有一个项目)。<code>如，cn.xxx.product</code>；</li>
+<li><code>artifactld</code>：当前项目的唯一名称；</li>
+<li><code>version</code>：当前项目的版本；</li>
+</ul>
+</li>
+<li><p>依赖范围：Maven依赖的默认范围是compile；也就是除了groupid、artifactld、version三个必要的要素之外，还有个scope(范围)，一般都不写，默认范围就是compile；</p>
+<p><img src="./Image-m18.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m19.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-5-Maven常用命令"><a href="#NO2-5-Maven常用命令" class="headerlink" title="NO2.5 Maven常用命令"></a>NO2.5 Maven常用命令</h3><p>Maven中有一些命令的使用频率很高。</p>
+<ul>
+<li>常用命令：<ul>
+<li><code>clean</code>：清理，即清除编译后的目录，也就是清除target目录下的所有文件(包括target文件夹本身)；</li>
+<li><code>compile</code>：编译，即只编译<code>src/main/java</code>目录中的代码，不编译<code>src/test/java</code>中的代码；</li>
+<li><code>test-compile</code>：编译<code>src/main/test</code>目录中的代码；</li>
+<li><code>test</code>：运行<code>src/main/test</code>目录中的代码；<strong><code>注意：测试代码的类要求以XxxTest结尾，方便Maven的插件进行寻找并进行测试代码。</code></strong></li>
+<li><code>package</code>：将项目打包，Java项目打包成JAR包，Web项目打包成WAR包；</li>
+<li><code>install</code>：发布项目到本地仓库，用在JAR包上，打包好的JAR包就可以被其他项目所使用。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-6-Maven命令的生命周期"><a href="#NO2-6-Maven命令的生命周期" class="headerlink" title="NO2.6 Maven命令的生命周期"></a>NO2.6 Maven命令的生命周期</h3><p>  Maven命令的生命周期是什么呢？</p>
+<ul>
+<li>Maven命令的生命周期：<ul>
+<li>定义：Maven命令的生命周期(life-cycle)是由阶段(Phase)组成的，我们敲入的命令无法直接触摸到某生命周期，因为这不是我们控制的，是由Maven自身控制的，我们只能摸到某个生命周期的某个阶段(Phase)；如，最常见的命令 mvn clean，它其实要Maven做的不是执行Clean生命周期(你摸不到Clean生命周期)，而是执行Clean生命周期的clean阶段，因为Clean 生命周期有3种阶段(pre-clean/clean/post-clean)，而Maven约定为，执行某个阶段时，一定会执行该阶段前面的所有阶段；简单的说就是，人工键入的命令总是指向某生命周期的某个阶段，Maven引擎根据你指向的阶段去跑完阶段所在的生命周期的(某Life-Cycle)该阶段之前的所有阶段；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Maven拥有三套独立的生命周期：</p>
+<ul>
+<li><p><code>Clean生命周期</code>：该生命周期的目的是清理项目；</p>
+<ul>
+<li><code>pre-clean</code>：执行清理前需要完成的工作；</li>
+<li><code>clean</code>：清理上一次构建过程中生成的文件，比如编译后的class文件等；</li>
+<li><code>post-clean</code>：执行清理后需要完成的工作。</li>
+</ul>
+</li>
+<li><p><code>Default生命周期</code>：该生命周期定义了构建项目时所需要的执行步骤，它是所有生命周期中最核心部分；</p>
+<p><img src="./Image-m20.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p><code>Site生命周期</code>：该生命周期的目的是建立和发布项目站点，Maven可以基于pom所描述的信息自动生成项目的站点，同时还可以根据需要生成相关的报告文档集成在站点中，方便团队交流和发布项目信息；</p>
+<ul>
+<li><code>pre-site</code>：执行生成站点前的准备工作；</li>
+<li><code>site</code>：生成站点文档；</li>
+<li><code>post-site</code>：执行生成站点后需要收尾的工作；</li>
+<li><code>site-deploy</code>：将生成的站点发布到服务器上。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-7-Maven中父项目与子项目"><a href="#NO2-7-Maven中父项目与子项目" class="headerlink" title="NO2.7 Maven中父项目与子项目"></a>NO2.7 Maven中父项目与子项目</h3><p>有时候，我们需要在父项目中创建子项目，分布式项目中最常用这种方式。</p>
+<ul>
+<li><p>创建父项目与子项目，只需要在基于Maven创建了父项目(package那一栏选择pom)后，创建Module子项目即可；基本步骤：</p>
+<p><img src="./Image-m21.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m22.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m23.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m24.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m25.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m26.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m27.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-m28.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<h3 id="NO2-8-Maven依赖的传递性"><a href="#NO2-8-Maven依赖的传递性" class="headerlink" title="NO2.8 Maven依赖的传递性"></a>NO2.8 Maven依赖的传递性</h3><p>依赖传递，简单讲就是引入的JAR又依赖于别的JAR包。</p>
+<ul>
+<li><p>依赖传递性：</p>
+<ul>
+<li><p>定义：即在项目往往需要引入多个依赖， 而引入的依赖又会引入其他的依赖；如，项目中引入了spring-core依赖，而spring-core又依赖commons-logging；因为项目直接引入了spring-core依赖，则spring-core为项目的第一直接依赖，而因为spring-core引入了commons-logging依赖， 则commons-logging为项目的一个传递性依赖；假设A(项目)依赖B，B依赖C(1.1版本)，B是A的直接依赖，C就是A的传递依赖，最后导入依赖D，D依赖C(1.2版本)，这时会产生依赖冲突；</p>
+</li>
+<li><p>当传递性依赖产生版本冲突时，Maven有几种解决方式：</p>
+<ul>
+<li><p>Maven自身调解原则：</p>
+<ul>
+<li>第一声明者优先原则：即谁先定义的就使用谁的传递依赖，也就是说在pom.xml文件中，谁放在前面就用谁的；</li>
+<li>路径近者优先原则：即直接依赖高于传递依赖，也就是说使用的是直接依赖中所依赖的传递性依赖的版本，即为假设中的C(1.1版本)；</li>
+</ul>
+</li>
+<li><p>排除依赖：即手动去除冲突依赖中的一个即可：</p>
+<ul>
+<li><p>pom.xml文件中的配置；</p>
+<p><img src="./Image-m29.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>版本锁定(推荐使用)：即对依赖的版本进行统一；</p>
+<pre><code class="hljs xml">//可以进行属性设置，所有jar包的依赖版本都直接引用相应的属性，便于以后升级（更改）版本    
+
+<span class="hljs-comment">&lt;!-- 属性 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">spring.version</span>&gt;</span>4.2.4.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">spring.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hibernate.version</span>&gt;</span>5.0.7.Final<span class="hljs-tag">&lt;/<span class="hljs-name">hibernate.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">struts.version</span>&gt;</span>2.3.24<span class="hljs-tag">&lt;/<span class="hljs-name">struts.version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- dependencyManagement标签的作用是指定依赖的版本，并不会导入依赖，锁定版本，struts2-2.3.24、spring4.2.4、hibernate5.0.7 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-context<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.hibernate<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hibernate-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;hibernate.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.struts<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>struts2-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;struts.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 这里才是导入依赖 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-context<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.struts<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>struts2-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.hibernate<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hibernate-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre>
+
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="NO2-9-Maven的私服"><a href="#NO2-9-Maven的私服" class="headerlink" title="NO2.9 Maven的私服"></a>NO2.9 Maven的私服</h3><p>有些比较大型的公司会用于自己的Maven私服。</p>
+<ul>
+<li><p>远程仓库(私服)Nexus里使用Maven；</p>
+<ul>
+<li><p>定义：Nexus是一种私服，类似的还有chiva、Artifactory，主要用于Maven远程仓库，大型公司里项目中使用会多一些；</p>
+</li>
+<li><p>基本步骤：</p>
+<ul>
+<li><p>下载Nexus并解压；</p>
+<p><img src="./Image-m30.png" srcset="/img/loading.gif" alt="image-20200712003215013"></p>
+</li>
+<li><p>使用安装命令安装Nexus(安装目录不要有中文)，进入解压文件的bin目录下，基于管理员权限进入DOS命令行执行命令；</p>
+<p><img src="./Image-m31.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>配置nexus；</p>
+<p><img src="./Image-m32.png" srcset="/img/loading.gif" alt="image-20200712003350693"></p>
+</li>
+<li><p>在nexus的bin目录下使用命令行命令，启动服务；</p>
+<p><img src="./Image-m33.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>访问nexus私服；</p>
+<p><img src="./Image-m34.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Nexus中常用的Maven仓库类型；</p>
+<ul>
+<li><p>按照仓库名区分：</p>
+<ul>
+<li><p><code>Central</code>：中央仓库；</p>
+</li>
+<li><p><code>3rd party</code>：第三方仓库，比如手工上传的jar包就保存在这里；</p>
+</li>
+<li><p><code>Apache Snapshots</code>：apache 快照仓库；</p>
+</li>
+<li><p><code>Releases</code>：发行版本仓库；</p>
+</li>
+<li><p><code>Public Respositories</code>：仓库组，是上述所有仓库的聚合，对外提供统一的地址服务。</p>
+<p><img src="./Image-m35.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>按照仓库类型区分：</p>
+<ul>
+<li><code>group</code>：仓库组，用来合并多个hosted/proxy仓库。<code>如，Public Respositories</code>；</li>
+<li><code>hosted</code>：本地仓库，通常我们会部署自己的构件到这一类型的仓库。<code>如，公司的第二方库(即存放本公司开发的JAR包)，Releases，3rd party</code>；</li>
+<li><code>proxy</code>：代理仓库，它们被用来代理远程的公共仓库。<code>如，Maven中央仓库，Central，Apache Snapshots</code>；</li>
+</ul>
+</li>
+<li><p>各种类型仓库直接的关系；</p>
+<p><img src="./Image-m36.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>将JAR包上传到私服nexus：注意通过Maven的方式，即depoly；基本步骤：</p>
+<ul>
+<li><p>添加nexus的管理账号</p>
+<p><img src="./Image-m37.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><code>说明：需要注意的是，settings.xml中server元素下id的值必须与POM中repository或snapshotRepository下id的值完全一致；Maven在处理发布时会根据id查找用户名称和密码进行登录和文件的上传发布。</code></p>
+</li>
+<li><p>在需要上传的项目中的pom.xml文件中，配置要上传的私服的仓库(url地址在私服仓库的Repository Path中可以找到，引用就可以)；</p>
+<p><img src="./Image-m38.png" srcset="/img/loading.gif" alt="image-20200712004326740"></p>
+<p><code>说明：&lt;distributionManagement&gt; 中的 &lt;repository&gt; &amp;&amp; &lt;snapshotsrepository&gt;各自的含义，maven仓库分为两种release发布仓库(&lt;repository&gt;)和snapshot快照仓库(&lt;snapshotsrepository&gt;)；snapshot快照仓库用于保存开发过程中的不稳定版本，release正式仓库用来保存稳定的发行版本；定义一个组件/模块为快照版本：只需要在pom文件中的该模板的版本号后面加上 -SNAPSHOT就可以了，注意:必须是大写；maven会根据模块的版本号(pom文件中的&lt;version&gt;版本号&lt;/version&gt;)中是否带有-SNAPSHOT来判断这个是快照版本还是正式版本。</code></p>
+</li>
+<li><p>最后depoly到私服仓库即可；</p>
+<p><img src="./Image-m39.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>从私服nexus下载JAR包：</p>
+<ul>
+<li><p>在settings.xml中配置如下；</p>
+<p><img src="./Image-m40.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>激活模板，也就是告诉Maven从我所指定的仓库下载JAR包；</p>
+<p><img src="./Image-m41.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/">5.다른 과정</a>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/08-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/">08.项目管理框架</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Maven/">Maven</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/12/ZooKeeper--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01.ZooKeeper--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/11/Nginx--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">01.Nginx--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "01.Maven--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

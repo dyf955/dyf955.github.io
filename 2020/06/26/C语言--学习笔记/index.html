@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="o一行瑠璃o">
   <meta name="keywords" content="学习笔记,Java,C">
-  <title>C语言--学习笔记 - 知晓天空之蓝的人啊</title>
+  <title>01.C语言--学习笔记 - 知晓天空之蓝的人啊</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -171,6 +171,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -193,12 +201,6 @@
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2020年6月26日 晚上
-                
-              </p>
             
             <article class="markdown-body">
               <h1 id="C语言–学习笔记-包含C语言视频、C-Primer-Plus书籍"><a href="#C语言–学习笔记-包含C语言视频、C-Primer-Plus书籍" class="headerlink" title="C语言–学习笔记(包含C语言视频、C Primer Plus书籍)"></a>C语言–学习笔记(包含C语言视频、C Primer Plus书籍)</h1><h2 id="Lesson1-C语言概述"><a href="#Lesson1-C语言概述" class="headerlink" title="Lesson1 C语言概述"></a>Lesson1 C语言概述</h2><h3 id="NO1-1-C语言简介"><a href="#NO1-1-C语言简介" class="headerlink" title="NO1.1 C语言简介"></a>NO1.1 C语言简介</h3><p>1972年，贝尔实验室的丹尼斯·里奇(Dennis Ritch)和肯·汤普逊(Ken Thompson)在开发UNIX操作系统时设计了C语言，而C语言是在B语言的基础上进行设计的。</p>
@@ -302,7 +304,6 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<hr>
 <h2 id="Lesson2-C语言基础"><a href="#Lesson2-C语言基础" class="headerlink" title="Lesson2 C语言基础"></a>Lesson2 C语言基础</h2><h3 id="NO2-1-转义字符"><a href="#NO2-1-转义字符" class="headerlink" title="NO2.1 转义字符"></a>NO2.1 转义字符</h3><p>转义字符一般以“\”开头，目的是为了转义“\”后面跟的符号。</p>
 <ul>
 <li>常用转义字符：<ul>
@@ -1687,6 +1688,8 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 二、<span class="hljs-keyword">char</span> str2[<span class="hljs-number">3</span>] = &#123;<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>&#125;，该字符数组大小为<span class="hljs-number">3</span>，且只占用了两个空间，在以字符串转换说明(即以<span class="hljs-string">"%s"</span>)输出时，不会报错，因为有空间添加空字符<span class="hljs-string">'\0'</span>，所以能够正常输出。
 
+<span class="hljs-comment">//============================================================    </span>
+    
 拓展：全局数组和局部数组的初始化(这里以整型数组为例，即<span class="hljs-keyword">int</span> arr[])
 一、未初始化：
     <span class="hljs-number">1.</span>全局数组，被编译器初始化为<span class="hljs-number">0</span>；
@@ -1694,6 +1697,8 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 
 二、部分初始化：不论是全局数组还是局部数组，没有被初始化的部分，都会被初始化为<span class="hljs-number">0</span>。
 
+<span class="hljs-comment">//============================================================    </span>
+    
 拓展：“*”、指针变量、数组的使用
 一、<span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>]，<span class="hljs-keyword">int</span>*  ar = &amp;arr，那么，*(ar + <span class="hljs-number">2</span>)，表示arr数组的第三个元素的值；
 
@@ -1735,7 +1740,6 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 &#125;
 
 拓展：<span class="hljs-keyword">sizeof</span>
-
 一、<span class="hljs-keyword">sizeof</span>是C语言的一种单目操作符。<span class="hljs-keyword">sizeof</span>操作符以字节形式给出了其操作数的存储大小。<span class="hljs-keyword">sizeof</span>的返回值是<span class="hljs-keyword">size_t</span>，在<span class="hljs-number">64</span>位机器下，被定义为<span class="hljs-keyword">long</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>；
 
 二、用途：
@@ -1834,13 +1838,20 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 <p>&nbsp;</p>
 <h3 id="NO2-22-预处理命令"><a href="#NO2-22-预处理命令" class="headerlink" title="NO2.22 预处理命令"></a>NO2.22 预处理命令</h3><p>使用库函数之前，应该用#include引入对应的头文件。</p>
 <ul>
-<li>预处理命令：<ul>
-<li>定义：在编译之前对源文件进行简单加工的过程就称为预处理。C语言中的预处理命令主要以#号开头。预处理命令要放在所有函数之外，而且一般放在源文件前面。预处理命令由预处理程序完成；</li>
-<li>作用：使得程序便于阅读，修改、移植和调试，也有利于模块化程序的设计。C语言提供了许多预处理功能。如，宏定义、文件包含、条件编译等的。</li>
-<li>C语言常见的预处理命令：<ul>
-<li>#：空指令，无任何效果，可以用来注释；</li>
-<li>#include：包含一个源代码文件，即头文件。<code>如，#include&lt;stdio.h&gt;</code>；</li>
-<li>#define：宏定义命令，即用一个标识符来表示一个数值(不局限于整数，也可以是字符串、字符、表达式等等)，并对程序中所有同样的标识符做替换，这种替换称为宏替换；宏定义分为两种：<ul>
+<li><p>预处理命令：</p>
+<ul>
+<li><p>定义：在编译之前对源文件进行简单加工的过程就称为预处理。C语言中的预处理命令主要以#号开头。预处理命令要放在所有函数之外，而且一般放在源文件前面。预处理命令由预处理程序完成；</p>
+</li>
+<li><p>作用：使得程序便于阅读，修改、移植和调试，也有利于模块化程序的设计。C语言提供了许多预处理功能。如，宏定义、文件包含、条件编译等的。</p>
+</li>
+<li><p>C语言常见的预处理命令：</p>
+<ul>
+<li><p>#：空指令，无任何效果，可以用来注释；</p>
+</li>
+<li><p>#include：包含一个源代码文件，即头文件。<code>如，#include&lt;stdio.h&gt;</code>；</p>
+</li>
+<li><p>#define：宏定义命令，即用一个标识符来表示一个数值(不局限于整数，也可以是字符串、字符、表达式等等)，并对程序中所有同样的标识符做替换，这种替换称为宏替换；宏定义分为两种：</p>
+<ul>
 <li>无参宏定义：<ul>
 <li>基本语法格式：<code>#define 宏名 值</code>。<code>如，#define AGE 10，如果程序中还出现了AGE，那么都将会被替换成10</code>；</li>
 </ul>
@@ -1851,18 +1862,18 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
 </li>
 </ul>
 </li>
-<li>#undef：取消已定义的宏；</li>
-<li>#if：如果给定条件为真，则编译下面代码；</li>
-<li>#elif：如果#if条件不为真，那么当前条件就会为真，编译下面代码；</li>
-<li>#ifdef：如果宏已经定义，则编译下面代码；</li>
-<li>#ifndef：如果宏没有定义，则编译下面代码；</li>
-<li>#endif：结束#if…到…#elif条件编译快。</li>
-</ul>
+<li><p>#undef：取消已定义的宏；</p>
 </li>
-</ul>
+<li><p>#if：如果给定条件为真，则编译下面代码；</p>
 </li>
-</ul>
-<pre><code class="hljs c">拓展：宏定义和<span class="hljs-keyword">typedef</span>的区别
+<li><p>#elif：如果#if条件不为真，那么当前条件就会为真，编译下面代码；</p>
+</li>
+<li><p>#ifdef：如果宏已经定义，则编译下面代码；</p>
+</li>
+<li><p>#ifndef：如果宏没有定义，则编译下面代码；</p>
+</li>
+<li><p>#endif：结束#if…到…#elif条件编译快。</p>
+  <pre><code class="hljs c">拓展：宏定义和<span class="hljs-keyword">typedef</span>的区别
 一、宏定义只是简单的值替换，由预处理器进行处理；而<span class="hljs-keyword">typedef</span>则是给原有的数据类型起一个新的名字，基本语法格式为：<span class="hljs-keyword">typedef</span> 原数据类型 新的类型名，且<span class="hljs-keyword">typedef</span>是在由编译器在编译阶段才进行处理。如，<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> INT32，表示给<span class="hljs-keyword">int</span>类型起了一个新名字为INT32。
    
     
@@ -1887,6 +1898,14 @@ dec = <span class="hljs-number">100</span>; octal = <span class="hljs-number">01
     <span class="hljs-number">1.</span>由于宏替换是文本替换，即如果需替换的文本较长，则替换后会影响代码长度；
     <span class="hljs-number">2.</span>函数不会影响代码长度。故使用较频繁且代码量较小的功能，一般采用宏定义的形式，比采用函数形式更合适。</code></pre>
 
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3 id="NO2-23-VS2019的DEBUG调试"><a href="#NO2-23-VS2019的DEBUG调试" class="headerlink" title="NO2.23 VS2019的DEBUG调试"></a>NO2.23 VS2019的DEBUG调试</h3><p>debug模式，是我们常用来调试程序而使用的，简单讲就是查看程序是否有问题。</p>
@@ -2439,9 +2458,9 @@ struct 结构体名&#123;
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E4%B8%80%E8%AF%BE%E7%A8%8B/">大一课程</a>
+                      <a class="hover-with-bg" href="/categories/1-%EB%8C%80%ED%95%99%EA%B5%90-%EC%9D%BC-%ED%95%99%EB%85%84/">1.대학교 일 학년</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E4%B8%80%E8%AF%BE%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                      <a class="hover-with-bg" href="/categories/1-%EB%8C%80%ED%95%99%EA%B5%90-%EC%9D%BC-%ED%95%99%EB%85%84/02-C%E8%AF%AD%E8%A8%80/">02.C语言</a>
                     
                   </div>
                 
@@ -2466,7 +2485,7 @@ struct 结构体名&#123;
                     
                       <a href="/2020/06/28/Docker--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker--学习笔记</span>
+                        <span class="hidden-mobile">01.Docker--学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -2475,7 +2494,7 @@ struct 结构体名&#123;
                     
                     
                       <a href="/2020/06/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">计算机科学导论--学习笔记</span>
+                        <span class="hidden-mobile">01.计算机科学导论--学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -2485,29 +2504,6 @@ struct 结构体名&#123;
               
             </div>
 
-            
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
-  <script type="text/javascript">
-    function loadUtterances() {
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.defer = false
-      s.setAttribute('repo', 'dyf955/dyf955.github.io');
-      s.setAttribute('issue-term', 'pathname');
-      
-      s.setAttribute('theme', 'github-light');
-      s.setAttribute('crossorigin', 'anonymous');
-      var e = document.getElementsByTagName('script')[0];
-      e.parentNode.insertBefore(s, e);
-    }
-    createObserver(loadUtterances, 'comments')
-  </script>
-
-
-              </div>
             
           </div>
         </div>
@@ -2601,6 +2597,8 @@ struct 结构体名&#123;
 
 
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -2637,7 +2635,7 @@ struct 结构体名&#123;
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "C语言--学习笔记&nbsp;",
+        "01.C语言--学习笔记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

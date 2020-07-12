@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>03.Oracle--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-10 00:32">
+      2020年7月10日 凌晨
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      14.8k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Oracle–学习笔记-包含Oracle视频"><a href="#Oracle–学习笔记-包含Oracle视频" class="headerlink" title="Oracle–学习笔记(包含Oracle视频)"></a>Oracle–学习笔记(包含Oracle视频)</h1><h2 id="Lesson1-Oracle概述"><a href="#Lesson1-Oracle概述" class="headerlink" title="Lesson1 Oracle概述"></a>Lesson1 Oracle概述</h2><h3 id="NO1-1-Oracle简介"><a href="#NO1-1-Oracle简介" class="headerlink" title="NO1.1 Oracle简介"></a>NO1.1 Oracle简介</h3><p>Oracle数据库是相对于其他数据库来说比较难的一个。</p>
+<ul>
+<li>Oracle Database：<ul>
+<li>介绍：又名Oracle RDBMS，简称Oracle，是甲骨文公司推出的一款关系数据库管理系统。Oracle数据库系统是目前世界上流行的关系数据库管理系统。Oracle是一种高效率、可靠性好的、适应高吞吐量的数据库解决方案。</li>
+<li>Oracle的特点：<ul>
+<li>支持多用户、大事务量的事务处理；</li>
+<li>数据安全性和完整性控制；</li>
+<li>支持分布式数据处理；</li>
+<li>可移植性。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-2-Oracle服务端、客户端和PL-SQL-Developer的安装"><a href="#NO1-2-Oracle服务端、客户端和PL-SQL-Developer的安装" class="headerlink" title="NO1.2 Oracle服务端、客户端和PL/SQL Developer的安装"></a>NO1.2 Oracle服务端、客户端和PL/SQL Developer的安装</h3><p>Oracle的服务端和客户端、PL/SQL Developer的都要统一，我这里是三个软件都是64位的。</p>
+<ul>
+<li><p>安装包版本：</p>
+<ul>
+<li>64位Oracle 11g；</li>
+<li>64位Oracle 11g Client；</li>
+<li>64位PL/SQL Development 14。</li>
+</ul>
+</li>
+<li><p>Oracle服务端安装步骤中，需要注意几个地方：</p>
+<ul>
+<li><p>下载下来的64位Oracle 11g，有两个文件压缩包，必须同时进行解压，不要单独解压某一个压缩包(我就是单独解压1，没解压2，就直接安装了…粗心)；解压完成后，点击database文件夹，双击setup.exe安装程序即可；</p>
+<p>  <img src="./Image-o1.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>安装步骤如下列所示；</p>
+<p>  <img src="./Image-o3.png" srcset="/img/loading.gif" alt=""></p>
+<p>  <img src="./Image-o4.png" srcset="/img/loading.gif" alt=""></p>
+<p>  <img src="./Image-o5.png" srcset="/img/loading.gif" alt=""></p>
+<p>  <img src="./Image-o6.png" srcset="/img/loading.gif" alt=""></p>
+<p>  <img src="./Image-o7.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Oracle客户端安装步骤中，需要注意几个地方：</p>
+<ul>
+<li><p>两个需要注意的地方：</p>
+<p>  <img src="./Image-o8.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>Oracle客户端安装完成后，需要进行两个配置：</p>
+<ul>
+<li><p>首先，配置监听服务文件。监听服务文件在Oracle客户端安装目录下的network/admin/tnsnames.ora。以记事本的方式打开admin目录下的tnsnames.ora，删除全部内容，并按照下面的格式想里面写入网络服务名、传输协议、IP地址、端口和数据库名；<strong><code>注意：新安装的客户端如果没有配置过监听，admin目录下可能没有tnsnames.ora这个文件，可以手动创建文本文档，文件名改为tnsnames，后缀改为ora。</code></strong></p>
+  <pre><code class="hljs nix"><span class="hljs-attr">ORCL</span> =
+    (<span class="hljs-attr">DESCRIPTION</span> =
+        (<span class="hljs-attr">ADDRESS_LIST</span> =
+            (<span class="hljs-attr">ADDRESS</span> = (<span class="hljs-attr">PROTOCOL</span> = TCP)(<span class="hljs-attr">HOST</span> = <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>)(<span class="hljs-attr">PORT</span> = <span class="hljs-number">1521</span>))
+        )
+        (<span class="hljs-attr">CONNECT_DATA</span> =
+            (<span class="hljs-attr">SERVICE_NAME</span> = orcl)
+        )
+    )
+
+说明：配置简介
+一、ORCL是一个别名，你叫啥都行，你自己认识就行；
+
+二、HOST就是你要连接的Oracle服务端IP地址，如果是本机，就写<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>就行；
+
+三、PORT则是你要连接的Oracle服务端的端口号，一般都为<span class="hljs-number">1521</span>；
+
+四、SERVICE_NAME是填你在安装Oracle服务端时，给Oracle服务端取得实例名，简单讲就是告诉Oracle客户端要监听的是哪个Oracle数据库，虽然电脑上只有一个Oracle数据库，但是还是要这么做；
+
+五、其他的一般默认就可以了。</code></pre>
+</li>
+<li><p>然后，配置监听器。监听器文件在Oracle客户端安装目录下的network/admin/listener.ora。以记事本的方式打开admin目录下的listener.ora，删除全部内容，并按照下面的格式想里面写入网络服务名、传输协议、IP地址、端口和数据库名；<strong><code>注意：新安装的客户端如果没有配置过监听，admin目录下可能没有listener.ora这个文件，可以手动创建文本文档，文件名改为listener，后缀改为ora。</code></strong></p>
+  <pre><code class="hljs nix"><span class="hljs-attr">LISTENER</span> =
+  (<span class="hljs-attr">DESCRIPTION_LIST</span> =
+    (<span class="hljs-attr">DESCRIPTION</span> =
+      (<span class="hljs-attr">ADDRESS</span> = (<span class="hljs-attr">PROTOCOL</span> = TCP)(<span class="hljs-attr">HOST</span> = <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>)(<span class="hljs-attr">PORT</span> = <span class="hljs-number">1521</span>))
+      (<span class="hljs-attr">ADDRESS</span> = (<span class="hljs-attr">PROTOCOL</span> = IPC)(<span class="hljs-attr">KEY</span> = EXTPROC1521))
+    )
+  )
+
+<span class="hljs-attr">ADR_BASE_LISTENER</span> = E:\orcl_cli64
+
+说明：配置简介
+一、HOST，这个不用说了吧，和上面配置监听服务的配置差不多；
+
+二、PORT一般都为<span class="hljs-number">1521</span>；
+
+三、ADR_BASE_LISTENER，这个改成你客户端的最外层的安装目录就行。</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>PL/SQL Developer的安装，这个安装程序没有太多需要注意的，按照正常安装软件的步骤来即可，但是在安装完成后需要配置一下。</p>
+<ul>
+<li><p>打开PL/SQL，然后取消登录，随后会进入主界面，在上方的菜单栏中找到Preferences选项，出现如下对话框后，只要把图中圈出来的地方配置好即可。</p>
+<p>  <img src="./Image-o9.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Oracle的访问：<ul>
+<li>可以使用Bin目录下的sqlplus.exe访问Oracle，只不过是命令行形式的；</li>
+<li>使用sql_developer来访问Oracle，这个也是Oracle里自带的；</li>
+<li>使用PL/SQL Developer来访问Oracle。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson2-Oracle基础"><a href="#Lesson2-Oracle基础" class="headerlink" title="Lesson2 Oracle基础"></a>Lesson2 Oracle基础</h2><h3 id="NO2-1-Oracle基础概念"><a href="#NO2-1-Oracle基础概念" class="headerlink" title="NO2.1 Oracle基础概念"></a>NO2.1 Oracle基础概念</h3><p>Oracle和其他数据库不太一样，Oracle只有一个数据库(MySQL中就可以创建数据库，然后在指定数据库中创建表进行操作)，即全局只有一个数据库。</p>
+<ul>
+<li>基本概念：<ul>
+<li>数据库实例：官方概念为实例是由一些内存和进程组成，这看的我一脸懵逼。我自己的理解为：我们安装的Oracle数据库，是一个超大型的数据库，里面有许多小型数据库；所谓的数据库实例，其实就是一把钥匙，一把能够打开某一个小型数据库的钥匙，所以才有了“一个实例只能打开一个数据库”的限制。一个数据库可以有多个实例，这不就相当于，这个超大型的Oracle数据库能够造许多小型的个人类型的oracle数据库，只有安装并配置了Oracle数据库，才能得到一个实例，也就是一把钥匙，用钥匙才能打开数据库；</li>
+<li>表空间：用来存储物理表的这么一片空间，我又懵了….用名词解释名词….我的理解为：表空间是一个小型的数据库，然后在表空间里面可以放许多的表；数据库实例相当于一个MySQL，多个实例就等于是多个MySQL，而表空间就是在MySQL中建立了一个数据库的意思；</li>
+<li>数据文件：即dbf，数据文件是数据库的物理存储单位。表面上Oracle数据库的数据是存储在表空间中，而实际上是存储在一个或多个数据文件中。一个表空间可以由一个或者多个数据文件组成，而一个数据文件只能属于一个表空间。一旦数据文件被放入一个表空间过后，就不能删除这个数据文件，如果要删除某个数据文件，则必须删除其所属的表空间。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-2-创建表空间"><a href="#NO2-2-创建表空间" class="headerlink" title="NO2.2 创建表空间"></a>NO2.2 创建表空间</h3><p>创建表空间，其实就相当于我们在自己的MySQL中，创建一个数据库。</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">tablespace</span> 表空间名
+<span class="hljs-keyword">datafile</span> <span class="hljs-string">'数据文件名'</span>
+<span class="hljs-keyword">size</span> 表空间大小;
+
+说明：表空间的创建
+一、tablespace，后面跟的是要创建的表空间的名称；
+
+二、datafile，后面跟的是这个表空间的表数据要放到哪个数据文件中，文件路径要带盘符；
+
+三、size，表示这个数据文件要多大空间。
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLESPACE</span> myfirstts
+<span class="hljs-keyword">DATAFILE</span> <span class="hljs-string">'d:\myfirstts.dbf'</span>
+<span class="hljs-keyword">SIZE</span> <span class="hljs-number">100</span>m
+<span class="hljs-keyword">AUTOEXTEND</span> <span class="hljs-keyword">ON</span>   //这个表示，如果数据文件满了，也就是满<span class="hljs-number">100</span>m了，那么该文件就会自动扩容
+<span class="hljs-keyword">NEXT</span> <span class="hljs-number">10</span>m;  //表示每次自动扩容10m</code></pre>
+
+<p>  <img src="./Image-o10.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-3-创建用户与授予权限"><a href="#NO2-3-创建用户与授予权限" class="headerlink" title="NO2.3 创建用户与授予权限"></a>NO2.3 创建用户与授予权限</h3><p>用户是建立在表空间的基础上，而表则是建立在用户的基础上。也就是说用户是属于一个表空间的，而以用户的身份进入之后，在表空间下创建的表，都属于这个用户。</p>
+<ul>
+<li><p>创建用户：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> 用户名
+<span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> 密码
+<span class="hljs-keyword">default</span> <span class="hljs-keyword">tablespace</span> 表空间表;
+
+说明：用户的创建
+一、user，后面跟的是要创建的用户名称；
+
+二、identified by，后面跟的是为该用户的设置的密码；
+
+三、default tablespace，表示该用户属于哪个表空间。
+
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> dyf  //用户名
+<span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> dyf  //用户密码
+<span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">TABLESPACE</span> myfirstts;  //所属表空间</code></pre>
+
+<p>  <img src="./Image-o11.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>为新创建的用户赋予权限：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> DBA <span class="hljs-keyword">TO</span> 用户名;
+
+说明：表示给指定的用户授予DBA的权限，也就是数据库管理员的权限。
+
+如：
+<span class="hljs-keyword">GRANT</span> DBA <span class="hljs-keyword">TO</span> dyf;  //这里的DBA是数据管理员的意思，也就是赋予数据管理员用于的权限</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-4-表的创建、修改、删除"><a href="#NO2-4-表的创建、修改、删除" class="headerlink" title="NO2.4 表的创建、修改、删除"></a>NO2.4 表的创建、修改、删除</h3><p>首先，我们先学习一下Oracle中的数据类型。</p>
+<ul>
+<li>Oracle的数据类型：<ul>
+<li>字符型：<ul>
+<li><code>char</code>：固定长度的字符型数据，最长2000字节；不够长度的用空格补齐；</li>
+<li><code>varchar2</code>：可变长度的字符串，最长4000字节；这个是最常用的数据类型；</li>
+<li><code>nchar/nvarchar2</code>：用来存储unicode字符集的定长/变长字符型数据，最长1000字节；</li>
+<li><code>long</code>：大文本类型，用来存储变长的字符串，最长2G；</li>
+<li><code>raw</code>：用来存储二进制，最大2G。</li>
+</ul>
+</li>
+<li>数值型：<ul>
+<li><code>number(p,s)</code>：p表示数字最多38位，s表示小数点占几位；不指定长度时，默认是18；</li>
+<li><code>float</code>：最多存储126位的二进制或38位的十进制的浮点数；</li>
+</ul>
+</li>
+<li>日期类型：<ul>
+<li><code>date</code>：用来存储日期和时间，精确到秒；常用；</li>
+<li><code>timestamp</code>：显示的日期比date更精确，精确到小数秒，还能够显示上午还是下午。</li>
+</ul>
+</li>
+<li>其他数据类型：<ul>
+<li><code>blob</code>：存储二进制数据，最多可以存放4G；</li>
+<li><code>clob</code>：存储字符串数据，最多可以存放4GB。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>表的创建：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> 表名&#123;
+    字段名 数据类型(长度),
+    字段名 数据类型(长度),
+    ....
+&#125;;
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> t_owners(
+  <span class="hljs-keyword">ID</span> <span class="hljs-built_in">NUMBER</span> PRIMARY <span class="hljs-keyword">KEY</span>,
+  <span class="hljs-keyword">NAME</span> <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">30</span>),
+  addressid <span class="hljs-built_in">NUMBER</span>,
+  housenumber <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">30</span>),
+  watermeter <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">30</span>),
+  adddate <span class="hljs-built_in">DATE</span>,
+  ownertypeid <span class="hljs-built_in">NUMBER</span>
+);</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>表的修改：</p>
+<ul>
+<li><p>给表添加新的字段。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> 表名 <span class="hljs-keyword">ADD</span>(字段名 数据类型(长度) [默认值]....);
+
+如：<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> student <span class="hljs-keyword">ADD</span>(courseid <span class="hljs-built_in">number</span>(<span class="hljs-number">3</span>));</code></pre>
+</li>
+<li><p>修改表的字段。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> 表名 <span class="hljs-keyword">MODIFY</span>(字段名 数据类型(长度) [默认值]....);
+
+如：<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> student <span class="hljs-keyword">MODIFY</span>(courseid <span class="hljs-built_in">varchar2</span>(<span class="hljs-number">15</span>));</code></pre>
+</li>
+<li><p>删除表的字段。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> 表名 <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> 字段名<span class="hljs-number">1</span>，字段名<span class="hljs-number">2.</span>...;
+
+如：<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> student <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> courseid;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>表的删除：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> 表名;
+
+如：<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> student;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-5-表数据的添加、修改、删除"><a href="#NO2-5-表数据的添加、修改、删除" class="headerlink" title="NO2.5 表数据的添加、修改、删除"></a>NO2.5 表数据的添加、修改、删除</h3><p>对表数据的增删改查，是我们经常要接触的，尤其是查询，使用频率更高。</p>
+<ul>
+<li><p>插入数据：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> 表名(字段<span class="hljs-number">1</span>,字段<span class="hljs-number">2.</span>...) <span class="hljs-keyword">VALUES</span>(值<span class="hljs-number">1</span>,值<span class="hljs-number">2.</span>...);
+<span class="hljs-keyword">COMMIT</span>;
+
+如：
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> t_ownertype(<span class="hljs-keyword">ID</span>,<span class="hljs-keyword">NAME</span>) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">1</span>,<span class="hljs-string">'邓先森'</span>);
+<span class="hljs-keyword">COMMIT</span>;
+
+注意：在Oracle中插入数据之后，需要额外的执行事务提交，才能将数据插入到指定表中。</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>删除数据：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;
+<span class="hljs-keyword">COMMIT</span>;
+
+如：
+<span class="hljs-keyword">delete</span> <span class="hljs-keyword">FROM</span> t_ownertype <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ID</span> =<span class="hljs-number">1</span>;
+<span class="hljs-keyword">COMMIT</span>;
+
+注意：在Oracle中删除数据时，需要额外的执行事务提交，才能将数删除。
+
+//<span class="hljs-comment">--------------------------------------------------</span>
+
+拓展：另一种删除表数据的方法
+一、格式：<span class="hljs-keyword">TRUNCATE</span> <span class="hljs-keyword">TABLE</span> 表名;
+
+二、这种删除表数据的方式，是将表中所有数据都删除，并重建了表结构。</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>修改数据：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> 表名 <span class="hljs-keyword">SET</span> 字段<span class="hljs-number">1</span>=值<span class="hljs-number">1</span>,字段<span class="hljs-number">2</span>=值<span class="hljs-number">2.</span>...where 条件;
+<span class="hljs-keyword">commit</span>;
+
+如：
+<span class="hljs-keyword">UPDATE</span> t_ownertype <span class="hljs-keyword">SET</span> <span class="hljs-keyword">NAME</span> = <span class="hljs-string">'dyf'</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ID</span>=<span class="hljs-number">1</span>;
+<span class="hljs-keyword">COMMIT</span>;
+
+注意：在Oracle中修改数据之后，需要额外的执行事务提交，才能将数修改；且如果需要修改列的属性，那么需要先将列中的值都设置为NULL后，才允许修改列属性。</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-6-使用JDBC连接Oracle数据库"><a href="#NO2-6-使用JDBC连接Oracle数据库" class="headerlink" title="NO2.6 使用JDBC连接Oracle数据库"></a>NO2.6 使用JDBC连接Oracle数据库</h3><p>使用JDBC连接Oracle，除了URL稍微需要修改一下，其他和使用JDBC连接MySQL步骤是一样的。</p>
+<ul>
+<li><p>使用JDBC连接Oracle。</p>
+  <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.sql.Connection;
+<span class="hljs-keyword">import</span> java.sql.DriverManager;
+<span class="hljs-keyword">import</span> java.sql.PreparedStatement;
+<span class="hljs-keyword">import</span> java.sql.ResultSet;
+<span class="hljs-keyword">import</span> java.sql.SQLException;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DBUtils</span> </span>&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Connection <span class="hljs-title">getConnection</span><span class="hljs-params">()</span></span>&#123;
+
+        Connection conn=<span class="hljs-keyword">null</span>;
+      
+        <span class="hljs-keyword">try</span> &#123;
+            String url=<span class="hljs-string">"jdbc:oracle:thin:@127.0.0.1:1521:orcl"</span>; 
+            String user=<span class="hljs-string">"dyf"</span>;
+            String password=<span class="hljs-string">"dyf"</span>;
+          
+            Class.forName(<span class="hljs-string">"oracle.jdbc.driver.OracleDriver"</span>);  <span class="hljs-comment">//加载数据驱动</span>
+            conn = DriverManager.getConnection(url, user, password);  <span class="hljs-comment">// 连接数据库</span>
+          
+        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+            System.out.println(<span class="hljs-string">"加载数据库驱动失败"</span>);
+        &#125;<span class="hljs-keyword">catch</span>(Exception e)&#123;
+            e.printStackTrace();
+            System.out.println(<span class="hljs-string">"连接数据库失败"</span>);
+        &#125;
+        <span class="hljs-keyword">return</span> conn;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">(Connection conn, PreparedStatement ps, ResultSet rs)</span></span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">if</span>(rs!=<span class="hljs-keyword">null</span>)&#123;
+              rs.close();
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+            e.printStackTrace();
+        &#125;
+      
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">if</span>(ps!=<span class="hljs-keyword">null</span>)&#123;
+                ps.close();
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+            e.printStackTrace();
+        &#125;
+      
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">if</span>(conn!=<span class="hljs-keyword">null</span>)&#123;
+                  conn.close();
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+            e.printStackTrace();
+        &#125;
+  &#125;
+&#125;
+
+注意：oci连接必须在本机上安装oracle客户端才能连接；而thin就不需要，因此从使用上来讲thin还是更加方便，这也道是thin比较常见的原因。</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-7-Oracle数据的导入与导出"><a href="#NO2-7-Oracle数据的导入与导出" class="headerlink" title="NO2.7 Oracle数据的导入与导出"></a>NO2.7 Oracle数据的导入与导出</h3><p>在Oracle中，导入导出数据的方法有两种，一种是使用cmd命令行的形式导入导出数据，另一种是使用PL/SQL工具导入导出数据。</p>
+<ul>
+<li><p>使用cmd命令行的形式导入导出数据：</p>
+<ul>
+<li>第一种：使用cmd命令行整库导入导出数据；<ul>
+<li>整库导出：exp 管理员账号/密码 full=y，其中参数full表示整库导出。导出后会在当前目录下生成一个EXPDAT.DMP的文件，此文件为备份文件。如果想导出数据到指定位置，并且取个名字，需要添加file参数。如，exp system/123456 file=C:\person.dmp full=y；</li>
+<li>整库导入：imp 管理员账号/密码 full=y。如，imp system/123456 file=C:\person.dmp full=y。</li>
+</ul>
+</li>
+<li>第二种：使用cmd命令按用户导出导入；<ul>
+<li>用户导出：exp 指定用户账号/密码 owner=用户名 file=文件路径；</li>
+<li>按用户导入：imp 指定用户账号/密码 file=文件路径 fromuser=用户名 。</li>
+</ul>
+</li>
+<li>第三种：使用cmd命令按表导出导入。<ul>
+<li>按表导出：exp 指定用户账号/密码 file=文件路径 tables=表1,表2….；</li>
+<li>按表导入：imp 指定用户账号/密码 file =文件路径 tables=表1,表2….。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用PL/SQL开发工具导入导出数据：pl/sql工具包含三种方式导出oracle表结构和表数据，分别为：oracle export、SQL inserts、pl/sql developer。它们的含义如下：</p>
+<ul>
+<li>第一种：oracle export：导出的是.dmp格式的文件，“.dmp”文件是二进制文件，可以跨平台，包含权限等优点；</li>
+<li>第二种：SQL inserts：导出的是.sql格式的文件，可以用文本编辑器查看，通用性比较好，效率不如第一种，适合小数据量的导入导出。需要注意的是表中不能有大字段(blob,clob,long)，如果有则不能导出；</li>
+<li>第三种：pl/sql：导出的是.pde格式的文件，“.pde”为pl/sql自有的文件格式，只能用pl/sql工具导入导出，文本编辑器不能查看。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson3-Oracle查询"><a href="#Lesson3-Oracle查询" class="headerlink" title="Lesson3 Oracle查询"></a>Lesson3 Oracle查询</h2><h3 id="NO3-1-单表查询"><a href="#NO3-1-单表查询" class="headerlink" title="NO3.1 单表查询"></a>NO3.1 单表查询</h3><p>单表查询，即只对一张表进行查询操作。</p>
+<ul>
+<li><p>简单查询：没有条件的查询；没有关键字。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student;
+
+注意：简单条件查询还可以使用“SELECT * FROM 表名;”，默认查询指定记录的所有字段；但是不推荐该方式，因为*号会减慢查询效率。</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>简单条件查询：即必须满足单个指定条件的查询；使用关键字where。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> =<span class="hljs-string">'小明'</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>模糊查询：即对于要查询的内容不清楚的情况下而使用的查询；使用关键字%或_。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 字段名 <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%条件'</span>;  //%号匹配零个或多个字符；%可以写在最前面、中间、最后面或两头都加
+
+<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 字段名 <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'_条件'</span>;  //_号只能匹配一个字符；_可以写在最前面、中间、最后面或两头都加
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'%明'</span>; 或 <span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'小_'</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>and查询：即同时满足多个条件的查询；使用关键字and连接多个条件。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件<span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> 条件<span class="hljs-number">2</span> <span class="hljs-keyword">and</span> ....;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span> <span class="hljs-keyword">and</span> sex = <span class="hljs-string">'男'</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>or查询：即只需满足多个条件中的一个条件的查询；使用关键字or连接多个条件。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件<span class="hljs-number">1</span> <span class="hljs-keyword">OR</span> 条件<span class="hljs-number">2</span> <span class="hljs-keyword">or</span> ....;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span> <span class="hljs-keyword">or</span> sex = <span class="hljs-string">'男'</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>范围查询：即满足某种范围条件的查询；使用关键字betweem….and…连接范围连接。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 字段名 <span class="hljs-keyword">BETWEEN</span> 条件<span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> 条件<span class="hljs-number">2</span>;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score <span class="hljs-keyword">between</span> <span class="hljs-number">50</span> <span class="hljs-keyword">and</span> <span class="hljs-number">80</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>空值查询：即字段的值为null或不为null的查询；使用关键字is null/is not null。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 字段 <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>去重复查询：即去掉重复值的查询；使用关键字distinct。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span>(字段名) <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> Brand <span class="hljs-keyword">from</span> Car;
+
+注意：如果格式为：<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> 字段名<span class="hljs-number">1</span>,字段名<span class="hljs-number">2.</span>.. <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件，则表示两条记录中指定的所有字段都相同，才会去重，否则不去重。</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>排序查询：即将查询的结果按照指定字段名的值来进行排序；使用关键字order by。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 字段名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> score;
+
+注意：默认排序使用的是升序排序，即ASC，也就是从低到高；如果想要使用从高到低的降序排序的话，要使用DESC，格式：<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 字段名 <span class="hljs-keyword">DESC</span>;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>伪列查询：Oracle的伪列是Oracle表在存储的过程中或查询的过程中，表会有一些附加列(系统给我们的表附加的)，称为伪列。伪列就像表中的字段一样，但是表中并不存储。伪列只能查询，不能增删改。Oracle的伪列有：ROWID、ROWNUM。所谓伪列查询，就是针对这两个列的查询。</p>
+<ul>
+<li><p><code>ROWID</code>：Oracle表中的每一行在数据文件中都有一个物理地址，而ROWID表示的就是一行记录在数据文件中的物理地址；插入记录时生成，是字符串，可以唯一的标识表中的一行(和主键一样)。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ROWID</span>,.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;  //查询出来的ROWID表示的是这一条记录在数据文件中的物理地址</code></pre>
+
+<p>  <img src="./Image-o12.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p><code>ROWNUM</code>：表示的是查询结果的行的顺序，也就是说ROWNUM为每个查询出来的行标识一个行号，第一行返回1，第二行返回2，依次顺序递增；查询数据时生成，是数字；ROWNUM经常用来限制查询的结果返回的行数，求前几行或前几名的数据。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ROWNUM</span> <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;  //查询出来的ROWNUM表示的是这一条记录在结果集的顺序
+
+注意：ROWNUM是将查询结果进行顺序编号产生的列，但要注意的是，这种顺序编号是每查询到一条记录，就给这条记录编号，也就是说，一边查询，一边给记录编号。</code></pre>
+
+<p>  <img src="./Image-o13.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>聚合统计查询；<strong><code>注意：使用聚合或者分组查询时，select后面一定跟的是分组或聚合的字段名、又或者直接是聚合函数。</code></strong><ul>
+<li>sum()：求和函数；<ul>
+<li>基本语法格式：<code>SUM(数值型的字段名)</code>。<code>如，select sum(age) from student</code>；</li>
+</ul>
+</li>
+<li>avg()：求平均值函数；<ul>
+<li>基本语法格式：<code>AVG(数值型的字段名)</code>。<code>如，select avg(age) from student</code>；</li>
+</ul>
+</li>
+<li>max()：求最大值函数；<ul>
+<li>基本语法格式：<code>MAX(字段名)</code>。<code>如，select max(age) from student</code>；</li>
+</ul>
+</li>
+<li>min()：求最小值函数；<ul>
+<li>基本语法格式：<code>MIN(字段名)</code>。<code>如，select min(age) from student</code>；</li>
+</ul>
+</li>
+<li>count()：求统计记录的函数。<ul>
+<li>基本语法格式：<code>COUNT(字段名)</code>。<code>如，select count(id) from student</code>；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>分组查询：即将查询的结果按照指定的字段进行分组的查询；使用关键字group by；基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 字段名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> sex;</code></pre>
+
+<ul>
+<li><p>如果分组之后还需要按照条件来查询的话，在“group by 字段名”的后面加上关键字having即可。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 字段名 <span class="hljs-keyword">HAVING</span> 条件;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> age <span class="hljs-keyword">having</span> sex = <span class="hljs-string">'男'</span>;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>分页查询；由于Oracle没有像MySQL那样的Limit分页关键字，所以只能使用子查询嵌套的方式来进行分页查询，使用如下的基本语法格式就可以完成分页查询：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span>
+(
+    <span class="hljs-keyword">SELECT</span> A.字段名....,<span class="hljs-keyword">ROWNUM</span> RN <span class="hljs-keyword">FROM</span>
+    (
+        <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> TABLE_NAME
+    )
+    A <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ROWNUM</span> &lt;= <span class="hljs-number">40</span>
+)
+<span class="hljs-keyword">WHERE</span> RN &gt; <span class="hljs-number">20</span></code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO3-2-多表查询"><a href="#NO3-2-多表查询" class="headerlink" title="NO3.2 多表查询"></a>NO3.2 多表查询</h3><p>多表查询，即对多张表进行联合查询的操作。</p>
+<ul>
+<li><p>连接查询；即连接多张表进行查询。分为两种：</p>
+<ul>
+<li><p>内连接查询：组合两个表中的记录，返回关联的字段相等的那些记录，也就是返回两个表的交集(阴影部分)；使用关键字inner join….on。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span> <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">ON</span> 表<span class="hljs-number">1.</span>字段名 = 表<span class="hljs-number">2.</span>字段名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,teacher_id <span class="hljs-keyword">from</span> student <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> teacher <span class="hljs-keyword">on</span> student.teacher_id = teacher.id;</code></pre>
+
+<p>  <img src="./Image-o14.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>外链接查询：至少返回一个表中的所有记录，根据匹配的条件选择性地返回另外一张表的记录；可以分为左外连接和右外连接查询。注意：关键字左边的为左表，关键字右边的则为右表。</p>
+<ul>
+<li><p>左外连接查询：即返回左表所有记录，右表只返回符合条件的记录，右表有不足的地方用null补足；使用关键字left join….on/left outer join….on。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span> <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">ON</span> 表<span class="hljs-number">1.</span>字段名 = 表<span class="hljs-number">2.</span>字段名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,teacher_id <span class="hljs-keyword">from</span> student <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> teacher <span class="hljs-keyword">on</span> student.teacher_id = teacher.id;</code></pre>
+
+<p>  <img src="./Image-o15.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>右外连接查询：即返回右表所有记录，左表只返回符合条件的记录，左表有不足的地方用null补足。基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span> <span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">ON</span> 表<span class="hljs-number">1.</span>字段名 = 表<span class="hljs-number">2.</span>字段名;
+
+如：<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,teacher_id <span class="hljs-keyword">from</span> student <span class="hljs-keyword">right</span> <span class="hljs-keyword">join</span> teacher <span class="hljs-keyword">on</span> student.teacher_id = teacher.id;
+
+拓展：Oracle式的外链接
+
+一、除了使用outer join关键字来使用外链接查询之外，Oracle9i之前还支持使用“(+)”操作符，之后Oracle还是比较推荐使用关键字outer join；
+
+二、左外连接：在右表条件上添加(+)，格式为：<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span>,表<span class="hljs-number">2</span> <span class="hljs-keyword">WHERE</span> 表<span class="hljs-number">1.</span>字段=表<span class="hljs-number">2.</span>字段(+)；
+三、右外连接：在左表条件上添加(+)，格式为：<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span>,表<span class="hljs-number">2</span> <span class="hljs-keyword">WHERE</span> 表<span class="hljs-number">1.</span>字段(+)=表<span class="hljs-number">2.</span>字段；</code></pre>
+
+<p>  <img src="./Image-o16.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>子查询：即查询当中还有嵌套了一个查询。分为三种：</p>
+<ul>
+<li><p>where字句中的子查询：即子查询的位置位于where条件中；基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span>
+(<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">WHERE</span> 条件)
+
+如：
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> teacher_id =
+(<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">from</span> teacher <span class="hljs-keyword">where</span> 科目=<span class="hljs-string">'语文'</span>)</code></pre>
+</li>
+<li><p>from子句中的子查询：即子查询的位置位于from后面；基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span>
+(<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">WHERE</span> 条件)
+<span class="hljs-keyword">WHERE</span> 条件
+
+如：
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span>
+(<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,age <span class="hljs-keyword">from</span> teacher <span class="hljs-keyword">where</span> 科目=<span class="hljs-string">'语文'</span>)
+<span class="hljs-keyword">where</span> age &gt; <span class="hljs-number">22</span>;</code></pre>
+</li>
+<li><p>select子句中的子查询：即子查询的位置位于select之后；基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段名,(<span class="hljs-keyword">SELECT</span> 字段名.... <span class="hljs-keyword">FROM</span> 表<span class="hljs-number">2</span> <span class="hljs-keyword">WHERE</span> 条件)
+<span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> 条件
+
+如：
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,(<span class="hljs-keyword">select</span> <span class="hljs-keyword">name</span>,age <span class="hljs-keyword">from</span> teacher <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> =teacher_id)
+<span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> score &gt; <span class="hljs-number">60</span>;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO3-3-单行函数"><a href="#NO3-3-单行函数" class="headerlink" title="NO3.3 单行函数"></a>NO3.3 单行函数</h3><p>Oracle的单行函数是指：对于每一行数据进行计算后得到一行输出结果。Oracle的单行函数根据数据类型分为字符函数、数字函数、日期函数、转换函数，另外还有一些通用函数。<strong><code>注意：所有的单行函数可以在SQL语句的任意位置上出现。</code></strong></p>
+<ul>
+<li><p>字符函数：主要指参数类型是字符型，不同函数返回值可能是字符型或数值型。字符函数可以分为：</p>
+<ul>
+<li><p>大小写控制函数；<strong><code>注意：dual表：SQL标准中要求，必须编写的是完整的SQL语句，为了可以方便的使用函数验证，我们就会使用dual这张虚拟表。</code></strong></p>
+<p>  <img src="./Image-o17.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>  <code>说明：这就是dual表的内容，其实没啥内容，就是为了让我们方便调试函数使用的。</code></p>
+<ul>
+<li><p><code>LOWER(列名/表达式)</code>：将大写或大小写混合的字符串转换成小写。<code>如，SELECT LOWER(&#39;SQL Course&#39;) FROM dual，结果为sql course</code>；</p>
+</li>
+<li><p><code>UPPER(列名/表达式)</code>：将小写或大小写混合的字符串转换成大写。<code>如，SELECT UPPER(&#39;SQL  Course)  FROM dual，结果为SQL COURSE</code>；</p>
+</li>
+<li><p><code>INITCAP(列名/表达式)</code>：将每一个单词的第一个字母转换成大写，其余的字母都转换成小写。<code>如，SELECT INITCAP(&#39;SQL Course&#39;)  FROM dual，结果为Sql Course</code>。<strong><code>注意：该函数中的参数，如果每个单词都各自有空格，则视为多个单词，否则就只视为一个单词。</code></strong></p>
+<p><img src="./Image-o18.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>字符控制函数：</p>
+<ul>
+<li><code>concat(参数1，参数2)</code>：连接两个值，等同于<code>||</code>。<code>如，SELECT CONCAT(&#39;Good&#39;,&#39;String&#39;) FROM dual，结果为GoodString</code>；<ul>
+<li>如果要进行多个参数进行拼接：使用<code>||</code>，格式为：<code>SELECT  参数1||参数2||参数3 FROM dual</code>，推荐使用这种，方便又快捷。还可以使用格式为：<code>SELECT CONCAT(CONCAT(&#39;参数1&#39;,&#39;参数2&#39;),&#39;参数3&#39;) FROM dual</code>，但是该方式比较麻烦。</li>
+</ul>
+</li>
+<li><code>substr(参数1,start,len)</code>：返回参数1中，从第start位开始，长度为len的子串。<code>如，SELECT SUBSTR(&#39;String&#39;,1,3) FROM dual，结果为Str</code>；<strong><code>注意：这里面的字符串索引是从1开始，即&#39;abc&#39;的索引，分别是1、2、3，而不是0、1、2。</code></strong><ul>
+<li>如果len省略，则取从第start位开始的所有字符；</li>
+<li>如果start是负值，表示从参数1的后面第abs(start)位开始，也就是取start的绝对值，然后向右取长度为len的子串。</li>
+</ul>
+</li>
+<li><code>length(参数)</code>：取字符串的长度。<code>如，SELECT LENGTH(&#39;String&#39;) FROM dual，结果为6</code>；</li>
+<li><code>instr(参数1,参数2,start,where)</code>：从start位置开始，返回参数2在参数1中第where次出现的位置。一般start和where都不写，因为默认值都为1。<code>如，SELECT INSTR(&#39;String&#39;,r,) FROM dual，结果为3</code>；</li>
+<li><code>lpad/rpad(参数1,len,参数2)</code>：表示填充len个参数2到参数1的左边或右边。<code>如，SELECT LPAD(sal,6,*) FROM dual，结果为******5000、SELECT RPAD(sal,6,*) FROM dual，结果为5000******</code>；</li>
+<li><code>trim(参数1 From 参数2)</code>：从参数2中去掉所有的参数1。<code>如，SELECT TRIM(&#39;S&#39; From &#39;SSSHHHLLL&#39;) FROM dual，结果为HHHLLL</code>；</li>
+<li><code>replace(参数1,参数2,参数3)</code>：将参数1中的参数2用参数3替换。<code>如，SELECT RPPLACE(&#39;Sring&#39;,&#39;rin&#39;,&#39;&#39;) FROM dual，结果为Sg</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>数字函数：<ul>
+<li><code>ROUND(参数，n)</code>：将参数所表示的数值四舍五入，但保留小数点后的第n位；不指定n的话，一般对整数部分四舍五入，即舍弃所有的小数部分。<code>如，SELECT ROUND(45.926,2) FROM dual，结果为45.93、ROUND(45.926)，结果为46</code>；</li>
+<li><code>TRUNC(参数，n)</code>：将参数所表示的数值截取到小数点后的第n位；不指定n的话，一般对整数部分进行截取，即舍弃所有的小数部分。<code>如，SELECT TRUNC(45.926,2) FROM dual，结果为45.92、TRUNC(45.926)，结果为45</code>；</li>
+<li><code>MOD(m，n)</code>：取m除以n后得到的余数。<code>如，SELECT MOD(1600,300) FROM dual，结果为100</code>。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>日期函数；<strong><code>注意：日期格式：世纪CC，年YY，月MM，日DD，小时(24)HH，分MI，秒SS。</code></strong></p>
+<ul>
+<li><p><code>SYSDATE</code>：返回系统日期。如，SELECT SYSDATE FROM dual，结果为2020/6/1 星期一 21:40:27；</p>
+</li>
+<li><p><code>MONTHS_BETWEEN(日期1，日期2)</code>：返回两个日期类型之间相隔的自然月数。一般要计算的两个天数尽量都相同；</p>
+<p>  <img src="./Image-o19.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p><code>ADD_MONTHS(日期,+/-的月数)</code>：返回指定日期加上指定月数后的日期。如，SELECT add_months(SYSDATE,2)  FROM dual，结果为2020/8/1 星期六 21:37:03；</p>
+</li>
+<li><p><code>NEXT_DAY(日期,星期数/数字1~7)</code>：从指定日期开始，返回下一个指定的星期数的日期。星期数可以使用字符串或者数字，1代表星期日，7代表星期六。</p>
+<p>  <img src="./Image-o20.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>LAST_DAY(日期)：返回指定日期当月最后一天的日期；</p>
+<p>  <img src="./Image-o21.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p><code>ROUND(date [&#39;fmt&#39;])</code>：将date按照fmt指定的格式进行四舍五入，fmt为可选项，如果没有指定fmt。默认为保留年月日，将date四舍五入最近的一天；</p>
+<ul>
+<li><p>对年份进行四舍五入，则看月份是否超过6月，即1<del>6月份的话年份就保持不变，7</del>12月份的话年份就加1；</p>
+<p>  <img src="./Image-o22.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>对月份进行四舍五入，则看天数份是否超过15，即1<del>15日的话月份就保持不变，16</del>31日的话月份就加1；</p>
+<p>  <img src="./Image-o23.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>对天数进行四舍五入，则看当天星期数是否了超过星期三，即星期一到星期三的话就定位到最近的星期日，即上个星期日，因为距离最近；星期四到星期日的话也定位到最近的星期日，即下个星期日；如果当天是星期日的话，那么最近的星期日就是当天了。</p>
+<p>  <img src="./Image-o24.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p><code>TRUNC(date [&#39;fmt&#39;])</code>：将date按照fmt中指定的格式进行截断，fmt为可选项，如果没有指定fmt，默认保留年月日，并将date截断为最近的一天；</p>
+<p>  <img src="./Image-o25.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p><code>EXTRACT(年/月/日, DATE 日期)</code>：返回日期数据类型中的年份，月份或者日。</p>
+<p>  <img src="./Image-o26.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>转换函数：通常是在字符类型、日期类型、数值类型之间进行显示转换。主要有3个显示转换函数：</p>
+<ul>
+<li><p><code>TO_CHAR()</code>：即将参数转成字符串。该函数又分为两种：</p>
+<ul>
+<li><p>将数字转成字符串：格式：<code>TO_CHAR(number,&#39;fmt&#39;)</code>。其中fmt中可以写入的内容有：</p>
+<ul>
+<li><p><code>9</code>：即一个9表示一位数字；</p>
+</li>
+<li><p><code>0</code>：即前导0，其实就是在字符串指定位置里面添加0；</p>
+</li>
+<li><p><code>$</code>：即美元符号；</p>
+</li>
+<li><p><code>L</code>：即本地货币符号，和$不能同时使用；</p>
+</li>
+<li><p><code>.</code>：即小数点；</p>
+</li>
+<li><p><code>,</code>：即千位符，其实就是每三位一个“,”的意思。</p>
+<p>  <img src="./Image-o27.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>将日期转成字符串：格式：<code>TO_CHAR(date,&#39;fmt&#39;)</code>。其中fmt中可以写入的内容有：</p>
+<ul>
+<li><p><code>YYYY/yyyy</code>：完整的年份数字表示；</p>
+</li>
+<li><p><code>MM/mm</code>：用两位数字来表示月份；</p>
+</li>
+<li><p><code>DD/dd</code>：天数；</p>
+</li>
+<li><p><code>DAY/day</code>：星期几。</p>
+<p>  <img src="./Image-o28.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>TO_NUMBER</code>：将一个字符串转成数值型数据；格式：<code>TO_NUMBER(数值型字符串,&#39;fmt&#39;)</code>；其中fmt中可以写入的内容有：</p>
+<ul>
+<li><p><code>9</code>：即一个9表示一位数字；</p>
+</li>
+<li><p><code>0</code>：即前导0，其实就是在字符串指定位置里面添加0；</p>
+</li>
+<li><p><code>$</code>：即美元符号；</p>
+</li>
+<li><p><code>L</code>：即本地货币符号，和$不能同时使用；</p>
+</li>
+<li><p><code>.</code>：即小数点；</p>
+</li>
+<li><p><code>,</code>：即千位符，其实就是每三位一个“,”的意思。</p>
+<p>  <img src="./Image-o29.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p><code>TO_DATE</code>：将字符串转成日期；格式：<code>TO_DATE(日期字符串,&#39;fmt&#39;)</code>。</p>
+<p>  <img src="./Image-o30.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>其他通用函数：</p>
+<ul>
+<li><p>NVL函数：空值处理函数；格式：<code>NVL(参数1,参数2)，表示如果参数1不是null，返回参数1，是null就返回参数2</code>；</p>
+<p>  <img src="./Image-o31.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>NVL2函数：空值处理函数2；格式：<code>NVL(参数1,参数2,参数3)，表示如果参数1不是null，返回参数2，是null就返回参数3</code>；</p>
+<p>  <img src="./Image-o32.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>DECODE函数：按条件取值函数；格式：<code>DECODE (字段或表达式,条件1,结果1,条件2,结果2....[默认值])，表示如果表达式满足条件1，则取结果1；满足条件2，则取结果2....，意思就是按符合的条件进行取值，当所以条件都不符合时，有默认值就取默认值，没有默认值则返回空</code>。</p>
+<p>  <img src="./Image-o33.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>CASE..WHEN..THEN函数：也是按条件取值的函数；与DECODE函数效果相同，只是写法换成了CASE..WHEN..THEN；格式：<code>CASE WHEN 条件1 THEN 结果1 WHEN 条件2 THEN 结果2....ELSE 结果，当都不符合的时候，则返回else中的结果或者Null(当没有设置ELSE，且都不匹配时才会返回Null)</code>。</p>
+<p>  <img src="./Image-o34.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>NULLIF(参数1,参数2)函数：比较两个参数，相等返回Null，不相等就返回参数1。</p>
+<p>  <img src="./Image-o35.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>分析函数：根据一组行来计算聚合值，用于计算完成聚集的累计排名、移动平均数等，分析函数为每组记录返回多个行。分析函数带有一个开窗函数over()，包含三个分析子句：分组(partition by)，排序(order by)，窗口(rows)，它们的使用形式如下：over(partition by xxx或order by yyy rows或between zzz)。常用的分析函数有：</p>
+<ul>
+<li><p><code>RANK()</code>：具有相等值的行，其排位相同，排位的序号随记录条数跳跃。</p>
+<p>  <img src="./Image-o36.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p><code>DENSE_RANK()</code>：具有相等值的行，其排位相同，排位的序号按顺序跳跃。</p>
+<p>  <img src="./Image-o37.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p><code>ROW_NUMBER()</code>：不论值是否相等，其排位按顺序排序。这个不常用。</p>
+<p>  <img src="./Image-o38.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>集合运算：集合运算是用来把两个或多个查询的结果集做并、交、查的集合运算。包括：</p>
+<ul>
+<li><p><code>union/union all</code>：即并集运算，union会自动将查询出的结果进行去重，union all则不会对查询结果进行去重；格式：<code>SQL语句1 union/union all SQL语句2....</code>；</p>
+<p>  <img src="./Image-o39.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>intersect：即交集运算，将多个查询中都拥有的记录取出。格式：SQL语句1  intersect SQL语句2….；</p>
+</li>
+<li><p>minus：即差集运算，将那些属于第一个查询中的而不在第二个查询中的行记录取出，简单说，AB两个查询，A-B就是查找那些属于A但不属于B的记录；而B-A则查找那些属于B但不属于A的记录。格式：SQL语句1 minusSQL语句2….。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson4-Oracle对象"><a href="#Lesson4-Oracle对象" class="headerlink" title="Lesson4 Oracle对象"></a>Lesson4 Oracle对象</h2><h3 id="NO4-1-视图"><a href="#NO4-1-视图" class="headerlink" title="NO4.1 视图"></a>NO4.1 视图</h3><p>视图(view)，简单讲视图就是SELECT语句生成的一张虚表，也就是说，使用SELECT语句得到查询结果后，将结果做成了一个不存在的表，我们就称这个东西为视图。视图是基于一个表或多个表或视图的逻辑表，本身不包含数据，通过它可以对表里面的数据进行查询和修改。视图基于的表称为基表。视图是存储在数据字典里的一条select语句。 通过创建视图可以提取数据的逻辑上的集合或组合。</p>
+<ul>
+<li><p>视图：</p>
+<ul>
+<li><p>定义：其实就是通过SQL语句生成的一张虚表；</p>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>简化对数据库的访问，因为视图可以有选择性的选取数据库里的一部分；</li>
+<li>用户通过简单的查询可以从复杂查询中得到结果；</li>
+<li>维护数据的独立性，视图可从多个表检索数据；</li>
+<li>对于相同的数据可产生不同的视图。</li>
+</ul>
+</li>
+<li><p>创建视图：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>] [<span class="hljs-keyword">force</span>或noforce] <span class="hljs-keyword">VIEW</span> 视图名
+[column1, column2,...]
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SQL</span>查询语句
+[<span class="hljs-keyword">with</span> <span class="hljs-keyword">check</span> <span class="hljs-keyword">option</span>] [<span class="hljs-keyword">constraint</span> constraint_name]
+[<span class="hljs-keyword">with</span> <span class="hljs-keyword">read</span> <span class="hljs-keyword">only</span>];
+
+说明：
+一、OR <span class="hljs-keyword">REPLACE</span>：如果视图已经存在，则替换旧视图；
+
+二、<span class="hljs-keyword">FORCE</span>：即使基表不存在，也可以创建该视图，但是该视图不能正常使用，当基表创建成功后，视图才能正常使用；
+
+三、NOFORCE：如果基表不存在，无法创建视图，该项是默认选项；
+
+四、column1：为视图产生的列定义的别名；
+
+五、<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">READ</span> <span class="hljs-keyword">ONLY</span>：默认可以通过视图对基表执行增删改操作，但是有很多在基表上的限制(比如：基表中某列不能为空，但是该列没有出现在视图中，则不能通过视图执行<span class="hljs-keyword">insert</span>操作)，<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">READ</span> <span class="hljs-keyword">ONLY</span>说明视图是只读视图，不能通过该视图进行增删改操作。现实开发中，基本上不通过视图对表中的数据进行增删改操作；*
+
+六、<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> <span class="hljs-keyword">OPTION</span> ：插入或修改的数据行必须满足视图定义的约束，也就是生成视图的条件。如，条件是取大于<span class="hljs-keyword">id</span>大于<span class="hljs-number">5</span>的记录，你将<span class="hljs-keyword">id</span>改成<span class="hljs-number">3</span>，那么这个修改是会报异常的，因为不符合视图的定义条件，必须要大于<span class="hljs-number">5</span>才行。
+
+        例如：
+//创建一个简单的视图，简单视图是指视图中的语句只是单表查询，没有聚合函数，我们就称为简单视图
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> view_student
+<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student
+
+//<span class="hljs-comment">-----------------------------------</span>
+
+//创建一个带<span class="hljs-keyword">with</span> <span class="hljs-keyword">check</span> <span class="hljs-keyword">option</span>约束的视图
+
+<span class="hljs-keyword">create</span>  <span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>  <span class="hljs-keyword">view</span> view_student   //<span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>表示如果视图已存在，则会覆盖这个视图
+<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> &gt; <span class="hljs-number">10</span>  //视图的定义条件为取<span class="hljs-keyword">id</span>&gt;<span class="hljs-number">10</span>的记录
+<span class="hljs-keyword">with</span> <span class="hljs-keyword">check</span> <span class="hljs-keyword">option</span>
+
+<span class="hljs-keyword">update</span> <span class="hljs-keyword">from</span> view_student <span class="hljs-keyword">set</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">5</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'dyf'</span>   //名称为<span class="hljs-string">"dyf"</span>的记录符合<span class="hljs-keyword">id</span>&gt;<span class="hljs-number">10</span>，但是现在我要修改这条记录的<span class="hljs-keyword">id</span>，让它等于<span class="hljs-number">5</span>，那么这就不符合视图的约束了，因为视图生成的条件是<span class="hljs-keyword">id</span>&gt;<span class="hljs-number">10</span>，所以只需该语句会报异常
+
+//<span class="hljs-comment">----------------------------------------</span>
+
+//创建一个带<span class="hljs-keyword">with</span> <span class="hljs-keyword">read</span> <span class="hljs-keyword">only</span>约束的视图
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span> <span class="hljs-keyword">view</span> view_student
+<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> &lt; <span class="hljs-number">25</span>
+<span class="hljs-keyword">with</span> <span class="hljs-keyword">read</span> <span class="hljs-keyword">only</span>  //添加了这个约束的视图，只能查看，不能修改
+
+//<span class="hljs-comment">----------------------------------------</span>
+
+//创建一个带<span class="hljs-keyword">force</span>的视图
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>  <span class="hljs-keyword">force</span>  <span class="hljs-keyword">view</span> view_student   //添加了<span class="hljs-keyword">force</span>后，没有teacher这张表也可以创建视图；默认是noforce，即没有基表就无法创建视图
+
+<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> teacher
+
+//=========================================
+
+//创建一个复杂视图，即创建视图的<span class="hljs-keyword">SELECT</span>语句中有聚合函数或多表查询
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span> <span class="hljs-keyword">view</span> view_teacher
+<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span>,age <span class="hljs-keyword">from</span> student s <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> teacher t <span class="hljs-keyword">on</span> s.teacher_id = t.id
+
+注意：复杂视图中，如果要修改值，要求这个被修改的值必须是键保留表中的字段(所谓键保留表就是视图中是主键的那一列所在的表)，也就是说，视图*中的主键属于哪个表，那么你想要修改的字段也必须在这个表中，否则就不允许修改值。但是视图语句中含有聚合函数列、<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>子句、含有<span class="hljs-keyword">distinct</span>关键字、含有伪列、含有由计算表达式定义的列，都不允许修改视图。</code></pre>
+</li>
+</ul>
+</li>
+<li><p>删除视图：</p>
+<ul>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> 视图名;
+s
+如：
+<span class="hljs-keyword">drop</span> <span class="hljs-keyword">view</span> student;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO4-2-物化视图"><a href="#NO4-2-物化视图" class="headerlink" title="NO4.2 物化视图"></a>NO4.2 物化视图</h3><p>简单讲，物化视图就是将视图真正的变成一张物理存在的表。</p>
+<ul>
+<li><p>物化视图：</p>
+<ul>
+<li><p>定义：物化视图是存储了查询结果的本地副本，可以查询表、视图和其他物化视图；</p>
+</li>
+<li><p>基本语法格式：</p>
+<ul>
+<li><p>创建：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">MATERIALIZED</span> <span class="hljs-keyword">VIEW</span> 视图名
+[<span class="hljs-keyword">BUILD</span> <span class="hljs-keyword">IMMEDIATE</span> | <span class="hljs-keyword">BUILD</span> <span class="hljs-keyword">DEFERRED</span> ]
+
+<span class="hljs-keyword">REFRESH</span> [<span class="hljs-keyword">FAST</span>|<span class="hljs-keyword">COMPLETE</span>|<span class="hljs-keyword">FORCE</span>] [<span class="hljs-keyword">on</span> [<span class="hljs-keyword">commit</span>|<span class="hljs-keyword">demand</span>] | <span class="hljs-keyword">start</span> <span class="hljs-keyword">with</span> (start_time) <span class="hljs-keyword">next</span> (next_time)]
+
+<span class="hljs-keyword">AS</span> <span class="hljs-keyword">SQL</span>语句;
+
+说明：
+一、视图创建时，是否立马生成数据：
+     1.BUILD IMMEDIATE：是指在创建物化视图的时候就生成数据；默认为BUILD IMMEDIATE。
+    2.BUILD DEFERRED：则是指在创建物化视图时不生成数据，以后根据需要在生成数据。
+
+二、REFRESH表示物化视图的刷新机制：
+    1.快速刷新(FAST)： 采用增量刷新的机制，只将自上次刷新以后对基表进行的所有操作刷新到物化视图中去。FAST必须创建基于主表的视图日志。对于增量刷新选项，如果在子查询中存在分析函数，则物化视图不起作用；
+
+    2.完全刷新(COMPLETE)： 会删除表中所有的记录(如果是单表刷新，可能会采用<span class="hljs-keyword">TRUNCATE</span>的方式)，然后根据物化视图中查询语句的定义重新生成物化视图；
+
+    <span class="hljs-number">3.</span><span class="hljs-keyword">FORCE</span>方式： 这是默认的数据刷新方式。<span class="hljs-keyword">Oracle</span>会自动判断是否满足快速刷新的条件，如果满足则进行快速刷新，否则进行完全刷新。
+
+三、物化视图有两种刷新模式：
+    <span class="hljs-number">1.</span><span class="hljs-keyword">on</span> <span class="hljs-keyword">commit</span>：提交触发，一旦基表有了<span class="hljs-keyword">commit</span>，即事务提交，则立刻刷新，立刻更新物化视图，使得数据和基表一致。一般用这种方法在操作基表时速度会比较慢；
+
+    <span class="hljs-number">2.</span><span class="hljs-keyword">on</span> <span class="hljs-keyword">demand</span>：仅在该物化视图“需要”被刷新了，才进行刷新(<span class="hljs-keyword">REFRESH</span>)，即“需要”更新物化视图操作时才更新，以保证和基表数据的一致性。这种方式也叫手动刷新。如果没有设置刷新模式，则这个选项是默认。
+
+//<span class="hljs-comment">---------------------------------------------</span>
+
+//创建默认选项的物化视图，即物化视图生成时立即生成数据、<span class="hljs-keyword">force</span>方式刷新数据、<span class="hljs-keyword">on</span> <span class="hljs-keyword">demand</span>刷新
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">MATERIALIZED</span> <span class="hljs-keyword">VIEW</span> mv_st
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> s.ID,s.NAME s_name,s.sex s_sex,s.t_id,t.name  t_name,t.sex t_sex
+<span class="hljs-keyword">FROM</span> student s
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> teacher t
+<span class="hljs-keyword">ON</span> s.t_id = t.id;
+
+//创建自动刷新数据的物化视图，即物化视图生成时立即生成数据、force方式刷新数据、on <span class="hljs-keyword">commit</span>刷新
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">MATERIALIZED</span> <span class="hljs-keyword">VIEW</span> mv_st
+<span class="hljs-keyword">REFRESH</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">COMMIT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> s.ID,s.NAME s_name,s.sex s_sex,s.t_id,t.name  t_name,t.sex t_sex
+<span class="hljs-keyword">FROM</span> student s
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> teacher t
+<span class="hljs-keyword">ON</span> s.t_id = t.id;
+注意：但是我的Oracle 11g 无论如何使用该方式创建自动刷新的物化视图，都不行，不知道是不是没有创建物化视图日志的原因，所以一直创建不成功
+
+//创建不生成数据的的物化视图，即物化视图生成时不会立即生成数据、force方式刷新数据、on <span class="hljs-keyword">commit</span>刷新
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">MATERIALIZED</span> <span class="hljs-keyword">VIEW</span> mv_st
+<span class="hljs-keyword">BUILD</span> <span class="hljs-keyword">DEFERRED</span> <span class="hljs-keyword">REFRESH</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">COMMIT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> s.ID,s.NAME s_name,s.sex s_sex,s.t_id,t.name  t_name,t.sex t_sex
+<span class="hljs-keyword">FROM</span> student s
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> teacher t
+<span class="hljs-keyword">ON</span> s.t_id = t.id;
+注意：使用该方式创建物化视图时，必须使用begin....end方式，手动刷新物化视图。</code></pre>
+</li>
+<li><p>删除：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> METERIALIZED <span class="hljs-keyword">VIEW</span> view_name;</code></pre>
+</li>
+<li><p>手动刷新物化视图：</p>
+<ul>
+<li><p>方式一：使用SQL窗口写入；</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">BEGIN</span>
+  dbms_mview.refresh(<span class="hljs-string">'物化视图名称'</span>);
+<span class="hljs-keyword">END</span>;
+
+注意：还可以*使用dbms_mview.refresh('物化视图名称','c')，来刷新物化视图，其中第一个参数表示要刷新的视图名称，第二个参数则表示使用完全刷新。</code></pre>
+</li>
+<li><p>方式二：使用plsql的命令窗口输入。</p>
+<pre><code class="hljs sql">exec dbms_mview.refresh('物化视图名称');</code></pre>
+</li>
+</ul>
+</li>
+<li><p>建立基表的物化视图日志：作用是当基表发生增删改操作数，会记录到该日志中，然后物化视图根据该日志进行更新；</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">materialized</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">on</span> 表名 <span class="hljs-keyword">with</span> [primary <span class="hljs-keyword">key</span>|<span class="hljs-keyword">rowid</span>] [<span class="hljs-keyword">sequence</span> (AREA_NM_R, AREA_NM_N) <span class="hljs-keyword">including</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">values</span>];
+
+如：
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">materialized</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">on</span> student <span class="hljs-keyword">with</span> <span class="hljs-keyword">rowid</span>
+
+说明：tablename为基表，<span class="hljs-keyword">with</span>后面可以接主键、<span class="hljs-keyword">rowid</span>，但是如果要使用这两个中的主键或<span class="hljs-keyword">rowid</span>列，那么生成物化视图中的列必须包含有主键或<span class="hljs-keyword">rowid</span>即可。
+
+注意：如果使用的是多表联查生成的物化视图，那么多表联查中涉及到的表都需要建立物化视图日志。</code></pre>
+
+<p>  <img src="./Image-o40.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO4-3-序列"><a href="#NO4-3-序列" class="headerlink" title="NO4.3 序列"></a>NO4.3 序列</h3><p>Oracle中没有自动增长这个属性设置，但是有序列。</p>
+<ul>
+<li><p>序列(SEQUENCE)：</p>
+<ul>
+<li><p>定义：是序列号生成器，可以为表中的行自动生成序列号，产生一组等间隔的数值(类型为数字)。不占用磁盘空间，占用内存。</p>
+</li>
+<li><p>作用：生成表的主键值，可以在插入语句中引用，也可以通过查询来检查当前值，或使序列增至下一个值。</p>
+</li>
+<li><p>基本语法格式：</p>
+<ul>
+<li><p>创建序列：<strong><code>注意：创建序列需要CREATE SEQUENCE的系统权限。</code></strong></p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">SEQUENCE</span> 序列名
+[<span class="hljs-keyword">INCREMENT</span> <span class="hljs-keyword">BY</span> n]
+[<span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> n]
+[&#123;MAXVALUE/ <span class="hljs-keyword">MINVALUE</span> n| <span class="hljs-keyword">NOMAXVALUE</span>&#125;]
+[&#123;<span class="hljs-keyword">CYCLE</span>|<span class="hljs-keyword">NOCYCLE</span>&#125;]
+[&#123;<span class="hljs-keyword">CACHE</span> n| NOCACHE&#125;];
+
+说明：
+一、INCREMENT BY：用于定义序列的步长，如果省略，则默认为1；如果出现负值，则代表Oracle序列的值是按照此步长递减的；
+
+二、<span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span>：定义序列的初始值(即产生的第一个值)，默认为<span class="hljs-number">1</span>；即自定义开始值从多少开始；
+
+三、MAXVALUE：定义序列生成器能产生的最大值。选项<span class="hljs-keyword">NOMAXVALUE</span>是默认选项，代表没有最大值定义，这时对于递增序列，系统能够产生的最大值是<span class="hljs-number">10</span>的<span class="hljs-number">27</span>次方；对于递减序列，最大值是<span class="hljs-number">-1</span>；
+
+四、<span class="hljs-keyword">MINVALUE</span>：定义序列生成器能产生的最小值。选项<span class="hljs-keyword">NOMINVALUE</span>是默认选项，代表没有最小值定义，这时对于递减序列，系统能够产生的最小值是<span class="hljs-number">10</span>的<span class="hljs-number">26</span>次方；对于递增序列，最小值是<span class="hljs-number">1</span>；
+
+五、<span class="hljs-keyword">CYCLE</span>和<span class="hljs-keyword">NOCYCLE</span>：表示当序列生成器的值达到限制值后是否循环。<span class="hljs-keyword">CYCLE</span>代表循环，<span class="hljs-keyword">NOCYCLE</span>代表不循环。如果循环，则当递增序列达到最大值时，循环到最小值；对于递减序列达到最小值时，循环到最大值。如果不循环，达到限制值后，继续产生新值就会发生错误；
+
+六、<span class="hljs-keyword">CACHE</span>(缓存)：定义存放序列的内存块的大小，默认为<span class="hljs-number">20</span>。NOCACHE表示不对序列进行内存缓冲。对序列进行内存缓冲，可以改善序列的性能；注意：大量语句发送请求去申请序列时，为了避免序列在运用层实现序列而引起的性能瓶颈。<span class="hljs-keyword">Oracle</span>序列允许将序列提前生成<span class="hljs-keyword">cache</span> x个先存入内存，在发生大量申请序列语句时，可直接到运行最快的内存中去得到序列。但<span class="hljs-keyword">cache</span>个数也不能设置太大，因为在数据库重启时，会清空内存信息，预存在内存中的序列会丢失，当数据库再次启动后，序列从上次内存中最大的序列号+<span class="hljs-number">1</span> 开始存入<span class="hljs-keyword">cache</span> x个。这种情况也会在数据库关闭时也会导致序号不连续。
+
+七、<span class="hljs-keyword">NEXTVAL</span>：返回序列中下一个有效的值，任何用户都可以引用；
+
+八、CURRVAL：即序列的当前值，<span class="hljs-keyword">NEXTVAL</span>应在CURRVAL之前指定 ，二者应同时有效。
+
+如：
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">sequence</span> aa
+<span class="hljs-keyword">increment</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">start</span> <span class="hljs-keyword">with</span> <span class="hljs-number">5</span></code></pre>
+</li>
+<li><p>修改序列：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> SEQUENC 序列名 ....
+
+注意：不允许修改序列的初始值。改变序列的初始值只能通过删除序列之后重建序列的方法实现。
+
+如：
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">sequence</span> seq_test maxvalue <span class="hljs-keyword">cycle</span>;</code></pre>
+</li>
+<li><p>删除序列：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">sequence</span> 序列名
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">SEQUENCE</span> seq_test;
+
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">sequence</span> seq_test;</code></pre>
+</li>
+<li><p>如果要查看当前序列的值，使用：</p>
+  <pre><code class="hljs sql">序列名.currval
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">SEQUENCE</span> seq_test;
+
+<span class="hljs-keyword">SELECT</span> seq_test.nextval <span class="hljs-keyword">FROM</span> dual;  //刚创建完序列后，必须先使用nextval才能使用currval，因为刚创建完的序列，里面是没有值的
+
+<span class="hljs-keyword">SELECT</span> seq_test.currval <span class="hljs-keyword">FROM</span> dual;  //会报错
+
+注意：默认创建序列时使用currval将报错，需要先使用nextval才可以使用currval。</code></pre>
+
+<ul>
+<li><p>如果要查看下一个序列的值，使用：</p>
+  <pre><code class="hljs sql">序列名.nextval
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">SEQUENCE</span> seq_test;
+
+<span class="hljs-keyword">SELECT</span> seq_test.nextval <span class="hljs-keyword">FROM</span> dual;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO4-4-同义词"><a href="#NO4-4-同义词" class="headerlink" title="NO4.4 同义词"></a>NO4.4 同义词</h3><p>所谓的同义词，就是为Oracle的对象取别名，Oracle的对象有：表、索引、视图(包括物化视图)、存储过程、函数、触发器等等。</p>
+<ul>
+<li><p>同义词：</p>
+<ul>
+<li><p>定义：就是为Oracle的对象取别名。</p>
+</li>
+<li><p>基本语法格式：</p>
+<ul>
+<li><p>创建：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">public</span>] <span class="hljs-keyword">SYNONYM</span> 同义词别名 <span class="hljs-keyword">for</span> 数据库对象;
+
+说明：
+一、public：表示创建的这个别名，是否是私有的，即是否只能为当前用户所使用；如果为public，那么所有用户都可以使用，否则就只能为创建的用户所使用。
+
+拓展：varchar就是varchar2的同义词，即别名。
+
+如：
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">synonym</span> st <span class="hljs-keyword">for</span> student;
+
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span> st;  //其实就等同于<span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">from</span> student，且st这个同义词只能被当前用户所使用，如果别的用户想要使用的话，首先要有调用用户的权限，然后使用“用户.同义词”可以访问到指定的同义词</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO4-5-索引"><a href="#NO4-5-索引" class="headerlink" title="NO4.5 索引"></a>NO4.5 索引</h3><p>索引就相当于书的目录，根据目录查找到自己想要查询的数据。如果要在表中查询指定的记录，在没有索引的情况下，必须遍历整个表，而有了索引之后，只需要在索引中找到符合查询条件的索引字段值，就可以通过保存在索引中的ROWID快速找到表中对应的记录。</p>
+<ul>
+<li><p>索引：</p>
+<ul>
+<li><p>定义：简单讲，就是为了能够快速定位要查询的数据而创建并使用的一个Oracle对象。</p>
+</li>
+<li><p>Oralce中的索引类型：<strong><code>注意：对于查询密集的系统中，创建足够多的索引会起到帮助；而对于事务处理系统中，通常尽量减少索引数量;主键和具有唯一性约束的列都会自动创建索引。</code></strong></p>
+<ul>
+<li>B*索引：是一个树结构，树的根节点指向第二级别的多个节点，第二级别的节点又指向第三级别的多个节点，以此类推；常用于列值多、行多、有where子句或join子句的表中；</li>
+<li>位图索引：用于应对列值较少，但表的行数很大的这种场景。</li>
+</ul>
+</li>
+<li><p>基本语法格式：</p>
+<ul>
+<li><p>创建索引：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">UNIQUE</span> | <span class="hljs-keyword">BITMAP</span>] <span class="hljs-keyword">INDEX</span>  索引名 <span class="hljs-keyword">ON</span>  表名(列名);
+
+另外还可以建立复合索引，即为多个列建立一个索引，也就是多个列放在一个索引上：<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span>  索引名 <span class="hljs-keyword">ON</span>  表名(列名<span class="hljs-number">1</span>，列名<span class="hljs-number">2</span>,....);
+
+说明：
+一、UNIQUE：表示建立了索引的列必须是唯一，即建立唯一索引时，会同时给该列加上一个唯一约束；
+
+二、BITMAP：表示建立一个位图索引。
+
+如：
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> aa <span class="hljs-keyword">on</span> student(<span class="hljs-keyword">name</span>);</code></pre>
+</li>
+<li><p>删除索引：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">INDEX</span> 索引名;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson5-PL-SQL编程"><a href="#Lesson5-PL-SQL编程" class="headerlink" title="Lesson5 PL/SQL编程"></a>Lesson5 PL/SQL编程</h2><h3 id="NO5-1-PL-SQL简介及基本语法"><a href="#NO5-1-PL-SQL简介及基本语法" class="headerlink" title="NO5.1 PL/SQL简介及基本语法"></a>NO5.1 PL/SQL简介及基本语法</h3><p>PL/SQL是由甲骨文公司在90年代初开发，以提高SQL的功能。</p>
+<ul>
+<li><p>PL/SQL：</p>
+<ul>
+<li><p>定义：简单讲就是一种程序语言，叫做过程化SQL语言。PL/SQL是Oracle数据库使用的三种语言的其中之一(另外两个是SQL和Java)，是对SQL语句的扩展：即在普通SQL语句的使用上增加了编程语言的特点(即把数据操作和查询语句组织在PL/SQL代码的过程性单元中)，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言；</p>
+</li>
+<li><p>基本语法格式：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">declare</span>
+
+     声明变量
+
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-comment">-- 这里的“--”表示这是注释</span>
+    <span class="hljs-comment">/*</span>
+<span class="hljs-comment">     * 这是多行注释</span>
+<span class="hljs-comment">     */</span>
+
+    dbms_output.put_line(<span class="hljs-string">'信息是：'</span> || msg);  <span class="hljs-comment">--这是输出，和Java的System.out.println()一样，另外“||”是字符串连接符</span>
+
+    代码逻辑
+
+exception  <span class="hljs-comment">--这部分是异常处理模块，可有可无</span>
+
+<span class="hljs-keyword">end</span>;
+
+注意：当不需要定义变量时，<span class="hljs-keyword">declare</span>可省略不写，只写<span class="hljs-keyword">begin</span>和<span class="hljs-keyword">end</span>。
+
+如：
+<span class="hljs-keyword">declare</span>
+    v_name <span class="hljs-built_in">varchar2</span>(<span class="hljs-number">40</span>);
+    v_age number(20);
+<span class="hljs-keyword">begin</span>
+    v_name:= <span class="hljs-string">'dyf'</span>;
+    v_age:=18;
+    dbms_output.put_line('name:'|| v_name || '<span class="hljs-comment">---' ||  'age:' || v_age);</span>
+<span class="hljs-keyword">end</span>;</code></pre>
+
+<ul>
+<li><p>变量声明：</p>
+<ul>
+<li><p>方式一：</p>
+  <pre><code class="hljs sql">变量名 类型(长度);</code></pre>
+</li>
+<li><p>方式二：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">INTO</span> 变量名 <span class="hljs-keyword">SQL</span>语句;
+
+如：
+v_max_id number ;
+
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">max</span>(<span class="hljs-keyword">id</span>) <span class="hljs-keyword">into</span> v_max_id <span class="hljs-keyword">from</span> student;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>变量赋值：</p>
+  <pre><code class="hljs sql">变量名:=变量值;
+
+注意：Oracle中的“=”号是一个比较运算符，并不是用于赋值符号，赋值符号是“:=”。Oracle中的“=”相当于Java中的“==”，不要搞混淆了。</code></pre>
+</li>
+<li><p>属性类型变量：当为某个变量指定类型，且需要用到与数据库中的某一行或某一列的数据类型时，就使用属性类型。分为：</p>
+<ul>
+<li><p>引用型变量：</p>
+  <pre><code class="hljs sql">变量名 表名.列名%type  //这个就指定了该变量名的数据类型与表中的某个列的数据类型一致
+
+如：
+a student.age%type;  //变量a的数据类型岁student中age列的数据类型变化而变化</code></pre>
+</li>
+<li><p>记录型变量：</p>
+  <pre><code class="hljs sql">变量名 表名%rowtype  //这个就指定了该变量名的数据类型为表中的某一行(一行记录包括多个数据类型)
+
+如：
+
+a student%rowtype  //就把student表中的一行记录的所有列，都放入了变量a中，当需要哪个列就是要“.”获取即可。如，a.id、a.name等等</code></pre>
+</li>
+</ul>
+</li>
+<li><p>异常(或称为例外)：</p>
+<ul>
+<li><p>预定义(Predefined)错误：ORACLE预定义的异常情况大约有24个。对这种异常情况的处理，无需在程序中定义，由ORACLE自动将其引发；</p>
+</li>
+<li><p>用户定义(User_define)错误：程序执行过程中，出现编程人员认为的非正常情况。对这种异常情况的处理，需要用户在程序中定义，然后显式地在程序中将其引发。</p>
+  <pre><code class="hljs sql">//预定义异常
+
+exception
+
+when 异常名称 then
+异常处理逻辑
+
+如：
+<span class="hljs-keyword">declare</span>
+    ...
+<span class="hljs-keyword">begin</span>
+    ....
+<span class="hljs-keyword">exception</span>
+    <span class="hljs-keyword">when</span> no_data_found <span class="hljs-keyword">then</span>
+        dbms_output.putline(<span class="hljs-string">'没有找到您想要的数据'</span>);
+<span class="hljs-keyword">end</span>;
+
+//<span class="hljs-comment">---------------------------------------------------</span>
+
+//自定义异常
+
+<span class="hljs-keyword">declare</span>
+    自定义异常名称 <span class="hljs-keyword">exception</span>;
+
+exception
+
+when 自定义异常名称 then
+异常处理逻辑
+
+如：
+<span class="hljs-keyword">declare</span>
+    no_student_found <span class="hljs-keyword">exception</span>;
+<span class="hljs-keyword">begin</span>
+    ....
+<span class="hljs-keyword">exception</span>
+    <span class="hljs-keyword">when</span> no_student_found <span class="hljs-keyword">then</span>
+        dbms_output.putline(<span class="hljs-string">'没有在学生表中找到您想要的数据'</span>);
+<span class="hljs-keyword">end</span>;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>条件判断：</p>
+  <pre><code class="hljs sql">IF 条件判断表达式 THEN
+
+    PL/SQL、SQL语句
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+
+<span class="hljs-comment">--------------------------------</span>
+
+IF 条件判断表达式 THEN
+
+    PL/SQL、SQL语句
+
+ELSE
+
+    其它语句
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+
+<span class="hljs-comment">-----------------------------------</span>
+
+IF 条件判断表达式 THEN
+
+    PL/SQL、SQL语句
+
+ELSIF 其它条件判断表达式 THEN
+
+    其它语句
+
+ELSE
+
+    其它语句
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;</code></pre>
+</li>
+<li><p>循环：</p>
+  <pre><code class="hljs sql">//与<span class="hljs-keyword">do</span>-<span class="hljs-keyword">while</span>类似的循环
+
+<span class="hljs-keyword">LOOP</span>
+      要执行的语句;
+
+      EXIT WHEN 条件判断表达式  //条件满足，退出循环语句
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+
+//<span class="hljs-comment">------------------------------</span>
+
+//while循环
+
+WHILE 条件判断表达式 LOOP
+
+    要执行的语句;
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+
+//<span class="hljs-comment">---------------------------------</span>
+
+//for循环
+
+FOR 变量 IN [REVERSE] 下限 .. 上限 LOOP
+
+  要执行的语句;
+
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+
+注意：每循环一次，循环变量自动加1；使用关键字REVERSE，循环变量自动减1；跟在IN REVERSE 后面的数字必须是从小到大的顺序，而且必须是整数，不能是变量或表达式；可以使用EXIT退出循环；“..”是范围运算符。
+
+如：
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">FOR</span> i <span class="hljs-keyword">IN</span> <span class="hljs-number">1.</span><span class="hljs-number">.10</span> <span class="hljs-keyword">LOOP</span>
+        dbms_output.put_line(i);
+    <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;</code></pre>
+</li>
+<li><p>游标：是存在于服务器端的一个存储区，这个区域提供给用户使用。在这个区域里存储的是用户通过一个查询语句得到的结果集，用户通过控制这个游标区域当中的指针 来提取游标中的数据，然后来进行操。基本语法格式：</p>
+  <pre><code class="hljs awk"><span class="hljs-regexp">//</span>不带参数的游标声明
+cursor 游标变量名 is 查询语句;
+
+注意：无论是带参数还是不带参数的游标，声明都写在declare中。
+
+<span class="hljs-regexp">//</span>使用不带参数的游标
+open 游标变量名;
+    loop
+        fetch 游标变量名 into 变量名;
+
+        <span class="hljs-keyword">exit</span> when 条件(常使用：游标变量名%notfound，这句表示如果游标中存储的结果集记录都获取完了，那么就会返回true，没有则返回false)
+
+        循环体(使用变量执行其他语句)
+    end loop;
+close 游标变量名;
+
+注意：游标属性：
+%NOTFOUND：如果FETCH语句失败，则该属性为<span class="hljs-string">"TRUE"</span>，否则为<span class="hljs-string">"FALSE"</span>;
+%FOUND：如果FETCH语句成果，则该属性为<span class="hljs-string">"TRUE"</span>，否则为<span class="hljs-string">"FALSE"</span>;
+%ROWCOUNT：返回游标当前行的行数;
+%ISOPEN：如果游标是开的则返回<span class="hljs-string">"TRUE"</span>，否则为<span class="hljs-string">"FALSE"</span>。
+
+如：
+declare
+    cursor c1 is select * from student;
+    e student%rowtype;  <span class="hljs-regexp">//</span>声明了一个记录型的变量
+begin
+    open c1;
+        loop
+            fetch c1 into e;
+            <span class="hljs-keyword">exit</span> when c1%notfound;
+            dbms_output.put_line(e.ename);
+        end loop;
+    close c1;
+end;
+
+<span class="hljs-regexp">//</span>--------------------------------------------
+
+<span class="hljs-regexp">//</span>带参数的游标声明
+cursor 游标变量名(参数名 数据类型...) is 查询语句(查询语句中语句的右值可以使用游标参数)；
+
+注意：这里的参数是给后面的SQL语句使用的，SQL语句通过这个动态的参数获取结果集后放入游标区域中。
+
+<span class="hljs-regexp">//</span>使用带参数的游标
+open 游标变量名（实参列表）;
+    loop
+        fetch 游标变量名 into 变量;
+        <span class="hljs-keyword">exit</span> loop 条件（常使用:游标变量名%notfound;）
+        循环体（使用变量执行其他语句）
+    end loop;
+close 游标变量名;
+
+如：
+declare
+
+    cursor stu(dno emp.deptno%type) is select name from student where id= id;
+    v_stu student%rowtype;
+
+begin
+    open stu(<span class="hljs-number">1</span>);
+        loop
+            fetch stu into v_stu;
+            <span class="hljs-keyword">exit</span> when stu%notfound;
+            update emp set sal = sal + <span class="hljs-number">10</span> where empno = eno;
+            commit;
+        end loop;
+    close stu;
+end;
+
+
+拓展：还可以使用<span class="hljs-keyword">for</span>循环，代码更加简洁
+<span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> stu(<span class="hljs-number">1</span>)
+loop
+	dbms_output.put_line(var.);
+end loop;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO5-2-存储函数、存储过程、触发器的使用"><a href="#NO5-2-存储函数、存储过程、触发器的使用" class="headerlink" title="NO5.2 存储函数、存储过程、触发器的使用"></a>NO5.2 存储函数、存储过程、触发器的使用</h3><p>存储函数其实就是用户自定义的函数，与之类似的还有存储过程。</p>
+<ul>
+<li><p>存储函数：</p>
+<ul>
+<li><p>定义：即自定义函数，可以接收一个或多个参数；</p>
+</li>
+<li><p>基本语法结构：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> [<span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>] <span class="hljs-keyword">function</span> 函数名(形参 参数类型...) <span class="hljs-keyword">return</span> 返回值类型
+<span class="hljs-keyword">is</span>
+    变量声明
+<span class="hljs-keyword">begin</span>
+    函数体
+    返回变量
+<span class="hljs-keyword">end</span>;
+
+说明：<span class="hljs-keyword">replace</span>：表示如果该函数存在则替换。
+
+注意：参数类型，只写类型，不写长度。
+
+如：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">FUNCTION</span> getName(v_ID <span class="hljs-built_in">NUMBER</span>) <span class="hljs-keyword">RETURN</span>  <span class="hljs-built_in">VARCHAR2</span>
+<span class="hljs-keyword">IS</span>
+       res <span class="hljs-built_in">VARCHAR2</span>(<span class="hljs-number">40</span>);
+<span class="hljs-keyword">BEGIN</span>
+       <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">NAME</span> <span class="hljs-keyword">INTO</span> res <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ID</span> = v_id;
+       RETURN res;
+<span class="hljs-keyword">END</span>;
+
+<span class="hljs-keyword">SELECT</span> getname(<span class="hljs-number">1</span>) <span class="hljs-keyword">FROM</span> dual;  //调用存储函数</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>存储过程：</p>
+<ul>
+<li><p>定义：和存储函数差不多，就是提前编译好一段PL/SQL语言放置在数据库中，但是存储过程可以返回多个值；</p>
+</li>
+<li><p>基本语法结构：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> [<span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>] <span class="hljs-keyword">procedure</span> 存储过程名(参数 参数类型....)
+<span class="hljs-keyword">is</span>/<span class="hljs-keyword">as</span>
+<span class="hljs-keyword">begin</span>
+    业务逻辑
+<span class="hljs-keyword">end</span>;
+
+说明：参数有三种形式：即IN：表示该参数是传入的参数，不写的话，默认是这个；OUT：表示参数是用来接收返回的结果的；IN OUT：表示该参数既可以用来传入，也可以用来接收；如果要使用带传出参数的存储过程，那么只需要在参数列表中指定参数的类型前面加上out，并且在<span class="hljs-keyword">select</span>语句中将结果存入指定的参数名中，即<span class="hljs-keyword">select</span> .... <span class="hljs-keyword">into</span> 参数名 <span class="hljs-keyword">from</span> ....即可。
+
+调用无参存储过程：使用<span class="hljs-keyword">call</span> 存储过程名();
+
+调用无参存储过程：
+<span class="hljs-keyword">declare</span>
+    传出参数变量的定义 数据类型;
+<span class="hljs-keyword">begin</span>
+  存储过程名(....,传出参数变量名)
+<span class="hljs-keyword">end</span>;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>触发器：</p>
+<ul>
+<li><p>定义：定义一个规则(其实就是一个存储过程)，在增删改操作时，只有满足规则，自动触发，无需调用；</p>
+</li>
+<li><p>分类：</p>
+<ul>
+<li>语句级触发器：不包含for each row，即只有一条执行语句，那么只执行一次；</li>
+<li>行级触发器：包含for each row，即哪怕只有一条执行语句，但影响的行数很多，影响了多少行就触发多少次。</li>
+</ul>
+</li>
+<li><p>基本语法结构：</p>
+  <pre><code class="hljs sql"><span class="hljs-keyword">create</span> [<span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span>] <span class="hljs-keyword">trigger</span> 触发器名称
+<span class="hljs-keyword">before</span>|<span class="hljs-keyword">after</span>
+<span class="hljs-keyword">insert</span>|<span class="hljs-keyword">update</span>|<span class="hljs-keyword">delete</span>
+<span class="hljs-keyword">on</span> 表名
+[<span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span>]
+<span class="hljs-keyword">declare</span>
+    ....
+<span class="hljs-keyword">begin</span>
+    ....
+<span class="hljs-keyword">end</span>；
+
+说明：
+一、<span class="hljs-keyword">before</span>或<span class="hljs-keyword">after</span>：表示在语句执行之前或之后触发触发器；
+
+二、<span class="hljs-keyword">insert</span>、<span class="hljs-keyword">update</span>、<span class="hljs-keyword">delete</span>：表示执行对应类型的语句时触发触发器；如果对多种语句设置触发器，使用<span class="hljs-keyword">or</span>连接。如<span class="hljs-keyword">insert</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">update</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">delete</span>；
+
+注意：<span class="hljs-keyword">update</span>中还可以指定更新某些列时，才触发触发器，只需要在<span class="hljs-keyword">update</span>后面加个<span class="hljs-keyword">of</span>，即<span class="hljs-keyword">update</span> <span class="hljs-keyword">of</span> 列名<span class="hljs-number">1</span>,列名<span class="hljs-number">2.</span>...。
+
+三、<span class="hljs-keyword">on</span>：表示对某个表建立触发器，即如果表被删除了，那么连同依附该表的触发器也会被删除；
+
+四、伪记录变量：就是在执行增删改的操作时，用来获取执行语句之前的记录或之后的记录，具体如下：
+                :<span class="hljs-keyword">old</span>                :<span class="hljs-keyword">new</span>
+<span class="hljs-keyword">insert</span>    所有列的值都是<span class="hljs-literal">null</span>        将要插入的那些数据 
+<span class="hljs-keyword">update</span>    更新之前的值              更新之后的值
+<span class="hljs-keyword">delete</span>    删除之前的值              所有字段都是<span class="hljs-literal">null</span>
+注意：语句级触发器无法使用伪记录变量。</code></pre>
+
+
+</li>
+</ul>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/3-%EB%8C%80%ED%95%99%EA%B5%90-%EC%82%BC-%ED%95%99%EB%85%84/">3.대학교 삼 학년</a>
+                    
+                      <a class="hover-with-bg" href="/categories/3-%EB%8C%80%ED%95%99%EA%B5%90-%EC%82%BC-%ED%95%99%EB%85%84/05-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">05.数据库系统原理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E4%B8%89%E8%AF%BE%E7%A8%8B/">大三课程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Oracle/">Oracle</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/10/Shiro--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01.Shiro--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/09/MySql--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">02.MySql--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "03.Oracle--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>01.Linux--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-11 11:48">
+      2020年7月11日 中午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15.5k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Linux–学习笔记-包含Linux视频"><a href="#Linux–学习笔记-包含Linux视频" class="headerlink" title="Linux–学习笔记(包含Linux视频)"></a>Linux–学习笔记(包含Linux视频)</h1><h2 id="Lesson1-Linux概述"><a href="#Lesson1-Linux概述" class="headerlink" title="Lesson1 Linux概述"></a>Lesson1 Linux概述</h2><h3 id="NO1-1-Linux简介"><a href="#NO1-1-Linux简介" class="headerlink" title="NO1.1 Linux简介"></a>NO1.1 Linux简介</h3><p>Linux是一个多用户、多任务的操作系统。与Windows不同之处在于，Linux是一套开放源代码程序的、可以自由传播的类Unix操作系统软件。</p>
+<ul>
+<li>Linux系统主要被应用于服务器端、嵌入式开发和PC桌面三大领域，其中服务器端领域是重中之重。如，我们熟知的百度、腾讯、Sina、阿里等，都在使用Linux系统作为其服务器端的程序运行平台，全球及国内排名前1000的90%以上的网站使用的主流系统都是Linux系统。</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Linux是一个类似Unix的操作系统，也就是说，Linux源于Unix。Unix要早于Linux，Linux的初衷就是要替代 UNIX，并在功能和用户体验上进行优化，所以Linux模仿了UNIX(但并没有抄袭UNIX的源码)，使得Linux在外观和交互上与UNIX非常类似。相比于UNIX，Linux最大的创新是开源免费，这是它能够蓬勃发展的最重要原因；而目前的UNIX大部分都是收费的，小公司和个人都难以承受。</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Linux的特点：<ul>
+<li>有大量的可用软件及免费软件。如，声名赫赫的Apache、Samba、PHP、MySQL等，构建成本低廉，是Linux被众多企业青睐的原因之一；</li>
+<li>具备良好的可移植性及灵活性。Linux系统有良好的可移植性，它几乎支持所有的CPU平台；</li>
+<li>优良的稳定性和安全性。Linux开放源代码，将所有代码放在网上，全世界的程序员都看得到，有什么缺陷和漏洞，很快就会被发现，从而成就了它的稳定性和安全注；</li>
+<li>支持几乎所有的网络协议及开发语言。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Linux的发行版本大体可以分为两类：<ul>
+<li>商业公司维护的发行版本，以著名的Red Hat为代表；</li>
+<li>社区组织维护的发行版本，以Debian为代表。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>常用的Linux发行版本：<ul>
+<li>Red Hat Linux：Red Hat(红帽公司)创建于1993年，是目前世界上资深的Linux厂商，也是最获认可的Linux品牌。Red Hat公司的产品主要包括RHEL(Red Hat Enterprise Linux，收费版本)和CentOS(RHEL的社区克隆版本，免费版本)、Fedora Core(由Red Hat桌面版发展而来，免费版本)；</li>
+<li>Ubuntu Linux：Ubuntu基于知名的Debian Linux发展而来，界面友好，容易上手，对硬件的支持非常全面，是目前最适合做桌面系统的 Linux 发行版本，而且Ubuntu的所有发行版本都免费提供；</li>
+<li>SuSE Linux：SuSE Linux以Slackware Linux为基础，原来是德国的SuSE Linux AG公司发布的Linux版本，早期只有商业版本，2004年被 Novell公司收购后，成立了OpenSUSE 社区，推出了自己的社区版本OpenSUSE；SuSE Linux在欧洲较为流行。SuSE Linux可以非常方便地实现与Windows的交互，硬件检测非常优秀，拥有界面友好的安装过程、图形管理工具，对于终端用户和管理员来说使用非常方便；</li>
+<li>其他Linux发行版。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>发行版本的选择使用：<ul>
+<li>如果你需要的是一个服务器系统，而且已经厌烦了各种Linux的配置，只是想要一个比较稳定的服务器系统，那么建议你选择CentOS或RHEL；</li>
+<li>如果你只是需要一个桌面系统，而且既不想使用盗版，又不想花大价钱购买商业软件，不想自己定制，也不想在系统上浪费太多时间，则可以选择Ubuntu。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-2-安装VM和Linux，以及配置Linux"><a href="#NO1-2-安装VM和Linux，以及配置Linux" class="headerlink" title="NO1.2 安装VM和Linux，以及配置Linux"></a>NO1.2 安装VM和Linux，以及配置Linux</h3><p>这里使用VM12虚拟机来安装Linux(CentOS 6.8/7.x均可)系统。</p>
+<ul>
+<li><p>安装完成VM12之后，将CentOS 6.8/7.x安装到VM12上，这两步安装的步骤只要按照具体的安装视频或者安装文档来安装即可，这里不做过多的描述。</p>
+<ul>
+<li><p>终端的使用：在进入Linux6.8/7.x之后，右键鼠标，选择“在终端中打开”即可；</p>
+<p>  <img src="./Image-ln1.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>网络的连接：在Linux界面的右上角点击网络图标，选择“System eth0”，就会自动连接网络了。</p>
+<p>  <img src="./Image-ln2.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>VMTools的安装和使用，该工具用于共享主机和虚拟机之间的文件，说白了就是本机和虚拟机之间能够进行复制和粘贴。</p>
+<ul>
+<li><p>点击VM12的菜单栏，选择安装VMTools选项即可；</p>
+</li>
+<li><p>点击Linux中的计算机，双击第一个，这时就会出现VMTools的安装包，是一个xxx.tar.gz格式的文件；</p>
+</li>
+<li><p>将这个安装包复制到opt文件夹下，这个文件夹一般是我们用户自己安装软件的常用文件夹；</p>
+</li>
+<li><p>打开终端，输入命令：./vmware-install.pl，一路回车即可。</p>
+<p>  <img src="./Image-ln3.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>本机和虚拟机之间的共享文件夹设置。<ul>
+<li>虚拟机菜单栏里是选择设置，选择选项一栏，启用共享文件，并添加本机上要共享的文件夹；</li>
+<li>该文件夹在虚拟机的地址为：计算机/文件系统/mnt/hgfs/。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-3-Linux文件目录结构"><a href="#NO1-3-Linux文件目录结构" class="headerlink" title="NO1.3  Linux文件目录结构"></a>NO1.3  Linux文件目录结构</h3><p>Linux的根目录是“/”，有且只有这一个根目录。</p>
+<ul>
+<li>Linux的文件目录结构(即以下文件夹都是在“/”根目录下)。<ul>
+<li><code>bin</code>：存放系统命令，普通用户和 root 都可以执行。放在 /bin 下的命令在单用户模式下也可以执行；</li>
+<li><code>boot</code>：系统启动目录，保存与系统启动相关的文件，<code>如，内核文件和启动引导程序(grub)文件等</code>；</li>
+<li><code>dev</code>：设备文件保存位置；</li>
+<li><code>etc</code>：配置文件保存位置。系统内所有采用默认安装方式(rpm 安装)的服务配置文件全部保存在此目录中。如，用户信息、服务的启动脚本、常用服务的配置文件等；</li>
+<li><code>home</code>：普通用户的主目录(也称为家目录)。在创建用户时，每个用户要有一个默认登录和保存自己数据的位置，就是用户的主目录，所有普通用户的主目录是在/home/下建立一个和用户名相同的目录。<code>如，用户liming的主目录就是/home/liming</code>；</li>
+<li><code>lib</code>：系统调用的函数库保存位置；</li>
+<li><code>media</code>：挂载目录。系统建议用来挂载媒体设备。<code>如，软盘和光盘</code>；</li>
+<li><code>mnt</code>：挂载目录。早期Linux中只有这一个挂载目录，并没有细分。系统建议这个目录用来挂载额外的设备。<code>如，U盘、移动硬盘和其他操作系统的分区</code>；</li>
+<li><code>misc</code>：挂载目录。系统建议用来挂载 NFS 服务的共享目录。虽然系统准备了三个默认挂载目录 /media/、/mnt/、/misc/，但是到底在哪个目录中挂载什么设备可以由管理员自己决定。如，我在接触 Linux 的时候，默认挂载目录只有 /mnt/，所以养成了在 /mnt/ 下建立不同目录挂载不同设备的习惯，如 /mnt/cdrom/ 挂载光盘、/mnt/usb/ 挂载 U 盘，都是可以的；</li>
+<li><code>opt</code>：第三方安装的软件保存位置。这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。不过我还是习惯把软件放到 /usr/local/ 目录中，也就是说，/usr/local/ 目录也可以用来安装软件；</li>
+<li><code>root</code>：系统管理员的的主目录。普通用户主目录在/home/下，系统管理员的主目录直接在“/”下；</li>
+<li><code>sbin</code>：保存与系统环境设置相关的命令，只有root可以使用这些命令进行系统环境设置，但也有些命令可以允许普通用户查看；</li>
+<li><code>srv</code>：服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据；</li>
+<li><code>tmp</code>：临时目录。系统存放临时文件的目录，在该目录下，所有用户都可以访问和写入。建议此目录中不能保存重要数据，最好每次开机都把该目录清空；</li>
+<li><code>usr</code>：这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录；<ul>
+<li><code>usr/local</code>：手工安装的软件保存位置。这也是常用于安装软件的位置。</li>
+</ul>
+</li>
+<li><code>var</code>：目录用于存储动态数据，例如缓存、日志文件、软件运行过程中产生的文件等。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Linux是以文件的形式管理我们的设备的，换句话说，就是Linux系统中，一切皆文件，无论是CPU，还是别的什么设备，都是以文件的形式进行存储。</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-4-Linux远程登录与文件传输"><a href="#NO1-4-Linux远程登录与文件传输" class="headerlink" title="NO1.4 Linux远程登录与文件传输"></a>NO1.4 Linux远程登录与文件传输</h3><p>我们常常需要使用Linux，但是有时候Linux系统并不在本机，而是在其他专门的用于服务器的电脑上，那么这个时候我们就需要远程登录Linux，然后进行文件的上传和下载了。</p>
+<ul>
+<li><p>Linux远程登录：XShell。Xshell是Windows下一款功能非常强大的安全终端模拟软件，支持Telnet、Rlogin、SSH、SFTP、Serial 等协议，可以非常方便的对linux主机进行远程管理。安装步骤如下：</p>
+<ul>
+<li><p>直接下载并安装XShell5即可；</p>
+</li>
+<li><p>打开XShell5，并进行连接配置，如下图所示：</p>
+<p>  <img src="./Image-ln4.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>连接配置完成后，就可以开始连接了；连接时会提示你输入Linux系统的用户名和密码，说白了就是我用什么身份去登录这个Linux，之前安装Linux系统的时候设置过了的，而账户默认大家都是root，密码则是自己设置的密码，输入完成后就可以登录。</p>
+<p>  <img src="./Image-ln5.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux文件传输：XFTP。这是一个基于MS windows平台的功能强大的SFTP、FTP文件传输软件。使用了Xftp以后，MS windows用户能安全地在UNIX/Linux和Windows PC之间传输文件。注意：该软件需要Linux主机开启了sshd服务，该服务的作用就是能够让别的电脑和Linux主机建立连接并进行文件传输；在Linux主机是使用命令查看sshd服务是否已开启：service sshd status，如果是正在运行，那么就表示已开启，否则就是没有开启。该服务监听的端口号为22。</p>
+<ul>
+<li><p>安装步骤比较简单，就不详述了；</p>
+</li>
+<li><p>配置XFTP，即配置连接Linux：安装完成后，打开XFTP，在左上角的菜单栏中找到“打开”，就会出现名为“会话”的对话框，点击新建，如下图所示；</p>
+<p>  <img src="./Image-ln6.png" srcset="/img/loading.gif" alt=""></p>
+<p>  <img src="./Image-ln7.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>上面描述的步骤都操作完成了，那么XFTP就配置完成，可以使用了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson2-Linux基础"><a href="#Lesson2-Linux基础" class="headerlink" title="Lesson2 Linux基础"></a>Lesson2 Linux基础</h2><h3 id="NO2-1-vi和vim的使用"><a href="#NO2-1-vi和vim的使用" class="headerlink" title="NO2.1 vi和vim的使用"></a>NO2.1 vi和vim的使用</h3><p>所有的类Unix系统都会内建vi文本编辑器，也就是说vi是一个文书编辑器。而vim是从vi发展出来的一个文本编辑器。代码补充、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。</p>
+<ul>
+<li><p>简单的来说，vi是老式的字处理器，不过功能已经很齐全了，但是还是有可以进步的地方。vim则可以说是程序开发者的一项很好用的工具。vi/vim 有三种模式，分别是正常模式(Command mode)、编辑模式(Insert mode)和命令行模式(Last line mode)。这三种模式的作用分别是：</p>
+<ul>
+<li><p>正常模式：用户刚刚启动vi/vim，即使用“vim 文件名称”，便进入了正常模式。此状态下敲击键盘动作会被vim识别为命令，而非输入字符。如，我们此时按下i，并不会输入一个字符，i被当作了一个命令；以下是常用的几个命令：</p>
+<ul>
+<li><code>i命令</code>：切换到编辑模式，以输入字符；</li>
+<li><code>x命令</code>：删除当前光标所在处的字符；</li>
+<li><code>:命令</code>：切换到命令行模式，以在最底一行输入命令。</li>
+</ul>
+</li>
+<li><p>编辑模式：在正常模式下按下i就进入了编辑模式。在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><code>HOME/END</code>：移动光标到行首/行尾；</li>
+<li><code>Page Up/Page Down</code>：上/下翻页；</li>
+<li><code>Insert</code>：切换光标为输入/替换模式；</li>
+<li><code>ESC</code>：退出编辑模式，切换到正常模式。</li>
+</ul>
+</li>
+<li><p>命令行模式：在编辑模式下按下:(即英文冒号)就进入了命令行模式。命令行模式可以输入单个或多个字符的命令，可用的命令非常多。在命令行模式中，基本的命令有：注意：按ESC键可随时退出命令行模式。</p>
+<ul>
+<li><p><code>:q命令</code>：(查看文件后，没有修改)退出程序；</p>
+<ul>
+<li>:<code>q!命令</code>：表示不保存修改部分，并退出；</li>
+<li><code>:wq命令</code>：表示保存修改部分，并退出。</li>
+</ul>
+</li>
+<li><p><code>:w命令</code>：仅做保存文件的操作，不做退出文件的操作。</p>
+<p>  <img src="./Image-ln8.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>vi/vim的快捷键：<ul>
+<li><code>yy</code>：需要在正常模式中使用，作用是拷贝光标所在的当前行，随后按p粘贴；</li>
+<li><code>dd</code>：需要在正常模式中使用，作用是删除光标所在的当前行；</li>
+<li><code>gg/G</code>：需要在正常模式中使用，作用是快速跳转到首行/最后一行；</li>
+<li><code>u</code>：需要在正常模式中使用，作用是撤销上一次保存的所有操作，但是在使用“:wq”之后，使用该命令无法撤销；</li>
+<li><code>行号 shift+g</code>：需要在正常模式中使用，作用是跳转到指定行；</li>
+<li><code>行数+ente</code>r：需要在正常模式中使用，作用是跳转到从当前行开始+指定行数。如，光标在第2行，转换到正常模式中，输入3，再按enter键，就会跳到第5行；</li>
+<li><code>:/</code>：需要在命令行模式中使用，作用是查找，格式为：“:/要查找的单词”，按n跳转到下一个查找到的关键字；</li>
+<li><code>:set nu/:set nonu</code>：需要在命令行模式中使用，作用是显示行号/不显示行号。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-2-重启、关机和用户登录注销"><a href="#NO2-2-重启、关机和用户登录注销" class="headerlink" title="NO2.2 重启、关机和用户登录注销"></a>NO2.2 重启、关机和用户登录注销</h3><p>关机、重启和用户的登录与注销，这些都是我们Linux用户常用的命令。</p>
+<ul>
+<li>关机和重启命令：<ul>
+<li>关机命令：<ul>
+<li><code>shutdown -h now</code>：表示立即关机；</li>
+<li><code>shutdown -h 1</code>：表示1分钟后关机；</li>
+<li><code>halt</code>：立即关机。</li>
+</ul>
+</li>
+<li>重启命令：<ul>
+<li><code>reboot</code>：立即重启系统；</li>
+<li><code>shutdown -r now</code>：表示立即重启。</li>
+</ul>
+</li>
+<li>保存命令：<ul>
+<li><code>sync</code>：把内存的数据保存到磁盘，简单讲，就是保存数据的意思，建议关机或重启之前都使用以下该命令。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>用户的登录与注销：我们常常不使用root用户进行登录并操作Linux，因为root是最大权限的管理者，可能因为不小心的错误导致系统异常，所以我们一般会使用权限较低的用户登录和操作。<ul>
+<li>用户注销(退出)：使用命令logout即可，表示退出当前登录的用户。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-3-用户管理"><a href="#NO2-3-用户管理" class="headerlink" title="NO2.3 用户管理"></a>NO2.3 用户管理</h3><p>Linux系统是一个多用户、多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统。换句话说，Linux系统支持多个用户在同一时间内登陆，不同用户可以执行不同的任务，并且互不影响。</p>
+<ul>
+<li>用户和用户组：<ul>
+<li>用户：每个用户都拥有唯一的用户名和各自的口令；</li>
+<li>用户组：是具有相同特征用户的集合。简单的理解，就是有时我们需要让多个用户具有相同的权限。如，查看、修改某一个文件的权限等等，如果有10个用户的话，就需要授权10次，那如果有100、1000甚至更多的用户呢？显然，这种方法不太合理。最好的方式是建立一个组，让这个组具有查看、修改此文件的权限，然后将所有需要访问此文件的用户放入这个组中，那么，所有用户就具有了和组一样的权限，这就是用户组。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>linux系统用户角色的划分：Linux系统中，每个用户的ID细分为两种，分别是用户ID(User ID，简称UID)和组ID(Group ID，简称GID)，也就是说其实Linux并不认识你的用户名称，它只认识用户名对应的ID号(也就是一串数字)；Linux系统将所有用户的用户名与ID的对应关系都存储在 /etc/passwd文件中。每个文件都有自己的UID和GID。用户的划分：</p>
+<ul>
+<li><p>超级用户：默认是root用户，其UID和GID均为0。在每台unix/linux操作系统中都是唯一且真实存在的，通过它可以登录系统，可以操作系统中任何文件和命令，拥有最高的管理权限。在生产环境，一般禁止root账号远程登录SSH连接服务器，以加强系统安全；</p>
+</li>
+<li><p>程序用户：UID范围为1~499。与真实的普通用户区分开来，这类用户最大特点是安装系统后默认就会存在，且默认情况大多数不能登陆系统，其在/etc/passwd文件中，最后字段为/sbin/nologin的都是程序用户。但是，他们是系统正常运行不可缺少的，他们的主要是方便系统管理，满足相应的系统进程对文件属主的要求。如，默认的bin，adm，nobody，mail用户等等。服务的运行需要用户角色，可以不用登陆。如，当我们需要运行MySQL数据库时，可以创建一个虚拟用户，作为运行MySQL服务的角色；</p>
+<p>  <img src="./Image-ln9.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>普通用户：UID范围为500~65535。这类用户一般是由超级用户(即root用户)进行添加。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>用户的添加、删除、修改与查询。<strong><code>注意：用户的信息都放在了/etc/passwd文件中；每行的含义是：用户名:口令:用户ID号:组ID号:注视性描述:主目录:登录Shell。</code></strong></p>
+<ul>
+<li><p>添加：<code>useradd [选项] 用户名</code>。其中[选项]如下；通常情况下，根本不需要手工指定任何内容，因为使用默认值就可以满足我们的要求；</p>
+<ul>
+<li><p><code>-u UID</code>：手工指定用户的UID，但是UID的范围不要小于500；</p>
+</li>
+<li><p><code>-d 主目录</code>：手工指定用户的主目录。主目录必须写绝对路径，而且如果需要手工指定主目录，则一定要注意权限；</p>
+</li>
+<li><p><code>-c 用户说明</code>：手工指定/etc/passwd文件中各用户信息中第5个字段的描述性内容，可随意配置；</p>
+</li>
+<li><p><code>-g 组名</code>：手工指定用户的初始组。一般以和用户名相同的组作为用户的初始组，在创建用户时会默认建立初始组。一旦手动指定，则系统将不会再创建和用户名相同的那个初始组目录；</p>
+</li>
+<li><p><code>-G 组名</code>：指定用户的附加组。我们把用户加入其他组，一般都使用附加组；</p>
+</li>
+<li><p><code>-s shell</code>：手工指定用户的登录Shell，默认是/bin/bash；</p>
+</li>
+<li><p><code>-e 日期</code>：指定用户的失效日期，格式为”YYYY-MM-DD”。也就是/etc/shadow文件的第八个字段；</p>
+</li>
+<li><p><code>-o</code>：允许创建的用户的UID可以与其他用户的UID相同。如，执行 “useradd -u 0 -o usertest” 命令建立用户 usertest，它的UID和root用户的UID相同，都是0；</p>
+</li>
+<li><p><code>-m</code>：建立用户时强制建立用户的家目录。在建立系统用户时，该选项是默认的；</p>
+</li>
+<li><p><code>-r</code>：创建系统用户，也就是UID在1~499之间，供系统程序使用的用户。由于系统用户主要用于运行系统所需服务的权限配置，因此系统用户的创建默认不会创建主目录。</p>
+<p>  <img src="./Image-ln10.png" srcset="/img/loading.gif" alt=""></p>
+  <pre><code class="hljs angelscript">useradd -d /home/master dyf  <span class="hljs-comment">//这就表示创建了一个dyf用户，并指定了主目录为master，如果没有就会自动创建该主目录</span>
+
+拓展：为添加的用户设置密码
+一、格式：passwd [选项] 用户名；
+
+二、[选项]中的内容：
+    <span class="hljs-number">1.</span>-l：锁定已经命名的账户名称；
+    <span class="hljs-number">2.</span>-u：解开账户锁定状态；
+    <span class="hljs-number">3.</span>-x, --maximum=DAYS：密码使用最大时间（天）；
+    <span class="hljs-number">4.</span>-n, --minimum=DAYS：密码使用最小时间（天）；
+    <span class="hljs-number">5.</span>-d：删除使用者的密码；
+    <span class="hljs-number">6.</span>-S：检查指定使用者的密码认证种类；
+    <span class="hljs-number">7.</span>--stdin：非交互式修改/设置密码，弊端是操作日志能查密码，用history -c 干掉。</code></pre>
+</li>
+</ul>
+</li>
+<li><p>删除：<code>userdel 用户名</code>。分为两种删除：</p>
+<ul>
+<li><p>删除用户时，并不删除其关联的主目录：<code>userdel 用户名</code>。工作中，删除Linux用户后，一般不会将用户所在的主目录删除掉，所以常用的一般是这个。</p>
+</li>
+<li><p>删除用户时，也同时删除其关联的主目录：<code>userdel -r 用户名</code>。如下图所示。</p>
+<p>  <img src="./Image-ln11.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>修改：</p>
+<ul>
+<li><p>修改用户信息：<code>usermod [选项] 用户名</code>。选项如下：</p>
+<ul>
+<li><p><code>-c 用户说明</code>：修改用户的说明信息，即修改/etc/passwd文件目标用户信息的第5个字段；</p>
+</li>
+<li><p><code>-d 主目录</code>：修改用户的主目录，即修改/etc/passwd文件中目标用户信息的第6个字段，需要注意的是，主目录必须写绝对路径；</p>
+</li>
+<li><p><code>-e 日期</code>：修改用户的失效曰期，格式为”YYYY-MM-DD”，即修改 /etc/shadow 文件目标用户密码信息的第8个字段；</p>
+</li>
+<li><p><code>-g 组名</code>：修改用户的初始组，即修改/etc/passwd文件目标用户信息的第4个字段(GID)；</p>
+</li>
+<li><p><code>-u UID</code>：修改用户的UID，即修改/etc/passwd文件目标用户信息的第3个字段(UID)；</p>
+</li>
+<li><p><code>-G 组名</code>：修改用户的附加组，其实就是把用户加入其他用户组，即修改/etc/group文件；</p>
+</li>
+<li><p><code>-l 用户名</code>：修改用户名称；</p>
+</li>
+<li><p><code>-L</code>：临时锁定用户(Lock)；</p>
+</li>
+<li><p><code>-U</code>：解锁用户(Unlock)，和-L对应；</p>
+</li>
+<li><p><code>-s shell</code>：修改用户的登录 Shell，默认是/bin/bash。</p>
+<p>  <img src="./Image-ln12.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>临时切换用户的身份：<code>su [选项] 用户名</code>。<strong><code>选项如下；注意：用户切换之后，想要切换回原先的用户，使用exit即可，退回到原先的用户。</code></strong></p>
+<ul>
+<li><p><code>-</code>：当前用户不仅切换为指定用户的身份，同时所用的工作环境也切换为此用户的环境(包括PATH变量、MAIL变量等)。使用“-”选项可省略用户名，默认会切换为root用户；</p>
+</li>
+<li><p><code>-l</code>：同 - 的使用类似，也就是在切换用户身份的同时，完整切换工作环境，但后面需要添加欲切换的使用者账号；</p>
+</li>
+<li><p><code>-p</code>：表示切换为指定用户的身份，但不改变当前的工作环境(不使用切换用户的配置文件)；</p>
+</li>
+<li><p><code>-m</code>：和-p命令一样；</p>
+</li>
+<li><p><code>-c</code>：仅切换用户执行一次命令，执行后自动切换回来，该选项后通常会带有要执行的命令。</p>
+<p>  <img src="./Image-ln13.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询：</p>
+<ul>
+<li><p>查询指定用户的信息：<code>id 用户名</code>；</p>
+<p>  <img src="./Image-ln14.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li><p>查询当前用户：</p>
+<ul>
+<li><p>打印当前执行操作的用户名：<code>whoami</code>；</p>
+</li>
+<li><p>打印登陆当前Linux系统的用户名：<code>who am i</code>。</p>
+<p>  <img src="./Image-ln15.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>用户组的管理。<strong><code>注意：用户组的信息都放在了/etc/group文件里；每行的含义是：组名:口令:组ID号:组内的用户。</code></strong></p>
+<p>  <img src="./Image-ln16.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li><p>用户组的添加：<code>groupadd [选项] 组名</code>。</p>
+<ul>
+<li><code>-g GID</code>：指定组的ID；</li>
+<li><code>-r</code>：创建系统群组。</li>
+</ul>
+</li>
+<li><p>用户组的删除：<code>groupdel 组名</code>。</p>
+</li>
+<li><p>用户组的修改：<code>groupmod [选项] 组名</code>。选项如下：</p>
+<ul>
+<li><p><code>-g GID</code>：修改组ID；</p>
+</li>
+<li><p><code>-n 新组名</code>：修改组名。</p>
+<p>  <img src="./Image-ln17.png" srcset="/img/loading.gif" alt="image-20200711140120014"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-4-运行级别和Root密码找回"><a href="#NO2-4-运行级别和Root密码找回" class="headerlink" title="NO2.4 运行级别和Root密码找回"></a>NO2.4 运行级别和Root密码找回</h3><p>Linux的运行级别有7个。</p>
+<ul>
+<li><p>Linux的7个运行级别；<strong><code>注意：Linux运行级别的配置文件为/etc/inittab</code>。</strong></p>
+<ul>
+<li><p><code>0</code>：关机；</p>
+</li>
+<li><p><code>1</code>：单用户模式，可以想象为Windows的安全模式，主要用于系统修复；单用户模式不需要密码就可以登录，所以一般会用来找回root密码；</p>
+</li>
+<li><p><code>2</code>：无网络支持的多用户模式；</p>
+</li>
+<li><p><code>3</code>：有网络支持的多用户模式(文本模式，工作中最常用的模式)；</p>
+</li>
+<li><p><code>4</code>：保留，未使用；</p>
+</li>
+<li><p><code>5</code>：图形界面；</p>
+</li>
+<li><p><code>6</code>: 重启。</p>
+<p>  <img src="./Image-ln18.png" srcset="/img/loading.gif" alt="image-20200711140236576"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>改变当前的运行级别：<code>init 运行级别</code>。<code>如，从图像界面5转换到命令行界面3，使用命令：init 3</code>。</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>如果我们不小心忘记了root密码，无法登陆Linux，怎么把呢？方法：可以让linux通过进入单用户模式来重置root密码命令。</p>
+<ul>
+<li><p>在Linux开机读秒时按任意键进入grub菜单；</p>
+<p>  <img src="./Image-ln19.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>根据提示，按e进入编辑界面；</p>
+<p>  <img src="./Image-ln20.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>选择第二项：内核，继续按e编辑；</p>
+<p>  <img src="./Image-ln21.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>结尾输入：<code>[空格] 1[回车]</code>；</p>
+<p>  <img src="./Image-ln22.png" srcset="/img/loading.gif" alt="image-20200711140555621"></p>
+</li>
+<li><p>回到菜单界面，按b启动；</p>
+<p>  <img src="./Image-ln23.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>启动后就会进入到单用户模式，可以使用passwd命令直接重置root用户密码；</p>
+<p>  <img src="./Image-ln24.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>密码修改完成后使用reboot命令重启，系统将会重新进入之前默认的运行级别。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-5-帮助类命令"><a href="#NO2-5-帮助类命令" class="headerlink" title="NO2.5 帮助类命令"></a>NO2.5 帮助类命令</h3><p>如果我们不熟悉指令的用法，Linux也提供了指令的说明。</p>
+<ul>
+<li><p>使用man获得某个指令的用法：<code>man 命令名称</code>；该命令的功能是获得想要了解的指令的用法。<code>如，man ls，表示想要知道ls这个命令的用法</code>。</p>
+</li>
+<li><p>使用help获得某个指令的说明：<code>help 命令名称</code>；该命令用于查看指定的命令的说明。<code>如，help cd，表示查看cd命令的说明文档</code>。</p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-6-文件目录类常用命令"><a href="#NO2-6-文件目录类常用命令" class="headerlink" title="NO2.6 文件目录类常用命令"></a>NO2.6 文件目录类常用命令</h3><p>接下来要学习的是Linux中常用的文本目录命令，这些都比较重要，因为使用的频率很高。</p>
+<ul>
+<li><code>pwd命令</code>：查看当前工作目录的完整路径(也就是绝对路径)；格式：<code>pwd</code>。</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>ls命令</code>：用来打印当前目录的清单，可以指定其他目录；格式：<code>ls [选项]</code>。选项如下；<code>如，ls -l t*：列出所有文件名以&quot;t&quot;开头的文件信息</code>。</p>
+<ul>
+<li><p><code>-a</code>：列出目录下所有的文件，包括以”.”开头的隐藏文件；</p>
+</li>
+<li><p><code>-l</code>：以列表的方式列出：文件名、文件权限、所有者、大小等详细信息；</p>
+</li>
+<li><p><code>-r</code>：反向次序排列；</p>
+</li>
+<li><p><code>-t</code>：以文件修改时间排序；</p>
+</li>
+<li><p><code>-g</code>：类似-l，但是不列出所有者；</p>
+</li>
+<li><p><code>-h</code>：以容易理解的文件格式列出。</p>
+<p>  <img src="./Image-ln25.png" srcset="/img/loading.gif" alt="image-20200711140853717"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>cd命令</code>：切换到指定的文件目录中去；格式：<code>cd /文件目录</code>。以下是常用的cd命令形式：<ul>
+<li><code>cd /</code>：进入系统根目录；</li>
+<li><code>cd /aa/bb/cc</code>：跳转到指定目录；</li>
+<li><code>cd ~/cd</code>：进入当前用户所属的home目录中；</li>
+<li><code>cd ..</code>：跳转到上一级。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>mkdir命令</code>：用于创建目录，简单讲就是创建文件夹，但只能创建一级的目录，要是父目录不存在就会报错；格式：<code>mkdir [选项] 要创建的目录名称</code>。选项如下：<ul>
+<li><code>-p</code>：自动按需创建父目录。<code>如，mkdir -p /home/aaa/bbb，其中aaa和bbb文件夹都不存在，要创建多级目录，就要加入-p选项</code>；</li>
+<li><code>-m</code>：创建目录时给定权限。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>rmdir命令</code>：用于删除目录，就是删除指定的文件夹，但无法删除非空文件夹，即里面有文件或文件夹则无法删除；格式：<code>rmdir [选项] 要删除的目录名称</code>。选项如下；<strong><code>注意：如果要删除的目录里有东西，使用“rm -rf 指定要删除的目录名称”，那么指定目录以及里面的东西都会一并删除。</code></strong></p>
+<ul>
+<li><p><code>-p</code>：删除指定目录后如果其父目录为空，则一并删除；</p>
+<p>  <img src="./Image-ln26.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>touch命令</code>：用于创建一个或多个空的文件；格式：<code>touch 文件1 文件2....</code>。</p>
+<p>  <img src="./Image-ln27.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>cp命令</code>：用于复制文件。有两种：</p>
+<ul>
+<li><p>文件到文件或目录到目录的复制，格式：<code>cp [选项] SOURCE DEST(如果DEST文件不存在则创建，存在则覆盖；如果DEST是目录，目录不存在则无法复制)</code>；</p>
+</li>
+<li><p>文件到目录的复制，格式：<code>cp [选项] SOURCE... DIRECTORY(DEST必须为directory，也就是目录)</code>。两种复制的选项如下；<strong><code>注意：如果想要强制覆盖某个目录或某个文件，只需要在cp前面加个\即可，就不会询问用户是否覆盖了。</code></strong></p>
+<ul>
+<li><p><code>-i</code>：交互式复制，即覆盖前提醒用户确认；</p>
+</li>
+<li><p><code>-f</code>：强制覆盖目标文件；</p>
+</li>
+<li><p><code>-r/-R</code>：递归复制目录。</p>
+<p>  <img src="./Image-ln28.png" srcset="/img/loading.gif" alt="image-20200711141212063"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>rm指令</code>：删除文件或目录；格式：<code>rm [选项] 要删除的文件或目录</code>。选项如下：</p>
+<ul>
+<li><p><code>-f</code>：强制删除目标文件，不提示；</p>
+</li>
+<li><p><code>-r/-R</code>：递归处理，将制定目录下的所有文件包括目录一并删除。</p>
+<p>  <img src="./Image-ln29.png" srcset="/img/loading.gif" alt="image-20200711141357270"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>mv指令</code>：有两个功能。</p>
+<ul>
+<li><p>剪切文件或目录：格式：<code>mv file dest</code>；</p>
+</li>
+<li><p>重命名文件或目录：格式：<code>mv oldName newName</code>。</p>
+<p>  <img src="./Image-ln30.png" srcset="/img/loading.gif" alt="image-20200711141447623"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>cat指令</code>：以只读的方式查看文件内容，即只能查看，无法修改；格式：<code>cat [选项] 要查看的文件</code>。选项如下：</p>
+<ul>
+<li><p><code>-n</code>：显示行号；</p>
+</li>
+<li><p><code>-E</code>：在每一行的结束的地方显示“$”符号。</p>
+  <pre><code class="hljs stata">拓展：如果要显示的文件内容过多，你希望一页一页的显示
+一、使用“<span class="hljs-keyword">cat</span> [选项] 要查看的文件 | <span class="hljs-keyword">more</span>”，这样就能够一页一页的显示文件的内容，按空格键翻页。</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>more指令</code>：以全屏的方式按页来显示文本内容；格式：<code>more 要查看的文件</code>。进入more命令后，可以使用以下快捷键：<ul>
+<li><code>Space键</code>：显示文本下一屏内容；</li>
+<li><code>Enter键</code>：只显示文本下一行内容；</li>
+<li><code>b键</code>：显示文本上一屏内容；</li>
+<li><code>q键</code>：退出。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>less指令</code>：分页显示文件的内容，一般用于大型文件的内容查看(如，10M、100M等)，优点在于不会加载文件的全部内容，而是一边查看一边加载，所以速度较快；格式：<code>less 要查看的文件</code>。进入less命令后，可以使用以下快捷键：<ul>
+<li><code>Space键</code>：显示文本下一屏内容；</li>
+<li><code>Enter键</code>：只显示文本下一行内容；</li>
+<li><code>b键</code>：显示文本上一屏内容；</li>
+<li><code>q键</code>：退出。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>&gt;和&gt;&gt;命令</code>：<ul>
+<li><code>&gt;</code>：表示输出到文件中，文件不存则会创建；文件已存在，内容会被覆盖，修改时间会更新；</li>
+<li><code>&gt;&gt;</code>：表示输出到文件中，文件不存则会创建。文件已存在，内容会继续追加在后面，修改时间会更新。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>echo命令</code>：输出内容到控制台；格式：<code>echo [选项] 要输出的内容</code>。选项如下：</p>
+<ul>
+<li><p><code>-n</code>：表示输出之后不换行；</p>
+</li>
+<li><p><code>-e</code>：表示对于转义字符按对应的方式进行处理。</p>
+<p>  <img src="./Image-ln31.png" srcset="/img/loading.gif" alt="image-20200711141748970"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>head指令</code>：显示文本内容，默认显示头10行；格式：<code>head [选项] 要显示的文件</code>。选项如下：</p>
+<ul>
+<li><p><code>-n #</code>：显示文本头#行内容。</p>
+<p>  <img src="./Image-ln32.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>tail命令</code>：显示文本内容，默认显示后10行；格式：<code>tail [选项] 要查看的文件</code>。选项如下：<ul>
+<li><code>-n #</code>：显示文本后#行内容；</li>
+<li><code>-f</code>：查看文件尾部内容，结束后不退出，能够实时跟踪文件新增的行内容。注意：使用ctrl+c退出文件。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>ln命令</code>：在当前目录下生成一个类似于快捷方式的文件(也叫软链接文件)，用于跳转到某个指定文件或目录；</p>
+<ul>
+<li><p>常用格式：<code>ln -s 原文件或目录 快捷方式名称</code>；如果要删除这个快捷方式的话，使用删除文件的文明即可：<code>rm -rf 快捷方式名称</code>；</p>
+</li>
+<li><p>还可以使用ln命令创建硬链接，效果和软链接差不多，只不过生成的是一个硬链接文件；格式：<code>ln 原文件或目录 硬链接名称</code>；</p>
+<p>  <img src="./Image-ln33.png" srcset="/img/loading.gif" alt="image-20200711141928852"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>history命令</code>：用于显示历史记录和执行过的指令命令；格式：<code>history [选项]</code>。选项如下；<strong><code>注意：如果在使用history后，想要使用历史指令中的某个指令的话，使用：!历史指令序号，即可执行指定序号的命令。</code></strong></p>
+<ul>
+<li><p><code>n</code>: 显示历史记录中最近的N个记录，这个比较常用；</p>
+</li>
+<li><p><code>-c</code>：清空当前历史命令；</p>
+</li>
+<li><p><code>-a</code>：将历史命令缓冲区中命令写入历史命令文件中；</p>
+</li>
+<li><p><code>-r</code>：将历史命令文件中的命令读入当前历史命令缓冲区；</p>
+</li>
+<li><p><code>-w</code>：将当前历史命令缓冲区命令写入历史命令文件中;</p>
+</li>
+<li><p><code>-d&lt;offset&gt;</code>：删除历史记录中第offset个命令</p>
+</li>
+<li><p><code>-n&lt;filename&gt;</code>：读取指定文件。</p>
+<p>  <img src="./Image-ln34.png" srcset="/img/loading.gif" alt="image-20200711142024180"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-7-时间日期类命令"><a href="#NO2-7-时间日期类命令" class="headerlink" title="NO2.7 时间日期类命令"></a>NO2.7 时间日期类命令</h3><p>时间日期类指令比较少。</p>
+<ul>
+<li><p><code>date命令</code>：显示当前时间；格式：<code>date [选项]</code>。</p>
+<ul>
+<li><p><code>不加参数</code>：表示显示当前时间；</p>
+</li>
+<li><p><code>+%Y</code>：显示当前年份；</p>
+</li>
+<li><p><code>+%m</code>：显示当前月份；</p>
+</li>
+<li><p><code>+%d</code>：显示当前是哪一天；</p>
+</li>
+<li><p><code>&quot;+%Y-%m-%d %H:%M:%S&quot;</code>：显示年月日时分秒，该命令前后要加双引号。</p>
+</li>
+<li><p><code>-s</code>：设置时间，即将自己指定的时间设置为当前的时间；格式为：<code>date -s 字符串时间</code>。</p>
+<p>  <img src="./Image-ln35.png" srcset="/img/loading.gif" alt="image-20200711142124275"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>cal命令</code>：用于查看当前日历；格式：<code>cal [选项]</code>。选项如下：</p>
+<ul>
+<li><p><code>不加参数</code>：显示本月日历，这个常用；</p>
+</li>
+<li><p><code>指定年份</code>：显示指定年份的所有月份的日历；</p>
+</li>
+<li><p><code>指定月份 指定年份</code>：显示指定年份下的指定月份的日历；</p>
+<p>  <img src="./Image-ln36.png" srcset="/img/loading.gif" alt="image-20200711142309240"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-8-搜索查找类命令"><a href="#NO2-8-搜索查找类命令" class="headerlink" title="NO2.8 搜索查找类命令"></a>NO2.8 搜索查找类命令</h3><p>这类命令用的也比较多。</p>
+<ul>
+<li><p><code>find命令</code>：将从指定目录下递归遍历多个子目录，将满足条件的文件或者目录进行显示；格式：<code>find 搜索范围 [选项]</code>。选项如下：</p>
+<ul>
+<li><p><code>-name</code>：按照文件名查找文件，该选项后面跟的是完整的文件名称；</p>
+</li>
+<li><p><code>-perm</code>：按照文件权限查找文件，该选项后面跟的是文件的具体权限；</p>
+</li>
+<li><p><code>-user</code>：按照文件属主来查找文件，该选项后面跟的是要查找的用户；</p>
+</li>
+<li><p><code>-size</code>：按照指定的文件大小查找文件，+n：大于，-n：小于，n：等于；数字后面的常用单位有：k、M、G等等；</p>
+</li>
+<li><p><code>-group</code>：按照文件所属的组来查找文件，该选项后面跟的是组名称；</p>
+</li>
+<li><p><code>-mtime&lt;-n&gt;&lt;+n&gt;</code>：按照文件更改时间来查找文件，-n表示n天之内，+n表示n天以前；</p>
+</li>
+<li><p><code>-newer file1 file2</code>：查找更改时间在file1和file2之间的文件。</p>
+<p>  <img src="./Image-ln37.png" srcset="/img/loading.gif" alt="image-20200711142357223"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>locate命令</code>：查找与指定文件相关的文件，该命令是在数据库中进行查询，所以速度快、但需要维护数据库；格式：<code>lcate 要搜索的文件</code>。由于locate是基于数据库查询，需要先使用命令：<code>updatedb</code>，作用是在第一次运行前，创建locate数据库。</p>
+<p>  <img src="./Image-ln38.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>grep命令</code>：用于过滤或搜索指定字符串；可以使用正则表达式，能配合多种命令使用。格式：<code>grep [选项] 查找内容 源文件</code>。选项如下；该命令经常和管道符一起使用：<code>管道符“|”</code>，表示将前一个命令的处理结果输出传递给后面的命令处理。</p>
+<ul>
+<li><p><code>-A</code>：显示符合的行及之后的内容；</p>
+</li>
+<li><p><code>-B</code>：显示符合的行及之前的内容；</p>
+</li>
+<li><p><code>-C</code>：显示符合的行及前后的内容；</p>
+</li>
+<li><p><code>-c</code>：计算符合的行数目；</p>
+</li>
+<li><p><code>-n</code>：显示查找到的内容所在文件的行号；</p>
+</li>
+<li><p><code>-i</code>：忽略大小写。</p>
+<p>  <img src="./Image-ln39.png" srcset="/img/loading.gif" alt="image-20200711142516718"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-9-压缩和解压缩命令"><a href="#NO2-9-压缩和解压缩命令" class="headerlink" title="NO2.9 压缩和解压缩命令"></a>NO2.9 压缩和解压缩命令</h3><p>这一类的命令，我常用来对压缩文件进行操作。</p>
+<ul>
+<li><p><code>“.tar”命令</code>：</p>
+<ul>
+<li><p>解包：格式：<code>tar [选项] 压缩包名</code>。选项如下：</p>
+<ul>
+<li><code>-x</code>：对tar包做解打包操作；</li>
+<li><code>-z</code>：解压缩“.tar.gz”格式的文件；</li>
+<li><code>-f</code>：指定要解压的tar包的包名，这个是必选的；</li>
+<li><code>-t</code>：只查看 tar 包中有哪些文件或目录，不对 tar 包做解打包操作；</li>
+<li><code>-C 目录</code>：指定解打包位置；</li>
+<li><code>-j</code>：解压缩“.tar.bz2”格式的文件；</li>
+<li><code>-v</code>：显示解打包的具体过程。</li>
+</ul>
+</li>
+<li><p>打包：格式：<code>tar [选项] 源文件或源目录</code>。选项如下；<strong><code>注意：tar是打包，不是压缩。</code></strong></p>
+<ul>
+<li><p><code>-c</code>：将多个文件或目录进行打包；</p>
+</li>
+<li><p><code>-z</code>：压缩成“.tar.gz”格式文件；</p>
+</li>
+<li><p><code>-A</code>：追加tar文件到归档文件；</p>
+</li>
+<li><p><code>-f 包名</code>：指定包的文件名。这个是必选的。包的扩展名是用来给管理员识别格式的，所以一定要正确指定扩展名；</p>
+</li>
+<li><p><code>-v</code>：显示打包文件过程。</p>
+</li>
+<li><p><code>-j</code>：压缩成“.tar.bz2”格式文件；</p>
+<p>  <img src="./Image-ln40.png" srcset="/img/loading.gif" alt="image-20200711142622881"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>“.zip”命令</code>：</p>
+<ul>
+<li><p>解压：格式：<code>unzip [选项] 压缩包名</code>。选项如下：</p>
+<ul>
+<li><code>-d 目录名</code>：将压缩文件解压到指定目录下；</li>
+<li><code>-n</code>：解压时并不覆盖已经存在的文件；</li>
+<li><code>-o</code>：解压时覆盖已经存在的文件，并且无需用户确认；</li>
+<li><code>-v</code>：查看压缩文件的详细信息，包括压缩文件中包含的文件大小、文件名以及压缩比等，但并不做解压操作；</li>
+<li><code>-t</code>：测试压缩文件有无损坏，但并不解压；</li>
+<li><code>-x</code>：文件列表：解压文件，但不包含文件列表中指定的文件。</li>
+</ul>
+</li>
+<li><p>压缩：格式：<code>zip [选项] 压缩包名 源文件或源目录</code>。选项如下：</p>
+<ul>
+<li><p><code>-r</code>：递归压缩目录，及将制定目录下的所有文件以及子目录全部压缩。</p>
+</li>
+<li><p><code>-m</code>：将文件压缩之后，删除原始文件，相当于把文件移到压缩文件中。</p>
+</li>
+<li><p><code>-v</code>：显示详细的压缩过程信息。</p>
+</li>
+<li><p><code>-q</code>：在压缩的时候不显示命令的执行过程。</p>
+</li>
+<li><p><code>-压缩级别</code>：压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。</p>
+</li>
+<li><p><code>-u</code>：更新压缩文件，即往压缩文件中添加新文件。</p>
+<p>  <img src="./Image-ln41.png" srcset="/img/loading.gif" alt="image-20200711142733664"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>“.gz”命令</code>：</p>
+<ul>
+<li><p>解压：格式：<code>gunzip [选项] 文件</code>。选项如下：</p>
+<ul>
+<li><code>-r</code>：递归处理，解压缩指定目录下以及子目录下的所有文件；</li>
+<li><code>-c</code>：把解压缩后的文件输出到标准输出设备；</li>
+<li><code>-f</code>：强制解压缩文件，不理会文件是否已存在等情况；</li>
+<li><code>-l</code>：列出压缩文件内容；</li>
+<li><code>-v</code>：显示命令执行过程；</li>
+<li><code>-t</code>：测试压缩文件是否正常，但不对其做解压缩操作。</li>
+</ul>
+</li>
+<li><p>压缩：格式：<code>gzip [选项] 文件</code>。选项如下；<strong><code>注意：使用该命令进行压缩之后，源文件不会被保留；还可以同时对不同的文件进行压缩。</code></strong></p>
+<ul>
+<li><p><code>-c</code>：将压缩数据输出到标准输出中，并保留源文件；</p>
+</li>
+<li><p><code>-d</code>：对压缩文件进行解压缩。即gzip -d 压缩文件.gz；</p>
+</li>
+<li><p><code>-r</code>：递归压缩指定目录下以及子目录下的所有文件；</p>
+</li>
+<li><p><code>-v</code>：对于每个压缩和解压缩的文件，显示相应的文件名和压缩比；</p>
+</li>
+<li><p><code>-l</code>：对每一个压缩文件，显示以下字段：</p>
+<ul>
+<li>压缩文件的大小；</li>
+<li>未压缩文件的大小；</li>
+<li>压缩比；</li>
+<li>未压缩文件的名称。</li>
+</ul>
+</li>
+<li><p><code>-数字</code>：用于指定压缩等级，-1压缩等级最低，压缩比最差；-9压缩比最高。默认压缩比是-6。</p>
+<p>  <img src="./Image-ln42.png" srcset="/img/loading.gif" alt="image-20200711142856637"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><code>&quot;.bz2&quot;命令</code>：<ul>
+<li>解压2：格式：<code>bunzip2 [选项] 源文件</code>；选项如下：<ul>
+<li><code>-k</code>：解压缩后，默认会删除原来的压缩文件。若要保留压缩文件，需使用此参数；</li>
+<li><code>-f</code>：解压缩时，若输出的文件与现有文件同名时，默认不会覆盖现有的文件。若要覆盖，可使用此选项；</li>
+<li><code>-v</code>：显示命令执行过程；</li>
+<li><code>-L</code>：列出压缩文件内容。</li>
+</ul>
+</li>
+<li>压缩：格式：<code>bzip2 [选项] 源文件</code>；选项如下：<ul>
+<li><code>-d</code>：执行解压缩，此时该选项后的源文件应为标记有“.bz2”后缀的压缩包文件；</li>
+<li><code>-k</code>：bzip2在压缩或解压缩任务完成后，会删除原始文件，若要保留原始文件，可使用此选项；</li>
+<li><code>-f</code>：bzip2在压缩或解压缩时，若输出文件与现有文件同名，默认不会覆盖现有文件，若使用此选项，则会强制覆盖现有文件；</li>
+<li><code>-t</code>：测试压缩包文件的完整性；</li>
+<li><code>-v</code>：压缩或解压缩文件时，显示详细信息；</li>
+<li><code>-数字</code>：这个参数和 gzip 命令的作用一样，用于指定压缩等级，-1 压缩等级最低，压缩比最差；-9 压缩比最高。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-10-文件权限"><a href="#NO2-10-文件权限" class="headerlink" title="NO2.10 文件权限"></a>NO2.10 文件权限</h3><p>Linux中文件或目录的创建者一般就是该文件的所有者。</p>
+<ul>
+<li><p>查看文件或目录的所有者、所属组：</p>
+<ul>
+<li><p>命令：<code>ls -ahl或ls -l(这个比较常用)</code>。该命令查看文件或目录的所有者和所属组。</p>
+<p>  <img src="./Image-ln43.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>修改文件或目录的所有者：</p>
+<ul>
+<li><p>命令：<code>chown [选项]  所有者 文件名或目录</code>；选项如下：</p>
+<ul>
+<li><p><code>-R</code>：如果修改的是目录，则递归更改该目录下的所有子文件或目录的所有者，也就是与父目录的所有者一致。</p>
+<p>  <img src="./Image-ln44.png" srcset="/img/loading.gif" alt="image-20200711143054305"></p>
+</li>
+<li><p>命令：<code>chown [选项] 所有者:所属组 文件或目录</code>。该命令同时修改所有者和所属组。选项如下：</p>
+<ul>
+<li><p><code>-R</code>：如果修改的是目录，则递归更改该目录下的所有子文件或目录的所有者和所属组，也就是与父目录的所有者、所属组一致。</p>
+<p>  <img src="./Image-ln45.png" srcset="/img/loading.gif" alt="image-20200711143603282"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>修改文件的所属组：</p>
+<ul>
+<li><p>命令：<code>chgrp 所属组 文件名或目录</code>。</p>
+<p>  <img src="./Image-ln46.png" srcset="/img/loading.gif" alt="image-20200711143704698"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-11-权限位的详细介绍"><a href="#NO2-11-权限位的详细介绍" class="headerlink" title="NO2.11 权限位的详细介绍"></a>NO2.11 权限位的详细介绍</h3><p>所谓权限管理，其实就是指对不同的用户，设置不同的文件访问权限，包括对文件的读、写、删除等。在Linux系统中，每个用户都具有不同的权限，拿非 root用户来说，它们只能在自己的主目录下才具有写权限，而在主目录之外，只具有访问和读权限。</p>
+<ul>
+<li><p>Linux的权限位第1列：</p>
+<ul>
+<li><p>首位：表示这是一个什么东西。如，是一个文件、目录、软链接、字符设备或块文件；</p>
+<ul>
+<li><code>-</code>：表示为这是一个普通的文件；</li>
+<li><code>d</code>：表示这是一个目录，也就是文件夹；</li>
+<li><code>l</code>：表示这是一个软链接，就相当于快捷方式的意思；</li>
+<li><code>c</code>：表示这是一个字符设备。如，键盘、鼠标等等；</li>
+<li><code>b</code>：表示这是一个块文件。如，硬盘等等；</li>
+<li><code>p</code>：表示该文件为命令管道文件。与shell编程有关的文件；</li>
+<li><code>s</code>：表示该文件为sock文件。与shell编程有关的文件。</li>
+</ul>
+</li>
+<li><p>第二、三、四位：这三位表示文件所有者所具有的权限；</p>
+<ul>
+<li>用于文件：<ul>
+<li><code>r</code>：表示read，即文件的可读取，查看；另外，“r”权限还可以用十进制的“4”表示；</li>
+<li><code>w</code>：表示write，即文件的可写入，修改；另外，“w”权限还可以用十进制的“2”表示；<strong><code>注意：可写入不代表可以删除，要想删除一个文件，必须对该文件的父目录有写的权限才可删除。</code></strong></li>
+<li><code>x</code>：表示execute，即文件可执行；另外，“x”权限还可以用十进制的“1”表示。</li>
+</ul>
+</li>
+<li>用于目录：<ul>
+<li><code>r</code>：表示read，即目录的可读取，查看；另外，“r”权限还可以用十进制的“4”表示；</li>
+<li><code>w</code>：表示write，即目录的修改，目录内的创建、修改、删除权限；另外，“w”权限还可以用十进制的“2”表示；</li>
+<li><code>x</code>：表示execute，即可进入该目录；另外，“x”权限还可以用十进制的“1”表示。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第五、六、七位：这三位表示文件所属组所具有的权限；</p>
+<p>  <img src="./Image-ln47.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>第八、九、十位：这三位表示其他人对该文件所具有的权限；</p>
+<p>  <img src="./Image-ln48.png" srcset="/img/loading.gif" alt="image-20200711143916225"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第2列：分为两种情况</p>
+<ul>
+<li><p>如果这是一个文件：表示指向这个文件的硬链接数。简单的说，就是能够打开这个文件的硬链接方式，一般创建文件后，只会有一个硬链接数，也就是输入这个文件的文件名，就可以打开该文件；另外还能够创建硬链接来打开这个文件，使用命令：<code>ln 源文件名 硬链接名</code>，就可以为某个文件创建一个硬链接，通过这个硬链接也能够打开这个文件，此时该文件的第2字段值就会变为2；<strong><code>注意：硬链接生成的是一个文件。</code></strong></p>
+<p>  <img src="./Image-ln49.png" srcset="/img/loading.gif" alt="image-20200711144035005"></p>
+</li>
+<li><p>如果这是一个目录(也就是文件夹)：表示该目录下所拥有的子目录数；新创建的目录中，就会有两个隐藏的子目录，分别为<code>“.”</code>和<code>“..”</code>：</p>
+<ul>
+<li><p><code>“.”</code>：代表你的当前目录，即”pwd”命令所返回的目录；</p>
+</li>
+<li><p><code>“..”</code>：代表你的当前目录的上一级目录，即当前目录的父目录(或叫父路径)。</p>
+<p>  <img src="./Image-ln50.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第3列：表示文件或目录的所有者；</p>
+<p>  <img src="./Image-ln51.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第4列：表示文件或目录的所属组；</p>
+<p>  <img src="./Image-ln52.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第5列：表示文件或目录的大小，单位是字节；<strong><code>注意：目录统一是4096个字节；</code></strong></p>
+<p>  <img src="./Image-ln53.png" srcset="/img/loading.gif" alt="image-20200711144412693"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第6、7、8列：表示文件或目录的最后修改时间；</p>
+<p>  <img src="./Image-ln54.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的权限位第9列：表示文件或目录的名称；</p>
+<p>  <img src="./Image-ln55.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-12-权限管理"><a href="#NO2-12-权限管理" class="headerlink" title="NO2.12 权限管理"></a>NO2.12 权限管理</h3><p>我们可以手动修改文件的访问权限。</p>
+<ul>
+<li><p>使用chmod命令修改文件或目录权限，主要有两种修改方式：</p>
+<ul>
+<li><p>第一种：使用+、-、=符号进行修改权限操作，格式：<code>[ugoa] [[+-=] [perms]] 文件名</code>，简单说就是<code>[用户身份][[赋予方式][权限]] 文件名</code>，其中：</p>
+<ul>
+<li><p>用户身份：</p>
+<ul>
+<li><code>-u</code>：代表文件所有者(user)；</li>
+<li><code>-g</code>：代表文件所属组(group)；</li>
+<li><code>-o</code>：代表其他用户(other)；</li>
+<li><code>-a</code>：代表全部身份，包括所有者、所属组和其他用户(all)。</li>
+</ul>
+</li>
+<li><p>赋予方式：</p>
+<ul>
+<li><code>+</code>：加入权限；</li>
+<li><code>–</code>：减去权限；</li>
+<li><code>=</code>：设置权限。</li>
+</ul>
+</li>
+<li><p>权限：</p>
+<ul>
+<li><p><code>-r</code>：读取权限(read)；</p>
+</li>
+<li><p><code>-w</code>：写权限(write)；</p>
+</li>
+<li><p><code>-x</code>：执行权限(execute)。</p>
+<p>  <img src="./Image-ln56.png" srcset="/img/loading.gif" alt="image-20200711144550285"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第二种：使用4(r)、2(w)、1(x)、5(即4+1)、6(即4+2)、7(即4+2+1)修改权限操作，格式和第一种方式一样，只不过将字母可以替换成数字4、2、1。</p>
+<p>  <img src="./Image-ln57.png" srcset="/img/loading.gif" alt="image-20200711144636015"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-13-定时任务调度"><a href="#NO2-13-定时任务调度" class="headerlink" title="NO2.13 定时任务调度"></a>NO2.13 定时任务调度</h3><p>Linux的crontab任务调度是在规定的时间频率内去执行相应的任务，说白了就是定时任务的意思。</p>
+<ul>
+<li>crontab命令：定时任务的守护进程，精确到分；涉及秒的我们一般写脚本，因为这相当于闹钟。格式：<code>crontab [-u username] [选项]</code>；选项如下：<ul>
+<li><code>-u</code>：省略用户的话，表示当前是哪个用户就操作当前用户的crontab；</li>
+<li><code>-e</code>：编辑crontab的工作内容，也就是要制定一个定时任务；</li>
+<li><code>-l</code>：查阅crontab的工作内容，查看一下制定的任务；</li>
+<li><code>-r</code>：删除所有的crontab的工作内容，若仅要删除一项，请用-e去编辑。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>定时任务的步骤：</p>
+<ul>
+<li><p>首先，在某个文件中写入要执行的定时任务，并在定时任务写入完成后给予文件能够被执行的权限；</p>
+<p>  <img src="./Image-ln58.png" srcset="/img/loading.gif" alt="image-20200711144906565"></p>
+</li>
+<li><p>然后，使用crontab -e命令，进入当前用户的定时任务的编辑界面(是常见的vim界面)，设置定时执行的命令即可，每行是一条命令。crontab的命令构成：时间+动作，其时间有分、时、日、月、周共五种，操作符有：</p>
+<ul>
+<li><p><code>*</code>：取值范围内的所有数字，即每周、每月、每天、每时、每分的意思；</p>
+</li>
+<li><p><code>/</code>：每过多少个数字，即隔多少的意思。如，/20 * * * *，表示每天，每隔20分钟执行；</p>
+</li>
+<li><p><code>-</code>：表示一个范围，即从多少到多少的意思。如，* * 1-3 * *，表示每月的第一到第三天都执行；</p>
+</li>
+<li><p><code>,</code>：表示“第几”执行，根据具体的位置来区分。如，3,25 * * * *，表示每小时的第3和第25分钟都执行。</p>
+<p>  <img src="./Image-ln59.png" srcset="/img/loading.gif" alt="Image"></p>
+  <pre><code class="hljs angelscript">每<span class="hljs-number">1</span>分钟执行一次myCommand
+
+* * * * * myCommand
+
+每小时的第<span class="hljs-number">3</span>和第<span class="hljs-number">15</span>分钟执行
+<span class="hljs-number">3</span>,<span class="hljs-number">15</span> * * * * myCommand
+
+在上午<span class="hljs-number">8</span>点到<span class="hljs-number">11</span>点的第<span class="hljs-number">3</span>和第<span class="hljs-number">15</span>分钟执行
+<span class="hljs-number">3</span>,<span class="hljs-number">15</span> <span class="hljs-number">8</span><span class="hljs-number">-11</span> * * * myCommand
+
+每隔两天的上午<span class="hljs-number">8</span>点到<span class="hljs-number">11</span>点的第<span class="hljs-number">3</span>和第<span class="hljs-number">15</span>分钟执行
+<span class="hljs-number">3</span>,<span class="hljs-number">15</span> <span class="hljs-number">8</span><span class="hljs-number">-11</span> */<span class="hljs-number">2</span>  *  * myCommand
+
+每周一上午<span class="hljs-number">8</span>点到<span class="hljs-number">11</span>点的第<span class="hljs-number">3</span>和第<span class="hljs-number">15</span>分钟执行
+<span class="hljs-number">3</span>,<span class="hljs-number">15</span> <span class="hljs-number">8</span><span class="hljs-number">-11</span> * * <span class="hljs-number">1</span> myCommand
+
+每晚的<span class="hljs-number">21</span>:<span class="hljs-number">30</span>重启smb
+<span class="hljs-number">30</span> <span class="hljs-number">21</span> * * * /etc/init.d/smb restart
+
+每月<span class="hljs-number">1</span>、<span class="hljs-number">10</span>、<span class="hljs-number">22</span>日的<span class="hljs-number">4</span> : <span class="hljs-number">45</span>重启smb
+<span class="hljs-number">45</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">22</span> * * /etc/init.d/smb restart
+
+每周六、周日的<span class="hljs-number">1</span>:<span class="hljs-number">10</span>重启smb
+<span class="hljs-number">10</span> <span class="hljs-number">1</span> * * <span class="hljs-number">6</span>,<span class="hljs-number">0</span> /etc/init.d/smb restart
+
+每天<span class="hljs-number">18</span>:<span class="hljs-number">00</span>至<span class="hljs-number">23</span>:<span class="hljs-number">00</span>之间每隔<span class="hljs-number">30</span>分钟重启smb
+<span class="hljs-number">0</span>,<span class="hljs-number">30</span> <span class="hljs-number">18</span><span class="hljs-number">-23</span> * * * /etc/init.d/smb restart
+
+每星期六的晚上<span class="hljs-number">11</span>:<span class="hljs-number">00</span>重启smb
+<span class="hljs-number">0</span> <span class="hljs-number">23</span> * * <span class="hljs-number">6</span> /etc/init.d/smb restart
+
+每一小时重启smb
+
+* */<span class="hljs-number">1</span> * * * /etc/init.d/smb restart
+
+晚上<span class="hljs-number">11</span>点到早上<span class="hljs-number">7</span>点之间，每隔一小时重启smb
+
+* <span class="hljs-number">23</span><span class="hljs-number">-7</span>/<span class="hljs-number">1</span> * * * /etc/init.d/smb restart</code></pre>
+
+<p>  <img src="./Image-ln60.png" srcset="/img/loading.gif" alt="image-20200711145118442"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-14-磁盘分区、挂载"><a href="#NO2-14-磁盘分区、挂载" class="headerlink" title="NO2.14 磁盘分区、挂载"></a>NO2.14 磁盘分区、挂载</h3><p>分区是把每个硬盘连续的区块都当做一个独立的磁盘使用，说白了就是我们电脑上可能只有一块硬盘，但是我们电脑上却有什么C盘、E盘、F盘、G盘等等，而这就是分区，也就是把一个硬盘，我们逻辑上划分成了不同的区域来存放不同的数据而已。分区表是一个硬盘分区的索引，分区的信息都会写进分区表。</p>
+<ul>
+<li>分区的两种方式：MBR与GPT。<ul>
+<li>MBR分区：<ul>
+<li>最多支持4个主分区；</li>
+<li>系统只能安装在主分区；</li>
+<li>扩展分区要占一个主分区；</li>
+<li>MBR最大支持2TB，但兼容性好。</li>
+</ul>
+</li>
+<li>GPT分区：<ul>
+<li>支持无限多个主分区(但由于操作系统，可能会限制。<code>如，Windows下最大128个分区)</code>；</li>
+<li>最大支持18EB的大容量(1EB=1024PB，1PB = 1024TB)；</li>
+<li>Windows7 64位以后支持GPT。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux的分区硬盘：</p>
+<ul>
+<li><p>IDE硬盘：</p>
+<ul>
+<li>驱动器标识符为：<code>“hdx~”</code>。其中，“hd”表示硬盘类型为IDE；“x”表示盘号(a为基本盘或第一块硬盘、b为基本从属盘或第二块硬盘、c为辅助主盘或第三块硬盘、d为辅助从属盘或第四块硬盘)；“~”表示第几分区，前四个分区用1到4表示，它们是主分区或扩展分区，从5开始就是逻辑分区。<code>如，hda3表示IDE硬盘上第1块硬盘的第3个分区</code>。</li>
+</ul>
+</li>
+<li><p>SCSI硬盘；<strong><code>注意：现在基本是都是SCSI类型的硬盘。</code></strong></p>
+<ul>
+<li><p>驱动器标识符为：<code>“sdx~”</code>。其中，“sd”表示硬盘类型为SCSI，其他的和IDE硬盘表示是一样的。</p>
+<p>  <img src="./Image-ln61.png" srcset="/img/loading.gif" alt="image-20200711145249093"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Linux分区步骤：</p>
+<ul>
+<li><p>单击进入设置，并添加一块硬盘，全程默认硬盘的安装即可；</p>
+<p>  <img src="./Image-ln62.png" srcset="/img/loading.gif" alt="image-20200711145349537"></p>
+</li>
+<li><p>使用命令lsblk -f查看自己Linux的分区，看看新添加的硬盘名称是什么，记住该硬盘的名称，然后就可以开始给硬盘分区了；</p>
+<p>  <img src="./Image-ln63.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>使用分区命令进行分区：fdisk /dev/新安装的硬盘的名称，然后输入m；</p>
+<p>  <img src="./Image-ln64.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>输入m后，再输入n即可，n选项表示新建一个分区；</p>
+<p>  <img src="./Image-ln65.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>输入n后，再输入p建立分区，输入分区编号1，之后在First cylinder选项栏里按回车键表示默认即可；</p>
+<p>  <img src="./Image-ln66.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>最后在询问是否还需要帮助时，输入w，w选项表示将刚刚的分区信息写入到硬盘并保持退出；</p>
+<p>  <img src="./Image-ln67.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>其实这个时候，建立好的分区还不能用，还要经过格式化、挂载后，才可以用。格式化命令：mkfs -t ext4 /dev/新安装的硬盘的名称，是格式化成ext4格式；</p>
+<p>  <img src="./Image-ln68.png" srcset="/img/loading.gif" alt="image-20200711145919411"></p>
+</li>
+<li><p>挂载，简单讲就是将分区和指定的文件做一个关联，以后在这个文件中操作时，实际就是在这个关联的分区中进行操作。使用命令：mount /dev/新安装的硬盘的名称 要关联的文件的目录。</p>
+<p>  <img src="./Image-ln69.png" srcset="/img/loading.gif" alt="image-20200711145956418"></p>
+<ul>
+<li>Linux自动挂载：使用命令：vim /etc/fstab，编辑fstab文件；模板配置如下；两个模板使用哪个都可以，建议使用模板2，方便快捷；<pre><code>- 配置模板1：UUID=*  /要关联的目录  ext4  defaults  1  1；</code></pre><ul>
+<li>配置模板2：/dev/新安装的硬盘的名称 /要关联的目录  ext4  defaults  1  1。</li>
+</ul>
+</li>
+<li>重启Linux，该配置即可生效。</li>
+</ul>
+</li>
+<li><p>取消挂载：umount 文件系统或者挂载点；<strong><code>注意：如果取消的挂载目录，那么此时我们就不能在挂载目录下进行取消操作，否则会报错。</code></strong></p>
+<p>  <img src="./Image-ln70.png" srcset="/img/loading.gif" alt="image-20200711150043076"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-15-磁盘命令"><a href="#NO2-15-磁盘命令" class="headerlink" title="NO2.15 磁盘命令"></a>NO2.15 磁盘命令</h3><p>Linux中也有用于查看磁盘使用量的命令。</p>
+<ul>
+<li><p>Linux磁盘管理常用三个命令：</p>
+<ul>
+<li><p>df：列出整个文件系统的整体磁盘使用量；格式：<code>df [选项] 目录或文件名</code>；选项如下；<strong><code>注意：如果df没有加任何选项，那么默认会将系统内所有的(不含特殊内存内的文件系统与swap)都以1Kbytes的容量来列出来。</code></strong></p>
+<ul>
+<li><p><code>-a</code>：列出所有的文件系统，包括系统特有的 /proc 等文件系统；</p>
+</li>
+<li><p><code>-k</code>：以KBytes的容量显示各文件系统；</p>
+</li>
+<li><p><code>-m</code>：以MBytes的容量显示各文件系统；</p>
+</li>
+<li><p><code>-h</code>：以人们较易阅读的GBytes、MBytes、KBytes等格式显示；</p>
+</li>
+<li><p><code>-H</code>：以M=1000K取代M=1024K的进位方式；</p>
+</li>
+<li><p><code>-T</code>：显示文件系统类型，连同该partition的filesystem名称(如，ext3)也列出；</p>
+</li>
+<li><p><code>-i</code>：不用硬盘容量，而以inode的数量来显示。</p>
+<p>  <img src="./Image-ln71.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>du：对文件或目录的磁盘空间使用量的查看；格式：<code>du [选项] 目录或文件名</code>；选项如下；<strong><code>注意：直接输入du没有加任何选项时，则 du 会分析当前所在目录的文件与目录所占用的硬盘空间。</code></strong></p>
+<ul>
+<li><p><code>-a</code>：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已；</p>
+</li>
+<li><p><code>-h</code>：以人们较易读的容量格式(G/M)显示；</p>
+</li>
+<li><p><code>-s</code>：列出总量而已，而不列出每个各别的目录占用容量；</p>
+</li>
+<li><p><code>-S</code>：不包括子目录下的总计，与-s有点差别；</p>
+</li>
+<li><p><code>-k</code>：以KBytes列出容量显示；</p>
+</li>
+<li><p><code>-c</code>：列出明细的同时，增加汇总值；</p>
+</li>
+<li><p><code>--max-depth=数字</code>：表示子目录的深度，1为1层，2为2层，以此类推；</p>
+</li>
+<li><p><code>-m</code>：以MBytes列出容量显示。</p>
+<p>  <img src="./Image-ln72.png" srcset="/img/loading.gif" alt="image-20200711150322534"></p>
+<p>  <img src="./Image-ln73.png" srcset="/img/loading.gif" alt="image-20200711150417916"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- fdisk：用于磁盘分区；该命令之前已经详细介绍，这里不过多叙述，参照NO2.14小节即可。</code></pre><p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-16-进程管理"><a href="#NO2-16-进程管理" class="headerlink" title="NO2.16 进程管理"></a>NO2.16 进程管理</h3><p>进程是Unix和Linux系统中对正在运行中的应用程序的抽象，通过它可以管理和监视程序对内存、处理器时间和I/O资源的使用。</p>
+<ul>
+<li>进程和父进程：Linux中每个进程都有父进程，而所有的进程以init进程为根，形成一个树状结构。</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>查看进程的命令(静态查看进程)：<code>ps [选项]</code>；选项如下：</p>
+<ul>
+<li><p><code>-a</code>：显示现在运行在终端机下的所有程序；</p>
+</li>
+<li><p><code>-u</code>：以用户为主的格式来显示程序状况；</p>
+</li>
+<li><p><code>-x</code>：不以终端机来区分。</p>
+<p>  <img src="./Image-ln74.png" srcset="/img/loading.gif" alt="image-20200711150647051"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>查看进程的父进程命令：<code>ps -ef</code>。</p>
+<p>  <img src="./Image-ln75.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>进程终止命令有两种格式：<ul>
+<li>格式：<code>kill 进程的PID号</code>；只终止指定PID号的进程；如果要强制关闭某个进程，则使用：<code>kill -9 进程的PID号</code>；</li>
+<li>格式：<code>killall 程序名称</code>；用于杀死指定名称进程的所有实例。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>使用进程树查看进程的命令：<code>pstree [选项]</code>；选项如下：</p>
+<ul>
+<li><p><code>-p</code>：显示进程的PID；</p>
+</li>
+<li><p><code>-u</code>：显示进程的所属用户。</p>
+<p>  <img src="./Image-ln76.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-17-服务管理"><a href="#NO2-17-服务管理" class="headerlink" title="NO2.17 服务管理"></a>NO2.17 服务管理</h3><p>我们知道，系统服务是在后台运行的应用程序，并且可以提供一些本地系统或网络的功能。我们把这些应用程序称作服务，也就是Service。</p>
+<ul>
+<li><p>Linux使用Service命令用于对系统服务进行管理。如，启动(start)、停止(stop)、重启(restart)、查看状态(status)等。</p>
+<ul>
+<li><p><code>CentOS 6.8版本</code>：使用命令：<code>service 服务名 [选项]</code>；选项如下：</p>
+<ul>
+<li>start：打开服务；</li>
+<li>stop：关闭服务；</li>
+<li>restart：重启服务；</li>
+<li>status：查看服务状态；</li>
+</ul>
+</li>
+<li><p><code>CentOS 7.0以后</code>：使用命令：<code>systemctl 服务名 [start|stop|restart|status]</code>。</p>
+  <pre><code class="hljs armasm">拓展：查看指定<span class="hljs-built_in">IP</span>下指定端口是否可以访问
+一、命令格式：telnet <span class="hljs-built_in">ip</span>地址 端口号。</code></pre>
+
+<p>  <img src="./Image-ln77.png" srcset="/img/loading.gif" alt="image-20200711150903279"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>查看系统服务：</p>
+<ul>
+<li><p>使用命令：<code>setup</code>；</p>
+<p>  <img src="./Image-ln78.png" srcset="/img/loading.gif" alt="image-20200711151119646"></p>
+</li>
+<li><p>使用命令：<code>ls -l /etc/init.d/</code>。</p>
+<p>  <img src="./Image-ln79.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+<li><p>chkconfig命令：主要用来更新(启动或停止)和查询系统服务的运行级别信息。</p>
+<ul>
+<li><p><code>chkconfig --list命令</code>：查看所有的服务运行级别；</p>
+<p>  <img src="./Image-ln80.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p><code>chkconfig 指定服务名称 --list命令</code>：查看指定的服务运行级别；</p>
+<p>  <img src="./Image-ln81.png" srcset="/img/loading.gif" alt="image-20200711151248580"></p>
+</li>
+<li><p><code>chkconfig --level 运行级别 服务名称 on/off</code>：开启/关闭指定的服务的运行级别的自启；</p>
+<p>  <img src="./Image-ln82.png" srcset="/img/loading.gif" alt="image-20200711151319789"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-18-动态监控进程"><a href="#NO2-18-动态监控进程" class="headerlink" title="NO2.18 动态监控进程"></a>NO2.18 动态监控进程</h3><p>顾名思义，动态监控进程就是实时监控进程的动态。</p>
+<ul>
+<li><p>top [选项]：显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率、CPU占用率等；选项如下：</p>
+<ul>
+<li><p><code>-s</code>：改变画面更新频率；</p>
+</li>
+<li><p><code>-l</code>：关闭或开启第一部分第一行 top 信息的表示；</p>
+</li>
+<li><p><code>-t</code>：关闭或开启第一部分第二行 Tasks 和第三行 Cpus 信息的表示；</p>
+</li>
+<li><p><code>-m</code>：关闭或开启第一部分第四行 Mem 和 第五行 Swap 信息的表示；</p>
+</li>
+<li><p><code>-N</code>：以 PID 的大小的顺序排列表示进程列表；</p>
+</li>
+<li><p><code>-P</code>：以 CPU 占用率大小的顺序排列进程列表；</p>
+</li>
+<li><p><code>-M</code>：以内存占用率大小的顺序排列进程列表；</p>
+</li>
+<li><p><code>-h</code>：显示帮助；</p>
+</li>
+<li><p><code>-n</code>：设置在进程列表所显示进程的数量；</p>
+</li>
+<li><p><code>-q</code>：退出top；</p>
+</li>
+<li><p><code>-s/d</code>：改变画面更新周期；</p>
+</li>
+<li><p><code>-u</code>：查看指定用户名的进程。</p>
+<p>  <img src="./Image-ln83.png" srcset="/img/loading.gif" alt="image-20200711151407872"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-19-监控网络状态"><a href="#NO2-19-监控网络状态" class="headerlink" title="NO2.19 监控网络状态"></a>NO2.19 监控网络状态</h3><p>利用netstat命令可让你得知整个Linux系统的网络情况。</p>
+<ul>
+<li><p>Linux netstat命令用于显示网络状态。格式：<code>netstat [选项]</code>。选项如下：</p>
+<ul>
+<li><p><code>-a或--all</code>：显示所有连线中的Socket；</p>
+</li>
+<li><p><code>-A&lt;网络类型&gt;或--&lt;网络类型&gt;</code>：列出该网络类型连线中的相关地址；</p>
+</li>
+<li><p><code>-c或--continuous</code>：持续列出网络状态；</p>
+</li>
+<li><p><code>-C或--cache</code>：显示路由器配置的快取信息；</p>
+</li>
+<li><p><code>-e或--extend</code>：显示网络其他相关信息；</p>
+</li>
+<li><p><code>-F或--fib</code>：显示FIB；</p>
+</li>
+<li><p><code>-g或--groups</code>：显示多重广播功能群组组员名单；</p>
+</li>
+<li><p><code>-h或--help</code>：在线帮助；</p>
+</li>
+<li><p><code>-i或--interfaces</code>：显示网络界面信息表单；</p>
+</li>
+<li><p><code>-l或--listening</code>：显示监控中的服务器的Socket；</p>
+</li>
+<li><p><code>-M或--masquerade</code>：显示伪装的网络连线；</p>
+</li>
+<li><p><code>-n或--numeric</code>：直接使用IP地址，而不通过域名服务器；</p>
+</li>
+<li><p><code>-N或--netlink或--symbolic</code>：显示网络硬件外围设备的符号连接名称；</p>
+</li>
+<li><p><code>-o或--timers</code>：显示计时器；</p>
+</li>
+<li><p><code>-p或--programs</code>：显示正在使用Socket的程序识别码和程序名称；</p>
+</li>
+<li><p><code>-r或--route</code>：显示Routing Table；</p>
+</li>
+<li><p><code>-s或--statistics</code>：显示网络工作信息统计表；</p>
+</li>
+<li><p><code>-t或--tcp</code>：显示TCP传输协议的连线状况；</p>
+</li>
+<li><p><code>-u或--udp</code>：显示UDP传输协议的连线状况；</p>
+</li>
+<li><p><code>-v或--verbose</code>：显示指令执行过程；</p>
+</li>
+<li><p><code>-V或--version</code>：显示版本信息；</p>
+</li>
+<li><p><code>-w或--raw</code>：显示RAW传输协议的连线状况；</p>
+</li>
+<li><p><code>-x或--unix</code>：此参数的效果和指定”-A unix”参数相同；</p>
+</li>
+<li><p><code>--ip或--inet</code>：此参数的效果和指定”-A inet”参数相同。</p>
+<p>  <img src="./Image-ln84.png" srcset="/img/loading.gif" alt="image-20200711151540778"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-20-RPM"><a href="#NO2-20-RPM" class="headerlink" title="NO2.20 RPM"></a>NO2.20 RPM</h3><p>rpm原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎，逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度。</p>
+<ul>
+<li><p>RPM的命令：格式：<code>rpm [选项...] 软件包名称</code>；选项如下；<strong><code>注意：选项中的套件，就是安装包的意思。</code></strong></p>
+<ul>
+<li><p><code>-a</code>：查询所有套件；</p>
+</li>
+<li><p><code>-b&lt;完成阶段&gt;&lt;套件档&gt;+或-t &lt;完成阶段&gt;&lt;套件档&gt;+</code>：设置包装套件的完成阶段，并指定套件档的文件名称；</p>
+</li>
+<li><p><code>-c</code>：只列出组态配置文件，本参数需配合”-l”参数使用；</p>
+</li>
+<li><p><code>-d</code>：只列出文本文件，本参数需配合”-l”参数使用；</p>
+</li>
+<li><p><code>-e&lt;套件档&gt;或--erase&lt;套件档&gt;</code>：删除指定的套件；</p>
+</li>
+<li><p><code>-f&lt;文件&gt;+</code>：查询拥有指定文件的套件；</p>
+</li>
+<li><p><code>-h或--hash</code>：套件安装时列出标记；</p>
+</li>
+<li><p><code>-i</code>：显示套件的相关信息；</p>
+</li>
+<li><p><code>-i&lt;套件档&gt;或--install&lt;套件档&gt;</code>：安装指定的套件档；</p>
+</li>
+<li><p><code>-l</code>：显示套件的文件列表；</p>
+</li>
+<li><p><code>-p&lt;套件档&gt;+</code>：查询指定的RPM套件档；</p>
+</li>
+<li><p><code>-q</code>：使用询问模式，当遇到任何问题时，rpm指令会先询问用户；</p>
+</li>
+<li><p><code>-R</code>：显示套件的关联性信息；</p>
+</li>
+<li><p><code>-s</code>：显示文件状态，本参数需配合“-l”参数使用；</p>
+</li>
+<li><p><code>-U&lt;套件档&gt;或--upgrade&lt;套件档&gt;</code>：升级指定的套件档；</p>
+</li>
+<li><p><code>-v</code>：显示指令执行过程；</p>
+</li>
+<li><p><code>-vv</code>：详细显示指令执行过程，便于排错。</p>
+<p>  <img src="./Image-ln85.png" srcset="/img/loading.gif" alt="image-20200711151651434"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-21-YUM"><a href="#NO2-21-YUM" class="headerlink" title="NO2.21 YUM"></a>NO2.21 YUM</h3><p>YUM是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。简单讲，YUM就相当于一个软件管家。</p>
+<ul>
+<li>yum常用命令：<ul>
+<li>列出所有可更新的软件清单命令：<code>yum check-update</code>；</li>
+<li>更新所有软件命令：<code>yum update</code>；</li>
+<li>仅安装指定的软件命令：<code>yum install &lt;package_name&gt;</code>；</li>
+<li>仅更新指定的软件命令：<code>yum update &lt;package_name&gt;</code>；</li>
+<li>列出所有可安裝的软件清单命令：<code>yum list</code>；</li>
+<li>删除软件包命令：<code>yum remove &lt;package_name&gt;</code>；</li>
+<li>查找软件包 命令：<code>yum search &lt;keyword&gt;</code>；</li>
+<li>清除缓存命令:<ul>
+<li><code>yum clean packages</code>：清除缓存目录下的软件包</li>
+<li><code>yum clean headers</code>：清除缓存目录下的 headers</li>
+<li><code>yum clean oldheaders</code>：清除缓存目录下旧的 headers</li>
+<li><code>yum clean, yum clean all (= yum clean packages; yum clean oldheaders)</code>：清除缓存目录下的软件包及旧的headers。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/">5.다른 과정</a>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/06-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">06.操作系统</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/11/Nginx--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01.Nginx--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/10/Shiro--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">01.Shiro--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "01.Linux--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

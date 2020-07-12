@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="o一行瑠璃o">
+  <meta name="keywords" content="学习笔记,Java,C">
+  <title>01.ZooKeeper--学习笔记 - 知晓天空之蓝的人啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello World</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/indexbg/sun.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-12 00:51">
+      2020年7月12日 凌晨
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.5k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="ZooKeeper–学习笔记-包含ZooKeeper视频"><a href="#ZooKeeper–学习笔记-包含ZooKeeper视频" class="headerlink" title="ZooKeeper–学习笔记(包含ZooKeeper视频)"></a>ZooKeeper–学习笔记(包含ZooKeeper视频)</h1><h2 id="Lesson1-ZooKeeper概述"><a href="#Lesson1-ZooKeeper概述" class="headerlink" title="Lesson1 ZooKeeper概述"></a>Lesson1 ZooKeeper概述</h2><h3 id="NO1-1-ZooKeeper简介"><a href="#NO1-1-ZooKeeper简介" class="headerlink" title="NO1.1 ZooKeeper简介"></a>NO1.1 ZooKeeper简介</h3><p>如果你没有学习过Spring Cloud的话，那么就简单的理解为ZooKeeper是一个服务注册中心，类似于我们生活中的工商注册中心。</p>
+<ul>
+<li>ZooKeeper<ul>
+<li>介绍：ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件；它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等；</li>
+<li>目标：ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户；</li>
+<li>优点：<ul>
+<li>作为一个中间件，提供协调服务；</li>
+<li>支持Java 和 C语言；</li>
+<li>作用于分布式系统，发挥其优势，可为大数据服务等等；</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>一致性：数据一致性，数据按顺序分批入库；</li>
+<li>原子性：事务要么都成功，要么都失败，不会局部化；</li>
+<li>单一视图：客户端连接集群中的任一zk节点，数据都是一致的；</li>
+<li>可靠性：每次对zk的操作状态都保存在服务器中；</li>
+<li>实时性：客户端可以读取zk服务端的最新数据；</li>
+</ul>
+</li>
+<li>基本数据模型：<ul>
+<li>ZooKeeper的数据模型是一个树形结构；</li>
+<li>每一个节点都称之为<code>Znode</code>；节点分为两种，即临时节点和永久节点；</li>
+<li>每个Znode节点都有各自的版本号；每当节点数据发生变化，那么该节点的版本号会累加；</li>
+<li>每个节点存储的数据不宜过大，默认存储1MB数据；</li>
+<li>节点可以设置权限acl，可以通过权限来限制用户访问；</li>
+</ul>
+</li>
+<li>应用：<ul>
+<li>master节点选举：主节点挂了以后，从节点就会接手工作，并且保证这个节点是唯一的，这也是所谓的首脑模式，从而保证我们的集群是高可用的；</li>
+<li>统一配置文件管理：即只需要部署一台服务器，则可以把相同的配置文件同步更新到其他所有服务器，该操作在云计算中应用广泛；</li>
+<li>发布与订阅：类似消息队列MQ，Dubbo发布者把数据存在Znode上，订阅者会读取这个数据；</li>
+<li>提供分布式锁：分布式环境中不同进程之间争夺资源，类似于多线程的锁；</li>
+<li>集群管理：集群中保证数据的强一致性；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>分布式系统理解：通俗易懂的讲，就是一个大系统拆分成多个小系统分散到不同的设备上。</p>
+<p><img src="./Image-z1.png" srcset="/img/loading.gif" alt="image-20200712092603254"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO1-2-ZooKeeper安装与配置"><a href="#NO1-2-ZooKeeper安装与配置" class="headerlink" title="NO1.2 ZooKeeper安装与配置"></a>NO1.2 ZooKeeper安装与配置</h3><p>zk的安装和配置都比较简单。</p>
+<ul>
+<li><p>安装与配置：</p>
+<ul>
+<li><p>Windows：</p>
+<ul>
+<li><p>到官网下载自己想要下载的zk版本即可；</p>
+</li>
+<li><p>下载完成后，然后解压zk安装包；</p>
+</li>
+<li><p>找到解压目录中的conf目录，并在conf目录中找到zoo_sample.cfg配置文件，重命名为zoo.cfg；</p>
+</li>
+<li><p>进入zoo.cfg文件，简单配置数据文件目录和日志文件目录：即自定义设置数据文件目录和日志文件目录；</p>
+<p><img src="./Image-z2.png" srcset="/img/loading.gif" alt="image-20200712094129383"></p>
+</li>
+<li><p>到此zk的安装和简单的就配置完成，可以启动了，但是前提是必须安装了JDK，因为zk是建立在Java平台上的；</p>
+</li>
+<li><p>使用命令行，进入zk安装目录中的bin目录，找到zkServer.cmd并运行即可。</p>
+</li>
+</ul>
+</li>
+<li><p>Linux：</p>
+<ul>
+<li>到官网下载自己想要下载的zk版本即可，但要注意Linux版本的安装包最好为tar.gz后缀的安装包；</li>
+<li>下载完成后，上传到Linux中，解压zk安装包；</li>
+<li>找到解压目录中的conf目录，并在conf目录中找到zoo_sample.cfg配置文件，重命名为zoo.cfg；</li>
+<li>进入zoo.cfg文件，简单配置数据文件目录和日志文件目录：即自定义设置数据文件目录和日志文件目录；</li>
+<li>zk的安装和简单的配置就基本完成了，进入zk的安装目录，再进入bin目录，输入：<code>./zkServer start</code>命令启动zk即可。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>zoo.cfg配置内容：<ul>
+<li><code>tickTime</code>：用于计算的时间单元；</li>
+<li><code>initLimit</code>：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tickTime 的倍数来表示；</li>
+<li><code>syncLimit</code>：用于集群，master主节点与 从节点 之间发送消息，请求和应答时间长度(心跳机制)；</li>
+<li><code>dataDir</code>：存放数据文件目录，必须配置；</li>
+<li><code>dataLogDir</code>：日志目录；</li>
+<li><code>clientPort</code>：连接服务器的端口，默认2181；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="Lesson2-ZooKeeper基础"><a href="#Lesson2-ZooKeeper基础" class="headerlink" title="Lesson2 ZooKeeper基础"></a>Lesson2 ZooKeeper基础</h2><h3 id="NO2-1-ZooKeeper命令"><a href="#NO2-1-ZooKeeper命令" class="headerlink" title="NO2.1 ZooKeeper命令"></a>NO2.1 ZooKeeper命令</h3><p>因为zk是建立在JDK之上的，所以我们常用Java中的命令来操作zk。</p>
+<ul>
+<li><p>ZooKeeper的常用命令行操作：</p>
+<ul>
+<li><p>Linux的zk客户端命令行；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//stat命令用于查看节点的状态信息</span>
+stat path [watch]   
+   
+<span class="hljs-comment">//set命令用于设置节点的数据(修改节点)    </span>
+set path data [version]  
+    
+
+<span class="hljs-comment">//ls命令用于获取路径下的节点信息，注意路径为绝对路径</span>
+ls path [watch] 
+    
+<span class="hljs-comment">//delquota命令用于删除配额，-n为子节点个数，-b为节点数据长度</span>
+delquota [-n|-b] path
+
+<span class="hljs-comment">//ls2命令是ls命令的增强版，比ls命令多输出本节点信息</span>
+ls2 path [watch]    
+
+<span class="hljs-comment">//用于设置节点Acl，Acl由三部分构成：1为scheme，2为user，3为permission，一般情况下表示为scheme:id:permissions(设置权限)</span>
+setAcl path acl     
+
+<span class="hljs-comment">//setquota命令用于设置节点个数以及数据长度的配额</span>
+setquota -n|-b val path  
+
+<span class="hljs-comment">//history用于列出最近的命令历史，可以和redo配合使用</span>
+history  
+    
+<span class="hljs-comment">//redo命令用于再次执行某个命令</span>
+redo cmdno          
+
+<span class="hljs-comment">//printWatchers命令用于设置和显示监视状态，值为on或则off</span>
+printwatches on|off
+    
+<span class="hljs-comment">//delete命令用于删除节点，如delete /nodeDelete ；(删除节点)</span>
+delete path [version]  
+    
+<span class="hljs-comment">//sync命令用于强制同步，由于请求在半数以上的zk server上生效就表示此请求生效，那么就会有一些zk server上的数据是旧的。sync命令就是强制同步所有的更新操作</span>
+sync path   
+    
+<span class="hljs-comment">//查看指定znode的配额</span>
+listquota path       
+
+<span class="hljs-comment">//递归删除</span>
+rmr path             
+
+<span class="hljs-comment">//查询节点：用于获取节点的信息，注意节点的路径必须是以/开头的绝对路径。如，get /</span>
+get path [watch]     
+
+<span class="hljs-comment">//创建节点：create命令用于创建节点，其中-s为顺序充点，-e临时节点</span>
+create [-s] [-e] path data acl   
+
+<span class="hljs-comment">//用于节点认证，使用方式：如，addauth digest username:password</span>
+addauth scheme auth  
+
+<span class="hljs-comment">//退出客户端</span>
+quit 
+    
+<span class="hljs-comment">//查看某个节点的权限：用于获取节点的Acl，如，getAcl /node1</span>
+getAcl path    
+    
+<span class="hljs-comment">//断开服务器连接：用于关闭与服务端的链接</span>
+close 
+    
+<span class="hljs-comment">//连接服务器：用于连接zk服务端，与close命令配合使用可以连接或者断开zk服务端</span>
+connect host:port</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>返回信息的具体含义：</p>
+<pre><code class="hljs java"><span class="hljs-comment">//节点创建时的zxid</span>
+cZxid = <span class="hljs-number">0x0</span>
+
+<span class="hljs-comment">//节点创建时间</span>
+ctime = Thu Jan <span class="hljs-number">01</span> <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">1970</span>
+
+mZxid = <span class="hljs-number">0x0</span>
+<span class="hljs-comment">//节点最近一次更新时的zxid</span>
+
+<span class="hljs-comment">//节点最近一次更新的时间</span>
+mtime = Thu Jan <span class="hljs-number">01</span> <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">1970</span>
+
+<span class="hljs-comment">//子节点的id</span>
+pZxid = <span class="hljs-number">0x2c</span>
+
+<span class="hljs-comment">//子节点数据更新次数</span>
+cversion = <span class="hljs-number">10</span>
+
+<span class="hljs-comment">//本节点数据更新次数</span>
+dataVersion = <span class="hljs-number">0</span>
+
+<span class="hljs-comment">//节点ACL(授权信息)的更新次数</span>
+aclVersion = <span class="hljs-number">0</span>
+
+<span class="hljs-comment">//如果该节点为临时节点,ephemeralOwner值表示与该节点绑定的session id；如果该节点不是临时节点,ephemeralOwner值为0</span>
+ephemeralOwner = <span class="hljs-number">0x0</span>
+
+<span class="hljs-comment">//节点数据长度，本例中为hello world的长度</span>
+dataLength = <span class="hljs-number">0</span>
+
+<span class="hljs-comment">//子节点个数</span>
+numChildren = <span class="hljs-number">10</span></code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-2-session的基本原理"><a href="#NO2-2-session的基本原理" class="headerlink" title="NO2.2 session的基本原理"></a>NO2.2 session的基本原理</h3><ul>
+<li>基本原理：<ul>
+<li>客户端与服务端之间的连接存在会话；</li>
+<li>每个会话都可以设置一个超时时间；</li>
+<li>心跳结束，session则过期；</li>
+<li>session过期，则临时节点znode则会被抛弃；</li>
+<li>心跳机制：客户端向服务端的ping包请求；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-3-watcher机制"><a href="#NO2-3-watcher机制" class="headerlink" title="NO2.3 watcher机制"></a>NO2.3 watcher机制</h3><ul>
+<li>watcher机制：<ul>
+<li>针对每个节点的操作，都会有一个监督者-&gt;wathcer ；</li>
+<li>当监控的某个对象(Znode)发生了变化。则触发wathcer事件；</li>
+<li>zk中的wathcer是一次性的，触发后立即销毁；</li>
+<li>父节点、子节点 增删改查都能够触发其wathcer ；</li>
+<li>针对不同类型的操作，触发的wathcer事件是不同的；子节点的创建事件，子节点的删除事件，子节点数据变化事件；</li>
+<li>ls 为父节点设置watcher，创建子节点后触发：NodeChildChanged</li>
+<li>ls 为父节点设置watcher，删除子节点后触发：NodeChildChanged</li>
+<li>ls 为父节点设置watcher，修改子节点后不触发事件</li>
+<li>如果只对父节点添加watcher，子节点的增删只会触发NodeChildChanged这一个事件，且修改子节点，不会触发watcher；如果想让子节点跟父节点一样，根据不同的操作，触发的watcher事件也不相同，那么只需要对应的在具体的子节点设置watcher即可，即把子节点当成父节点；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>watch的使用场景：统一资源配置；</p>
+<p><img src="./Image-z3.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-4-ACL权限控制"><a href="#NO2-4-ACL权限控制" class="headerlink" title="NO2.4 ACL权限控制"></a>NO2.4 ACL权限控制</h3><ul>
+<li>ACL(access control lists)权限控制：<ul>
+<li>针对节点可以设置相关的读写等权限，目的为了保证数据安全性；</li>
+<li>权限permissions可以指定不同的权限范围以及角色；</li>
+<li>zk的acl通过[scheme:id:permissions]来构成权限列表；<ul>
+<li><code>scheme</code>：代表采用的某种权限机制(4种常用，1种不常用)；<ul>
+<li><code>world</code>：world下只有一个id，即只有一个用户，也就是anyone，那么组合的写法就是<code>world:anyone:[permissions]</code>；</li>
+<li><code>auth</code>：代表认证登录，需要注册用户addauth后才能操作，形式为<code>auth:user:password:[permissions]</code>；</li>
+<li><code>digest</code>：需要对密码加密才能访问，组合形式为<code>digest:username:BASE64(SHA1(password)):[permissions]</code>；<ul>
+<li>auth/digest的区别：<ul>
+<li>前者明文，后者密文；</li>
+<li><code>setAcl /path auth:lee:lee:cdrwa</code>与<code>setAcl /path digest:lee:BASE64(SHA1(password)):cdrwa</code> 是等价的，在通过<code>addauth digest lee:lee</code>注册后都能操作指定节点的权限；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>ip</code>：当设置为ip属性指定的ip地址，此时限制ip进行访问。如，ip:192.168.1.12:[permissions] ；</li>
+<li>super：超级管理员，拥有所有的权限；首先只需要修改zkServer.sh增加super管理员；、重启 zkServer.sh；</li>
+</ul>
+</li>
+<li><code>id</code> : 代表允许访问的用户(与scheme绑定一起使用的)；</li>
+<li><code>permissions</code>：即权限组合字符串；权限字符串包括<code>crdwa</code>：<ul>
+<li><code>CREATE</code>：创建子节点； </li>
+<li><code>READ</code>：获取节点/子节点；</li>
+<li><code>WRITE</code>：设置节点数据；</li>
+<li><code>DELETE</code>：删除子节点；</li>
+<li><code>ADMIN</code>：设置权限；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>ACL的常用使用场景；<ul>
+<li>开发/测试环境分离，开发者无权操作测试库的节点，只能看；</li>
+<li>生产环境上的控制指定ip的服务可以访问相关节点，防止混乱；</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3 id="NO2-5-zk的四字命令与集群搭建"><a href="#NO2-5-zk的四字命令与集群搭建" class="headerlink" title="NO2.5 zk的四字命令与集群搭建"></a>NO2.5 zk的四字命令与集群搭建</h3><ul>
+<li><p>ZooKeeper的四字命令；</p>
+<ul>
+<li><p>ZooKeeper可以通过它自身提供的简写命令来和服务器进行交互；</p>
+</li>
+<li><p>需要使用nc命令，安装： <code>yum install nc</code> ；</p>
+</li>
+<li><p>echo [command] | nc [ip] [port] ；</p>
+</li>
+<li><p>常用四字命令；</p>
+<p><img src="./Image-z4.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>ZooKeeper集群搭建；<ul>
+<li>ZooKeeper伪集群搭建；</li>
+<li>ZooKeeper真实环境集群搭建；<ul>
+<li>需要注意：环境变量的配置，ip配置的不同，端口号可以相同；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="NO2-6-zk的原生Java-API使用"><a href="#NO2-6-zk的原生Java-API使用" class="headerlink" title="NO2.6 zk的原生Java API使用"></a>NO2.6 zk的原生Java API使用</h3><ul>
+<li><p>会话连接与恢复；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//使用Java创建ZooKeeper连接</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZKConnection</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Watcher</span> </span>&#123;
+    
+    <span class="hljs-comment">//想要连接的zk服务器ip地址和端口</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String zkServerPath = <span class="hljs-string">"127.0.0.1:2181"</span>;
+    
+    <span class="hljs-comment">//如果要连接集群</span>
+	<span class="hljs-comment">//public static final String zkServerPath </span>
+    			=<span class="hljs-string">"127.0.0.1:2181,127.0.0.2:2182"</span>;
+    
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Integer timeout = <span class="hljs-number">5000</span>;
+    
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 当客户端连接服务器成功后，会收到一个watch</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(WatchedEvent event)</span> </span>&#123;
+        
+        System.out.println(<span class="hljs-string">"收到来自zk的watch的通知啦"</span>);
+    &#125;
+&#125;
+
+<span class="hljs-comment">//------------------------------------------------</span>
+
+<span class="hljs-comment">//打开ZK服务器，测试连接</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>&#123;
+
+        ZooKeeper zk = 
+            <span class="hljs-keyword">new</span> ZooKeeper(ZKConnection.zkServerPath,
+                          ZKConnection.timeout, 
+                          <span class="hljs-keyword">new</span> ZKConnection());
+
+        <span class="hljs-comment">//用于会话重新连接时使用，拿到本次会话的sessionId和sessionPasswd，下一次想要再连接到本次会话，只需在构造方法中添加这两个参数即可</span>
+        <span class="hljs-comment">//long sessionId = zk.getSessionId();</span>
+        <span class="hljs-comment">//byte[] sessionPasswd = zk.getSessionPasswd();</span>
+
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;
+            Thread.sleep(<span class="hljs-number">10</span>);
+            System.out.println(i+<span class="hljs-string">"-------"</span>+zk.getState());
+        &#125;
+    &#125;
+&#125;
+
+说明：
+一、客户端和zk服务端的连接是一个异步的过程；
+
+二、当连接成功后，客户端会收到一个watch通知；
+
+三、构造方法的参数介绍：
+ZooKeeper(String connectString,<span class="hljs-keyword">int</span> sessionTimeout, Watcher watcher,<span class="hljs-keyword">long</span> sessionId, <span class="hljs-keyword">byte</span>[] sessionPasswd, <span class="hljs-keyword">boolean</span> canBeReadOnly)
+	<span class="hljs-number">1</span>.connectString：连接服务器的ip字符串,可以是一个ip，也可以是多个ip，一个ip代表单机，多个ip代表集群，如：<span class="hljs-string">"192.168.1.1:2181,192.168.1.2:2181,192.168.1.3:2181"</span>
+	<span class="hljs-number">2</span>.sessionTimeout：超时时间，心跳收不到了，那就超时
+	<span class="hljs-number">3</span>.watcher：通知事件，如果有对应的事件触发，则会收到一个通知：如果不需要，那就设为<span class="hljs-keyword">null</span>
+	<span class="hljs-number">4</span>.sessionId：会话的id
+	<span class="hljs-number">5</span>.sessionPasswd：会话密码，当会话丢失后，可以依据sessionId和sessionPasswd重新获取会话
+	<span class="hljs-number">6</span>.canBeReadOnly：可读，当这个物理机节点断开后，还是可以读到数据的，只是不能写,此时数据被读取到的可能是旧数据，一般设置为<span class="hljs-keyword">false</span>，不推荐使用</code></pre>
+
+<ul>
+<li><p>如果想要创建临时节点，则只需调用不同的构造方法即可； 如果创建永久节点，则需要额外创建一个回调函数类；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//回调函数类，用于创建永久节点用</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateNodeCallBack</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">StringCallback</span></span>&#123;
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rc, String path, </span></span>
+<span class="hljs-function"><span class="hljs-params">                                Object ctx, String name)</span> </span>&#123;
+        
+        System.out.println(<span class="hljs-string">"创建节点："</span> + path);
+        System.out.println((String)ctx);
+    &#125;
+&#125;
+
+<span class="hljs-comment">//---------------------------------------</span>
+
+<span class="hljs-comment">//测试创建节点</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        
+        ZooKeeper zk = 
+            <span class="hljs-keyword">new</span> ZooKeeper(
+            	ZKConnection.zkServerPath,
+                ZKConnection.timeout, 
+            	<span class="hljs-keyword">new</span> ZKConnection());
+        
+        String ctx= <span class="hljs-string">"&#123;'create':'success'&#125;"</span>;
+        
+        <span class="hljs-comment">//调用同步方法：viod create(String path,byte[] data,List&lt;Acl&gt; acl,CreateMode createMode);</span>
+        
+        <span class="hljs-comment">//调用异步方法：viod create(String path,byte[] data,List&lt;ACL&gt; acl,CreateMode createMode,StringCallback cb,Object ctx);</span>
+        
+        <span class="hljs-comment">//异步创建节点</span>
+        zk.create(<span class="hljs-string">"/dyf/baidu"</span>, <span class="hljs-string">"baidu"</span>.getBytes(), 
+                   Ids.OPEN_ACL_UNSAFE,
+                   CreateMode.PERSISTENT,
+                   <span class="hljs-keyword">new</span> CreateNodeCallBack(),
+                   ctx);
+        
+        System.out.println(<span class="hljs-string">"永久节点创建成功啦"</span>);
+        
+        <span class="hljs-keyword">new</span> Thread().sleep(<span class="hljs-number">2000</span>);
+    &#125;
+&#125;
+
+说明：
+一、<span class="hljs-function">String <span class="hljs-title">create</span><span class="hljs-params">(String path, <span class="hljs-keyword">byte</span>[] data, List&lt;ACL&gt; acl,CreateMode createMode)</span>；注意：同步或异步创建节点，都不支持子节点的递归操作，异步有一个callBack方法。</span>
+<span class="hljs-function"></span>
+<span class="hljs-function">二、参数解析：</span>
+<span class="hljs-function">	1.path：创建的路径</span>
+<span class="hljs-function">    2.data：存储的数据,<span class="hljs-keyword">byte</span>[]类型</span>
+<span class="hljs-function">    3.acl：权限控制策略</span>
+<span class="hljs-function">    	Ids.OPEN_ACL_UNSAFE ---&gt; world:anyone:crdwa</span>
+<span class="hljs-function">        CREATE_ALL_ACL ---&gt; auth:user:password:cdrwa</span>
+<span class="hljs-function">	4.createMode：节点类型，是一个枚举</span>
+<span class="hljs-function">    	CreateMode.PERSISTENT：           持久节点</span>
+<span class="hljs-function">        CreateMode.PERSISTENT_SEQUENTIAL：持久顺序节点</span>
+<span class="hljs-function">        CreateMode.EPHEMERAL：            临时节点</span>
+<span class="hljs-function">        CreateMode.EPHEMERAL_SEQUENTIAL： 临时顺序节点</span></code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>节点的删改查；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//修改节点</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        
+        ZooKeeper zk = <span class="hljs-keyword">new</span> ZooKeeper(
+            	ZKConnection.zkServerPath,
+                ZKConnection.timeout, 
+            	<span class="hljs-keyword">new</span> ZKConnection());
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">        * path：节点路径</span>
+<span class="hljs-comment">        * data：修改后的数据</span>
+<span class="hljs-comment">        * version:版本号，这里的版本号必须是正要修改的节点数据的版本号！！</span>
+<span class="hljs-comment">        */</span>
+        
+        <span class="hljs-comment">//使用同步方法：Stat setData(String path, byte[] data, int version)</span>
+        
+        <span class="hljs-comment">//使用异步方法：setData(String path, byte[] data, int version,</span>
+                                        StatCallback cb, String ctx);
+       
+        <span class="hljs-comment">//同步修改节点</span>
+        Stat stat = zk.setData(<span class="hljs-string">"/dyf/baidu"</span>, <span class="hljs-string">"baidupan"</span>.getBytes(), <span class="hljs-number">0</span>);
+        
+        System.out.println(<span class="hljs-string">"修改后的数据版本号为："</span>+stat.getVersion());
+    &#125;
+&#125;
+
+<span class="hljs-comment">//=================================================</span>
+
+<span class="hljs-comment">//删除节点</span>
+
+<span class="hljs-comment">//编写一个类，继承VoidCallback，因为删除节点后会异步回调该类下的方法processResult</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">deleteNodeCallBack</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">VoidCallback</span></span>&#123;
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rc, String path, Object ctx)</span> </span>&#123;
+        System.out.println(<span class="hljs-string">"删除节点："</span> + path);
+        System.out.println((String)ctx);
+    &#125;
+&#125;
+
+<span class="hljs-comment">//---------------------------------------</span>
+
+<span class="hljs-comment">//测试删除节点</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        
+        ZooKeeper zk = <span class="hljs-keyword">new</span> ZooKeeper(
+            ZKConnection.zkServerPath,
+            ZKConnection.timeout, 
+            <span class="hljs-keyword">new</span> ZKConnection());
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">          * 删除节点</span>
+<span class="hljs-comment">          * 注意：version版本号必须和要删除的节点数据的版本号一致</span>
+<span class="hljs-comment">          */</span>
+        
+        <span class="hljs-comment">//调用同步方法：void delete(String path, int version);</span>
+        
+        <span class="hljs-comment">//调用异步方法：void delete(String path, int version,</span>
+        							VoidCallback cb,Object obj)
+        
+        <span class="hljs-comment">//异步删除节点</span>
+        String ctx = <span class="hljs-string">"&#123;'delete':'success'&#125;"</span>;
+        zk.delete(<span class="hljs-string">"/dyf/baidu"</span>, <span class="hljs-number">0</span>,<span class="hljs-keyword">new</span> deleteNodeCallBack(),ctx);
+        
+        <span class="hljs-keyword">new</span> Thread().sleep(<span class="hljs-number">2000</span>); 
+    &#125;
+&#125;
+
+<span class="hljs-comment">//=================================================</span>
+
+<span class="hljs-comment">//查询节点数据、查询子节点、判断节点是否存在</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZkConnection</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Watcher</span></span>&#123;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String zkServerPath = <span class="hljs-string">"127.0.0.1:2181"</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Integer timeout = <span class="hljs-number">5000</span>;
+    
+    <span class="hljs-comment">//创建CountDownLatch，设置等待一个线程完成后，就闭锁</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> CountDownLatch latch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(WatchedEvent watchedEvent)</span> </span>&#123;
+        System.err.println(<span class="hljs-string">"收到zk的watch通知----"</span> );
+        
+        <span class="hljs-comment">//闭锁需要等待的线程数-1</span>
+        latch.countDown();
+    &#125;
+    
+<span class="hljs-comment">//-------------------------------------------</span>
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;
+
+        ZooKeeper zk = <span class="hljs-keyword">new</span> ZooKeeper(
+            zkServerPath,timeout,
+            <span class="hljs-keyword">new</span> ZkConnection());
+
+        <span class="hljs-comment">//调用同步方法：byte[] getData(String path, boolean watch, Stat stat) 等参数依次分别为：节点路径、是否需要注册一个watch、节点的状态信息对象</span>
+
+        <span class="hljs-comment">//调用异步方法：void getData(String path, Watcher watcher,</span>
+DataCallback cb, Object ctx)等参数依次分别为：节点路径、是否需要注册一个watch、回调的函数、以及用于传递上下文信息的对象
+    
+        <span class="hljs-comment">//查询节点数据</span>
+        Stat stat = <span class="hljs-keyword">new</span> Stat();
+        <span class="hljs-keyword">byte</span>[] data = zk.getData(<span class="hljs-string">"/dyf/tengxun"</span>, <span class="hljs-keyword">true</span>, stat);
+        latch.await();
+        System.out.println(<span class="hljs-keyword">new</span> String(data));
+
+<span class="hljs-comment">//---------------------------------------</span>
+        
+        <span class="hljs-comment">//调用同步方法：List&lt;String&gt; getChildren(String path, boolean watcher)等</span>
+        
+        <span class="hljs-comment">//调用异步方法：void getChildren(String path, Watcher watcher,ChildrenCallback cb, Object ctx)等</span>
+        
+        <span class="hljs-comment">//查询子节点</span>
+        List&lt;String&gt; children = zk.getChildren(<span class="hljs-string">"/dyf"</span>, <span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">for</span> (String string : children) &#123;
+            System.out.println(string);
+        &#125;
+
+<span class="hljs-comment">//---------------------------------------------------</span>
+        
+        <span class="hljs-comment">//调用同步方法：exists(String path,boolean watch)</span>
+        <span class="hljs-comment">//调用异步方法：exists(String path, boolean watch,StatCallback cb,Object ctx);</span>
+
+        <span class="hljs-comment">//查询节点是否为空</span>
+        Stat exists = zk.exists(<span class="hljs-string">"/dyf/tengxun"</span>, <span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">if</span>(exists != <span class="hljs-keyword">null</span>) &#123;
+            System.out.println(<span class="hljs-string">"节点版本号："</span>+exists.getVersion());
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            System.out.println(<span class="hljs-string">"节点为空"</span>);
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">//=================================================</span>
+
+<span class="hljs-comment">//---------------------------------------</span></code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>Watch与Acl的相关操作；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//设置权限(auth(不常用)、digest(常用)、ip)</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+
+        <span class="hljs-comment">//创建ZooKeeper连接</span>
+        ZooKeeper zk = <span class="hljs-keyword">new</span> ZooKeeper(
+            ZKConnection.zkServerPath,
+            ZKConnection.timeout, 
+            <span class="hljs-keyword">new</span> ZKConnection());
+
+        <span class="hljs-comment">//用具体用户auth或digest登录方式设置权限</span>
+
+        String ctx= <span class="hljs-string">"&#123;'create':'success'&#125;"</span>;
+
+        <span class="hljs-comment">//设置权限acls</span>
+        List&lt;ACL&gt; acls = <span class="hljs-keyword">new</span> ArrayList&lt;ACL&gt;();
+
+        <span class="hljs-comment">//使用指定的用户以密文方式登陆ZooKeeper</span>
+        Id user = <span class="hljs-keyword">new</span> Id(<span class="hljs-string">"digest"</span>,
+              DigestAuthenticationProvider.generateDigest(<span class="hljs-string">"账号:密码"</span>));
+
+        <span class="hljs-comment">//创建指定的用户拥有的使用节点权限，前者是权限的种类，后者是指定的用户</span>
+        acls.add(<span class="hljs-keyword">new</span> ACL(Perms.ALL,user));
+
+        <span class="hljs-comment">//创建节点(已经设置：指定的用户，以及指定用户所拥有的权限)</span>
+        zk.create(<span class="hljs-string">"/dyf/baidu"</span>, <span class="hljs-string">"baidu"</span>.getBytes(), acls,
+                  CreateMode.PERSISTENT,<span class="hljs-keyword">new</span> CreateNodeCallBack(),ctx);
+        
+        System.out.println(<span class="hljs-string">"节点创建成功啦"</span>);
+
+<span class="hljs-comment">//---------------------------------------------</span>
+
+        <span class="hljs-comment">//用IP方式设置权限</span>
+
+        String ctx= <span class="hljs-string">"&#123;'create':'success'&#125;"</span>;
+
+        <span class="hljs-comment">//设置权限acls</span>
+        List&lt;ACL&gt; acls = <span class="hljs-keyword">new</span> ArrayList&lt;ACL&gt;();
+
+        <span class="hljs-comment">//使用指定的用户以密文方式登陆ZooKeeper</span>
+        Id user = <span class="hljs-keyword">new</span> Id(<span class="hljs-string">"ip"</span>,<span class="hljs-string">"具体的ip地址"</span>);
+
+        <span class="hljs-comment">//创建指定的ip拥有的使用节点权限，前者是权限的种类，后者是指定的ip</span>
+        acls.add(<span class="hljs-keyword">new</span> ACL(Perms.ALL,user));
+
+        <span class="hljs-comment">//创建节点(已经设置：指定的用户，以及指定用户所拥有的权限)</span>
+        zk.create(<span class="hljs-string">"/dyf/baidu"</span>, <span class="hljs-string">"baidu"</span>.getBytes(), acls,
+                  CreateMode.PERSISTENT,<span class="hljs-keyword">new</span> CreateNodeCallBack(),ctx);
+        System.out.println(<span class="hljs-string">"节点创建成功啦"</span>);
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 id="NO2-7-CountDownLatch优化连接zk"><a href="#NO2-7-CountDownLatch优化连接zk" class="headerlink" title="NO2.7 CountDownLatch优化连接zk"></a>NO2.7 CountDownLatch优化连接zk</h3><ul>
+<li><p>使用CountDownLatch优化连接ZooKeeper：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZkConnection</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Watcher</span></span>&#123;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String zkServerPath = <span class="hljs-string">"127.0.0.1:2181"</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Integer timeout = <span class="hljs-number">5000</span>;
+    
+    <span class="hljs-comment">//创建CountDownLatch，设置等待一个线程完成后，就闭锁</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> CountDownLatch latch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(WatchedEvent watchedEvent)</span> </span>&#123;
+        System.err.println(<span class="hljs-string">"收到zk的watch通知----"</span> );
+        
+        <span class="hljs-comment">//闭锁需要等待的线程数-1</span>
+        latch.countDown();
+    &#125;
+    
+<span class="hljs-comment">//---------------------------------------</span>
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;
+        
+        ZooKeeper zk = <span class="hljs-keyword">new</span> ZooKeeper(
+            zkServerPath,timeout,
+            <span class="hljs-keyword">new</span> ZkConnect());
+        
+        System.out.println(<span class="hljs-string">"连接状态---"</span> + zk.getState());
+        latch.await();
+        System.out.println(<span class="hljs-string">"连接状态---"</span> + zk.getState());
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>CountDownLatch工作原理：<ul>
+<li>构造器中的计数值(count)实际上就是闭锁需要等待的线程数量；这个值只能被设置一次，而且CountDownLatch没有提供任何机制去重新设置这个计数值；与CountDownLatch的第一次交互是主线程等待其他线程；主线程必须在启动其     他线程后立即调用CountDownLatch.await()方法；这样主线程的操作就会在这个方法上阻塞，直到其他线程完成各自的任务；其他N个线程必须引用闭锁对象，因为他们需要通知CountDownLatch对象，他们已经完成了各自的任务。这种通知机制是通过CountDownLatch.countDown()方法来完成的；每调用一次这个方法，在构造函数中初始化的count值就减1。所以当N个线程都调用了这个方法，count的值等于0，然后主线程就能通过await()方法，恢复执行自己的任务。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>NO2.7 Curator客户端</p>
+<ul>
+<li>常用的ZooKeeper的Java客户端；除了原生的ZooKeeper的API，常用的就是Apache curator；   但是原生的API不足之处有以下几点：<ul>
+<li>超时重连，不支持自动，需要手动操作；</li>
+<li>Watch注册一次后失效；</li>
+<li>不支持递归创建节点。</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>基本步骤：</p>
+<pre><code class="hljs java"><span class="hljs-comment">//使用Curator创建ZooKeeper的连接</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CuratorOperator</span> </span>&#123;
+    
+    <span class="hljs-keyword">public</span> CuratorFramework client = <span class="hljs-keyword">null</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String zkServerPath = <span class="hljs-string">"127.0.0.1:2181"</span>;
+    
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CuratorOperator</span><span class="hljs-params">()</span> </span>&#123;
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         *  ExponentialBackoffRetry重试策略，该构造有三个参数，推荐使用：</span>
+<span class="hljs-comment">         *  baseSleepTimeMs：初始sleep的时间</span>
+<span class="hljs-comment">         *  maxRetries：最大重试次数</span>
+<span class="hljs-comment">         *  maxSleepMs：最大重试时间</span>
+<span class="hljs-comment">         */</span>
+        
+	<span class="hljs-comment">//RetryPolicy rp = new ExponentialBackoffRetry(1000,5);</span>
+        
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * RetryNTimes重试策略，该方法有两个参数，推荐使用：</span>
+<span class="hljs-comment">         * n：重试的次数</span>
+<span class="hljs-comment">         * sleepMsBetweenRetries：每次重试间隔的时间</span>
+<span class="hljs-comment">         */</span>
+        RetryPolicy rp = <span class="hljs-keyword">new</span> RetryNTimes(<span class="hljs-number">5</span>, <span class="hljs-number">3000</span>);
+            
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * RetryOneTime策略，只重试1次，不推荐：</span>
+<span class="hljs-comment">         * sleepMsBetweenRetry：重试间隔的时间</span>
+<span class="hljs-comment">         *</span>
+<span class="hljs-comment">         */</span>
+	<span class="hljs-comment">//RetryPolicy rp = new RetryOneTime(3000);</span>
+        
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * RetryForever策略，永远重试，不推荐：</span>
+<span class="hljs-comment">         * retryIntervalMs：重试间隔的时间</span>
+<span class="hljs-comment">         *</span>
+<span class="hljs-comment">         */</span>
+	<span class="hljs-comment">//RetryPolicy rp = new RetryForever(3000);</span>
+        
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * RetryUtilElapsed策略，不推荐：</span>
+<span class="hljs-comment">         * maxElapsedTimeMs：最大重试时间</span>
+<span class="hljs-comment">         * sleepMsBetweenRetries：每次重试间隔时间</span>
+<span class="hljs-comment">         * 当重试时间超过最大重试时间，就不再重试</span>
+<span class="hljs-comment">         */</span>
+	<span class="hljs-comment">//RetryPolicy rp = new RetryUtilElapsed(2000,3000);</span>
+        
+        
+        
+        <span class="hljs-comment">//创建连接</span>
+        client = CuratorFrameworkFactory.builder()
+                .connectString(zkServerPath)
+                .sessionTimeoutMs(<span class="hljs-number">10000</span>).retryPolicy(rp)
+                .build();
+        
+        <span class="hljs-comment">//开启连接</span>
+        client.start();
+    &#125;
+    
+    <span class="hljs-comment">//关闭客户端</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">choseClient</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(client != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">this</span>.client.close();
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">//----------------------------------------</span>
+
+<span class="hljs-comment">//测试连接Zookeeper，打开ZK服务端，并测试</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-comment">//实例化</span>
+        CuratorOperator co = <span class="hljs-keyword">new</span> CuratorOperator();
+        
+        <span class="hljs-comment">//获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+        
+        <span class="hljs-comment">//模拟我们认为的操作，让线程休息几秒</span>
+        Thread.sleep(<span class="hljs-number">3000</span>);
+        
+        <span class="hljs-comment">//操作完成，关闭连接</span>
+        co.choseClient();
+        
+        <span class="hljs-comment">//再次获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag2 = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag2?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>使用Curator创建节点、删除节点、查询节点、修改节点操作；</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CuratorOperator</span> </span>&#123;
+    
+    <span class="hljs-keyword">public</span> CuratorFramework client = <span class="hljs-keyword">null</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String zkServerPath = <span class="hljs-string">"127.0.0.1:2181"</span>;
+        
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CuratorOperator</span><span class="hljs-params">()</span> </span>&#123;      
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * RetryNTimes重试策略，该方法有两个参数，推荐使用：</span>
+<span class="hljs-comment">         * n：重试的次数</span>
+<span class="hljs-comment">         * sleepMsBetweenRetries：每次重试间隔的时间</span>
+<span class="hljs-comment">         */</span>
+        RetryPolicy rp = <span class="hljs-keyword">new</span> RetryNTimes(<span class="hljs-number">5</span>, <span class="hljs-number">3000</span>);
+                            
+        <span class="hljs-comment">//创建连接的时候，顺便创建一个工作空间，增删改查的操作都在这里面进行</span>
+        <span class="hljs-comment">//如果工作空间节点存在，则不创建，否则在根节点下创建工作空间节点</span>
+        client = CuratorFrameworkFactory.builder()
+                .connectString(zkServerPath)
+                .sessionTimeoutMs(<span class="hljs-number">10000</span>).retryPolicy(rp)
+                .namespace(<span class="hljs-string">"workspace"</span>).build();
+        
+        <span class="hljs-comment">//开启连接</span>
+        client.start();
+    &#125;
+    
+    <span class="hljs-comment">//关闭客户端</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">choseClient</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(client != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">this</span>.client.close();
+        &#125;
+    &#125;
+&#125;
+
+        测试创建、删除、修改、查询节点操作；
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-comment">//实例化</span>
+        CuratorOperator co = <span class="hljs-keyword">new</span> CuratorOperator();
+        
+        <span class="hljs-comment">//获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+                
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//创建节点</span>
+        String nodePath = <span class="hljs-string">"/dyf/alibaba"</span>;
+        <span class="hljs-keyword">byte</span>[] data = <span class="hljs-string">"taobao"</span>.getBytes();
+        
+        <span class="hljs-comment">//路径中如果没有父节点则创建</span>
+        co.client.create().creatingParentsIfNeeded() 
+            .withMode(CreateMode.PERSISTENT)
+            .withACL(Ids.OPEN_ACL_UNSAFE)
+            .forPath(nodePath, data);
+        
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//修改节点</span>
+        <span class="hljs-keyword">byte</span>[] newData = <span class="hljs-string">"tianmao"</span>.getBytes();
+        co.client.setData()
+            .withVersion(<span class="hljs-number">0</span>)
+            .forPath(nodePath, newData);
+        
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//删除节点</span>
+        co.client.delete()
+            .guaranteed() <span class="hljs-comment">//如果删除失败，那么在后端还是会继续删除，直到成功    </span>
+            .deletingChildrenIfNeeded() <span class="hljs-comment">//如果有子节点，就删除</span>
+            .withVersion(<span class="hljs-number">1</span>)
+            .forPath(nodePath);
+        
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//查询节点数据</span>
+        Stat stat = <span class="hljs-keyword">new</span> Stat();
+        <span class="hljs-keyword">byte</span>[] res = co.client.getData()
+            .storingStatIn(stat) <span class="hljs-comment">//将查询到的节点数据都封装到stat对象里</span>
+            .forPath(nodePath);
+        System.out.println(<span class="hljs-keyword">new</span> String(res)); <span class="hljs-comment">//输出结果</span>
+          
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//获取子节点</span>
+        List&lt;String&gt; res = co.client.getChildren()
+                .forPath(nodePath);
+        
+        <span class="hljs-keyword">for</span> (String string : res) &#123;
+            System.out.println(string);
+        &#125;
+        
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//判断节点是否存在</span>
+        Stat res = co.client.checkExists().forPath(nodePath);
+        System.out.println(res==<span class="hljs-keyword">null</span>?<span class="hljs-string">"节点是空的"</span>:<span class="hljs-string">"节点是存在的"</span>);
+        
+        <span class="hljs-comment">//-------------------------------------------------</span>
+        <span class="hljs-comment">//模拟我们认为的操作，让线程休息几秒</span>
+        Thread.sleep(<span class="hljs-number">3000</span>);
+        
+        <span class="hljs-comment">//操作完成，关闭连接</span>
+        co.choseClient();
+        
+        <span class="hljs-comment">//再次获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag2 = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag2?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>使用Curator设置Watcher监听事件；</p>
+<pre><code class="hljs java"><span class="hljs-comment">//首先，创建监听类</span>
+
+<span class="hljs-comment">//一次性的监听Watcher</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCuratorWatcher</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">CuratorWatcher</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(WatchedEvent event)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        System.out.println(<span class="hljs-string">"该路径下的节点的数据已变更"</span>+event.getPath());
+    &#125;
+&#125;
+
+<span class="hljs-comment">//永久性的监听Watcher</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyNodeCacheListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">NodeCacheListener</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">nodeChanged</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        System.out.println(<span class="hljs-string">"节点数据已发生变化"</span>);
+    &#125;
+&#125;
+
+
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-comment">//实例化对象，创建连接</span>
+        CuratorOperator co = <span class="hljs-keyword">new</span> CuratorOperator();
+        
+        <span class="hljs-comment">//获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+                
+<span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//使用Watcher，但是只能监听一次</span>
+        co.client.getData()
+            .usingWatcher(<span class="hljs-keyword">new</span> MyCuratorWatcher())
+            .forPath(nodePath);
+       
+<span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//使用一个能够永久性监听节点的watcher</span>
+        NodeCache nodeCache = <span class="hljs-keyword">new</span> NodeCache(co.client, nodePath);
+        nodeCache.start(<span class="hljs-keyword">true</span>);
+        
+        <span class="hljs-keyword">if</span>(nodeCache.getCurrentData() != <span class="hljs-keyword">null</span>) &#123;
+            System.out.println(<span class="hljs-string">"获取的数据为："</span>+
+            	<span class="hljs-keyword">new</span> String(nodeCache.getCurrentData().getData()));
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            System.out.println(<span class="hljs-string">"节点中没有数据哦"</span>);
+        &#125;
+        
+        nodeCache.getListenable().addListener(<span class="hljs-keyword">new</span> MyNodeCacheListener());
+        
+<span class="hljs-comment">//-------------------------------------------------</span>
+        
+        <span class="hljs-comment">//PathChildrenCache：监听数据节点的增删改，会触发事件</span>
+        <span class="hljs-comment">//第三个参数：如果设置true，是否需要缓存数据</span>
+        <span class="hljs-keyword">final</span> PathChildrenCache pcc = <span class="hljs-keyword">new</span> PathChildrenCache(co.client,
+                                       nodePath,<span class="hljs-keyword">true</span>);
+        
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * StartMode.POST_INITIALIZED_EVENT：异步初始化，初始化后会触发事件                          PathChildrenCacheEvent.Type.INITIALIZED  </span>
+<span class="hljs-comment">         * NORMAL：异步初始化，初始化后不会触发事件</span>
+<span class="hljs-comment">         * BUILD_INITIAL_CACHE：同步初始化</span>
+<span class="hljs-comment">         *</span>
+<span class="hljs-comment">         */</span>
+        pcc.start(StartMode.BUILD_INITIAL_CACHE);
+        
+        Thread.sleep(<span class="hljs-number">2000</span>);
+        System.out.println(<span class="hljs-string">"获取数据"</span>);
+        List&lt;ChildData&gt; cdl = pcc.getCurrentData();
+        <span class="hljs-keyword">for</span> (ChildData cd : cdl) &#123;
+            System.out.println(<span class="hljs-keyword">new</span> String(cd.getData()));
+        &#125;
+    
+<span class="hljs-comment">//-------------------------------------------------</span>
+        <span class="hljs-comment">//模拟我们认为的操作，让线程休息几秒</span>
+        Thread.sleep(<span class="hljs-number">100000</span>);
+        
+        <span class="hljs-comment">//操作完成，关闭连接</span>
+        co.choseClient();
+        
+        <span class="hljs-comment">//再次获取连接状态，并输出结果</span>
+        <span class="hljs-keyword">boolean</span> flag2 = co.client.isStarted();
+        System.out.println(<span class="hljs-string">"客户端状态："</span>+(flag2?<span class="hljs-string">"连接中"</span>:<span class="hljs-string">"已关闭"</span>));
+    &#125;
+&#125;
+
+注意：如果指定的监听节点不存在的话，会自动的创建该节点；如果在start之后立马调用getCurrentData()的话是会得到<span class="hljs-keyword">null</span>的，因为此时还没有缓存好内容，如果等待一会再调用getCurrentData()的话就能够得到数据；如果是POST_INITIALIZED_EVENT模式启动的话，在回调函数中使用PathChildrenCacheEvent.getData()的时候会得到<span class="hljs-keyword">null</span>对象，如果对<span class="hljs-keyword">null</span>调
+用其他方法比如getPath，但是此时并不会出现异常(抛出了异常，但是控制台不会显示)，而是下面的内容均不会输出；</code></pre>
+
+
+
+
+
+
+
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/">5.다른 과정</a>
+                    
+                      <a class="hover-with-bg" href="/categories/5-%EB%8B%A4%EB%A5%B8-%EA%B3%BC%EC%A0%95/10-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">10.服务注册中心</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Zookeeper/">Zookeeper</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">服务注册中心</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/12/Swagger--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01.Swagger2--学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/11/Maven--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">01.Maven--学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "01.ZooKeeper--学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
