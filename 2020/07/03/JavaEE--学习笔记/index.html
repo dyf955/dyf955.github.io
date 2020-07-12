@@ -207,8 +207,12 @@
 <ul>
 <li><p>数据库：</p>
 <ul>
-<li><p>MySQL数据库细节部分，请参考另一篇博客，这里不做过多叙述。</p>
+<li>MySQL数据库细节部分，请参考另一篇博客，这里不做过多叙述。</li>
+</ul>
 </li>
+</ul>
+<p>&nbsp;</p>
+<ul>
 <li><p>原生JDBC连接数据库：</p>
 <ul>
 <li><p>定义：JDBC即Java与数据库的连接，建立连接之后，就可以使用Java与数据库进行交互；</p>
@@ -284,11 +288,10 @@ rs.close();  <span class="hljs-comment">//只针对查询操作</span></code><
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<pre><code>-   编写JDBCUtils工具类用于加载驱动和获取连接对象：
-
-    <pre><code class="hljs java"><span class="hljs-comment">/***</span>
+<p>&nbsp;</p>
+<ul>
+<li><p>编写JDBCUtils工具类用于加载驱动和获取连接对象：</p>
+<pre><code class="hljs java"><span class="hljs-comment">/***</span>
 <span class="hljs-comment"> * JDBC工具类</span>
 <span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓燕飞</span>
 <span class="hljs-comment"> *</span>
@@ -365,9 +368,12 @@ rs.close();  <span class="hljs-comment">//只针对查询操作</span></code><
     &#125;
 &#125;</code></pre>
 
--   编写C3P0Utils连接池工具类：**`注意：C3P0连接池不需要手动加载配置文件，只需将c3p0-config.xml文件放入src目录下，C3P0连接池会自动去找配置文件并加载里面的配置。`**
-
-    <pre><code class="hljs java">c3p0-config.xml文件
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>编写C3P0Utils连接池工具类：<strong><code>注意：C3P0连接池不需要手动加载配置文件，只需将c3p0-config.xml文件放入src目录下，C3P0连接池会自动去找配置文件并加载里面的配置。</code></strong></p>
+<pre><code class="hljs java">c3p0-config.xml文件
 
 &lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?&gt;
 &lt;c3p0-config&gt;
@@ -441,13 +447,16 @@ rs.close();  <span class="hljs-comment">//只针对查询操作</span></code><
 
 注意：C3P0连接池不要加载配置文件，只需将c3p0-config.xml文件放入src目录下，C3P0连接池会自动去找配置文件加载里面的配置</code></pre>
 
--   DBUtils中：
-
-    -   只需要创建QueryRunner类对象；
-
-    -   处理结果集(将获取到的对象封装到JavaBean中，所以domain类的属性要和数据库表中字段名一致)即可。
-
-        <pre><code class="hljs java"><span class="hljs-comment">//不带事务</span>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p>DBUtils中：</p>
+<ul>
+<li><p>只需要创建QueryRunner类对象；</p>
+</li>
+<li><p>处理结果集(将获取到的对象封装到JavaBean中，所以domain类的属性要和数据库表中字段名一致)即可。</p>
+<pre><code class="hljs java"><span class="hljs-comment">//不带事务</span>
 
 <span class="hljs-comment">//获取C3P0工具类的C3P0连接池对象</span>
 DataSource ds = C3P0Utils.getDataSource();
@@ -506,13 +515,18 @@ QueryRunner qr = <span class="hljs-keyword">new</span> QueryRunner();
     conn.close();
 &#125;</code></pre>
 
--   `ThreadLocal&lt;T&gt;`：线程局部变量，作用是为每一个线程，提供一个存储数据的空间，`&lt;T&gt;`：泛型是设置值的类型，一般是连接对象类；它有两个方法：
-
-    -   `get()`：获取值的方法，它是以当前线程对象作为键，从map中取值，内部原码：map.get(Thread.currentThread())；
-
-    -   `set(Object obj)`：设置值的方法，以当前线程对象作为键，将obj存储到map中，内部原码：map.set(Thread.currentThread,obj)。
-
-        <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionManager</span> </span>&#123;
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><p><code>ThreadLocal&lt;T&gt;</code>：线程局部变量，作用是为每一个线程，提供一个存储数据的空间，<code>&lt;T&gt;</code>：泛型是设置值的类型，一般是连接对象类；它有两个方法：</p>
+<ul>
+<li><p><code>get()</code>：获取值的方法，它是以当前线程对象作为键，从map中取值，内部原码：map.get(Thread.currentThread())；</p>
+</li>
+<li><p><code>set(Object obj)</code>：设置值的方法，以当前线程对象作为键，将obj存储到map中，内部原码：map.set(Thread.currentThread,obj)。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionManager</span> </span>&#123;
     
         <span class="hljs-comment">//创建一个ThreadLocal集合</span>
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ThreadLocal&lt;Connection&gt; tl = <span class="hljs-keyword">new</span> ThreadLocal&lt;Connection&gt;();
@@ -618,7 +632,13 @@ QueryRunner qr = <span class="hljs-keyword">new</span> QueryRunner();
         &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
             e.printStackTrace();
         &#125;
-    &#125;</code></pre></code></pre><p>&nbsp;</p>
+    &#125;</code></pre>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
 <ul>
 <li><p>事务的安全性问题和隔离级别；</p>
 <ul>
@@ -632,7 +652,7 @@ QueryRunner qr = <span class="hljs-keyword">new</span> QueryRunner();
 </ul>
 </li>
 <li><p>事务的安全性问题的解决办法(Y代表可能发生，N代表不会发生)：</p>
-<p><img src="JavaEE--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Image-jee1.png" srcset="/img/loading.gif" alt="Image"></p>
+<p><img src="./Image-jee1.png" srcset="/img/loading.gif" alt="Image"></p>
 <ul>
 <li><p>READ-UNCOMMITTED(读取未提交)：最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读；</p>
 </li>
